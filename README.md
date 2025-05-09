@@ -1,3 +1,3 @@
-# Baizel Engine | version 0.0
+# Baizel Engine (not finished yet)
 
 blah blah blah
