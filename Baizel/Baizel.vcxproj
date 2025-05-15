@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="core\include\Engine.h" />
     <ClInclude Include="core\include\implementation\GameSetup.h" />
+    <ClInclude Include="core\include\implementation\Graphics.h" />
     <ClInclude Include="core\include\implementation\LowLevelInput.h" />
     <ClInclude Include="core\include\implementation\LowLevelInputSDL.h" />
     <ClInclude Include="core\include\implementation\SDLGameSetup.h" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\Engine.cpp" />
+    <ClCompile Include="core\sources\implementation\Graphics.cpp" />
     <ClCompile Include="core\sources\implementation\LowLevelInputSDL.cpp" />
     <ClCompile Include="core\sources\implementation\SDLGameSetup.cpp" />
     <ClCompile Include="core\sources\implementation\LowLevelGraphicsSDL.cpp" />

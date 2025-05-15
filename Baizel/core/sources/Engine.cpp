@@ -17,14 +17,17 @@ namespace baizel
 
 	cEngine::~cEngine()
 	{
-		Log("destructor of cEngine called");
+		Log("- Deleting engine stuff");
 
+		Log("  Graphics");
 		delete mpGraphics;
 		mpGraphics = nullptr;
 
+		Log("  Input");
 		delete mpInput;
 		mpInput = nullptr;
 
+		Log("  Game Setup");
 		delete mpGameSetup;
 		mpGameSetup = nullptr;
 	}

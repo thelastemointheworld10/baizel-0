@@ -8,11 +8,11 @@
 
 namespace baizel
 {
-    class cInit final
+    class cBase final
     {
     public:
-        cInit();
-        ~cInit();
+        cBase();
+        ~cBase();
     
         bool Init();
         void Run();

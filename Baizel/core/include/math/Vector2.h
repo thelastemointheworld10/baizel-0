@@ -129,38 +129,38 @@ namespace baizel
 
 		inline cVector2<T> operator+(const T& aValue) const
 		{
-			cVector2<T> oVector2;
-			oVector2.x += aValue;
-			oVector2.y += aValue;
+			cVector2<T> Vector2;
+			Vector2.x += aValue;
+			Vector2.y += aValue;
 
-			return oVector2;
+			return Vector2;
 		}
 
 		inline cVector2<T> operator-(const T& aValue) const
 		{
-			cVector2<T> oVector2;
-			oVector2.x -= aValue;
-			oVector2.y -= aValue;
+			cVector2<T> Vector2;
+			Vector2.x -= aValue;
+			Vector2.y -= aValue;
 
-			return oVector2;
+			return Vector2;
 		}
 
 		inline cVector2<T> operator*(const T& aValue) const
 		{
-			cVector2<T> oVector2;
-			oVector2.x *= aValue;
-			oVector2.y *= aValue;
+			cVector2<T> Vector2;
+			Vector2.x *= aValue;
+			Vector2.y *= aValue;
 
-			return oVector2;
+			return Vector2;
 		}
 
 		inline cVector2<T> operator/(const T& aValue) const
 		{
-			cVector2<T> oVector2;
-			oVector2.x /= aValue;
-			oVector2.y /= aValue;
+			cVector2<T> Vector2;
+			Vector2.x /= aValue;
+			Vector2.y /= aValue;
 
-			return oVector2;
+			return Vector2;
 		}
 
 		// -----------------------------------------------------------------------

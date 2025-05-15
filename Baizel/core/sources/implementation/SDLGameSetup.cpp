@@ -17,8 +17,6 @@ namespace baizel
 
 	cSDLGameSetup::~cSDLGameSetup()
 	{
-		Log("destructor of cSDLGameSetup called");
-
 		SDL_Quit();
 	}
 
@@ -30,9 +28,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	iLowLevelGraphics* cSDLGameSetup::CreateGraphics()
+	cGraphics* cSDLGameSetup::CreateGraphics()
 	{
-		return new cLowLevelGraphicsSDL();
+		return new cGraphics(new cLowLevelGraphicsSDL());
 	}
 
 	iLowLevelInput* cSDLGameSetup::CreateInput(cEngine* apEngine)

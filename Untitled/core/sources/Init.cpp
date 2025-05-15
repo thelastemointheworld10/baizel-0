@@ -8,7 +8,7 @@ namespace baizel
 
     // -----------------------------------------------------------------------
     
-    cInit::cInit()
+    cBase::cBase()
     {
         msWindowTitle = "Unknown";
         mvWindowSize = cVector2l(800, 600);
@@ -18,7 +18,7 @@ namespace baizel
         mpEngine = new cEngine(mpGameSetup);
     }
 
-    cInit::~cInit()
+    cBase::~cBase()
     {
         delete mpEngine;
         mpEngine = nullptr;
@@ -32,7 +32,7 @@ namespace baizel
 
     // -----------------------------------------------------------------------
     
-    bool cInit::Init()
+    bool cBase::Init()
     {
         if (mpEngine->Init(msWindowTitle, mvWindowSize, mbFullscreen) == false)
             return false;
@@ -40,12 +40,12 @@ namespace baizel
         return true;
     }
     
-    void cInit::Run()
+    void cBase::Run()
     {
         mpEngine->Run();
     }
     
-    void cInit::Exit()
+    void cBase::Exit()
     {
         mpEngine->Exit();
     }

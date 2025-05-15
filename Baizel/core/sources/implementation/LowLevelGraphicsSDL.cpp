@@ -11,7 +11,6 @@ namespace baizel
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
 	{
-		Log("destructor of cLowLevelGraphicsSDL called");
 		SDL_DestroyWindow(mpWindow);
 	}
 	

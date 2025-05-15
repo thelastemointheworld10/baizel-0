@@ -15,7 +15,7 @@ namespace baizel
         cSDLGameSetup();
         ~cSDLGameSetup() override;
 
-        iLowLevelGraphics* CreateGraphics() override;
+        cGraphics* CreateGraphics() override;
         iLowLevelInput* CreateInput(cEngine* apEngine) override;
     };
 }

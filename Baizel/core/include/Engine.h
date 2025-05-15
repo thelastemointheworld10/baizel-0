@@ -5,7 +5,8 @@
 #include <SDL2/SDL.h>
 #include <math/MathTypes.h>
 #include <implementation/GameSetup.h>
-#include <implementation/LowLevelGraphics.h>
+#include <implementation/Graphics.h>
+#include <implementation/LowLevelGraphicsSDL.h>
 #include <implementation/LowLevelInput.h>
 #include <Log.h>
 
@@ -26,7 +27,7 @@ namespace baizel
         bool mbRunning;
 
         iGameSetup* mpGameSetup;
-        iLowLevelGraphics* mpGraphics;
+        cGraphics* mpGraphics;
         iLowLevelInput* mpInput;
     };
 }

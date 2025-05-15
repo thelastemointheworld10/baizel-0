@@ -4,22 +4,22 @@ using namespace baizel;
 
 int main(int argc, char* args[])
 {
-    cInit* pInit = new cInit();
+    cBase* pBase = new cBase();
 
-    if (pInit->Init() == false)
+    if (pBase->Init() == false)
     {
         Fatal("Failed to initialize!");
-        delete pInit;
+        delete pBase;
 
         return EXIT_FAILURE;
     }
     else
     {
-        pInit->Run();
-        //pInit->Exit();
+        pBase->Run();
+        // pBase->Exit();
     }
 
-    delete pInit;
+    delete pBase;
 
     return EXIT_SUCCESS;
 }

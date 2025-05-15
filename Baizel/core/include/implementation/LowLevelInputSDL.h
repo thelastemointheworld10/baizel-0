@@ -13,15 +13,16 @@ namespace baizel
         ~cLowLevelInputSDL() override;
 
         void Update() override;
-    private:
-        SDL_Event mEvent;
 
+    private:
         void UpdateEvents() override;
         void UpdateKeyboard() override;
         void UpdateMouse() override;
         void UpdateJoystick() override;
 
+    private:
         cEngine* mpEngine;
+        SDL_Event mEvent;
     };
 }
 

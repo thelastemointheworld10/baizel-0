@@ -8,13 +8,14 @@
 namespace baizel
 {
     class cEngine;
+    class cGraphics;
 
     class iGameSetup
     {
     public:
         virtual ~iGameSetup() = default;
 
-        virtual iLowLevelGraphics* CreateGraphics() = 0;
+        virtual cGraphics* CreateGraphics() = 0;
         virtual iLowLevelInput* CreateInput(cEngine* apEngine) = 0;
     };
 }

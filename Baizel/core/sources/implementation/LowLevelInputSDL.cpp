@@ -15,7 +15,7 @@ namespace baizel
 
 	cLowLevelInputSDL::~cLowLevelInputSDL()
 	{
-		Log("destructor of cLowLevelInputSDL called");
+		
 	}
 
 	// -----------------------------------------------------------------------
