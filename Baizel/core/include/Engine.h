@@ -4,10 +4,9 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <math/MathTypes.h>
-#include <implementation/GameSetup.h>
+#include <interfaces/GameSetup.h>
+#include <interfaces/LowLevelInput.h>
 #include <implementation/Graphics.h>
-#include <implementation/LowLevelGraphicsSDL.h>
-#include <implementation/LowLevelInput.h>
 #include <Log.h>
 
 namespace baizel

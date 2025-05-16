@@ -38,16 +38,10 @@
     <ClInclude Include="core\include\Engine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\implementation\LowLevelGraphics.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\implementation\LowLevelGraphicsSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\Log.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="core\include\implementation\GameSetup.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\implementation\SDLGameSetup.h">
@@ -59,13 +53,19 @@
     <ClInclude Include="core\include\math\MathTypes.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\implementation\LowLevelInput.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\implementation\LowLevelInputSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\implementation\Graphics.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\interfaces\GameSetup.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\interfaces\LowLevelGraphics.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\interfaces\LowLevelInput.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

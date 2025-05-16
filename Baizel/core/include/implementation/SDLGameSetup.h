@@ -2,7 +2,8 @@
 #define BAIZEL_SDLGAMESETUP_H
 
 #include <SDL2/SDL.h>
-#include <implementation/GameSetup.h>
+#include <SDL2/SDL_image.h>
+#include <interfaces/GameSetup.h>
 #include <implementation/LowLevelGraphicsSDL.h>
 #include <implementation/LowLevelInputSDL.h>
 #include <Log.h>

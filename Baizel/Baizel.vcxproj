@@ -23,32 +23,32 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{1068ddfe-4e12-429f-af48-70eebab0278d}</ProjectGuid>
     <RootNamespace>Baizel</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -101,7 +101,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,7 +123,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -141,7 +141,7 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -163,17 +163,17 @@
     </Link>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\Engine.h" />
-    <ClInclude Include="core\include\implementation\GameSetup.h" />
+    <ClInclude Include="core\include\interfaces\GameSetup.h" />
     <ClInclude Include="core\include\implementation\Graphics.h" />
-    <ClInclude Include="core\include\implementation\LowLevelInput.h" />
+    <ClInclude Include="core\include\interfaces\LowLevelInput.h" />
     <ClInclude Include="core\include\implementation\LowLevelInputSDL.h" />
     <ClInclude Include="core\include\implementation\SDLGameSetup.h" />
-    <ClInclude Include="core\include\implementation\LowLevelGraphics.h" />
+    <ClInclude Include="core\include\interfaces\LowLevelGraphics.h" />
     <ClInclude Include="core\include\implementation\LowLevelGraphicsSDL.h" />
     <ClInclude Include="core\include\Log.h" />
     <ClInclude Include="core\include\math\MathTypes.h" />

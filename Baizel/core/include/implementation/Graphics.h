@@ -3,7 +3,7 @@
 
 #include <cstdint>
 #include <SDL2/SDL.h>
-#include <implementation/LowLevelGraphics.h>
+#include <interfaces/LowLevelGraphics.h>
 
 namespace baizel
 {

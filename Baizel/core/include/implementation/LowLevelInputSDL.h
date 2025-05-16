@@ -2,7 +2,7 @@
 #define BAIZEL_LOWLEVELINPUTSDL_H
 
 #include <Engine.h>
-#include <implementation/LowLevelInput.h>
+#include <interfaces/LowLevelInput.h>
 
 namespace baizel
 {
