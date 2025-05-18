@@ -3,10 +3,12 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+
+#include <Log.h>
+
 #include <interfaces/GameSetup.h>
 #include <implementation/LowLevelGraphicsSDL.h>
 #include <implementation/LowLevelInputSDL.h>
-#include <Log.h>
 
 namespace baizel
 {
@@ -16,7 +18,7 @@ namespace baizel
         cSDLGameSetup();
         ~cSDLGameSetup() override;
 
-        cGraphics* CreateGraphics() override;
+        iLowLevelGraphics* CreateGraphics() override;
         iLowLevelInput* CreateInput(cEngine* apEngine) override;
     };
 }

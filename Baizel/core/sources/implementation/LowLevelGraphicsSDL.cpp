@@ -1,6 +1,5 @@
 #include <implementation/LowLevelGraphicsSDL.h>
-#include <SDL2/SDL_image.h>
-#include <Log.h>
+#include <implementation/RendererSDL.h>
 
 namespace baizel
 {
@@ -9,11 +8,23 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 
 	// -----------------------------------------------------------------------
+
+	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL()
+	{
+		mpRenderer = new cRendererSDL();
+	}
+
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
 	{
-		SDL_DestroyWindow(mpWindow);
-		SDL_DestroyRenderer(mpRenderer);
+		if (mpWindow != nullptr)
+		{
+			SDL_DestroyWindow(mpWindow);
+			mpWindow = nullptr;
+		}
+
+		delete mpRenderer;
+		mpRenderer = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -39,43 +50,29 @@ namespace baizel
 			return false;
 		}
 
-		mpRenderer = SDL_CreateRenderer(mpWindow, -1, SDL_RENDERER_ACCELERATED);
-		if (mpRenderer == nullptr)
-		{
-			Fatal("Failed to create renderer: %s", SDL_GetError());
-			return false;
-		}
-		SDL_SetRenderDrawColor(mpRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+		mpRenderer->Init(this);
 
 		return true;
 	}
 
-	void cLowLevelGraphicsSDL::SetCursorVisible(bool abVisible)
+	SDL_Window* cLowLevelGraphicsSDL::GetWindow() const
+	{
+		return mpWindow;
+	}
+
+	iRenderer* cLowLevelGraphicsSDL::GetRenderer() const
+	{
+		return mpRenderer;
+	}
+
+	void cLowLevelGraphicsSDL::SetCursorVisible(bool abVisible) const
 	{
 		SDL_ShowCursor(abVisible);
 	}
 
-	SDL_Texture* cLowLevelGraphicsSDL::LoadTexture(std::string asPath)
+	iTexture* cLowLevelGraphicsSDL::CreateTexture() const
 	{
-		SDL_Texture* pResult;
-		
-		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
-		if (pLoadedSurface == nullptr)
-		{
-			Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
-			return nullptr;
-		}
-
-		pResult = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
-		if (pLoadedSurface == nullptr)
-		{
-			Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
-			return nullptr;
-		}
-
-		SDL_FreeSurface(pLoadedSurface);
-
-		return pResult;
+		return new cTextureSDL(mpRenderer);
 	}
 
 	// -----------------------------------------------------------------------

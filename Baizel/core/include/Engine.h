@@ -2,12 +2,14 @@
 #define BAIZEL_ENGINE_H
 
 #include <string>
-#include <SDL2/SDL.h>
+
 #include <math/MathTypes.h>
+#include <Log.h>
+
 #include <interfaces/GameSetup.h>
 #include <interfaces/LowLevelInput.h>
-#include <implementation/Graphics.h>
-#include <Log.h>
+#include <interfaces/LowLevelGraphics.h>
+#include <interfaces/Renderer.h>
 
 namespace baizel
 {
@@ -26,7 +28,7 @@ namespace baizel
         bool mbRunning;
 
         iGameSetup* mpGameSetup;
-        cGraphics* mpGraphics;
+        iLowLevelGraphics* mpGraphics;
         iLowLevelInput* mpInput;
     };
 }

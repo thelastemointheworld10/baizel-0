@@ -21,7 +21,7 @@
     <ClCompile Include="core\sources\Log.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\implementation\SDLGameSetup.cpp">
+    <ClCompile Include="core\sources\implementation\GameSetupSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\implementation\LowLevelGraphicsSDL.cpp">
@@ -30,7 +30,10 @@
     <ClCompile Include="core\sources\implementation\LowLevelInputSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\implementation\Graphics.cpp">
+    <ClCompile Include="core\sources\implementation\TextureSDL.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\implementation\RendererSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,7 +47,7 @@
     <ClInclude Include="core\include\Log.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\implementation\SDLGameSetup.h">
+    <ClInclude Include="core\include\implementation\GameSetupSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\math\Vector2.h">
@@ -56,9 +59,6 @@
     <ClInclude Include="core\include\implementation\LowLevelInputSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\implementation\Graphics.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\interfaces\GameSetup.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -66,6 +66,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\interfaces\LowLevelInput.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\interfaces\Texture.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\implementation\TextureSDL.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\interfaces\Renderer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\implementation\RendererSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

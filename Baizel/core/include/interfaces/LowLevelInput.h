@@ -2,6 +2,7 @@
 #define BAIZEL_LOWLEVELINPUT_H
 
 #include <SDL2/SDL.h>
+
 #include <Log.h>
 
 namespace baizel

@@ -1,10 +1,12 @@
-#ifndef INIT_H
-#define INIT_H
+#ifndef BASE_H
+#define BASE_H
 
 #include <string>
+
 #include <Engine.h>
-#include <implementation/SDLGameSetup.h>
 #include <Log.h>
+
+#include <implementation/GameSetupSDL.h>
 
 namespace baizel
 {
@@ -20,12 +22,10 @@ namespace baizel
     private:
         cEngine* mpEngine;
 
-        iGameSetup* mpGameSetup;
-
         const char* msWindowTitle;
         cVector2l mvWindowSize;
         bool mbFullscreen;
     };
 }
 
-#endif // INIT_H
+#endif // BASE_H

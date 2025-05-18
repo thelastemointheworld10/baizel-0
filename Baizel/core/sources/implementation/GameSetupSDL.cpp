@@ -1,4 +1,4 @@
-#include <implementation/SDLGameSetup.h>
+#include <implementation/GameSetupSDL.h>
 
 namespace baizel
 {
@@ -11,15 +11,24 @@ namespace baizel
 	cSDLGameSetup::cSDLGameSetup()
 	{
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
-			Fatal("Failed to initialize SDL2: %s", SDL_GetError());
-		if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) < 0)
-			Fatal("Failed to initialize SDL2_image: %s", IMG_GetError());
+			Fatal("Failed to initialize SDL: %s", SDL_GetError());
+		if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
+			Fatal("IMG_Init failed: %s", IMG_GetError());
 
-		Log("SDL Version: %d.%d.%d", SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
+		Log("SDL Version: %d.%d.%d",
+			SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);
+
+		Log("SDL_image Version: %d.%d.%d",
+			SDL_IMAGE_MAJOR_VERSION, SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL);
 	}
 
 	cSDLGameSetup::~cSDLGameSetup()
 	{
+		Log("- Exiting SDL");
+
+		Log("  SDL_image");
+		IMG_Quit();
+		Log("  SDL");
 		SDL_Quit();
 	}
 
@@ -31,9 +40,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cGraphics* cSDLGameSetup::CreateGraphics()
+	iLowLevelGraphics* cSDLGameSetup::CreateGraphics()
 	{
-		return new cGraphics(new cLowLevelGraphicsSDL());
+		return new cLowLevelGraphicsSDL();
 	}
 
 	iLowLevelInput* cSDLGameSetup::CreateInput(cEngine* apEngine)

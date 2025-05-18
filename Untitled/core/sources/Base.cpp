@@ -1,4 +1,4 @@
-#include <Init.h>
+#include <Base.h>
 
 namespace baizel
 {
@@ -14,8 +14,7 @@ namespace baizel
         mvWindowSize = cVector2l(800, 600);
         mbFullscreen = false;
 
-        mpGameSetup = new cSDLGameSetup();
-        mpEngine = new cEngine(mpGameSetup);
+        mpEngine = new cEngine(new cSDLGameSetup());
     }
 
     cBase::~cBase()

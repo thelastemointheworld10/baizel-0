@@ -1,4 +1,4 @@
-#include <Init.h>
+#include <Base.h>
 
 using namespace baizel;
 
@@ -13,11 +13,8 @@ int main(int argc, char* args[])
 
         return EXIT_FAILURE;
     }
-    else
-    {
-        pBase->Run();
-        // pBase->Exit();
-    }
+
+    pBase->Run();
 
     delete pBase;
 
