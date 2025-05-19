@@ -5,6 +5,7 @@
 
 #include <interfaces/LowLevelGraphics.h>
 #include <interfaces/LowLevelInput.h>
+#include <Input.h>
 
 namespace baizel
 {
@@ -16,7 +17,7 @@ namespace baizel
         virtual ~iGameSetup() = default;
 
         virtual iLowLevelGraphics* CreateGraphics() = 0;
-        virtual iLowLevelInput* CreateInput(cEngine* apEngine) = 0;
+        virtual cInput* CreateInput() = 0;
     };
 }
 

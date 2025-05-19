@@ -15,6 +15,7 @@ int main(int argc, char* args[])
     }
 
     pBase->Run();
+    pBase->Exit();
 
     delete pBase;
 

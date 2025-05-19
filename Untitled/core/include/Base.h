@@ -19,8 +19,9 @@ namespace baizel
         bool Init();
         void Run();
         void Exit();
+
     private:
-        cEngine* mpEngine;
+        cEngine* mpEngine = nullptr;
 
         const char* msWindowTitle;
         cVector2l mvWindowSize;

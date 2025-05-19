@@ -1,22 +1,16 @@
-#include <implementation/TextureSDL.h>
+#include <Input.h>
 
 namespace baizel
 {
 	//////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
 	//////////////////////////////////////////////////////////////////////////
-
+	
 	// -----------------------------------------------------------------------
 	
-	cTextureSDL::cTextureSDL(iRenderer* apRenderer)
+	cInput::cInput(iLowLevelInput* apLowLevelInput)
 	{
-		mpRenderer = dynamic_cast<cRendererSDL*>(apRenderer)->GetRenderer();
-	}
-
-	cTextureSDL::~cTextureSDL()
-	{
-		SDL_DestroyTexture(mpTexture);
-		mpTexture = nullptr;
+		mpLowLevelInput = apLowLevelInput;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -26,35 +20,36 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 
 	// -----------------------------------------------------------------------
+	
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
+
+	void cInput::Update()
+	{
+		mpLowLevelInput->UpdateInput();
+
+		tInputDevicesListIt it = mlstDevices.begin();
+		for (; it != mlstDevices.end(); ++it)
+		{
+			(*it)->Update();
+		}
+	}
 
 	//////////////////////////////////////////
 	// Accessors
 	//////////////////////////////////////////
 
-	SDL_Texture* cTextureSDL::GetTexture() const
+	void cInput::SetKeyboard(iKeyboard* apKeyboard)
 	{
-		return mpTexture;
+		mpKeyboard = apKeyboard;
+		mlstDevices.push_back(mpKeyboard);
 	}
 
-	//////////////////////////////////////////
-	// Resource Management
-	//////////////////////////////////////////
-
-	void cTextureSDL::Load(std::string asPath)
+	iKeyboard* cInput::GetKeyboard()
 	{
-		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
-		if (pLoadedSurface == nullptr)
-		{
-			Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
-			return;
-		}
-
-		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
-		if (mpTexture == nullptr)
-			Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
-
-		SDL_FreeSurface(pLoadedSurface);
+		return mpKeyboard;
 	}
-
+	
 	// -----------------------------------------------------------------------
 }

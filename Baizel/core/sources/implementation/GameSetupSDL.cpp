@@ -40,14 +40,21 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	//////////////////////////////////////////
+	// Resource Management
+	//////////////////////////////////////////
+
 	iLowLevelGraphics* cSDLGameSetup::CreateGraphics()
 	{
 		return new cLowLevelGraphicsSDL();
 	}
 
-	iLowLevelInput* cSDLGameSetup::CreateInput(cEngine* apEngine)
+	cInput* cSDLGameSetup::CreateInput()
 	{
-		return new cLowLevelInputSDL(apEngine);
+		cInput* pInput = new cInput(new cLowLevelInputSDL());
+		pInput->SetKeyboard(new cKeyboardSDL());
+
+		return pInput;
 	}
 
 	// -----------------------------------------------------------------------

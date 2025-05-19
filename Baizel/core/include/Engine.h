@@ -7,9 +7,9 @@
 #include <Log.h>
 
 #include <interfaces/GameSetup.h>
-#include <interfaces/LowLevelInput.h>
 #include <interfaces/LowLevelGraphics.h>
 #include <interfaces/Renderer.h>
+#include <Input.h>
 
 namespace baizel
 {
@@ -27,9 +27,9 @@ namespace baizel
     private:
         bool mbRunning;
 
-        iGameSetup* mpGameSetup;
-        iLowLevelGraphics* mpGraphics;
-        iLowLevelInput* mpInput;
+        iGameSetup* mpGameSetup = nullptr;
+        iLowLevelGraphics* mpGraphics = nullptr;
+        cInput* mpInput = nullptr;
     };
 }
 

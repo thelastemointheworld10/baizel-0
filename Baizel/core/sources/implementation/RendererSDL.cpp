@@ -11,7 +11,6 @@ namespace baizel
 	cRendererSDL::~cRendererSDL()
 	{
 		SDL_DestroyRenderer(mpRenderer);
-		mpRenderer = nullptr;
 	}
 
 	// -----------------------------------------------------------------------
@@ -22,10 +21,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	SDL_Renderer* cRendererSDL::GetRenderer() const
-	{
-		return mpRenderer;
-	}
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
 
 	void cRendererSDL::Init(iLowLevelGraphics* apGraphics)
 	{
@@ -36,7 +34,20 @@ namespace baizel
 			Fatal("Failed to create renderer: %s", SDL_GetError());
 	}
 
-	void cRendererSDL::SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA) const
+	//////////////////////////////////////////
+	// Accessors
+	//////////////////////////////////////////
+
+	SDL_Renderer* cRendererSDL::GetRenderer() const
+	{
+		return mpRenderer;
+	}
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
+	void cRendererSDL::SetClearColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA) const
 	{
 		SDL_SetRenderDrawColor(mpRenderer, alR, alG, alB, alA);
 	}

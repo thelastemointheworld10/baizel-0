@@ -17,11 +17,11 @@ namespace baizel
 	public:
 		~cRendererSDL() override;
 
-		SDL_Renderer* GetRenderer() const;
-
 		void Init(iLowLevelGraphics* apGraphics) override;
 
-		void SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA = 255) const override;
+		SDL_Renderer* GetRenderer() const;
+
+		void SetClearColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA = 255) const override;
 		void Clear() const override;
 		void SwapBuffers() const override;
 

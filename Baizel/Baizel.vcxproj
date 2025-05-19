@@ -168,14 +168,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\Engine.h" />
+    <ClInclude Include="core\include\implementation\KeyboardSDL.h" />
+    <ClInclude Include="core\include\implementation\LowLevelInputSDL.h" />
     <ClInclude Include="core\include\implementation\RendererSDL.h" />
     <ClInclude Include="core\include\implementation\TextureSDL.h" />
+    <ClInclude Include="core\include\Input.h" />
+    <ClInclude Include="core\include\InputTypes.h" />
     <ClInclude Include="core\include\interfaces\GameSetup.h" />
-    <ClInclude Include="core\include\interfaces\LowLevelInput.h" />
-    <ClInclude Include="core\include\implementation\LowLevelInputSDL.h" />
+    <ClInclude Include="core\include\interfaces\InputDevice.h" />
+    <ClInclude Include="core\include\interfaces\Keyboard.h" />
     <ClInclude Include="core\include\implementation\GameSetupSDL.h" />
     <ClInclude Include="core\include\interfaces\LowLevelGraphics.h" />
     <ClInclude Include="core\include\implementation\LowLevelGraphicsSDL.h" />
+    <ClInclude Include="core\include\interfaces\LowLevelInput.h" />
     <ClInclude Include="core\include\interfaces\Renderer.h" />
     <ClInclude Include="core\include\interfaces\Texture.h" />
     <ClInclude Include="core\include\Log.h" />
@@ -184,11 +189,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\Engine.cpp" />
-    <ClCompile Include="core\sources\implementation\LowLevelInputSDL.cpp" />
+    <ClCompile Include="core\sources\implementation\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\implementation\GameSetupSDL.cpp" />
     <ClCompile Include="core\sources\implementation\LowLevelGraphicsSDL.cpp" />
     <ClCompile Include="core\sources\implementation\RendererSDL.cpp" />
     <ClCompile Include="core\sources\implementation\TextureSDL.cpp" />
+    <ClCompile Include="core\sources\implementation\LowLevelInputSDL.cpp" />
+    <ClCompile Include="core\sources\Input.cpp" />
     <ClCompile Include="core\sources\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

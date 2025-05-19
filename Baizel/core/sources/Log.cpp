@@ -8,6 +8,10 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
 	void PrintFormated(std::string asPrefix, const char* asFormat, va_list apArgs)
 	{
 		va_list pArgsCopy;

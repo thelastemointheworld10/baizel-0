@@ -35,6 +35,10 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
+
 	bool cLowLevelGraphicsSDL::Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen)
 	{
 		unsigned int lFlags = SDL_WINDOW_SHOWN;
@@ -55,6 +59,10 @@ namespace baizel
 		return true;
 	}
 
+	//////////////////////////////////////////
+	// Accessors
+	//////////////////////////////////////////
+
 	SDL_Window* cLowLevelGraphicsSDL::GetWindow() const
 	{
 		return mpWindow;
@@ -65,10 +73,18 @@ namespace baizel
 		return mpRenderer;
 	}
 
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
 	void cLowLevelGraphicsSDL::SetCursorVisible(bool abVisible) const
 	{
 		SDL_ShowCursor(abVisible);
 	}
+
+	//////////////////////////////////////////
+	// Resource Management
+	//////////////////////////////////////////
 
 	iTexture* cLowLevelGraphicsSDL::CreateTexture() const
 	{

@@ -3,62 +3,19 @@
 namespace baizel
 {
 	//////////////////////////////////////////////////////////////////////////
-	// CONSTRUCTORS
-	//////////////////////////////////////////////////////////////////////////
-
-	// -----------------------------------------------------------------------
-
-	cLowLevelInputSDL::cLowLevelInputSDL(cEngine* apEngine)
-	{
-		mpEngine = apEngine;
-	}
-
-	cLowLevelInputSDL::~cLowLevelInputSDL()
-	{
-		
-	}
-
-	// -----------------------------------------------------------------------
-
-	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
 	//////////////////////////////////////////////////////////////////////////
 
-	void cLowLevelInputSDL::Update()
+	// -----------------------------------------------------------------------
+	
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
+	
+	void cLowLevelInputSDL::UpdateInput()
 	{
-		UpdateEvents();
-		UpdateKeyboard();
-		UpdateMouse();
-		UpdateJoystick();
+		SDL_PumpEvents();
 	}
-
-	void cLowLevelInputSDL::UpdateEvents()
-	{
-		while (SDL_PollEvent(&mEvent))
-		{
-			switch (mEvent.type)
-			{
-			case SDL_QUIT:
-				mpEngine->Exit();
-				break;
-			}
-		}
-	}
-
-	void cLowLevelInputSDL::UpdateKeyboard()
-	{
-
-	}
-
-	void cLowLevelInputSDL::UpdateMouse()
-	{
-
-	}
-
-	void cLowLevelInputSDL::UpdateJoystick()
-	{
-
-	}
-
+	
 	// -----------------------------------------------------------------------
 }

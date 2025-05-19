@@ -14,7 +14,7 @@ namespace baizel
 		mpGameSetup = apGameSetup;
 
 		mpGraphics = apGameSetup->CreateGraphics();
-		mpInput = apGameSetup->CreateInput(this);
+		mpInput = apGameSetup->CreateInput();
 	}
 
 	cEngine::~cEngine()
@@ -42,6 +42,10 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
+
 	bool cEngine::Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen)
 	{
 		if (mpGraphics->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
@@ -54,7 +58,7 @@ namespace baizel
 		Log("Engine initialized");
 		Log("----------------------------------------------------");
 
-		mpGraphics->GetRenderer()->SetDrawColor(255, 255, 255);
+		mpGraphics->GetRenderer()->SetClearColor(255, 255, 255);
 
 		return true;
 	}
@@ -69,10 +73,13 @@ namespace baizel
 		{
 			mpInput->Update();
 
+			if (mpInput->GetKeyboard()->GetKeyDown(eKey::eKey_0))
+			{
+				Log("0 is pressed");
+			}
+
 			mpGraphics->GetRenderer()->Clear();
-
 			mpGraphics->GetRenderer()->Copy(pTex);
-
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 

@@ -9,6 +9,7 @@
 #include <interfaces/GameSetup.h>
 #include <implementation/LowLevelGraphicsSDL.h>
 #include <implementation/LowLevelInputSDL.h>
+#include <implementation/KeyboardSDL.h>
 
 namespace baizel
 {
@@ -19,7 +20,7 @@ namespace baizel
         ~cSDLGameSetup() override;
 
         iLowLevelGraphics* CreateGraphics() override;
-        iLowLevelInput* CreateInput(cEngine* apEngine) override;
+        cInput* CreateInput() override;
     };
 }
 
