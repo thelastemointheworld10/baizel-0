@@ -10,7 +10,9 @@ namespace baizel
 
 	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL(iRenderer* apRenderer)
 		: iLowLevelGraphics(apRenderer)
-	{ }
+	{
+		mvVirtualSize = cVector2f(800.0f, 600.0f);
+	}
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
 	{
@@ -40,9 +42,14 @@ namespace baizel
 		unsigned int lFlags = SDL_WINDOW_SHOWN;
 		if (abFullscreen == true) lFlags |= SDL_WINDOW_FULLSCREEN;
 
+		mvScreenSize = avWindowSize;
+
+		Log("Setting video mode: %d x %d with virtual size %.1f x %.1f",
+			mvScreenSize.x, mvScreenSize.y, mvVirtualSize.x, mvVirtualSize.y);
+
 		mpWindow = SDL_CreateWindow(asWindowTitle,
 			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-			avWindowSize.x, avWindowSize.y,
+			mvScreenSize.x, mvScreenSize.y,
 			lFlags);
 		if (mpWindow == nullptr)
 		{

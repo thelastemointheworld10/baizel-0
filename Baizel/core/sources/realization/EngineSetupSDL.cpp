@@ -56,7 +56,12 @@ namespace baizel
 	{
 		cLowLevelInputSDL* pLowLevelInputSDL = new cLowLevelInputSDL(apEngine, apGraphics);
 		cInput* pInput = new cInput(pLowLevelInputSDL);
-		pInput->SetKeyboard(new cKeyboardSDL(pLowLevelInputSDL));
+
+		iKeyboard* pKeyboard = new cKeyboardSDL(pLowLevelInputSDL);
+		iMouse* pMouse = new cMouseSDL(pLowLevelInputSDL);
+
+		pInput->SetKeyboard(pKeyboard);
+		pInput->SetMouse(pMouse);
 
 		return pInput;
 	}

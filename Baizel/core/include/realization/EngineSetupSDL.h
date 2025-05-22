@@ -10,6 +10,7 @@
 #include <realization/LowLevelGraphicsSDL.h>
 #include <realization/LowLevelInputSDL.h>
 #include <realization/KeyboardSDL.h>
+#include <realization/MouseSDL.h>
 
 namespace baizel
 {

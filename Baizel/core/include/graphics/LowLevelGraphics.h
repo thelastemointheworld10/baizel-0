@@ -18,6 +18,8 @@ namespace baizel
         
         virtual bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen) = 0;
 
+		cVector2f GetScreenSizeFloat();
+		cVector2f GetVirtualSize();
         virtual iRenderer* GetRenderer() const = 0;
 
         virtual iTexture* CreateTexture() const = 0;
@@ -26,6 +28,9 @@ namespace baizel
 
     protected:
         iRenderer* mpRenderer = nullptr;
+
+		cVector2l mvScreenSize;
+		cVector2f mvVirtualSize;
     };
 }
 

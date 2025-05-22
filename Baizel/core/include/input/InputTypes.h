@@ -94,11 +94,13 @@ namespace baizel
 
 	enum eMouseButton
 	{
-		eMButton_Left,
-		eMButton_Middle,
-		eMButton_Right,
+		eMouseButton_Left,
+		eMouseButton_Middle,
+		eMouseButton_Right,
 
-		eMButton_Count
+		eMouseButton_None,
+
+		eMouseButton_Count
 	};
 }
 

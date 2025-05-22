@@ -27,11 +27,15 @@ namespace baizel
 
 	void cRendererSDL::Init(iLowLevelGraphics* apGraphics)
 	{
-		cLowLevelGraphicsSDL* pGraphicsSDL = dynamic_cast<cLowLevelGraphicsSDL*>(apGraphics);
+		cLowLevelGraphicsSDL* pLowLevelGraphicsSDL = dynamic_cast<cLowLevelGraphicsSDL*>(apGraphics);
 
-		mpRenderer = SDL_CreateRenderer(pGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
+		mpRenderer = SDL_CreateRenderer(pLowLevelGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
 		if (mpRenderer == nullptr)
 			Fatal("Failed to create renderer: %s", SDL_GetError());
+
+		SDL_RenderSetLogicalSize(mpRenderer,
+			pLowLevelGraphicsSDL->GetVirtualSize().x,
+			pLowLevelGraphicsSDL->GetVirtualSize().y);
 	}
 
 	//////////////////////////////////////////

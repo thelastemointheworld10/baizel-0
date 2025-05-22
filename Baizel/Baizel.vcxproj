@@ -23,32 +23,32 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{1068ddfe-4e12-429f-af48-70eebab0278d}</ProjectGuid>
     <RootNamespace>Baizel</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -169,8 +169,10 @@
   <ItemGroup>
     <ClInclude Include="core\include\engine\Engine.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
+    <ClInclude Include="core\include\input\Mouse.h" />
     <ClInclude Include="core\include\realization\KeyboardSDL.h" />
     <ClInclude Include="core\include\realization\LowLevelInputSDL.h" />
+    <ClInclude Include="core\include\realization\MouseSDL.h" />
     <ClInclude Include="core\include\realization\RendererSDL.h" />
     <ClInclude Include="core\include\realization\TextureSDL.h" />
     <ClInclude Include="core\include\input\Input.h" />
@@ -195,6 +197,7 @@
     <ClCompile Include="core\sources\realization\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\EngineSetupSDL.cpp" />
     <ClCompile Include="core\sources\realization\LowLevelGraphicsSDL.cpp" />
+    <ClCompile Include="core\sources\realization\MouseSDL.cpp" />
     <ClCompile Include="core\sources\realization\RendererSDL.cpp" />
     <ClCompile Include="core\sources\realization\TextureSDL.cpp" />
     <ClCompile Include="core\sources\realization\LowLevelInputSDL.cpp" />

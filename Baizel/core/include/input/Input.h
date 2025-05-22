@@ -5,6 +5,7 @@
 
 #include <input/LowLevelInput.h>
 #include <input/Keyboard.h>
+#include <input/Mouse.h>
 
 namespace baizel
 {
@@ -14,9 +15,12 @@ namespace baizel
         cInput(iLowLevelInput* apLowLevelInput);
         ~cInput();
 
+        iLowLevelInput* GetLowLevel();
+
         iKeyboard* GetKeyboard();
         void SetKeyboard(iKeyboard* apKeyboard);
-        iLowLevelInput* GetLowLevel();
+		iMouse* GetMouse();
+		void SetMouse(iMouse* apMouse);
 
         void Update();
 
@@ -25,6 +29,7 @@ namespace baizel
 
         tInputDevicesList mlstDevices;
         iKeyboard* mpKeyboard;
+        iMouse* mpMouse;
     };
 }
 

@@ -73,9 +73,14 @@ namespace baizel
 		{
 			mpInput->Update();
 
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey::eKey_0))
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_0))
 			{
-				Log("0 is pressed");
+				Log("eKey_0 PRESSED");
+			}
+
+			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_Left))
+			{
+				Log("eMouseButton_Left PRESSED");
 			}
 
 			mpGraphics->GetLowLevel()->GetRenderer()->Clear();

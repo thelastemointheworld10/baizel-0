@@ -30,7 +30,6 @@ namespace baizel
     private:
         SDL_Window* mpWindow = nullptr;
         std::string msWindowTitle;
-        cVector2l mvWindowSize;
         bool mbFullscreen;
     };
 }

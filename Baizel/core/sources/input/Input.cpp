@@ -54,10 +54,9 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	void cInput::SetKeyboard(iKeyboard* apKeyboard)
+	iLowLevelInput* cInput::GetLowLevel()
 	{
-		mpKeyboard = apKeyboard;
-		mlstDevices.push_back(mpKeyboard);
+		return mpLowLevelInput;
 	}
 
 	iKeyboard* cInput::GetKeyboard()
@@ -65,9 +64,21 @@ namespace baizel
 		return mpKeyboard;
 	}
 
-	iLowLevelInput* cInput::GetLowLevel()
+	void cInput::SetKeyboard(iKeyboard* apKeyboard)
 	{
-		return mpLowLevelInput;
+		mpKeyboard = apKeyboard;
+		mlstDevices.push_back(mpKeyboard);
+	}
+
+	iMouse* cInput::GetMouse()
+	{
+		return mpMouse;
+	}
+
+	void cInput::SetMouse(iMouse* apMouse)
+	{
+		mpMouse = apMouse;
+		mlstDevices.push_back(mpMouse);
 	}
 	
 	// -----------------------------------------------------------------------
