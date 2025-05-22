@@ -3,10 +3,10 @@
 
 #include <string>
 
-#include <Engine.h>
-#include <Log.h>
+#include <engine/Engine.h>
+#include <engine/Log.h>
 
-#include <implementation/GameSetupSDL.h>
+#include <realization/EngineSetupSDL.h>
 
 namespace baizel
 {

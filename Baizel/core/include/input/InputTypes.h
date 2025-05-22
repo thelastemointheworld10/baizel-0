@@ -2,11 +2,12 @@
 #define BAIZEL_INPUTTYPES_H
 
 #include <list>
-#include <interfaces/InputDevice.h>
+
+#include <input/InputDevice.h>
 
 namespace baizel
 {
-	const unsigned int gkMaxInputEvents = 15;
+	const unsigned int gkMaximumEvents = 15;
 
     using tInputDevicesList = std::list<iInputDevice*>;
     using tInputDevicesListIt = tInputDevicesList::iterator;

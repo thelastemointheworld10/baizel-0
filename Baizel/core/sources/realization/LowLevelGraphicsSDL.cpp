@@ -1,5 +1,4 @@
-#include <implementation/LowLevelGraphicsSDL.h>
-#include <implementation/RendererSDL.h>
+#include <realization/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {

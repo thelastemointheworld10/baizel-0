@@ -4,21 +4,21 @@
 #include <string>
 
 #include <math/MathTypes.h>
-#include <Log.h>
+#include <engine/Log.h>
 
-#include <interfaces/GameSetup.h>
-#include <interfaces/LowLevelGraphics.h>
-#include <interfaces/Renderer.h>
-#include <Input.h>
+#include <engine/EngineSetup.h>
+#include <graphics/LowLevelGraphics.h>
+#include <graphics/Renderer.h>
+#include <input/Input.h>
 
 namespace baizel
 {
-    class iGameSetup;
+    class iEngineSetup;
 
     class cEngine final
     {
     public:
-        cEngine(iGameSetup* apGameSetup);
+        cEngine(iEngineSetup* apGameSetup);
         ~cEngine();
 
         bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen);
@@ -27,7 +27,7 @@ namespace baizel
     private:
         bool mbRunning;
 
-        iGameSetup* mpGameSetup = nullptr;
+        iEngineSetup* mpGameSetup = nullptr;
         iLowLevelGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
     };

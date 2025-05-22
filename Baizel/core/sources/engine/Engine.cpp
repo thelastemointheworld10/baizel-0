@@ -1,5 +1,5 @@
-#include <Engine.h>
-#include <implementation/LowLevelGraphicsSDL.h>
+#include <engine/Engine.h>
+#include <realization/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {
@@ -9,12 +9,12 @@ namespace baizel
 	
 	// -----------------------------------------------------------------------
 	
-	cEngine::cEngine(iGameSetup* apGameSetup)
+	cEngine::cEngine(iEngineSetup* apGameSetup)
 	{
 		mpGameSetup = apGameSetup;
 
 		mpGraphics = apGameSetup->CreateGraphics();
-		mpInput = apGameSetup->CreateInput();
+		mpInput = apGameSetup->CreateInput(this, mpGraphics);
 	}
 
 	cEngine::~cEngine()
@@ -73,7 +73,7 @@ namespace baizel
 		{
 			mpInput->Update();
 
-			if (mpInput->GetKeyboard()->GetKeyDown(eKey::eKey_0))
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey::eKey_0))
 			{
 				Log("0 is pressed");
 			}

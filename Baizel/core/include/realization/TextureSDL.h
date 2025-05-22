@@ -6,10 +6,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <Log.h>
+#include <engine/Log.h>
 
-#include <interfaces/Texture.h>
-#include <implementation/RendererSDL.h>
+#include <graphics/Texture.h>
+#include <realization/RendererSDL.h>
 
 namespace baizel
 {

@@ -1,7 +1,7 @@
 #ifndef BAIZEL_RENDERER_H
 #define BAIZEL_RENDERER_H
 
-#include <interfaces/LowLevelGraphics.h>
+#include <graphics/LowLevelGraphics.h>
 
 namespace baizel
 {

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <interfaces/Renderer.h>
+#include <graphics/Renderer.h>
 
 namespace baizel
 {

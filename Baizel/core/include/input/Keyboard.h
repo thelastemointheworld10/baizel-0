@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <interfaces/InputDevice.h>
-#include <InputTypes.h>
+#include <input/InputDevice.h>
+#include <input/InputTypes.h>
 
 namespace baizel
 {
@@ -12,7 +12,7 @@ namespace baizel
 	{
 	public:
 		virtual bool GetAnyKeyPressed() = 0;
-		virtual bool GetKeyDown(eKey aKey) = 0;
+		virtual bool GetKeyPressed(eKey aKey) = 0;
 	};
 }
 

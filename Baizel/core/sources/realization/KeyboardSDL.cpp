@@ -1,4 +1,4 @@
-#include <implementation/KeyboardSDL.h>
+#include <realization/KeyboardSDL.h>
 
 namespace baizel
 {
@@ -28,11 +28,11 @@ namespace baizel
 
 	void cKeyboardSDL::Update()
 	{
-		SDL_Event KeyEvents[gkMaxInputEvents];
+		SDL_Event KeyEvents[gkMaximumEvents];
 
 		int lEventsCount = SDL_PeepEvents(
 			KeyEvents, // Array where events will be recorded
-			gkMaxInputEvents, // Maximum number of events to extract
+			gkMaximumEvents, // Maximum number of events to extract
 			SDL_GETEVENT, // What to do with events
 			SDL_KEYDOWN, // Minimum event type
 			SDL_KEYUP // Maximum event type
@@ -140,7 +140,7 @@ namespace baizel
 		return false;
 	}
 
-	bool cKeyboardSDL::GetKeyDown(eKey aKey)
+	bool cKeyboardSDL::GetKeyPressed(eKey aKey)
 	{
 		return mvKeyArray[aKey];
 	}

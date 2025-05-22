@@ -1,4 +1,4 @@
-#include <implementation/GameSetupSDL.h>
+#include <realization/EngineSetupSDL.h>
 
 namespace baizel
 {
@@ -8,7 +8,7 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cSDLGameSetup::cSDLGameSetup()
+	cEngineSetupSDL::cEngineSetupSDL()
 	{
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
 			Fatal("Failed to initialize SDL: %s", SDL_GetError());
@@ -22,7 +22,7 @@ namespace baizel
 			SDL_IMAGE_MAJOR_VERSION, SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL);
 	}
 
-	cSDLGameSetup::~cSDLGameSetup()
+	cEngineSetupSDL::~cEngineSetupSDL()
 	{
 		Log("- Exiting SDL");
 
@@ -44,14 +44,14 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	iLowLevelGraphics* cSDLGameSetup::CreateGraphics()
+	iLowLevelGraphics* cEngineSetupSDL::CreateGraphics()
 	{
 		return new cLowLevelGraphicsSDL();
 	}
 
-	cInput* cSDLGameSetup::CreateInput()
+	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics)
 	{
-		cInput* pInput = new cInput(new cLowLevelInputSDL());
+		cInput* pInput = new cInput(new cLowLevelInputSDL(apEngine, apGraphics));
 		pInput->SetKeyboard(new cKeyboardSDL());
 
 		return pInput;

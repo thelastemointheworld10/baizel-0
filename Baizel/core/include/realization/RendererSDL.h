@@ -5,10 +5,10 @@
 
 #include <SDL2/SDL.h>
 
-#include <Log.h>
+#include <engine/Log.h>
 
-#include <interfaces/Renderer.h>
-#include <implementation/LowLevelGraphicsSDL.h>
+#include <graphics/Renderer.h>
+#include <realization/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {

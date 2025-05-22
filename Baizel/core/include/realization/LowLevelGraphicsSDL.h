@@ -4,11 +4,11 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <Log.h>
+#include <engine/Log.h>
 
-#include <interfaces/LowLevelGraphics.h>
-#include <implementation/TextureSDL.h>
-#include <implementation/RendererSDL.h>
+#include <graphics/LowLevelGraphics.h>
+#include <realization/TextureSDL.h>
+#include <realization/RendererSDL.h>
 
 namespace baizel
 {

@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <interfaces/Keyboard.h>
+#include <input/Keyboard.h>
 
 namespace baizel
 {
@@ -13,7 +13,7 @@ namespace baizel
 		cKeyboardSDL();
 
 		bool GetAnyKeyPressed() override;
-		bool GetKeyDown(eKey aKey) override;
+		bool GetKeyPressed(eKey aKey) override;
 
 		void Update() override;
 

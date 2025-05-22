@@ -1,7 +1,7 @@
 #ifndef BAIZEL_LOWLEVELINPUT_H
 #define BAIZEL_LOWLEVELINPUT_H
 
-#include <InputTypes.h>
+#include <input/InputTypes.h>
 
 namespace baizel
 {

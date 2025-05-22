@@ -3,14 +3,23 @@
 
 #include <SDL2/SDL.h>
 
-#include <interfaces/LowLevelInput.h>
+#include <engine/Engine.h>
+
+#include <input/LowLevelInput.h>
+#include <graphics/LowLevelGraphics.h>
 
 namespace baizel
 {
     class cLowLevelInputSDL final : public iLowLevelInput
     {
     public:
+		cLowLevelInputSDL(cEngine* apEngine, iLowLevelGraphics* apGraphics);
+
         void UpdateInput() override;
+
+	private:
+		cEngine* mpEngine;
+		iLowLevelGraphics* mpGraphics;
     };
 }
 
