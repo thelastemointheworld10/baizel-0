@@ -8,11 +8,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL()
-	{
-		mpRenderer = new cRendererSDL();
-	}
-
+	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL(iRenderer* apRenderer)
+		: iLowLevelGraphics(apRenderer)
+	{ }
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
 	{
@@ -23,7 +21,6 @@ namespace baizel
 		}
 
 		delete mpRenderer;
-		mpRenderer = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------

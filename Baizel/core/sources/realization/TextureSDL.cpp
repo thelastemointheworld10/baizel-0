@@ -42,6 +42,12 @@ namespace baizel
 
 	void cTextureSDL::Load(std::string asPath)
 	{
+		if (mpTexture != nullptr)
+		{
+			SDL_DestroyTexture(mpTexture);
+			mpTexture = nullptr;
+		}
+
 		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
 		if (pLoadedSurface == nullptr)
 		{

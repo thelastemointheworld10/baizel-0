@@ -8,8 +8,10 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 	
-	cKeyboardSDL::cKeyboardSDL()
+    cKeyboardSDL::cKeyboardSDL(cLowLevelInputSDL* apLowLevelInputSDL)
 	{
+        mpLowLevelInputSDL = apLowLevelInputSDL;
+
 		mvKeyArray.resize(eKey::eKey_Count);
 		mvKeyArray.assign(mvKeyArray.size(), false);
 	}
@@ -21,109 +23,6 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 	
 	// -----------------------------------------------------------------------
-	
-	//////////////////////////////////////////
-	// Runtime Control
-	//////////////////////////////////////////
-
-	void cKeyboardSDL::Update()
-	{
-		SDL_Event KeyEvents[gkMaximumEvents];
-
-		int lEventsCount = SDL_PeepEvents(
-			KeyEvents, // Array where events will be recorded
-			gkMaximumEvents, // Maximum number of events to extract
-			SDL_GETEVENT, // What to do with events
-			SDL_KEYDOWN, // Minimum event type
-			SDL_KEYUP // Maximum event type
-		);
-
-		if (lEventsCount < 0)
-			return;
-
-		for (size_t i = 0; i < lEventsCount; ++i)
-		{
-			bool bKeyDown = KeyEvents[i].type == SDL_KEYDOWN ? true : false;
-
-            switch (KeyEvents[i].key.keysym.sym)
-            {
-            case SDLK_BACKSPACE:    mvKeyArray[eKey_BACKSPACE] = bKeyDown; break;
-            case SDLK_TAB:          mvKeyArray[eKey_TAB] = bKeyDown; break;
-            case SDLK_RETURN:       mvKeyArray[eKey_RETURN] = bKeyDown; break;
-            case SDLK_ESCAPE:       mvKeyArray[eKey_ESCAPE] = bKeyDown; break;
-            case SDLK_SPACE:        mvKeyArray[eKey_SPACE] = bKeyDown; break;
-
-            case SDLK_UP:           mvKeyArray[eKey_UP] = bKeyDown; break;
-            case SDLK_DOWN:         mvKeyArray[eKey_DOWN] = bKeyDown; break;
-            case SDLK_LEFT:         mvKeyArray[eKey_LEFT] = bKeyDown; break;
-            case SDLK_RIGHT:        mvKeyArray[eKey_RIGHT] = bKeyDown; break;
-
-            case SDLK_LSHIFT:
-            case SDLK_RSHIFT:       mvKeyArray[eKey_SHIFT] = bKeyDown; break;
-            case SDLK_LCTRL:
-            case SDLK_RCTRL:        mvKeyArray[eKey_CTRL] = bKeyDown; break;
-            case SDLK_LALT:
-            case SDLK_RALT:         mvKeyArray[eKey_ALT] = bKeyDown; break;
-
-            // Functional keys
-            case SDLK_F1:           mvKeyArray[eKey_F1] = bKeyDown; break;
-            case SDLK_F2:           mvKeyArray[eKey_F2] = bKeyDown; break;
-            case SDLK_F3:           mvKeyArray[eKey_F3] = bKeyDown; break;
-            case SDLK_F4:           mvKeyArray[eKey_F4] = bKeyDown; break;
-            case SDLK_F5:           mvKeyArray[eKey_F5] = bKeyDown; break;
-            case SDLK_F6:           mvKeyArray[eKey_F6] = bKeyDown; break;
-            case SDLK_F7:           mvKeyArray[eKey_F7] = bKeyDown; break;
-            case SDLK_F8:           mvKeyArray[eKey_F8] = bKeyDown; break;
-            case SDLK_F9:           mvKeyArray[eKey_F9] = bKeyDown; break;
-            case SDLK_F10:          mvKeyArray[eKey_F10] = bKeyDown; break;
-            case SDLK_F11:          mvKeyArray[eKey_F11] = bKeyDown; break;
-            case SDLK_F12:          mvKeyArray[eKey_F12] = bKeyDown; break;
-
-            // Letters
-            case SDLK_a:            mvKeyArray[eKey_A] = bKeyDown; break;
-            case SDLK_b:            mvKeyArray[eKey_B] = bKeyDown; break;
-            case SDLK_c:            mvKeyArray[eKey_C] = bKeyDown; break;
-            case SDLK_d:            mvKeyArray[eKey_D] = bKeyDown; break;
-            case SDLK_e:            mvKeyArray[eKey_E] = bKeyDown; break;
-            case SDLK_f:            mvKeyArray[eKey_F] = bKeyDown; break;
-            case SDLK_g:            mvKeyArray[eKey_G] = bKeyDown; break;
-            case SDLK_h:            mvKeyArray[eKey_H] = bKeyDown; break;
-            case SDLK_i:            mvKeyArray[eKey_I] = bKeyDown; break;
-            case SDLK_j:            mvKeyArray[eKey_J] = bKeyDown; break;
-            case SDLK_k:            mvKeyArray[eKey_K] = bKeyDown; break;
-            case SDLK_l:            mvKeyArray[eKey_L] = bKeyDown; break;
-            case SDLK_m:            mvKeyArray[eKey_M] = bKeyDown; break;
-            case SDLK_n:            mvKeyArray[eKey_N] = bKeyDown; break;
-            case SDLK_o:            mvKeyArray[eKey_O] = bKeyDown; break;
-            case SDLK_p:            mvKeyArray[eKey_P] = bKeyDown; break;
-            case SDLK_q:            mvKeyArray[eKey_Q] = bKeyDown; break;
-            case SDLK_r:            mvKeyArray[eKey_R] = bKeyDown; break;
-            case SDLK_s:            mvKeyArray[eKey_S] = bKeyDown; break;
-            case SDLK_t:            mvKeyArray[eKey_T] = bKeyDown; break;
-            case SDLK_u:            mvKeyArray[eKey_U] = bKeyDown; break;
-            case SDLK_v:            mvKeyArray[eKey_V] = bKeyDown; break;
-            case SDLK_w:            mvKeyArray[eKey_W] = bKeyDown; break;
-            case SDLK_x:            mvKeyArray[eKey_X] = bKeyDown; break;
-            case SDLK_y:            mvKeyArray[eKey_Y] = bKeyDown; break;
-            case SDLK_z:            mvKeyArray[eKey_Z] = bKeyDown; break;
-
-            // Numbers
-            case SDLK_0:            mvKeyArray[eKey_0] = bKeyDown; break;
-            case SDLK_1:            mvKeyArray[eKey_1] = bKeyDown; break;
-            case SDLK_2:            mvKeyArray[eKey_2] = bKeyDown; break;
-            case SDLK_3:            mvKeyArray[eKey_3] = bKeyDown; break;
-            case SDLK_4:            mvKeyArray[eKey_4] = bKeyDown; break;
-            case SDLK_5:            mvKeyArray[eKey_5] = bKeyDown; break;
-            case SDLK_6:            mvKeyArray[eKey_6] = bKeyDown; break;
-            case SDLK_7:            mvKeyArray[eKey_7] = bKeyDown; break;
-            case SDLK_8:            mvKeyArray[eKey_8] = bKeyDown; break;
-            case SDLK_9:            mvKeyArray[eKey_9] = bKeyDown; break;
-
-            default:
-                break;
-            }
-		}
-	}
 	
 	//////////////////////////////////////////
 	// Accessors
@@ -144,6 +43,122 @@ namespace baizel
 	{
 		return mvKeyArray[aKey];
 	}
+
+	//////////////////////////////////////////
+	// Runtime Control
+	//////////////////////////////////////////
+
+	void cKeyboardSDL::Update()
+	{
+		for (const auto& rEvent : mpLowLevelInputSDL->GetEvents())
+		{
+			if (rEvent.type != SDL_KEYDOWN && rEvent.type != SDL_KEYUP)
+				continue;
+
+            eKey Key = SDLToKey(rEvent.key.keysym.sym);
+            mvKeyArray[Key] = rEvent.type == SDL_KEYDOWN;
+		}
+	}
+
+    //////////////////////////////////////////
+    // Core Functionality
+    //////////////////////////////////////////
+
+    eKey cKeyboardSDL::SDLToKey(int alKey)
+    {
+        switch (alKey)
+        {
+            // Special keys
+        case SDLK_BACKSPACE: return eKey_BACKSPACE;
+        case SDLK_TAB:       return eKey_TAB;
+        case SDLK_RETURN:    return eKey_RETURN;
+        case SDLK_RETURN2:   return eKey_RETURN;
+        case SDLK_ESCAPE:    return eKey_ESCAPE;
+        case SDLK_SPACE:     return eKey_SPACE;
+
+            // Arrow keys
+        case SDLK_UP:       return eKey_UP;
+        case SDLK_DOWN:     return eKey_DOWN;
+        case SDLK_LEFT:     return eKey_LEFT;
+        case SDLK_RIGHT:    return eKey_RIGHT;
+
+            // Modifier keys
+        case SDLK_LSHIFT:
+        case SDLK_RSHIFT:   return eKey_SHIFT;
+        case SDLK_LCTRL:
+        case SDLK_RCTRL:    return eKey_CTRL;
+        case SDLK_LALT:
+        case SDLK_RALT:     return eKey_ALT;
+
+            // Function keys
+        case SDLK_F1:       return eKey_F1;
+        case SDLK_F2:       return eKey_F2;
+        case SDLK_F3:       return eKey_F3;
+        case SDLK_F4:       return eKey_F4;
+        case SDLK_F5:       return eKey_F5;
+        case SDLK_F6:       return eKey_F6;
+        case SDLK_F7:       return eKey_F7;
+        case SDLK_F8:       return eKey_F8;
+        case SDLK_F9:       return eKey_F9;
+        case SDLK_F10:      return eKey_F10;
+        case SDLK_F11:      return eKey_F11;
+        case SDLK_F12:      return eKey_F12;
+
+            // Alphabet keys
+        case SDLK_a:        return eKey_A;
+        case SDLK_b:        return eKey_B;
+        case SDLK_c:        return eKey_C;
+        case SDLK_d:        return eKey_D;
+        case SDLK_e:        return eKey_E;
+        case SDLK_f:        return eKey_F;
+        case SDLK_g:        return eKey_G;
+        case SDLK_h:        return eKey_H;
+        case SDLK_i:        return eKey_I;
+        case SDLK_j:        return eKey_J;
+        case SDLK_k:        return eKey_K;
+        case SDLK_l:        return eKey_L;
+        case SDLK_m:        return eKey_M;
+        case SDLK_n:        return eKey_N;
+        case SDLK_o:        return eKey_O;
+        case SDLK_p:        return eKey_P;
+        case SDLK_q:        return eKey_Q;
+        case SDLK_r:        return eKey_R;
+        case SDLK_s:        return eKey_S;
+        case SDLK_t:        return eKey_T;
+        case SDLK_u:        return eKey_U;
+        case SDLK_v:        return eKey_V;
+        case SDLK_w:        return eKey_W;
+        case SDLK_x:        return eKey_X;
+        case SDLK_y:        return eKey_Y;
+        case SDLK_z:        return eKey_Z;
+
+            // Numeric keys
+        case SDLK_0:        return eKey_0;
+        case SDLK_1:        return eKey_1;
+        case SDLK_2:        return eKey_2;
+        case SDLK_3:        return eKey_3;
+        case SDLK_4:        return eKey_4;
+        case SDLK_5:        return eKey_5;
+        case SDLK_6:        return eKey_6;
+        case SDLK_7:        return eKey_7;
+        case SDLK_8:        return eKey_8;
+        case SDLK_9:        return eKey_9;
+
+            // Keypad keys (optional)
+        case SDLK_KP_0:     return eKey_0;
+        case SDLK_KP_1:     return eKey_1;
+        case SDLK_KP_2:     return eKey_2;
+        case SDLK_KP_3:     return eKey_3;
+        case SDLK_KP_4:     return eKey_4;
+        case SDLK_KP_5:     return eKey_5;
+        case SDLK_KP_6:     return eKey_6;
+        case SDLK_KP_7:     return eKey_7;
+        case SDLK_KP_8:     return eKey_8;
+        case SDLK_KP_9:     return eKey_9;
+
+        default:            return eKey_NONE;
+        }
+    }
 	
 	// -----------------------------------------------------------------------
 }

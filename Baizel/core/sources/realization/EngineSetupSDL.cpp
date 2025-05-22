@@ -44,15 +44,19 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	iLowLevelGraphics* cEngineSetupSDL::CreateGraphics()
+	cGraphics* cEngineSetupSDL::CreateGraphics()
 	{
-		return new cLowLevelGraphicsSDL();
+		iRenderer* pRendererSDL = new cRendererSDL();
+		iLowLevelGraphics* pLowLevelGraphicsSDL = new cLowLevelGraphicsSDL(pRendererSDL);
+
+		return new cGraphics(pLowLevelGraphicsSDL);
 	}
 
 	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics)
 	{
-		cInput* pInput = new cInput(new cLowLevelInputSDL(apEngine, apGraphics));
-		pInput->SetKeyboard(new cKeyboardSDL());
+		cLowLevelInputSDL* pLowLevelInputSDL = new cLowLevelInputSDL(apEngine, apGraphics);
+		cInput* pInput = new cInput(pLowLevelInputSDL);
+		pInput->SetKeyboard(new cKeyboardSDL(pLowLevelInputSDL));
 
 		return pInput;
 	}

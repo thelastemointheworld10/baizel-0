@@ -13,11 +13,13 @@ namespace baizel
     class iLowLevelGraphics
     {
     public:
+        iLowLevelGraphics(iRenderer* apRenderer);
         virtual ~iLowLevelGraphics() = default;
         
         virtual bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen) = 0;
 
         virtual iRenderer* GetRenderer() const = 0;
+
         virtual iTexture* CreateTexture() const = 0;
 
         virtual void SetCursorVisible(bool abVisible) const = 0;

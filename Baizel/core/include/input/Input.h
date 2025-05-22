@@ -12,9 +12,11 @@ namespace baizel
     {
     public:
         cInput(iLowLevelInput* apLowLevelInput);
+        ~cInput();
 
         iKeyboard* GetKeyboard();
         void SetKeyboard(iKeyboard* apKeyboard);
+        iLowLevelInput* GetLowLevel();
 
         void Update();
 

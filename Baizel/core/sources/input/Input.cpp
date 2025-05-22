@@ -12,6 +12,18 @@ namespace baizel
 	{
 		mpLowLevelInput = apLowLevelInput;
 	}
+
+	cInput::~cInput()
+	{
+		tInputDevicesListIt it = mlstDevices.begin();
+		for (; it != mlstDevices.end(); ++it)
+		{
+			delete (*it);
+		}
+
+		delete mpLowLevelInput;
+		mpLowLevelInput = nullptr;
+	}
 	
 	// -----------------------------------------------------------------------
 
@@ -27,13 +39,15 @@ namespace baizel
 
 	void cInput::Update()
 	{
-		mpLowLevelInput->UpdateInput();
+		mpLowLevelInput->PollEvents();
 
 		tInputDevicesListIt it = mlstDevices.begin();
 		for (; it != mlstDevices.end(); ++it)
 		{
 			(*it)->Update();
 		}
+
+		mpLowLevelInput->ClearEvents();
 	}
 
 	//////////////////////////////////////////
@@ -49,6 +63,11 @@ namespace baizel
 	iKeyboard* cInput::GetKeyboard()
 	{
 		return mpKeyboard;
+	}
+
+	iLowLevelInput* cInput::GetLowLevel()
+	{
+		return mpLowLevelInput;
 	}
 	
 	// -----------------------------------------------------------------------

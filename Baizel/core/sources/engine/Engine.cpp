@@ -11,10 +11,10 @@ namespace baizel
 	
 	cEngine::cEngine(iEngineSetup* apGameSetup)
 	{
-		mpGameSetup = apGameSetup;
+		mpEngineSetup = apGameSetup;
 
 		mpGraphics = apGameSetup->CreateGraphics();
-		mpInput = apGameSetup->CreateInput(this, mpGraphics);
+		mpInput = apGameSetup->CreateInput(this, mpGraphics->GetLowLevel());
 	}
 
 	cEngine::~cEngine()
@@ -30,8 +30,8 @@ namespace baizel
 		mpInput = nullptr;
 
 		Log("  Game Setup");
-		delete mpGameSetup;
-		mpGameSetup = nullptr;
+		delete mpEngineSetup;
+		mpEngineSetup = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -48,7 +48,7 @@ namespace baizel
 
 	bool cEngine::Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen)
 	{
-		if (mpGraphics->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
+		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
 		{
 			Fatal("Failed to initialize Graphics!");
 			return false;
@@ -58,14 +58,14 @@ namespace baizel
 		Log("Engine initialized");
 		Log("----------------------------------------------------");
 
-		mpGraphics->GetRenderer()->SetClearColor(255, 255, 255);
+		mpGraphics->GetLowLevel()->GetRenderer()->SetClearColor(255, 255, 255);
 
 		return true;
 	}
 
 	void cEngine::Run()
 	{
-		iTexture* pTex = mpGraphics->CreateTexture();
+		iTexture* pTex = mpGraphics->GetLowLevel()->CreateTexture();
 		pTex->Load("textures/raw_test/00_raw.png");
 
 		mbRunning = true;
@@ -78,9 +78,9 @@ namespace baizel
 				Log("0 is pressed");
 			}
 
-			mpGraphics->GetRenderer()->Clear();
-			mpGraphics->GetRenderer()->Copy(pTex);
-			mpGraphics->GetRenderer()->SwapBuffers();
+			mpGraphics->GetLowLevel()->GetRenderer()->Clear();
+			mpGraphics->GetLowLevel()->GetRenderer()->Copy(pTex);
+			mpGraphics->GetLowLevel()->GetRenderer()->SwapBuffers();
 		}
 
 		delete pTex;

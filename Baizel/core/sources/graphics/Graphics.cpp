@@ -1,4 +1,4 @@
-#include <realization/LowLevelInputSDL.h>
+#include <graphics/Graphics.h>
 
 namespace baizel
 {
@@ -8,10 +8,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cLowLevelInputSDL::cLowLevelInputSDL(cEngine* apEngine, iLowLevelGraphics* apGraphics)
+	cGraphics::cGraphics(iLowLevelGraphics* apLowLevelGraphics)
 	{
-		mpEngine = apEngine;
-		mpGraphics = apGraphics;
+		mpLowLevelGraphics = apLowLevelGraphics;
 	}
 
 	// -----------------------------------------------------------------------
@@ -26,35 +25,10 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	std::vector<SDL_Event>& cLowLevelInputSDL::GetEvents()
+	iLowLevelGraphics* cGraphics::GetLowLevel()
 	{
-		return mvEvents;
+		return mpLowLevelGraphics;
 	}
 
-	//////////////////////////////////////////
-	// Runtime Control
-	//////////////////////////////////////////
-	
-	void cLowLevelInputSDL::PollEvents()
-	{
-		SDL_Event Event;
-
-		while (SDL_PollEvent(&Event))
-		{
-			mvEvents.push_back(Event);
-
-			if (Event.type == SDL_QUIT)
-			{
-				mpEngine->Exit();
-			}
-		}
-	}
-
-	void cLowLevelInputSDL::ClearEvents()
-	{
-		mvEvents.clear();
-		mvEvents.reserve(gkMaximumEvents);
-	}
-	
 	// -----------------------------------------------------------------------
 }

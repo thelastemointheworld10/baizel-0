@@ -8,7 +8,8 @@ namespace baizel
     class iLowLevelInput
     {
     public:
-        virtual void UpdateInput() = 0;
+        virtual void PollEvents() = 0;
+        virtual void ClearEvents() = 0;
     };
 }
 

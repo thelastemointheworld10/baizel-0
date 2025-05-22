@@ -16,10 +16,6 @@ namespace baizel
 		virtual void Clear() const = 0;
 		virtual void SwapBuffers() const = 0;
 
-		//////////////////////////////////////////
-		// Drawing
-		//////////////////////////////////////////
-
 		virtual void Copy(iTexture* apTexture) const = 0;
 	};
 }

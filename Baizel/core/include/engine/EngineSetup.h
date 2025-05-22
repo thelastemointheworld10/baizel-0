@@ -3,8 +3,7 @@
 
 #include <engine/Engine.h>
 
-#include <graphics/LowLevelGraphics.h>
-#include <input/LowLevelInput.h>
+#include <graphics/Graphics.h>
 #include <input/Input.h>
 
 namespace baizel
@@ -16,7 +15,7 @@ namespace baizel
     public:
         virtual ~iEngineSetup() = default;
 
-        virtual iLowLevelGraphics* CreateGraphics() = 0;
+        virtual cGraphics* CreateGraphics() = 0;
         virtual cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) = 0;
     };
 }

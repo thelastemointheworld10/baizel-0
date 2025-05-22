@@ -1,6 +1,8 @@
 #ifndef BAIZEL_LOWLEVELINPUTSDL_H
 #define BAIZEL_LOWLEVELINPUTSDL_H
 
+#include <vector>
+
 #include <SDL2/SDL.h>
 
 #include <engine/Engine.h>
@@ -15,9 +17,14 @@ namespace baizel
     public:
 		cLowLevelInputSDL(cEngine* apEngine, iLowLevelGraphics* apGraphics);
 
-        void UpdateInput() override;
+        void PollEvents() override;
+        void ClearEvents() override;
+
+        std::vector<SDL_Event>& GetEvents();
 
 	private:
+        std::vector<SDL_Event> mvEvents;
+
 		cEngine* mpEngine;
 		iLowLevelGraphics* mpGraphics;
     };

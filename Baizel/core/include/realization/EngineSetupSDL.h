@@ -5,8 +5,8 @@
 #include <SDL2/SDL_image.h>
 
 #include <engine/Log.h>
-
 #include <engine/EngineSetup.h>
+
 #include <realization/LowLevelGraphicsSDL.h>
 #include <realization/LowLevelInputSDL.h>
 #include <realization/KeyboardSDL.h>
@@ -19,7 +19,7 @@ namespace baizel
 		cEngineSetupSDL();
         ~cEngineSetupSDL() override;
 
-        iLowLevelGraphics* CreateGraphics() override;
+        cGraphics* CreateGraphics() override;
         cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) override;
     };
 }

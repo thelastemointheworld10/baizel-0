@@ -7,8 +7,8 @@
 #include <engine/Log.h>
 
 #include <engine/EngineSetup.h>
-#include <graphics/LowLevelGraphics.h>
 #include <graphics/Renderer.h>
+#include <graphics/Graphics.h>
 #include <input/Input.h>
 
 namespace baizel
@@ -27,8 +27,8 @@ namespace baizel
     private:
         bool mbRunning;
 
-        iEngineSetup* mpGameSetup = nullptr;
-        iLowLevelGraphics* mpGraphics = nullptr;
+        iEngineSetup* mpEngineSetup = nullptr;
+        cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
     };
 }

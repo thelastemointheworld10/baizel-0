@@ -168,6 +168,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\engine\Engine.h" />
+    <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\realization\KeyboardSDL.h" />
     <ClInclude Include="core\include\realization\LowLevelInputSDL.h" />
     <ClInclude Include="core\include\realization\RendererSDL.h" />
@@ -189,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\engine\Engine.cpp" />
+    <ClCompile Include="core\sources\graphics\Graphics.cpp" />
+    <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\realization\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\EngineSetupSDL.cpp" />
     <ClCompile Include="core\sources\realization\LowLevelGraphicsSDL.cpp" />
