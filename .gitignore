@@ -3,6 +3,6 @@ temp
 dependencies/lib/x64/Baizel.lib
 dependencies/lib/x86/Baizel.lib
 redist-Debug-x64
-redist-Debug-x86
+redist-Debug-Win32
 redist-Release-x64
-redist-Release-x86
+redist-Release-Win32
