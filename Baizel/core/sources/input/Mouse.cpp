@@ -1,4 +1,4 @@
-#include <graphics/LowLevelGraphics.h>
+#include <input/Mouse.h>
 
 namespace baizel
 {
@@ -8,9 +8,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	iLowLevelGraphics::iLowLevelGraphics(iRenderer* apRenderer)
+	iMouse::iMouse(iLowLevelGraphics* apLowLevelGraphics)
 	{
-		mpRenderer = apRenderer;
+		mpLowLevelGraphics = apLowLevelGraphics;
 	}
 
 	// -----------------------------------------------------------------------
@@ -25,14 +25,14 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	tVector2f iLowLevelGraphics::GetScreenSizeFloat()
+	tVector2f iMouse::GetAbsolutePosition()
 	{
-		return tVector2f((float)mvScreenSize.x, (float)mvScreenSize.y);
+		return mvAbsolutePosition;
 	}
 
-	tVector2f iLowLevelGraphics::GetVirtualSize()
+	tVector2f iMouse::GetRelativePosition()
 	{
-		return mvVirtualSize;
+		return mvRelativePosition;
 	}
 
 	// -----------------------------------------------------------------------

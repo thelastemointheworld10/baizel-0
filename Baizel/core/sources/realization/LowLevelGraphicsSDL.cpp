@@ -11,7 +11,7 @@ namespace baizel
 	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL(iRenderer* apRenderer)
 		: iLowLevelGraphics(apRenderer)
 	{
-		mvVirtualSize = cVector2f(800.0f, 600.0f);
+		mvVirtualSize = tVector2f(800.0f, 600.0f);
 	}
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
@@ -37,7 +37,7 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	bool cLowLevelGraphicsSDL::Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen)
+	bool cLowLevelGraphicsSDL::Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
 	{
 		unsigned int lFlags = SDL_WINDOW_SHOWN;
 		if (abFullscreen == true) lFlags |= SDL_WINDOW_FULLSCREEN;

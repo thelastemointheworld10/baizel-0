@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 
 #include <realization/LowLevelInputSDL.h>
+#include <graphics/LowLevelGraphics.h>
 #include <input/Mouse.h>
 
 namespace baizel
@@ -11,7 +12,7 @@ namespace baizel
 	class cMouseSDL final : public iMouse
 	{
 	public:
-		cMouseSDL(cLowLevelInputSDL* apLowLevelInputSDL);
+		cMouseSDL(cLowLevelInputSDL* apLowLevelInputSDL, iLowLevelGraphics* apLowLevelGraphics);
 
 		bool GetButtonPressed(eMouseButton aKey) override;
 

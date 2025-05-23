@@ -51,6 +51,9 @@
     <ClCompile Include="core\sources\realization\MouseSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="core\sources\input\Mouse.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\include\math\Vector2.h">

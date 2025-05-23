@@ -24,7 +24,7 @@ namespace baizel
         cEngine* mpEngine = nullptr;
 
         const char* msWindowTitle;
-        cVector2l mvWindowSize;
+        tVector2l mvWindowSize;
         bool mbFullscreen;
     };
 }

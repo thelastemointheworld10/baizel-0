@@ -46,7 +46,7 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	bool cEngine::Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen)
+	bool cEngine::Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
 	{
 		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
 		{
@@ -72,16 +72,6 @@ namespace baizel
 		while (mbRunning)
 		{
 			mpInput->Update();
-
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_0))
-			{
-				Log("eKey_0 PRESSED");
-			}
-
-			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_Left))
-			{
-				Log("eMouseButton_Left PRESSED");
-			}
 
 			mpGraphics->GetLowLevel()->GetRenderer()->Clear();
 			mpGraphics->GetLowLevel()->GetRenderer()->Copy(pTex);

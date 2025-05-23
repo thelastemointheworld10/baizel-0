@@ -8,10 +8,9 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cLowLevelInputSDL::cLowLevelInputSDL(cEngine* apEngine, iLowLevelGraphics* apGraphics)
+	cLowLevelInputSDL::cLowLevelInputSDL(cEngine* apEngine)
 	{
 		mpEngine = apEngine;
-		mpGraphics = apGraphics;
 	}
 
 	// -----------------------------------------------------------------------

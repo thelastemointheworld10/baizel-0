@@ -21,7 +21,7 @@ namespace baizel
         cEngine(iEngineSetup* apGameSetup);
         ~cEngine();
 
-        bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen);
+        bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen);
         void Run();
         void Exit();
     private:

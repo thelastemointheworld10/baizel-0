@@ -15,7 +15,7 @@ namespace baizel
     class cLowLevelInputSDL final : public iLowLevelInput
     {
     public:
-		cLowLevelInputSDL(cEngine* apEngine, iLowLevelGraphics* apGraphics);
+		cLowLevelInputSDL(cEngine* apEngine);
 
         void PollEvents() override;
         void ClearEvents() override;
@@ -26,7 +26,6 @@ namespace baizel
         std::vector<SDL_Event> mvEvents;
 
 		cEngine* mpEngine;
-		iLowLevelGraphics* mpGraphics;
     };
 }
 

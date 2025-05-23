@@ -18,7 +18,7 @@ namespace baizel
         cLowLevelGraphicsSDL(iRenderer* apRenderer);
         ~cLowLevelGraphicsSDL() override;
 
-        bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen) override;
+        bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) override;
 
         SDL_Window* GetWindow() const;
         iRenderer* GetRenderer() const override;

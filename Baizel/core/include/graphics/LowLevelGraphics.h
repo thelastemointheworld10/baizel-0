@@ -16,10 +16,10 @@ namespace baizel
         iLowLevelGraphics(iRenderer* apRenderer);
         virtual ~iLowLevelGraphics() = default;
         
-        virtual bool Init(const char* asWindowTitle, cVector2l avWindowSize, bool abFullscreen) = 0;
+        virtual bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) = 0;
 
-		cVector2f GetScreenSizeFloat();
-		cVector2f GetVirtualSize();
+		tVector2f GetScreenSizeFloat();
+		tVector2f GetVirtualSize();
         virtual iRenderer* GetRenderer() const = 0;
 
         virtual iTexture* CreateTexture() const = 0;
@@ -29,8 +29,8 @@ namespace baizel
     protected:
         iRenderer* mpRenderer = nullptr;
 
-		cVector2l mvScreenSize;
-		cVector2f mvVirtualSize;
+		tVector2l mvScreenSize;
+		tVector2f mvVirtualSize;
     };
 }
 

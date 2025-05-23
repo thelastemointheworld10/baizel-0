@@ -54,11 +54,11 @@ namespace baizel
 
 	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics)
 	{
-		cLowLevelInputSDL* pLowLevelInputSDL = new cLowLevelInputSDL(apEngine, apGraphics);
+		cLowLevelInputSDL* pLowLevelInputSDL = new cLowLevelInputSDL(apEngine);
 		cInput* pInput = new cInput(pLowLevelInputSDL);
 
 		iKeyboard* pKeyboard = new cKeyboardSDL(pLowLevelInputSDL);
-		iMouse* pMouse = new cMouseSDL(pLowLevelInputSDL);
+		iMouse* pMouse = new cMouseSDL(pLowLevelInputSDL, apGraphics);
 
 		pInput->SetKeyboard(pKeyboard);
 		pInput->SetMouse(pMouse);

@@ -98,6 +98,9 @@ namespace baizel
 		eMouseButton_Middle,
 		eMouseButton_Right,
 
+        eMouseButton_WheelUp,
+        eMouseButton_WheelDown,
+
 		eMouseButton_None,
 
 		eMouseButton_Count
