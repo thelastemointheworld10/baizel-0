@@ -16,9 +16,10 @@ namespace baizel
 		bool GetAnyKeyPressed() override;
 		bool GetKeyPressed(eKey aKey) override;
 
-		eKey SDLToKey(int alKey);
-
 		void Update() override;
+
+	private:
+		eKey SDLToKey(int alKey);
 
 	private:
 		std::vector<bool> mvKeyArray;

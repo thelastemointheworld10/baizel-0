@@ -9,9 +9,6 @@ namespace baizel
 {
 	const unsigned int gkMaximumEvents = 15;
 
-    using tInputDevicesList = std::list<iInputDevice*>;
-    using tInputDevicesListIt = tInputDevicesList::iterator;
-
 	enum eInputDeviceType
 	{
 		eInputDeviceType_Keyboard,
@@ -20,6 +17,8 @@ namespace baizel
 
 		eInputDeviceType_Count
 	};
+
+    using tInputDevicesArray = iInputDevice* [eInputDeviceType_Count];
 
     enum eKey
     {

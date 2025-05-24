@@ -11,8 +11,14 @@ namespace baizel
 	class iKeyboard : public iInputDevice
 	{
 	public:
+		iKeyboard();
+
 		virtual bool GetAnyKeyPressed() = 0;
 		virtual bool GetKeyPressed(eKey aKey) = 0;
+		eKey GetLastKey();
+
+	protected:
+		std::vector<eKey> mvPressedKeys;
 	};
 }
 

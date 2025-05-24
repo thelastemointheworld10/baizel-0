@@ -50,6 +50,8 @@ namespace baizel
 
 	void cKeyboardSDL::Update()
 	{
+        mvPressedKeys.clear();
+
 		for (const auto& rEvent : mpLowLevelInputSDL->GetEvents())
 		{
 			if (rEvent.type != SDL_KEYDOWN && rEvent.type != SDL_KEYUP)
@@ -57,9 +59,19 @@ namespace baizel
 
             eKey Key = SDLToKey(rEvent.key.keysym.sym);
             mvKeyArray[Key] = rEvent.type == SDL_KEYDOWN;
+
+            mvPressedKeys.push_back(Key);
 		}
 	}
+	
+	// -----------------------------------------------------------------------
 
+    //////////////////////////////////////////////////////////////////////////
+    // PUBLIC METHODS
+    //////////////////////////////////////////////////////////////////////////
+
+    // -----------------------------------------------------------------------
+    
     //////////////////////////////////////////
     // Core Functionality
     //////////////////////////////////////////
@@ -159,6 +171,6 @@ namespace baizel
         default:            return eKey_NONE;
         }
     }
-	
-	// -----------------------------------------------------------------------
+    
+    // -----------------------------------------------------------------------
 }

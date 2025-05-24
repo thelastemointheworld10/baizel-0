@@ -60,8 +60,8 @@ namespace baizel
 		iKeyboard* pKeyboard = new cKeyboardSDL(pLowLevelInputSDL);
 		iMouse* pMouse = new cMouseSDL(pLowLevelInputSDL, apGraphics);
 
-		pInput->SetKeyboard(pKeyboard);
-		pInput->SetMouse(pMouse);
+		pInput->SetDevice(eInputDeviceType_Keyboard, pKeyboard);
+		pInput->SetDevice(eInputDeviceType_Mouse, pMouse);
 
 		return pInput;
 	}

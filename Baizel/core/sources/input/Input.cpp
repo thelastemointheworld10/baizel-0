@@ -15,10 +15,9 @@ namespace baizel
 
 	cInput::~cInput()
 	{
-		tInputDevicesListIt it = mlstDevices.begin();
-		for (; it != mlstDevices.end(); ++it)
+		for (iInputDevice* pInputDevice : mpInputDevices)
 		{
-			delete (*it);
+			delete pInputDevice;
 		}
 
 		delete mpLowLevelInput;
@@ -41,10 +40,12 @@ namespace baizel
 	{
 		mpLowLevelInput->PollEvents();
 
-		tInputDevicesListIt it = mlstDevices.begin();
-		for (; it != mlstDevices.end(); ++it)
+		for (iInputDevice* pInputDevice : mpInputDevices)
 		{
-			(*it)->Update();
+			if (pInputDevice == nullptr)
+				continue;
+
+			pInputDevice->Update();
 		}
 
 		mpLowLevelInput->ClearEvents();
@@ -59,26 +60,28 @@ namespace baizel
 		return mpLowLevelInput;
 	}
 
-	iKeyboard* cInput::GetKeyboard()
+	void cInput::SetDevice(eInputDeviceType alInputDeviceType, iInputDevice* apInputDevice)
 	{
-		return mpKeyboard;
-	}
+		int lDeviceType = static_cast<int>(alInputDeviceType);
 
-	void cInput::SetKeyboard(iKeyboard* apKeyboard)
-	{
-		mpKeyboard = apKeyboard;
-		mlstDevices.push_back(mpKeyboard);
-	}
+		Log("Setting input device of type %d as %s", lDeviceType, typeid(apInputDevice).name());
 
-	iMouse* cInput::GetMouse()
-	{
-		return mpMouse;
-	}
+		if (alInputDeviceType < 0 || alInputDeviceType >= eInputDeviceType_Count)
+		{
+			Error("Invalid device type: %d", lDeviceType);
+			return;
+		}
 
-	void cInput::SetMouse(iMouse* apMouse)
-	{
-		mpMouse = apMouse;
-		mlstDevices.push_back(mpMouse);
+		if (apInputDevice == nullptr)
+		{
+			Error("Trying to set nullptr device for type %d", lDeviceType);
+			return;
+		}
+
+		if (mpInputDevices[alInputDeviceType])
+			delete mpInputDevices[alInputDeviceType];
+
+		mpInputDevices[alInputDeviceType] = apInputDevice;
 	}
 	
 	// -----------------------------------------------------------------------

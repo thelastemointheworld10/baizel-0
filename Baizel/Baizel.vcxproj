@@ -194,6 +194,7 @@
     <ClCompile Include="core\sources\engine\Engine.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
+    <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
     <ClCompile Include="core\sources\realization\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\EngineSetupSDL.cpp" />

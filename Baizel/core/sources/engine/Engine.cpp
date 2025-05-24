@@ -72,7 +72,7 @@ namespace baizel
 		while (mbRunning)
 		{
 			mpInput->Update();
-
+				
 			mpGraphics->GetLowLevel()->GetRenderer()->Clear();
 			mpGraphics->GetLowLevel()->GetRenderer()->Copy(pTex);
 			mpGraphics->GetLowLevel()->GetRenderer()->SwapBuffers();
