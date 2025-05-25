@@ -10,7 +10,7 @@ namespace baizel
     
     cBase::cBase()
     {
-        msWindowTitle = "Unknown";
+        msWindowTitle = "Untitled";
         mvWindowSize = tVector2l(800, 600);
         mbFullscreen = false;
 

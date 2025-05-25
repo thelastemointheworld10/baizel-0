@@ -15,13 +15,12 @@ namespace baizel
     class cLowLevelGraphicsSDL : public iLowLevelGraphics
     {
     public:
-        cLowLevelGraphicsSDL(iRenderer* apRenderer);
+        cLowLevelGraphicsSDL();
         ~cLowLevelGraphicsSDL() override;
 
         bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) override;
 
         SDL_Window* GetWindow() const;
-        iRenderer* GetRenderer() const override;
 
         iTexture* CreateTexture() const override;
 

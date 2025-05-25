@@ -8,12 +8,15 @@ namespace baizel
 	class cGraphics final
 	{
 	public:
-		cGraphics(iLowLevelGraphics* apLowLevelGraphics);
+		cGraphics(iLowLevelGraphics* apLowLevelGraphics, iRenderer* apRenderer);
+		~cGraphics();
 
 		iLowLevelGraphics* GetLowLevel();
+		iRenderer* GetRenderer();
 
 	private:
 		iLowLevelGraphics* mpLowLevelGraphics;
+		iRenderer* mpRenderer;
 	};
 }
 

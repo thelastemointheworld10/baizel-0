@@ -58,7 +58,7 @@ namespace baizel
 		Log("Engine initialized");
 		Log("----------------------------------------------------");
 
-		mpGraphics->GetLowLevel()->GetRenderer()->SetClearColor(255, 255, 255);
+		mpGraphics->GetRenderer()->SetClearColor(255, 255, 255);
 
 		return true;
 	}
@@ -72,10 +72,23 @@ namespace baizel
 		while (mbRunning)
 		{
 			mpInput->Update();
-				
-			mpGraphics->GetLowLevel()->GetRenderer()->Clear();
-			mpGraphics->GetLowLevel()->GetRenderer()->Copy(pTex);
-			mpGraphics->GetLowLevel()->GetRenderer()->SwapBuffers();
+			mpGraphics->GetRenderer()->Clear();
+
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Q))
+			{
+				Log("q");
+			}
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
+			{
+				Log("w");
+			}
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_E))
+			{
+				Log("e");
+			}
+			
+			mpGraphics->GetRenderer()->Copy(pTex);
+			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 
 		delete pTex;

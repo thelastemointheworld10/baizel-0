@@ -4,20 +4,16 @@ using namespace baizel;
 
 int main(int argc, char* args[])
 {
-    cBase* pBase = new cBase();
+    cBase Base;
 
-    if (pBase->Init() == false)
+    if (Base.Init() == false)
     {
         Fatal("Failed to initialize!");
-        delete pBase;
-
         return EXIT_FAILURE;
     }
 
-    pBase->Run();
-    pBase->Exit();
-
-    delete pBase;
+    Base.Run();
+    Base.Exit();
 
     return EXIT_SUCCESS;
 }

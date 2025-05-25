@@ -8,8 +8,7 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL(iRenderer* apRenderer)
-		: iLowLevelGraphics(apRenderer)
+	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL()
 	{
 		mvVirtualSize = tVector2f(800.0f, 600.0f);
 	}
@@ -21,8 +20,6 @@ namespace baizel
 			SDL_DestroyWindow(mpWindow);
 			mpWindow = nullptr;
 		}
-
-		delete mpRenderer;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -40,7 +37,7 @@ namespace baizel
 	bool cLowLevelGraphicsSDL::Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
 	{
 		unsigned int lFlags = SDL_WINDOW_SHOWN;
-		if (abFullscreen == true) lFlags |= SDL_WINDOW_FULLSCREEN;
+		if (abFullscreen) lFlags |= SDL_WINDOW_FULLSCREEN;
 
 		mvScreenSize = avWindowSize;
 
@@ -69,11 +66,6 @@ namespace baizel
 	SDL_Window* cLowLevelGraphicsSDL::GetWindow() const
 	{
 		return mpWindow;
-	}
-
-	iRenderer* cLowLevelGraphicsSDL::GetRenderer() const
-	{
-		return mpRenderer;
 	}
 
 	//////////////////////////////////////////

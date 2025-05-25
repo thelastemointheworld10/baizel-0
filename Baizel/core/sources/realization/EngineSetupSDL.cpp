@@ -20,6 +20,8 @@ namespace baizel
 
 		Log("SDL_image Version: %d.%d.%d",
 			SDL_IMAGE_MAJOR_VERSION, SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL);
+
+		Log("----------------------------------------------------");
 	}
 
 	cEngineSetupSDL::~cEngineSetupSDL()
@@ -47,9 +49,9 @@ namespace baizel
 	cGraphics* cEngineSetupSDL::CreateGraphics()
 	{
 		iRenderer* pRendererSDL = new cRendererSDL();
-		iLowLevelGraphics* pLowLevelGraphicsSDL = new cLowLevelGraphicsSDL(pRendererSDL);
+		iLowLevelGraphics* pLowLevelGraphicsSDL = new cLowLevelGraphicsSDL();
 
-		return new cGraphics(pLowLevelGraphicsSDL);
+		return new cGraphics(pLowLevelGraphicsSDL, pRendererSDL);
 	}
 
 	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics)

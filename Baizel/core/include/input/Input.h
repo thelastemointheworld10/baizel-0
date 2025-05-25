@@ -18,7 +18,13 @@ namespace baizel
         ~cInput();
 
         iLowLevelInput* GetLowLevel();
+        iKeyboard* GetKeyboard();
+        iMouse* GetMouse();
+        void SetDevice(eInputDeviceType alInputDeviceType, iInputDevice* apInputDevice);
 
+        void Update();
+
+    private:
         template <typename T>
         T* GetDevice(eInputDeviceType alInputDeviceType)
         {
@@ -50,13 +56,9 @@ namespace baizel
 
             return pResult;
         }
-        void SetDevice(eInputDeviceType alInputDeviceType, iInputDevice* apInputDevice);
-
-        void Update();
 
     private:
         iLowLevelInput* mpLowLevelInput;
-
         tInputDevicesArray mpInputDevices;
     };
 }

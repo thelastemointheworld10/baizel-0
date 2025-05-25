@@ -60,6 +60,16 @@ namespace baizel
 		return mpLowLevelInput;
 	}
 
+	iKeyboard* cInput::GetKeyboard()
+	{
+		return GetDevice<iKeyboard>(eInputDeviceType_Keyboard);
+	}
+
+	iMouse* cInput::GetMouse()
+	{
+		return GetDevice<iMouse>(eInputDeviceType_Mouse);
+	}
+
 	void cInput::SetDevice(eInputDeviceType alInputDeviceType, iInputDevice* apInputDevice)
 	{
 		int lDeviceType = static_cast<int>(alInputDeviceType);
