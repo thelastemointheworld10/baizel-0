@@ -1,8 +1,10 @@
-.vs
-temp
+Baizel/.vs
+Baizel/temp
 dependencies/lib/x64/Baizel.lib
 dependencies/lib/x86/Baizel.lib
-redist-Debug-x64
-redist-Debug-Win32
-redist-Release-x64
-redist-Release-Win32
+Untitled/.vs
+Untitled/temp
+Untitled/redist-x64-Debug
+Untitled/redist-Win32-Debug
+Untitled/redist-x64-Release
+Untitled/redist-Win32-Release

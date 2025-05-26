@@ -6,11 +6,11 @@
 1. Clone the repository:
    ```bash
    git clone https://github.com/thelastemointheworld10/baizel-0.git
-2. Open Baizel.sln in Visual Studio
+2. Open Untitled/Untitled.sln in Visual Studio
 
-3. Set Untitled as the startup project
+4. Build the 'Baizel' project
 
-4. Build the solution
+5. Build the 'Untitled' project
 
 ### Post-Build Steps
 After building, you'll need to copy required DLLs:
@@ -20,4 +20,4 @@ dependencies/bin/x64 OR x86
 
 Copy all .dll files
 
-Paste them into your executable's output directory
+Paste them into your executable's output directory (Untitled/redist-Platform-Configuration by default)

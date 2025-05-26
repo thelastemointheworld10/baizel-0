@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1068ddfe-4e12-429f-af48-70eebab0278d}</ProjectGuid>
+    <ProjectGuid>{8dc4e5bc-67d8-427c-b062-788140207af2}</ProjectGuid>
     <RootNamespace>Baizel</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -71,20 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)\dependencies\lib\x86\</OutDir>
-    <IntDir>$(SolutionDir)\temp\</IntDir>
+    <OutDir>..\dependencies\lib\x86\</OutDir>
+    <IntDir>temp</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)\dependencies\lib\x86\</OutDir>
-    <IntDir>$(SolutionDir)\temp\</IntDir>
+    <OutDir>..\dependencies\lib\x86\</OutDir>
+    <IntDir>temp</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)\dependencies\lib\x64\</OutDir>
-    <IntDir>$(SolutionDir)\temp\</IntDir>
+    <OutDir>..\dependencies\lib\x64\</OutDir>
+    <IntDir>temp</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)\dependencies\lib\x64\</OutDir>
-    <IntDir>$(SolutionDir)\temp\</IntDir>
+    <OutDir>..\dependencies\lib\x64\</OutDir>
+    <IntDir>temp</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -93,15 +93,15 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\include;$(SolutionDir)\Baizel\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\include;$(SolutionDir)\Baizel\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,8 +122,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,15 +133,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\include;$(SolutionDir)\Baizel\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,7 +153,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\include;$(SolutionDir)\Baizel\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,49 +162,49 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2test.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\engine\Engine.h" />
+    <ClInclude Include="core\include\engine\EngineSetup.h" />
+    <ClInclude Include="core\include\engine\Log.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
+    <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
+    <ClInclude Include="core\include\graphics\Renderer.h" />
+    <ClInclude Include="core\include\graphics\Texture.h" />
+    <ClInclude Include="core\include\input\Input.h" />
+    <ClInclude Include="core\include\input\InputDevice.h" />
+    <ClInclude Include="core\include\input\InputTypes.h" />
+    <ClInclude Include="core\include\input\Keyboard.h" />
+    <ClInclude Include="core\include\input\LowLevelInput.h" />
     <ClInclude Include="core\include\input\Mouse.h" />
+    <ClInclude Include="core\include\math\MathTypes.h" />
+    <ClInclude Include="core\include\math\Vector2.h" />
+    <ClInclude Include="core\include\realization\EngineSetupSDL.h" />
     <ClInclude Include="core\include\realization\KeyboardSDL.h" />
+    <ClInclude Include="core\include\realization\LowLevelGraphicsSDL.h" />
     <ClInclude Include="core\include\realization\LowLevelInputSDL.h" />
     <ClInclude Include="core\include\realization\MouseSDL.h" />
     <ClInclude Include="core\include\realization\RendererSDL.h" />
     <ClInclude Include="core\include\realization\TextureSDL.h" />
-    <ClInclude Include="core\include\input\Input.h" />
-    <ClInclude Include="core\include\input\InputTypes.h" />
-    <ClInclude Include="core\include\engine\EngineSetup.h" />
-    <ClInclude Include="core\include\input\InputDevice.h" />
-    <ClInclude Include="core\include\input\Keyboard.h" />
-    <ClInclude Include="core\include\realization\EngineSetupSDL.h" />
-    <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
-    <ClInclude Include="core\include\realization\LowLevelGraphicsSDL.h" />
-    <ClInclude Include="core\include\input\LowLevelInput.h" />
-    <ClInclude Include="core\include\graphics\Renderer.h" />
-    <ClInclude Include="core\include\graphics\Texture.h" />
-    <ClInclude Include="core\include\engine\Log.h" />
-    <ClInclude Include="core\include\math\MathTypes.h" />
-    <ClInclude Include="core\include\math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\engine\Engine.cpp" />
+    <ClCompile Include="core\sources\engine\Log.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
+    <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
-    <ClCompile Include="core\sources\realization\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\EngineSetupSDL.cpp" />
+    <ClCompile Include="core\sources\realization\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\LowLevelGraphicsSDL.cpp" />
+    <ClCompile Include="core\sources\realization\LowLevelInputSDL.cpp" />
     <ClCompile Include="core\sources\realization\MouseSDL.cpp" />
     <ClCompile Include="core\sources\realization\RendererSDL.cpp" />
     <ClCompile Include="core\sources\realization\TextureSDL.cpp" />
-    <ClCompile Include="core\sources\realization\LowLevelInputSDL.cpp" />
-    <ClCompile Include="core\sources\input\Input.cpp" />
-    <ClCompile Include="core\sources\engine\Log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
