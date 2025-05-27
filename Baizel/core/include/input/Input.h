@@ -17,7 +17,7 @@ namespace baizel
         cInput(iLowLevelInput* apLowLevelInput);
         ~cInput();
 
-        iLowLevelInput* GetLowLevel();
+        iLowLevelInput* GetLowLevel() const;
         iKeyboard* GetKeyboard();
         iMouse* GetMouse();
         void SetDevice(eInputDeviceType alInputDeviceType, iInputDevice* apInputDevice);

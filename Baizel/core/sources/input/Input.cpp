@@ -55,7 +55,7 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	iLowLevelInput* cInput::GetLowLevel()
+	iLowLevelInput* cInput::GetLowLevel() const
 	{
 		return mpLowLevelInput;
 	}

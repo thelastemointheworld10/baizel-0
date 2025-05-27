@@ -11,9 +11,9 @@ namespace baizel
 	public:
 		iKeyboard();
 
-		virtual bool GetAnyKeyPressed() = 0;
-		virtual bool GetKeyPressed(eKey aKey) = 0;
-		eKey GetLastKey();
+		virtual bool GetAnyKeyPressed() const = 0;
+		virtual bool GetKeyPressed(eKey aKey) const = 0;
+		eKey GetLastKey() const;
 
 	protected:
 		tKeyboardKeyVector mvPressedKeys;

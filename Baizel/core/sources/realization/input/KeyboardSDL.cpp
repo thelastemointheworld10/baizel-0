@@ -28,7 +28,7 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	bool cKeyboardSDL::GetAnyKeyPressed()
+	bool cKeyboardSDL::GetAnyKeyPressed() const
 	{
 		for (size_t i = 0; i < mvKeyArray.size(); ++i)
 		{
@@ -39,7 +39,7 @@ namespace baizel
 		return false;
 	}
 
-	bool cKeyboardSDL::GetKeyPressed(eKey aKey)
+	bool cKeyboardSDL::GetKeyPressed(eKey aKey) const
 	{
 		return mvKeyArray[aKey];
 	}

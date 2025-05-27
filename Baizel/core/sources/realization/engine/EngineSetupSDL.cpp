@@ -46,7 +46,7 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	cGraphics* cEngineSetupSDL::CreateGraphics()
+	cGraphics* cEngineSetupSDL::CreateGraphics() const
 	{
 		iRenderer* pRendererSDL = new cRendererSDL();
 		iLowLevelGraphics* pLowLevelGraphicsSDL = new cLowLevelGraphicsSDL();
@@ -54,7 +54,7 @@ namespace baizel
 		return new cGraphics(pLowLevelGraphicsSDL, pRendererSDL);
 	}
 
-	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics)
+	cInput* cEngineSetupSDL::CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) const
 	{
 		cLowLevelInputSDL* pLowLevelInputSDL = new cLowLevelInputSDL(apEngine);
 		cInput* pInput = new cInput(pLowLevelInputSDL);

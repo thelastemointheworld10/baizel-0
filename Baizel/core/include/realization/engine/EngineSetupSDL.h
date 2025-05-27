@@ -20,8 +20,8 @@ namespace baizel
 		cEngineSetupSDL();
         ~cEngineSetupSDL() override;
 
-        cGraphics* CreateGraphics() override;
-        cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) override;
+        cGraphics* CreateGraphics() const override;
+        cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) const override;
     };
 }
 

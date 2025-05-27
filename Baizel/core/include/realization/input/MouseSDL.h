@@ -14,9 +14,9 @@ namespace baizel
 	public:
 		cMouseSDL(cLowLevelInputSDL* apLowLevelInputSDL, iLowLevelGraphics* apLowLevelGraphics);
 
-		bool GetButtonPressed(eMouseButton aKey) override;
+		bool GetButtonPressed(eMouseButton aKey) const override;
 
-		eMouseButton SDLToButton(int alKey);
+		eMouseButton SDLToButton(int alKey) const;
 
 		void Update() override;
 

@@ -191,6 +191,7 @@
     <ClInclude Include="core\include\realization\graphics\TextureSDL.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\include\math\Math.h" />
     <ClCompile Include="core\sources\engine\Engine.cpp" />
     <ClCompile Include="core\sources\engine\Log.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
@@ -198,6 +199,7 @@
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
+    <ClCompile Include="core\sources\math\Math.cpp" />
     <ClCompile Include="core\sources\realization\engine\EngineSetupSDL.cpp" />
     <ClCompile Include="core\sources\realization\input\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\LowLevelGraphicsSDL.cpp" />

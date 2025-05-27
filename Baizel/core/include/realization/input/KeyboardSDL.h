@@ -13,8 +13,8 @@ namespace baizel
 	public:
 		cKeyboardSDL(cLowLevelInputSDL* apLowLevelInputSDL);
 
-		bool GetAnyKeyPressed() override;
-		bool GetKeyPressed(eKey aKey) override;
+		bool GetAnyKeyPressed() const override;
+		bool GetKeyPressed(eKey aKey) const override;
 
 		void Update() override;
 

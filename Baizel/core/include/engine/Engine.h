@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include <math/Math.h>
 #include <math/MathTypes.h>
 #include <engine/Log.h>
 

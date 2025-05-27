@@ -25,17 +25,17 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	tVector2f iMouse::GetAbsolutePosition()
+	tVector2f iMouse::GetAbsolutePosition() const
 	{
 		return mvAbsolutePosition;
 	}
 
-	tVector2f iMouse::GetRelativePosition()
+	tVector2f iMouse::GetRelativePosition() const
 	{
 		return mvRelativePosition;
 	}
 
-	eMouseButton iMouse::GetLastButton()
+	eMouseButton iMouse::GetLastButton() const
 	{
 		if (mvPressedButtons.empty())
 			return eMouseButton_None;

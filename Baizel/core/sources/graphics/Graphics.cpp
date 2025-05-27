@@ -14,6 +14,7 @@ namespace baizel
 		mpRenderer = apRenderer;
 
 		mpLowLevelGraphics->SetRenderer(mpRenderer);
+		mpLowLevelGraphics->SetVirtualSize(tVector2f(800.0f, 600.0f));
 	}
 
 	cGraphics::~cGraphics()
@@ -34,12 +35,12 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	iLowLevelGraphics* cGraphics::GetLowLevel()
+	iLowLevelGraphics* cGraphics::GetLowLevel() const
 	{
 		return mpLowLevelGraphics;
 	}
 
-	iRenderer* cGraphics::GetRenderer()
+	iRenderer* cGraphics::GetRenderer() const
 	{
 		return mpRenderer;
 	}

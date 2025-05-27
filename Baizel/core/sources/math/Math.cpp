@@ -1,7 +1,9 @@
-#include <graphics/LowLevelGraphics.h>
+#include <math/Math.h>
 
 namespace baizel
 {
+	std::mt19937 cMath::mRandomGenerator { std::random_device{}() };
+
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
 	//////////////////////////////////////////////////////////////////////////
@@ -12,24 +14,16 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	void iLowLevelGraphics::SetRenderer(iRenderer* apRenderer)
+	int cMath::GetRandInt(int alMin, int alMax)
 	{
-		mpRenderer = apRenderer;
+		std::uniform_int_distribution<int> RandNumber(alMin, alMax);
+		return RandNumber(mRandomGenerator);
 	}
 
-	tVector2f iLowLevelGraphics::GetScreenSizeFloat() const
+	float cMath::GetRandFloat(float afMin, float afMax)
 	{
-		return tVector2f((float)mvScreenSize.x, (float)mvScreenSize.y);
-	}
-
-	tVector2f iLowLevelGraphics::GetVirtualSize() const
-	{
-		return mvVirtualSize;
-	}
-
-	void iLowLevelGraphics::SetVirtualSize(tVector2f avVirtualSize)
-	{
-		mvVirtualSize = avVirtualSize;
+		std::uniform_real_distribution<float> RandNumber(afMin, afMax);
+		return RandNumber(mRandomGenerator);
 	}
 
 	// -----------------------------------------------------------------------

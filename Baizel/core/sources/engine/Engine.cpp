@@ -63,21 +63,38 @@ namespace baizel
 
 	void cEngine::Run()
 	{
+		tVector2f vPos(0.0f);
+		float fSpeed = 0.1;
+
 		mbRunning = true;
 		while (mbRunning)
 		{
 			mpInput->Update();
 
-			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
+			mpGraphics->GetRenderer()->SetDrawColor(132, 156, 173);
 			mpGraphics->GetRenderer()->Clear();
 			
 			// ----------------------------------------------------------
 
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Escape))
-				mbRunning = false;
+				Exit();
 
-			mpGraphics->GetRenderer()->SetDrawColor(255, 0, 0);
-			mpGraphics->GetRenderer()->DrawFilledRect(400, 300, 100, 100);
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
+				vPos.y -= fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
+				vPos.y += fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
+				vPos.x -= fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
+				vPos.x += fSpeed;
+			
+			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelDown))
+				Log("Random int number: %d", cMath::GetRandInt(0, 10));
+			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
+				Log("Random float number: %f", cMath::GetRandFloat(0.0f, 10.0f));
+
+			mpGraphics->GetRenderer()->SetDrawColor(214, 122, 122);
+			mpGraphics->GetRenderer()->DrawFilledRect(vPos.x, vPos.y, 100, 100);
 
 			// ----------------------------------------------------------
 

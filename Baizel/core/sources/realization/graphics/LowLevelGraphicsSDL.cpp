@@ -7,11 +7,6 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 
 	// -----------------------------------------------------------------------
-
-	cLowLevelGraphicsSDL::cLowLevelGraphicsSDL()
-	{
-		mvVirtualSize = tVector2f(800.0f, 600.0f);
-	}
 	
 	cLowLevelGraphicsSDL::~cLowLevelGraphicsSDL()
 	{

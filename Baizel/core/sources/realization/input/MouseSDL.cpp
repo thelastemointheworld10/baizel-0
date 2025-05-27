@@ -88,7 +88,7 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	bool cMouseSDL::GetButtonPressed(eMouseButton aKey)
+	bool cMouseSDL::GetButtonPressed(eMouseButton aKey) const
 	{
 		return mvButtonArray[aKey];
 	}
@@ -97,7 +97,7 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	eMouseButton cMouseSDL::SDLToButton(int alButton)
+	eMouseButton cMouseSDL::SDLToButton(int alButton) const
 	{
 		switch (alButton)
 		{

@@ -25,7 +25,7 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	eKey iKeyboard::GetLastKey()
+	eKey iKeyboard::GetLastKey() const
 	{
 		if (mvPressedKeys.empty())
 			return eKey_None;

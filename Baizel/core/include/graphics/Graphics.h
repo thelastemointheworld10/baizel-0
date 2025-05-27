@@ -11,8 +11,8 @@ namespace baizel
 		cGraphics(iLowLevelGraphics* apLowLevelGraphics, iRenderer* apRenderer);
 		~cGraphics();
 
-		iLowLevelGraphics* GetLowLevel();
-		iRenderer* GetRenderer();
+		iLowLevelGraphics* GetLowLevel() const;
+		iRenderer* GetRenderer() const;
 
 	private:
 		iLowLevelGraphics* mpLowLevelGraphics;
