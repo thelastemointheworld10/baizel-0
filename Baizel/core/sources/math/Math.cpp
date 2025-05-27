@@ -16,14 +16,14 @@ namespace baizel
 
 	int cMath::GetRandInt(int alMin, int alMax)
 	{
-		std::uniform_int_distribution<int> RandNumber(alMin, alMax);
-		return RandNumber(mRandomGenerator);
+		std::uniform_int_distribution<int> lRandNumber(alMin, alMax);
+		return lRandNumber(mRandomGenerator);
 	}
 
 	float cMath::GetRandFloat(float afMin, float afMax)
 	{
-		std::uniform_real_distribution<float> RandNumber(afMin, afMax);
-		return RandNumber(mRandomGenerator);
+		std::uniform_real_distribution<float> fRandNumber(afMin, afMax);
+		return fRandNumber(mRandomGenerator);
 	}
 
 	// -----------------------------------------------------------------------

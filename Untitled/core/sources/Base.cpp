@@ -11,7 +11,7 @@ namespace baizel
     cBase::cBase()
     {
         msWindowTitle = "Untitled";
-        mvWindowSize = tVector2l(1280, 720);
+        mvWindowSize = tVector2l(640, 480);
         mbFullscreen = false;
 
         mpEngine = new cEngine(new cEngineSetupSDL());

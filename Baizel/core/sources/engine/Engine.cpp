@@ -1,5 +1,4 @@
 #include <engine/Engine.h>
-#include <realization/graphics/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {
@@ -64,7 +63,7 @@ namespace baizel
 	void cEngine::Run()
 	{
 		tVector2f vPos(0.0f);
-		float fSpeed = 0.1;
+		float fSpeed = 1.0f;
 
 		mbRunning = true;
 		while (mbRunning)

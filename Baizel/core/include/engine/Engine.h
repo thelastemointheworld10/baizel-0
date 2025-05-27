@@ -15,6 +15,7 @@
 namespace baizel
 {
     class iEngineSetup;
+	class cMath;
 
     class cEngine final
     {

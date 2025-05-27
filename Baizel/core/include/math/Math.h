@@ -9,8 +9,6 @@ namespace baizel
     class cMath final
     {
     public:
-        cMath();
-
         static int GetRandInt(int alMin, int alMax);
         static float GetRandFloat(float afMin, float afMax);
 
