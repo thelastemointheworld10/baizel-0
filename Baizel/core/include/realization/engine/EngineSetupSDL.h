@@ -7,10 +7,10 @@
 #include <engine/Log.h>
 #include <engine/EngineSetup.h>
 
-#include <realization/LowLevelGraphicsSDL.h>
-#include <realization/LowLevelInputSDL.h>
-#include <realization/KeyboardSDL.h>
-#include <realization/MouseSDL.h>
+#include <realization/graphics/LowLevelGraphicsSDL.h>
+#include <realization/input/LowLevelInputSDL.h>
+#include <realization/input/KeyboardSDL.h>
+#include <realization/input/MouseSDL.h>
 
 namespace baizel
 {

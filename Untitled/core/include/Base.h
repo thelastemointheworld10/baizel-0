@@ -6,7 +6,7 @@
 #include <engine/Engine.h>
 #include <engine/Log.h>
 
-#include <realization/EngineSetupSDL.h>
+#include <realization/engine/EngineSetupSDL.h>
 
 namespace baizel
 {

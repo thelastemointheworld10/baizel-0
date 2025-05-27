@@ -18,8 +18,8 @@ namespace baizel
         virtual bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) = 0;
 
         void SetRenderer(iRenderer* apRenderer);
-		tVector2f GetScreenSizeFloat();
-		tVector2f GetVirtualSize();
+        tVector2f GetScreenSizeFloat();
+        tVector2f GetVirtualSize();
 
         virtual iTexture* CreateTexture() const = 0;
 

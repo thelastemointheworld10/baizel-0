@@ -15,25 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="core\include\realization\TextureSDL.h">
+    <ClInclude Include="core\include\realization\graphics\TextureSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\EngineSetupSDL.h">
+    <ClInclude Include="core\include\realization\engine\EngineSetupSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\KeyboardSDL.h">
+    <ClInclude Include="core\include\realization\input\KeyboardSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\LowLevelGraphicsSDL.h">
+    <ClInclude Include="core\include\realization\graphics\LowLevelGraphicsSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\LowLevelInputSDL.h">
+    <ClInclude Include="core\include\realization\input\LowLevelInputSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\MouseSDL.h">
+    <ClInclude Include="core\include\realization\input\MouseSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\RendererSDL.h">
+    <ClInclude Include="core\include\realization\graphics\RendererSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\math\Vector2.h">
@@ -83,25 +83,25 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\sources\realization\TextureSDL.cpp">
+    <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\EngineSetupSDL.cpp">
+    <ClCompile Include="core\sources\realization\engine\EngineSetupSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\KeyboardSDL.cpp">
+    <ClCompile Include="core\sources\realization\input\KeyboardSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\LowLevelGraphicsSDL.cpp">
+    <ClCompile Include="core\sources\realization\graphics\LowLevelGraphicsSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\LowLevelInputSDL.cpp">
+    <ClCompile Include="core\sources\realization\input\LowLevelInputSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\MouseSDL.cpp">
+    <ClCompile Include="core\sources\realization\input\MouseSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\RendererSDL.cpp">
+    <ClCompile Include="core\sources\realization\graphics\RendererSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\input\Keyboard.cpp">

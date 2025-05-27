@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <realization/LowLevelInputSDL.h>
+#include <realization/input/LowLevelInputSDL.h>
 #include <graphics/LowLevelGraphics.h>
 #include <input/Mouse.h>
 

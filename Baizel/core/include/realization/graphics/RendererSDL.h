@@ -8,7 +8,7 @@
 #include <engine/Log.h>
 
 #include <graphics/Renderer.h>
-#include <realization/LowLevelGraphicsSDL.h>
+#include <realization/graphics/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {
@@ -21,11 +21,13 @@ namespace baizel
 
 		SDL_Renderer* GetRenderer() const;
 
-		void SetClearColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA = 255) const override;
+		void SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA = 255) const override;
 		void Clear() const override;
 		void SwapBuffers() const override;
 
 		void Copy(iTexture* apTexture) const override;
+		void DrawRect(float afX, float afY, float afW, float afH) const override;
+		void DrawFilledRect(float afX, float afY, float afW, float afH) const override;
 
 	private:
 		SDL_Renderer* mpRenderer = nullptr;

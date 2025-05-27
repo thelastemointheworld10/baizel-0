@@ -1,4 +1,4 @@
-#include <realization/MouseSDL.h>
+#include <realization/input/MouseSDL.h>
 
 namespace baizel
 {
@@ -31,6 +31,8 @@ namespace baizel
 
 	void cMouseSDL::Update()
 	{
+		mvPressedButtons.clear();
+
 		tVector2f vScreenSize = mpLowLevelGraphics->GetScreenSizeFloat();
 		tVector2f vVirtualSize = mpLowLevelGraphics->GetVirtualSize();
 
@@ -52,8 +54,17 @@ namespace baizel
 			}
 			else if (rEvent.type == SDL_MOUSEBUTTONDOWN || rEvent.type == SDL_MOUSEBUTTONUP)
 			{
-				eMouseButton Key = SDLToButton(rEvent.button.button);
-				mvButtonArray[Key] = (rEvent.type == SDL_MOUSEBUTTONDOWN);
+				eMouseButton Button = SDLToButton(rEvent.button.button);
+
+				if (rEvent.type == SDL_MOUSEBUTTONDOWN)
+				{
+					mvButtonArray[Button] = true;
+					mvPressedButtons.push_back(Button);
+
+					continue;
+				}
+
+				mvButtonArray[Button] = false;
 			}
 			else if (rEvent.type == SDL_MOUSEWHEEL)
 			{

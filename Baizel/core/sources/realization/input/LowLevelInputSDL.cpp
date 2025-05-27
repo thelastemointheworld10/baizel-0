@@ -1,4 +1,4 @@
-#include <realization/TextureSDL.h>
+#include <realization/input/LowLevelInputSDL.h>
 
 namespace baizel
 {
@@ -7,18 +7,12 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 
 	// -----------------------------------------------------------------------
-	
-	cTextureSDL::cTextureSDL(iRenderer* apRenderer)
+
+	cLowLevelInputSDL::cLowLevelInputSDL(cEngine* apEngine)
 	{
-		mpRenderer = dynamic_cast<cRendererSDL*>(apRenderer)->GetRenderer();
+		mpEngine = apEngine;
 	}
 
-	cTextureSDL::~cTextureSDL()
-	{
-		SDL_DestroyTexture(mpTexture);
-		mpTexture = nullptr;
-	}
-	
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////////////////////////////////////
@@ -31,36 +25,35 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	SDL_Texture* cTextureSDL::GetTexture() const
+	std::vector<SDL_Event>& cLowLevelInputSDL::GetEvents()
 	{
-		return mpTexture;
+		return mvEvents;
 	}
 
 	//////////////////////////////////////////
-	// Resource Management
+	// Runtime Control
 	//////////////////////////////////////////
-
-	void cTextureSDL::Load(std::string asPath)
+	
+	void cLowLevelInputSDL::PollEvents()
 	{
-		if (mpTexture != nullptr)
+		SDL_Event Event;
+
+		while (SDL_PollEvent(&Event))
 		{
-			SDL_DestroyTexture(mpTexture);
-			mpTexture = nullptr;
+			mvEvents.push_back(Event);
+
+			if (Event.type == SDL_QUIT)
+			{
+				mpEngine->Exit();
+			}
 		}
-
-		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
-		if (pLoadedSurface == nullptr)
-		{
-			Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
-			return;
-		}
-
-		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
-		if (mpTexture == nullptr)
-			Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
-
-		SDL_FreeSurface(pLoadedSurface);
 	}
 
+	void cLowLevelInputSDL::ClearEvents()
+	{
+		mvEvents.clear();
+		mvEvents.reserve(gkMaximumEvents);
+	}
+	
 	// -----------------------------------------------------------------------
 }

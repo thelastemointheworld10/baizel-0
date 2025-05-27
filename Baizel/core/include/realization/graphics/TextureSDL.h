@@ -9,7 +9,7 @@
 #include <engine/Log.h>
 
 #include <graphics/Texture.h>
-#include <realization/RendererSDL.h>
+#include <realization/graphics/RendererSDL.h>
 
 namespace baizel
 {

@@ -1,5 +1,5 @@
 #include <engine/Engine.h>
-#include <realization/LowLevelGraphicsSDL.h>
+#include <realization/graphics/LowLevelGraphicsSDL.h>
 
 namespace baizel
 {
@@ -58,40 +58,31 @@ namespace baizel
 		Log("Engine initialized");
 		Log("----------------------------------------------------");
 
-		mpGraphics->GetRenderer()->SetClearColor(255, 255, 255);
-
 		return true;
 	}
 
 	void cEngine::Run()
 	{
-		iTexture* pTex = mpGraphics->GetLowLevel()->CreateTexture();
-		pTex->Load("textures/raw_test/00_raw.png");
-
 		mbRunning = true;
 		while (mbRunning)
 		{
 			mpInput->Update();
-			mpGraphics->GetRenderer()->Clear();
 
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Q))
-			{
-				Log("q");
-			}
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-			{
-				Log("w");
-			}
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_E))
-			{
-				Log("e");
-			}
+			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
+			mpGraphics->GetRenderer()->Clear();
 			
-			mpGraphics->GetRenderer()->Copy(pTex);
+			// ----------------------------------------------------------
+
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Escape))
+				mbRunning = false;
+
+			mpGraphics->GetRenderer()->SetDrawColor(255, 0, 0);
+			mpGraphics->GetRenderer()->DrawFilledRect(400, 300, 100, 100);
+
+			// ----------------------------------------------------------
+
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
-
-		delete pTex;
 	}
 
 	void cEngine::Exit()

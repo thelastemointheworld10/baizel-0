@@ -1,4 +1,4 @@
-#include <realization/RendererSDL.h>
+#include <realization/graphics/RendererSDL.h>
 
 namespace baizel
 {
@@ -33,9 +33,10 @@ namespace baizel
 		if (mpRenderer == nullptr)
 			Fatal("Failed to create renderer: %s", SDL_GetError());
 
-		SDL_RenderSetLogicalSize(mpRenderer,
-			pLowLevelGraphicsSDL->GetVirtualSize().x,
-			pLowLevelGraphicsSDL->GetVirtualSize().y);
+		tVector2f vVirtualSize = pLowLevelGraphicsSDL->GetVirtualSize();
+
+		SDL_RenderSetLogicalSize(mpRenderer, vVirtualSize.x, vVirtualSize.y);
+		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 	}
 
 	//////////////////////////////////////////
@@ -51,7 +52,7 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	void cRendererSDL::SetClearColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA) const
+	void cRendererSDL::SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA) const
 	{
 		SDL_SetRenderDrawColor(mpRenderer, alR, alG, alB, alA);
 	}
@@ -70,6 +71,28 @@ namespace baizel
 	{
 		cTextureSDL* pTextureSDL = dynamic_cast<cTextureSDL*>(apTexture);
 		SDL_RenderCopy(mpRenderer, pTextureSDL->GetTexture(), nullptr, nullptr);
+	}
+
+	void cRendererSDL::DrawRect(float afX, float afY, float afW, float afH) const
+	{
+		SDL_FRect Rect;
+		Rect.x = afX;
+		Rect.y = afY;
+		Rect.w = afW;
+		Rect.h = afH;
+
+		SDL_RenderDrawRectF(mpRenderer, &Rect);
+	}
+
+	void cRendererSDL::DrawFilledRect(float afX, float afY, float afW, float afH) const
+	{
+		SDL_FRect Rect;
+		Rect.x = afX;
+		Rect.y = afY;
+		Rect.w = afW;
+		Rect.h = afH;
+
+		SDL_RenderFillRectF(mpRenderer, &Rect);
 	}
 
 	// -----------------------------------------------------------------------

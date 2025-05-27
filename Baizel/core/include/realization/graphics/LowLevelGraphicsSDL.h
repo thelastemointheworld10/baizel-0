@@ -7,8 +7,8 @@
 #include <engine/Log.h>
 
 #include <graphics/LowLevelGraphics.h>
-#include <realization/TextureSDL.h>
-#include <realization/RendererSDL.h>
+#include <realization/graphics/TextureSDL.h>
+#include <realization/graphics/RendererSDL.h>
 
 namespace baizel
 {

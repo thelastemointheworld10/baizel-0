@@ -35,5 +35,13 @@ namespace baizel
 		return mvRelativePosition;
 	}
 
+	eMouseButton iMouse::GetLastButton()
+	{
+		if (mvPressedButtons.empty())
+			return eMouseButton_None;
+
+		return mvPressedButtons[0];
+	}
+
 	// -----------------------------------------------------------------------
 }

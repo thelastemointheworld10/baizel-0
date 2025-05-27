@@ -88,7 +88,7 @@ namespace baizel
 			return;
 		}
 
-		if (mpInputDevices[alInputDeviceType])
+		if (mpInputDevices[alInputDeviceType] != nullptr)
 			delete mpInputDevices[alInputDeviceType];
 
 		mpInputDevices[alInputDeviceType] = apInputDevice;

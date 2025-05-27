@@ -24,6 +24,7 @@ namespace baizel
         bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen);
         void Run();
         void Exit();
+        
     private:
         bool mbRunning;
 

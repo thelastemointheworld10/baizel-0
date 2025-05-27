@@ -15,11 +15,14 @@ namespace baizel
 		iMouse(iLowLevelGraphics* apLowLevelGraphics);
 
 		virtual bool GetButtonPressed(eMouseButton aKey) = 0;
+		eMouseButton GetLastButton();
 
 		tVector2f GetAbsolutePosition();
 		tVector2f GetRelativePosition();
 
 	protected:
+		tMouseButtonVector mvPressedButtons;
+
 		tVector2f mvAbsolutePosition;
 		tVector2f mvRelativePosition;
 

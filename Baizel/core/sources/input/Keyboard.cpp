@@ -28,7 +28,7 @@ namespace baizel
 	eKey iKeyboard::GetLastKey()
 	{
 		if (mvPressedKeys.empty())
-			return eKey_NONE;
+			return eKey_None;
 
 		return mvPressedKeys[0];
 	}

@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <realization/LowLevelInputSDL.h>
+#include <realization/input/LowLevelInputSDL.h>
 #include <input/Keyboard.h>
 
 namespace baizel
