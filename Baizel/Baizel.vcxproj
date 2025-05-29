@@ -167,7 +167,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="core\include\engine\Engine.h" />
+	<ClCompile Include="core\include\math\Math.h" />
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\Log.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
@@ -189,10 +189,9 @@
     <ClInclude Include="core\include\realization\input\MouseSDL.h" />
     <ClInclude Include="core\include\realization\graphics\RendererSDL.h" />
     <ClInclude Include="core\include\realization\graphics\TextureSDL.h" />
+	<ClInclude Include="core\include\engine\Engine.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\include\math\Math.h" />
-    <ClCompile Include="core\sources\engine\Engine.cpp" />
     <ClCompile Include="core\sources\engine\Log.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
@@ -207,6 +206,7 @@
     <ClCompile Include="core\sources\realization\input\MouseSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\RendererSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp" />
+	<ClCompile Include="core\sources\engine\Engine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

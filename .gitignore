@@ -1,5 +1,6 @@
 Baizel/.vs
 Untitled/.vs
+
 Baizel/temp
 Untitled/temp
 
@@ -8,7 +9,6 @@ dependencies/lib/x86/Baizel.lib
 
 dependencies/lib/x64/Baizel.idb
 dependencies/lib/x64/Baizel.pdb
-
 dependencies/lib/x86/Baizel.idb
 dependencies/lib/x86/Baizel.pdb
 
