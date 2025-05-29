@@ -2,7 +2,7 @@
 
 namespace baizel
 {
-	std::mt19937 cMath::mRandomGenerator { std::random_device{}() };
+	std::mt19937 cMath::mRandomGenerator{ std::random_device{}() };
 
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
