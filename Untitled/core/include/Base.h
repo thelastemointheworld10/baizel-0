@@ -3,9 +3,6 @@
 
 #include <string>
 
-#include <engine/Engine.h>
-#include <engine/Log.h>
-
 #include <realization/engine/EngineSetupSDL.h>
 
 namespace baizel

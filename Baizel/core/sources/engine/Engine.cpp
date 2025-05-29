@@ -63,7 +63,7 @@ namespace baizel
 	void cEngine::Run()
 	{
 		tVector2f vPos(0.0f);
-		float fSpeed = 1.0f;
+		float fSpeed = 0.06f;
 
 		mbRunning = true;
 		while (mbRunning)
