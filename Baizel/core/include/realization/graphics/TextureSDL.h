@@ -21,6 +21,9 @@ namespace baizel
 
 		void Load(std::string asPath) override;
 
+		void SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const override;
+		void SetAlpha(uint8_t alA) const override;
+
 		SDL_Texture* GetTexture() const;
 
 	private:

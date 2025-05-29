@@ -25,9 +25,9 @@ namespace baizel
 		void Clear() const override;
 		void SwapBuffers() const override;
 
-		void Copy(iTexture* apTexture) const override;
 		void DrawRect(float afX, float afY, float afW, float afH) const override;
 		void DrawFilledRect(float afX, float afY, float afW, float afH) const override;
+		void DrawTexture(iTexture* apTexture, float afX, float afY, float afWidth, float afHeight) const override;
 
 	private:
 		SDL_Renderer* mpRenderer = nullptr;

@@ -28,15 +28,6 @@ namespace baizel
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////
-	// Accessors
-	//////////////////////////////////////////
-
-	SDL_Texture* cTextureSDL::GetTexture() const
-	{
-		return mpTexture;
-	}
-
-	//////////////////////////////////////////
 	// Resource Management
 	//////////////////////////////////////////
 
@@ -58,8 +49,33 @@ namespace baizel
 		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
 		if (mpTexture == nullptr)
 			Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
+		else
+			SDL_SetTextureBlendMode(mpTexture, SDL_BLENDMODE_BLEND);
 
 		SDL_FreeSurface(pLoadedSurface);
+	}
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
+	void cTextureSDL::SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const
+	{
+		SDL_SetTextureColorMod(mpTexture, alR, alG, alB);
+	}
+
+	void cTextureSDL::SetAlpha(uint8_t alA) const
+	{
+		SDL_SetTextureAlphaMod(mpTexture, alA);
+	}
+
+	//////////////////////////////////////////
+	// Accessors
+	//////////////////////////////////////////
+
+	SDL_Texture* cTextureSDL::GetTexture() const
+	{
+		return mpTexture;
 	}
 
 	// -----------------------------------------------------------------------

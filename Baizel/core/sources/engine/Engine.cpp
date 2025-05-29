@@ -62,8 +62,16 @@ namespace baizel
 
 	void cEngine::Run()
 	{
+		/////////////////////////////////
+		// Player position and
+		// speed
 		tVector2f vPos(0.0f);
 		float fSpeed = 0.06f;
+
+		/////////////////////////////////
+		// Loading player texture
+		iTexture* pPlayerTexture = mpGraphics->GetLowLevel()->CreateTexture();
+		pPlayerTexture->Load("textures/raw_test/00.png");
 
 		mbRunning = true;
 		while (mbRunning)
@@ -75,9 +83,8 @@ namespace baizel
 			
 			// ----------------------------------------------------------
 
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Escape))
-				Exit();
-
+			/////////////////////////////////
+			// Player movement
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
 				vPos.y -= fSpeed;
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
@@ -86,19 +93,42 @@ namespace baizel
 				vPos.x -= fSpeed;
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
 				vPos.x += fSpeed;
-			
-			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelDown))
-				Log("Random int number: %d", cMath::GetRandInt(0, 10));
-			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
-				Log("Random float number: %f", cMath::GetRandFloat(0.0f, 10.0f));
 
-			mpGraphics->GetRenderer()->SetDrawColor(214, 122, 122);
-			mpGraphics->GetRenderer()->DrawFilledRect(vPos.x, vPos.y, 100, 100);
+			/////////////////////////////////
+			// The player turns into a
+			// random color when pressing space
+			if (mpInput->GetKeyboard()->GetLastKey() == eKey_Space)
+			{
+				uint8_t lRed = cMath::GetRandInt(50, 255);
+				uint8_t lGreen = cMath::GetRandInt(50, 255);
+				uint8_t lBlue = cMath::GetRandInt(50, 255);
+
+				Log("New player color: %d %d %d", lRed, lGreen, lBlue);
+
+				pPlayerTexture->SetColor(lRed, lGreen, lBlue);
+			}
+
+			/////////////////////////////////
+			// The player turns into a
+			// random alpha when pressing left alt
+			if (mpInput->GetKeyboard()->GetLastKey() == eKey_LeftAlt)
+			{
+				uint8_t lAlpha = cMath::GetRandInt(0, 255);
+
+				Log("New player alpha: %d", lAlpha);
+
+				pPlayerTexture->SetAlpha(lAlpha);
+			}
+
+			
+			mpGraphics->GetRenderer()->DrawTexture(pPlayerTexture, vPos.x, vPos.y, 100, 100);
 
 			// ----------------------------------------------------------
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
+
+		delete pPlayerTexture;
 	}
 
 	void cEngine::Exit()

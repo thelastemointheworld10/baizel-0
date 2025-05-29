@@ -67,12 +67,6 @@ namespace baizel
 		SDL_RenderPresent(mpRenderer);
 	}
 
-	void cRendererSDL::Copy(iTexture* apTexture) const
-	{
-		cTextureSDL* pTextureSDL = dynamic_cast<cTextureSDL*>(apTexture);
-		SDL_RenderCopy(mpRenderer, pTextureSDL->GetTexture(), nullptr, nullptr);
-	}
-
 	void cRendererSDL::DrawRect(float afX, float afY, float afW, float afH) const
 	{
 		SDL_FRect Rect;
@@ -93,6 +87,14 @@ namespace baizel
 		Rect.h = afH;
 
 		SDL_RenderFillRectF(mpRenderer, &Rect);
+	}
+
+	void cRendererSDL::DrawTexture(iTexture* apTexture, float afX, float afY, float afWidth, float afHeight) const
+	{
+		SDL_Texture* pSDLTexture = dynamic_cast<cTextureSDL*>(apTexture)->GetTexture();
+
+		SDL_FRect Rect{ afX, afY, afWidth, afHeight };
+		SDL_RenderCopyF(mpRenderer, pSDLTexture, nullptr, &Rect);
 	}
 
 	// -----------------------------------------------------------------------

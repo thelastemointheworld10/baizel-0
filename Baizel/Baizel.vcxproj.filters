@@ -81,6 +81,9 @@
     <ClInclude Include="core\include\engine\Engine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\math\Math.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp">
@@ -123,9 +126,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\engine\Engine.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="core\include\math\Math.h">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\math\Math.cpp">

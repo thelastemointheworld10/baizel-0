@@ -2,6 +2,7 @@
 #define BAIZEL_RENDERER_H
 
 #include <graphics/LowLevelGraphics.h>
+#include <graphics/Texture.h>
 
 namespace baizel
 {
@@ -16,9 +17,9 @@ namespace baizel
 		virtual void Clear() const = 0;
 		virtual void SwapBuffers() const = 0;
 
-		virtual void Copy(iTexture* apTexture) const = 0;
 		virtual void DrawRect(float afX, float afY, float afW, float afH) const = 0;
 		virtual void DrawFilledRect(float afX, float afY, float afW, float afH) const = 0;
+		virtual void DrawTexture(iTexture* apTexture, float afX, float afY, float afWidth, float afHeight) const = 0;
 	};
 }
 
