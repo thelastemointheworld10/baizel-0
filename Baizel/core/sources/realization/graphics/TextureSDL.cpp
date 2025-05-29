@@ -42,13 +42,13 @@ namespace baizel
 		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
 		if (pLoadedSurface == nullptr)
 		{
-			Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
+			cLog::Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
 			return;
 		}
 
 		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
 		if (mpTexture == nullptr)
-			Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
+			cLog::Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
 		else
 			SDL_SetTextureBlendMode(mpTexture, SDL_BLENDMODE_BLEND);
 

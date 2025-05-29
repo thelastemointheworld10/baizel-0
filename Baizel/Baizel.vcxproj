@@ -192,7 +192,6 @@
     <ClInclude Include="core\include\engine\Engine.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\sources\engine\Log.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />

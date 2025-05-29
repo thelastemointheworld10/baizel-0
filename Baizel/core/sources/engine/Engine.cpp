@@ -18,17 +18,17 @@ namespace baizel
 
 	cEngine::~cEngine()
 	{
-		Log("- Deleting engine stuff");
+		cLog::Log("- Deleting engine stuff");
 
-		Log("  Graphics");
+		cLog::Log("  Graphics");
 		delete mpGraphics;
 		mpGraphics = nullptr;
 
-		Log("  Input");
+		cLog::Log("  Input");
 		delete mpInput;
 		mpInput = nullptr;
 
-		Log("  Game Setup");
+		cLog::Log("  Game Setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
 	}
@@ -47,15 +47,21 @@ namespace baizel
 
 	bool cEngine::Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
 	{
+		if (avWindowSize == tVector2l(0, 0))
+		{
+			cLog::Warning("Window size is 0 x 0! Setting 640 x 480 by default");
+			avWindowSize = tVector2l(640, 480);
+		}
+
 		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
 		{
-			Fatal("Failed to initialize Graphics!");
+			cLog::Fatal("Failed to initialize Graphics!");
 			return false;
 		}
 
-		Log("----------------------------------------------------");
-		Log("Engine initialized");
-		Log("----------------------------------------------------");
+		cLog::Log("----------------------------------------------------");
+		cLog::Log("Engine initialized");
+		cLog::Log("----------------------------------------------------");
 
 		return true;
 	}
@@ -103,7 +109,7 @@ namespace baizel
 				uint8_t lGreen = cMath::GetRandInt(50, 255);
 				uint8_t lBlue = cMath::GetRandInt(50, 255);
 
-				Log("New player color: %d %d %d", lRed, lGreen, lBlue);
+				cLog::Log("New player color: %d %d %d", lRed, lGreen, lBlue);
 
 				pPlayerTexture->SetColor(lRed, lGreen, lBlue);
 			}
@@ -115,7 +121,7 @@ namespace baizel
 			{
 				uint8_t lAlpha = cMath::GetRandInt(0, 255);
 
-				Log("New player alpha: %d", lAlpha);
+				cLog::Log("New player alpha: %d", lAlpha);
 
 				pPlayerTexture->SetAlpha(lAlpha);
 			}
@@ -133,9 +139,9 @@ namespace baizel
 
 	void cEngine::Exit()
 	{
-		Log("----------------------------------------------------");
-		Log("Exiting engine");
-		Log("----------------------------------------------------");
+		cLog::Log("----------------------------------------------------");
+		cLog::Log("Exiting engine");
+		cLog::Log("----------------------------------------------------");
 
 		mbRunning = false;
 	}

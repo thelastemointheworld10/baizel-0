@@ -38,7 +38,10 @@ namespace baizel
     bool cBase::Init()
     {
         if (mpEngine->Init(msWindowTitle, mvWindowSize, mbFullscreen) == false)
+        {
+            cLog::Error("Failed to initialize engine!");
             return false;
+        }
 
         return true;
     }

@@ -31,7 +31,7 @@ namespace baizel
 
 		mpRenderer = SDL_CreateRenderer(pLowLevelGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
 		if (mpRenderer == nullptr)
-			Fatal("Failed to create renderer: %s", SDL_GetError());
+			cLog::Fatal("Failed to create renderer: %s", SDL_GetError());
 
 		tVector2f vVirtualSize = pLowLevelGraphicsSDL->GetVirtualSize();
 

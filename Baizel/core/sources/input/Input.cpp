@@ -74,17 +74,17 @@ namespace baizel
 	{
 		int lDeviceType = static_cast<int>(alInputDeviceType);
 
-		Log("Setting input device of type %d as %s", lDeviceType, typeid(apInputDevice).name());
+		cLog::Log("Setting input device of type %d as %s", lDeviceType, typeid(apInputDevice).name());
 
 		if (alInputDeviceType < 0 || alInputDeviceType >= eInputDeviceType_Count)
 		{
-			Error("Invalid device type: %d", lDeviceType);
+			cLog::Error("Failed to set input device! Invalid device type: %d", lDeviceType);
 			return;
 		}
 
 		if (apInputDevice == nullptr)
 		{
-			Error("Trying to set nullptr device for type %d", lDeviceType);
+			cLog::Error("Trying to set nullptr device for type %d", lDeviceType);
 			return;
 		}
 

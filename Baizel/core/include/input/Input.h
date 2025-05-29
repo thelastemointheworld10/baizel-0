@@ -32,21 +32,21 @@ namespace baizel
 
             if (alInputDeviceType < 0 || alInputDeviceType >= eInputDeviceType_Count)
             {
-                Error("Failed to get input device! Incorrect device type value");
+                cLog::Error("Failed to get input device! Invalid device type: %d", lDeviceType);
                 return nullptr;
             }
 
             iInputDevice* pParentDevice = mpInputDevices[alInputDeviceType];
             if (pParentDevice == nullptr)
             {
-                Error("Failed to get input device! Device with type %d not initialized", lDeviceType);
+                cLog::Error("Failed to get input device! Device with type %d not initialized", lDeviceType);
                 return nullptr;
             }
 
             T* pResult = dynamic_cast<T*>(pParentDevice);
             if (pResult == nullptr)
             {
-                Error("Failed to get input device! Type mismatch for device %d. Expected %s, got %s",
+                cLog::Error("Failed to get input device! Type mismatch for device %d. Expected %s, got %s",
                     lDeviceType,
                     typeid(T).name(),
                     typeid(*pParentDevice).name());

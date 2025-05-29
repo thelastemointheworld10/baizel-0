@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 
     if (Base.Init() == false)
     {
-        Fatal("Failed to initialize!");
+        cLog::Fatal("Failed to initialize!");
         return EXIT_FAILURE;
     }
 
