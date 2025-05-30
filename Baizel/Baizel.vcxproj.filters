@@ -84,6 +84,18 @@
     <ClInclude Include="core\include\engine\Log.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\system\Timer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\realization\system\SystemSDL.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\engine\FPSManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\system\System.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp">
@@ -126,6 +138,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\math\Math.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\system\Timer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\realization\system\SystemSDL.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\engine\FPSManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

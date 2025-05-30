@@ -11,6 +11,8 @@
 #include <graphics/Renderer.h>
 #include <graphics/Graphics.h>
 #include <input/Input.h>
+#include <system/Timer.h>
+#include <engine/FPSManager.h>
 
 namespace baizel
 {
@@ -19,7 +21,7 @@ namespace baizel
     class cEngine final
     {
     public:
-        cEngine(iEngineSetup* apGameSetup);
+        cEngine(iEngineSetup* apEngineSetup);
         ~cEngine();
 
         bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen);
@@ -32,6 +34,9 @@ namespace baizel
         iEngineSetup* mpEngineSetup = nullptr;
         cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
+        iSystem* mpSystem = nullptr;
+
+        cFPSManager* mpFPSManager = nullptr;
     };
 }
 

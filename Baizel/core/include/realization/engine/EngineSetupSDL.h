@@ -11,6 +11,7 @@
 #include <realization/input/LowLevelInputSDL.h>
 #include <realization/input/KeyboardSDL.h>
 #include <realization/input/MouseSDL.h>
+#include <realization/system/SystemSDL.h>
 
 namespace baizel
 {
@@ -22,6 +23,7 @@ namespace baizel
 
         cGraphics* CreateGraphics() const override;
         cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) const override;
+        iSystem* CreateSystem() const override;
     };
 }
 

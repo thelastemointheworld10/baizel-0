@@ -11,7 +11,7 @@ namespace baizel
     cBase::cBase()
     {
         msWindowTitle = "Untitled";
-        mvWindowSize = tVector2l(640, 640);
+        mvWindowSize = tVector2l(800, 600);
         mbFullscreen = false;
 
         mpEngine = new cEngine(new cEngineSetupSDL());
@@ -53,7 +53,7 @@ namespace baizel
     
     void cBase::Exit()
     {
-        // some logic like reset scripts global vars
+        // some logic like reset script global vars
     }
     
     // -----------------------------------------------------------------------

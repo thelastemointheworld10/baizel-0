@@ -39,24 +39,24 @@ namespace baizel
 		mvButtonArray[eMouseButton_WheelUp] = false;
 		mvButtonArray[eMouseButton_WheelDown] = false;
 
-		for (const auto& rEvent : mpLowLevelInputSDL->GetEvents())
+		for (const auto& Event : mpLowLevelInputSDL->GetEvents())
 		{
-			if (rEvent.type != SDL_MOUSEBUTTONDOWN &&
-				rEvent.type != SDL_MOUSEBUTTONUP &&
-				rEvent.type != SDL_MOUSEMOTION &&
-				rEvent.type != SDL_MOUSEWHEEL)
+			if (Event.type != SDL_MOUSEBUTTONDOWN &&
+				Event.type != SDL_MOUSEBUTTONUP &&
+				Event.type != SDL_MOUSEMOTION &&
+				Event.type != SDL_MOUSEWHEEL)
 				continue;
 
-			if (rEvent.type == SDL_MOUSEMOTION)
+			if (Event.type == SDL_MOUSEMOTION)
 			{
-				mvAbsolutePosition = tVector2f(rEvent.motion.x, rEvent.motion.y);
+				mvAbsolutePosition = tVector2f(Event.motion.x, Event.motion.y);
 				mvAbsolutePosition = mvAbsolutePosition / vScreenSize * vVirtualSize;
 			}
-			else if (rEvent.type == SDL_MOUSEBUTTONDOWN || rEvent.type == SDL_MOUSEBUTTONUP)
+			else if (Event.type == SDL_MOUSEBUTTONDOWN || Event.type == SDL_MOUSEBUTTONUP)
 			{
-				eMouseButton Button = SDLToButton(rEvent.button.button);
+				eMouseButton Button = SDLToButton(Event.button.button);
 
-				if (rEvent.type == SDL_MOUSEBUTTONDOWN)
+				if (Event.type == SDL_MOUSEBUTTONDOWN)
 				{
 					mvButtonArray[Button] = true;
 					mvPressedButtons.push_back(Button);
@@ -66,11 +66,11 @@ namespace baizel
 
 				mvButtonArray[Button] = false;
 			}
-			else if (rEvent.type == SDL_MOUSEWHEEL)
+			else if (Event.type == SDL_MOUSEWHEEL)
 			{
-				if (rEvent.wheel.y > 0)
+				if (Event.wheel.y > 0)
 					mvButtonArray[eMouseButton_WheelUp] = true;
-				else if (rEvent.wheel.y < 0)
+				else if (Event.wheel.y < 0)
 					mvButtonArray[eMouseButton_WheelDown] = true;
 			}
 		}

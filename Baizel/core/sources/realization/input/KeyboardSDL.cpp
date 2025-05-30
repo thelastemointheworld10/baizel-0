@@ -52,14 +52,14 @@ namespace baizel
 	{
         mvPressedKeys.clear();
 
-		for (const auto& rEvent : mpLowLevelInputSDL->GetEvents())
+		for (const auto& Event : mpLowLevelInputSDL->GetEvents())
 		{
-			if (rEvent.type != SDL_KEYDOWN && rEvent.type != SDL_KEYUP)
+			if (Event.type != SDL_KEYDOWN && Event.type != SDL_KEYUP)
 				continue;
 
-            eKey Key = SDLToKey(rEvent.key.keysym.sym);
+            eKey Key = SDLToKey(Event.key.keysym.sym);
 
-            if (rEvent.type == SDL_KEYDOWN)
+            if (Event.type == SDL_KEYDOWN)
             {
                 mvKeyArray[Key] = true;
                 mvPressedKeys.push_back(Key);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -168,6 +168,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\engine\EngineSetup.h" />
+    <ClInclude Include="core\include\engine\FPSManager.h" />
     <ClInclude Include="core\include\engine\Log.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
@@ -190,8 +191,12 @@
     <ClInclude Include="core\include\realization\graphics\RendererSDL.h" />
     <ClInclude Include="core\include\realization\graphics\TextureSDL.h" />
     <ClInclude Include="core\include\engine\Engine.h" />
+    <ClInclude Include="core\include\realization\system\SystemSDL.h" />
+    <ClInclude Include="core\include\system\System.h" />
+    <ClInclude Include="core\include\system\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\sources\engine\FPSManager.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
@@ -206,6 +211,8 @@
     <ClCompile Include="core\sources\realization\graphics\RendererSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp" />
     <ClCompile Include="core\sources\engine\Engine.cpp" />
+    <ClCompile Include="core\sources\realization\system\SystemSDL.cpp" />
+    <ClCompile Include="core\sources\system\Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

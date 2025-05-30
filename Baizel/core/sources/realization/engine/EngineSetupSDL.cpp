@@ -68,5 +68,10 @@ namespace baizel
 		return pInput;
 	}
 
+	iSystem* cEngineSetupSDL::CreateSystem() const
+	{
+		return new cSystemSDL();
+	}
+
 	// -----------------------------------------------------------------------
 }

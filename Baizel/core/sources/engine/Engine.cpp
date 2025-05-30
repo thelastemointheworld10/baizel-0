@@ -8,29 +8,48 @@ namespace baizel
 	
 	// -----------------------------------------------------------------------
 	
-	cEngine::cEngine(iEngineSetup* apGameSetup)
+	cEngine::cEngine(iEngineSetup* apEngineSetup)
 	{
-		mpEngineSetup = apGameSetup;
+		mpEngineSetup = apEngineSetup;
 
-		mpGraphics = apGameSetup->CreateGraphics();
-		mpInput = apGameSetup->CreateInput(this, mpGraphics->GetLowLevel());
+		cLog::Log("- Creating engine stuff");
+
+		cLog::Log("   Graphics");
+		mpGraphics = mpEngineSetup->CreateGraphics();
+
+		cLog::Log("   Input");
+		mpInput = mpEngineSetup->CreateInput(this, mpGraphics->GetLowLevel());
+
+		cLog::Log("   System");
+		mpSystem = mpEngineSetup->CreateSystem();
+
+		cLog::Log("   FPS Manager");
+		mpFPSManager = new cFPSManager(mpSystem);
 	}
 
 	cEngine::~cEngine()
 	{
 		cLog::Log("- Deleting engine stuff");
 
-		cLog::Log("  Graphics");
+		cLog::Log("   Graphics");
 		delete mpGraphics;
 		mpGraphics = nullptr;
 
-		cLog::Log("  Input");
+		cLog::Log("   Input");
 		delete mpInput;
 		mpInput = nullptr;
 
-		cLog::Log("  Game Setup");
+		cLog::Log("   Game Setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
+
+		cLog::Log("   System");
+		delete mpSystem;
+		mpSystem = nullptr;
+
+		cLog::Log("   FPS Manager");
+		delete mpFPSManager;
+		mpFPSManager = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -59,6 +78,8 @@ namespace baizel
 			return false;
 		}
 
+		mpFPSManager->SetFPSLimit(500);
+
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Engine initialized");
 		cLog::Log("----------------------------------------------------");
@@ -72,7 +93,7 @@ namespace baizel
 		// Player position and
 		// speed
 		tVector2f vPos(0.0f);
-		float fSpeed = 0.06f;
+		float fSpeed = 100.0f;
 
 		/////////////////////////////////
 		// Loading player texture
@@ -89,16 +110,19 @@ namespace baizel
 			
 			// ----------------------------------------------------------
 
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Escape))
+				Exit();
+
 			/////////////////////////////////
 			// Player movement
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-				vPos.y -= fSpeed;
+				vPos.y -= fSpeed * mpFPSManager->GetTimeStep();
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
-				vPos.y += fSpeed;
+				vPos.y += fSpeed * mpFPSManager->GetTimeStep();
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
-				vPos.x -= fSpeed;
+				vPos.x -= fSpeed * mpFPSManager->GetTimeStep();
 			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
-				vPos.x += fSpeed;
+				vPos.x += fSpeed * mpFPSManager->GetTimeStep();
 
 			/////////////////////////////////
 			// The player turns into a
@@ -132,6 +156,7 @@ namespace baizel
 			// ----------------------------------------------------------
 
 			mpGraphics->GetRenderer()->SwapBuffers();
+			mpFPSManager->AddFrame();
 		}
 
 		delete pPlayerTexture;
