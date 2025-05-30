@@ -15,6 +15,7 @@ namespace baizel
 		mlCurrentFrame = 0;
 		mvFrames.reserve(alFrames);
 		mfFrameRate = 1.0f / alFrames;
+		mfFrameTime = 0.0f;
 	}
 
 	cAnimation::~cAnimation()
@@ -63,12 +64,11 @@ namespace baizel
 
 	void cAnimation::Update(float afTimeStep)
 	{
-		static float fFrameTime = 0.0f;
-		fFrameTime += afTimeStep;
+		mfFrameTime += afTimeStep;
 
-		if (fFrameTime >= mfFrameRate)
+		if (mfFrameTime >= mfFrameRate)
 		{
-			fFrameTime = 0.0f;
+			mfFrameTime = 0.0f;
 			if (mlCurrentFrame + 1 < mvFrames.size())
 				mlCurrentFrame += 1;
 			else

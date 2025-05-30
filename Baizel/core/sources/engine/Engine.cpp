@@ -84,7 +84,7 @@ namespace baizel
 	void cEngine::Run()
 	{
 		cAnimation Animation(13, mpGraphics->GetLowLevel());
-		Animation.SetSpeed(24);
+		Animation.SetSpeed(64);
 		Animation.AddFrame("textures/raw_test/01.png");
 		Animation.AddFrame("textures/raw_test/02.png");
 		Animation.AddFrame("textures/raw_test/03.png");
@@ -99,6 +99,9 @@ namespace baizel
 		Animation.AddFrame("textures/raw_test/12.png");
 		Animation.AddFrame("textures/raw_test/13.png");
 
+		cAnimation Animation2 = Animation;
+		Animation2.SetSpeed(32);
+
 		mbRunning = true;
 		while (mbRunning)
 		{
@@ -108,9 +111,15 @@ namespace baizel
 			mpGraphics->GetRenderer()->Clear();
 
 			Animation.Update(mpTimeStep->GetTimeStep());
+			Animation2.Update(mpTimeStep->GetTimeStep());
+
 			mpGraphics->GetRenderer()->DrawTexture(Animation.GetCurrentFrame(), 0, 0,
-				mpGraphics->GetLowLevel()->GetVirtualSize().x,
-				mpGraphics->GetLowLevel()->GetVirtualSize().y);
+				118,
+				59);
+
+			mpGraphics->GetRenderer()->DrawTexture(Animation2.GetCurrentFrame(), 0, 59,
+				118,
+				59);
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 			mpTimeStep->AddFrame();

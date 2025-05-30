@@ -29,6 +29,7 @@ namespace baizel
 		int mlCurrentFrame;
 
 		float mfFrameRate;
+		float mfFrameTime;
 
 		iLowLevelGraphics* mpLowLevelGraphics;
 	};
