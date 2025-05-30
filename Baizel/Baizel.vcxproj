@@ -168,8 +168,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\engine\EngineSetup.h" />
-    <ClInclude Include="core\include\engine\FPSManager.h" />
+    <ClInclude Include="core\include\engine\TimeStep.h" />
     <ClInclude Include="core\include\engine\Log.h" />
+    <ClInclude Include="core\include\graphics\Animation.h" />
+    <ClInclude Include="core\include\graphics\AnimationTypes.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
@@ -196,7 +198,8 @@
     <ClInclude Include="core\include\system\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\sources\engine\FPSManager.cpp" />
+    <ClCompile Include="core\sources\engine\TimeStep.cpp" />
+    <ClCompile Include="core\sources\graphics\Animation.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />

@@ -13,7 +13,7 @@ namespace baizel
         static float GetRandFloat(float afMin, float afMax);
 
         template <typename T>
-        static T& Clamp(T& aValue, const T& aMin, const T& aMax)
+        static T Clamp(T aValue, const T& aMin, const T& aMax)
         {
             if (aValue < aMin) aValue = aMin;
             else if (aValue > aMax) aValue = aMax;

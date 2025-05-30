@@ -17,7 +17,7 @@ namespace baizel
     public:
         ~cLowLevelGraphicsSDL() override;
 
-        bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) override;
+        bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen) override;
 
         SDL_Window* GetWindow() const;
 

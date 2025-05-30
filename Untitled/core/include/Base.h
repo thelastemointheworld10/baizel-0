@@ -20,7 +20,7 @@ namespace baizel
     private:
         cEngine* mpEngine = nullptr;
 
-        const char* msWindowTitle;
+        std::string msWindowTitle;
         tVector2l mvWindowSize;
         bool mbFullscreen;
     };

@@ -90,10 +90,16 @@
     <ClInclude Include="core\include\realization\system\SystemSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\engine\FPSManager.h">
+    <ClInclude Include="core\include\engine\TimeStep.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\system\System.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\graphics\Animation.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\graphics\AnimationTypes.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -146,7 +152,10 @@
     <ClCompile Include="core\sources\realization\system\SystemSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\engine\FPSManager.cpp">
+    <ClCompile Include="core\sources\engine\TimeStep.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\graphics\Animation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

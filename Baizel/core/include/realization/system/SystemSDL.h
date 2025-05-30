@@ -10,8 +10,6 @@ namespace baizel
     class cSystemSDL final : public iSystem
     {
     public:
-        cSystemSDL();
-
         int GetTimeInMilliSec() const override;
         float GetTimeInSec() const override;
 

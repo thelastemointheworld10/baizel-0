@@ -15,7 +15,7 @@ namespace baizel
     public:
         virtual ~iLowLevelGraphics() = default;
         
-        virtual bool Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen) = 0;
+        virtual bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen) = 0;
 
         void SetRenderer(iRenderer* apRenderer);
         tVector2f GetScreenSizeFloat() const;

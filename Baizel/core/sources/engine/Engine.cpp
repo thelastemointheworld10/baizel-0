@@ -23,8 +23,10 @@ namespace baizel
 		cLog::Log("   System");
 		mpSystem = mpEngineSetup->CreateSystem();
 
-		cLog::Log("   FPS Manager");
-		mpFPSManager = new cFPSManager(mpSystem);
+		cLog::Log("   Time step");
+		mpTimeStep = new cTimeStep(mpSystem);
+
+		cLog::Log("----------------------------------------------------");
 	}
 
 	cEngine::~cEngine()
@@ -39,7 +41,7 @@ namespace baizel
 		delete mpInput;
 		mpInput = nullptr;
 
-		cLog::Log("   Game Setup");
+		cLog::Log("   Game setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
 
@@ -47,9 +49,9 @@ namespace baizel
 		delete mpSystem;
 		mpSystem = nullptr;
 
-		cLog::Log("   FPS Manager");
-		delete mpFPSManager;
-		mpFPSManager = nullptr;
+		cLog::Log("   Time step");
+		delete mpTimeStep;
+		mpTimeStep = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -64,21 +66,13 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	bool cEngine::Init(const char* asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
+	bool cEngine::Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
 	{
-		if (avWindowSize == tVector2l(0, 0))
-		{
-			cLog::Warning("Window size is 0 x 0! Setting 640 x 480 by default");
-			avWindowSize = tVector2l(640, 480);
-		}
-
 		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
 		{
-			cLog::Fatal("Failed to initialize Graphics!");
+			cLog::Fatal("Failed to initialize graphics!");
 			return false;
 		}
-
-		mpFPSManager->SetFPSLimit(500);
 
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Engine initialized");
@@ -89,77 +83,38 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		/////////////////////////////////
-		// Player position and
-		// speed
-		tVector2f vPos(0.0f);
-		float fSpeed = 100.0f;
-
-		/////////////////////////////////
-		// Loading player texture
-		iTexture* pPlayerTexture = mpGraphics->GetLowLevel()->CreateTexture();
-		pPlayerTexture->Load("textures/raw_test/00.png");
+		cAnimation Animation(13, mpGraphics->GetLowLevel());
+		Animation.SetSpeed(24);
+		Animation.AddFrame("textures/raw_test/01.png");
+		Animation.AddFrame("textures/raw_test/02.png");
+		Animation.AddFrame("textures/raw_test/03.png");
+		Animation.AddFrame("textures/raw_test/04.png");
+		Animation.AddFrame("textures/raw_test/05.png");
+		Animation.AddFrame("textures/raw_test/06.png");
+		Animation.AddFrame("textures/raw_test/07.png");
+		Animation.AddFrame("textures/raw_test/08.png");
+		Animation.AddFrame("textures/raw_test/09.png");
+		Animation.AddFrame("textures/raw_test/10.png");
+		Animation.AddFrame("textures/raw_test/11.png");
+		Animation.AddFrame("textures/raw_test/12.png");
+		Animation.AddFrame("textures/raw_test/13.png");
 
 		mbRunning = true;
 		while (mbRunning)
 		{
 			mpInput->Update();
 
-			mpGraphics->GetRenderer()->SetDrawColor(132, 156, 173);
+			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
-			
-			// ----------------------------------------------------------
 
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_Escape))
-				Exit();
-
-			/////////////////////////////////
-			// Player movement
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-				vPos.y -= fSpeed * mpFPSManager->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
-				vPos.y += fSpeed * mpFPSManager->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
-				vPos.x -= fSpeed * mpFPSManager->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
-				vPos.x += fSpeed * mpFPSManager->GetTimeStep();
-
-			/////////////////////////////////
-			// The player turns into a
-			// random color when pressing space
-			if (mpInput->GetKeyboard()->GetLastKey() == eKey_Space)
-			{
-				uint8_t lRed = cMath::GetRandInt(50, 255);
-				uint8_t lGreen = cMath::GetRandInt(50, 255);
-				uint8_t lBlue = cMath::GetRandInt(50, 255);
-
-				cLog::Log("New player color: %d %d %d", lRed, lGreen, lBlue);
-
-				pPlayerTexture->SetColor(lRed, lGreen, lBlue);
-			}
-
-			/////////////////////////////////
-			// The player turns into a
-			// random alpha when pressing left alt
-			if (mpInput->GetKeyboard()->GetLastKey() == eKey_LeftAlt)
-			{
-				uint8_t lAlpha = cMath::GetRandInt(0, 255);
-
-				cLog::Log("New player alpha: %d", lAlpha);
-
-				pPlayerTexture->SetAlpha(lAlpha);
-			}
-
-			
-			mpGraphics->GetRenderer()->DrawTexture(pPlayerTexture, vPos.x, vPos.y, 100, 100);
-
-			// ----------------------------------------------------------
+			Animation.Update(mpTimeStep->GetTimeStep());
+			mpGraphics->GetRenderer()->DrawTexture(Animation.GetCurrentFrame(), 0, 0,
+				mpGraphics->GetLowLevel()->GetVirtualSize().x,
+				mpGraphics->GetLowLevel()->GetVirtualSize().y);
 
 			mpGraphics->GetRenderer()->SwapBuffers();
-			mpFPSManager->AddFrame();
+			mpTimeStep->AddFrame();
 		}
-
-		delete pPlayerTexture;
 	}
 
 	void cEngine::Exit()

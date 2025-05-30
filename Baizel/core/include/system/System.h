@@ -13,9 +13,6 @@ namespace baizel
 
         virtual void SleepForMilliSec(int alTime) const = 0;
         virtual void SleepForSec(int alTime) const = 0;
-
-    protected:
-        uint64_t mlStartTime = 0;
     };
 }
 
