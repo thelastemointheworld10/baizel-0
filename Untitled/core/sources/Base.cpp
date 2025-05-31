@@ -53,7 +53,7 @@ namespace baizel
     
     void cBase::Exit()
     {
-        // some logic like reset script global vars
+        // saving game progress && settings
     }
     
     // -----------------------------------------------------------------------

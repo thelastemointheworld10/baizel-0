@@ -16,13 +16,17 @@ namespace baizel
 	{
 	public:
 		cAnimation(int alFrames, iLowLevelGraphics* apLowLevelGraphics);
+		cAnimation(const cAnimation& aAnimation);
 		~cAnimation();
 
 		void SetSpeed(float afSpeed);
-		void AddFrame(std::string asFramePath);
+		void AddFrame(const std::string& asFramePath);
 		iTexture* GetCurrentFrame() const;
 
 		void Update(float afTimeStep);
+
+	public:
+		cAnimation& operator=(const cAnimation& aAnimation);
 
 	private:
 		tFrameVector mvFrames;

@@ -172,6 +172,7 @@
     <ClInclude Include="core\include\engine\Log.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
     <ClInclude Include="core\include\graphics\AnimationTypes.h" />
+    <ClInclude Include="core\include\graphics\Color.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
@@ -200,8 +201,10 @@
   <ItemGroup>
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
+    <ClCompile Include="core\sources\graphics\Color.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
+    <ClCompile Include="core\sources\graphics\Texture.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />

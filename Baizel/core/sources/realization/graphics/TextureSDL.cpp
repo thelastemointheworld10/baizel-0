@@ -31,7 +31,7 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cTextureSDL::Load(std::string asPath)
+	void cTextureSDL::Load(const std::string& asPath)
 	{
 		if (mpTexture != nullptr)
 		{
@@ -52,6 +52,8 @@ namespace baizel
 		else
 			SDL_SetTextureBlendMode(mpTexture, SDL_BLENDMODE_BLEND);
 
+		msPath = asPath;
+
 		SDL_FreeSurface(pLoadedSurface);
 	}
 
@@ -59,12 +61,17 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	void cTextureSDL::SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const
+	inline void cTextureSDL::SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const
 	{
 		SDL_SetTextureColorMod(mpTexture, alR, alG, alB);
 	}
 
-	void cTextureSDL::SetAlpha(uint8_t alA) const
+	inline void cTextureSDL::SetColor(const cColor& aColor) const
+	{
+		SDL_SetTextureColorMod(mpTexture, aColor.r, aColor.g, aColor.b);
+	}
+
+	inline void cTextureSDL::SetAlpha(uint8_t alA) const
 	{
 		SDL_SetTextureAlphaMod(mpTexture, alA);
 	}

@@ -41,10 +41,6 @@ namespace baizel
 		delete mpInput;
 		mpInput = nullptr;
 
-		cLog::Log("   Game setup");
-		delete mpEngineSetup;
-		mpEngineSetup = nullptr;
-
 		cLog::Log("   System");
 		delete mpSystem;
 		mpSystem = nullptr;
@@ -52,6 +48,10 @@ namespace baizel
 		cLog::Log("   Time step");
 		delete mpTimeStep;
 		mpTimeStep = nullptr;
+
+		cLog::Log("   Game setup");
+		delete mpEngineSetup;
+		mpEngineSetup = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------
@@ -83,24 +83,25 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		cAnimation Animation(13, mpGraphics->GetLowLevel());
-		Animation.SetSpeed(64);
-		Animation.AddFrame("textures/raw_test/01.png");
-		Animation.AddFrame("textures/raw_test/02.png");
-		Animation.AddFrame("textures/raw_test/03.png");
-		Animation.AddFrame("textures/raw_test/04.png");
-		Animation.AddFrame("textures/raw_test/05.png");
-		Animation.AddFrame("textures/raw_test/06.png");
-		Animation.AddFrame("textures/raw_test/07.png");
-		Animation.AddFrame("textures/raw_test/08.png");
-		Animation.AddFrame("textures/raw_test/09.png");
-		Animation.AddFrame("textures/raw_test/10.png");
-		Animation.AddFrame("textures/raw_test/11.png");
-		Animation.AddFrame("textures/raw_test/12.png");
-		Animation.AddFrame("textures/raw_test/13.png");
+		cAnimation* pAnimation = new cAnimation(13, mpGraphics->GetLowLevel());
+		pAnimation->SetSpeed(64.0f);
+		pAnimation->AddFrame("textures/raw_test/01.png");
+		pAnimation->AddFrame("textures/raw_test/02.png");
+		pAnimation->AddFrame("textures/raw_test/03.png");
+		pAnimation->AddFrame("textures/raw_test/04.png");
+		pAnimation->AddFrame("textures/raw_test/05.png");
+		pAnimation->AddFrame("textures/raw_test/06.png");
+		pAnimation->AddFrame("textures/raw_test/07.png");
+		pAnimation->AddFrame("textures/raw_test/08.png");
+		pAnimation->AddFrame("textures/raw_test/09.png");
+		pAnimation->AddFrame("textures/raw_test/10.png");
+		pAnimation->AddFrame("textures/raw_test/11.png");
+		pAnimation->AddFrame("textures/raw_test/12.png");
+		pAnimation->AddFrame("textures/raw_test/13.png");
 
-		cAnimation Animation2 = Animation;
-		Animation2.SetSpeed(32);
+		cAnimation* pAnim2 = new cAnimation(13, mpGraphics->GetLowLevel());
+		*pAnim2 = *pAnimation;
+		pAnim2->SetSpeed(12.0f);
 
 		mbRunning = true;
 		while (mbRunning)
@@ -110,20 +111,21 @@ namespace baizel
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
-			Animation.Update(mpTimeStep->GetTimeStep());
-			Animation2.Update(mpTimeStep->GetTimeStep());
+			pAnimation->Update(mpTimeStep->GetTimeStep());
+			pAnim2->Update(mpTimeStep->GetTimeStep());
 
-			mpGraphics->GetRenderer()->DrawTexture(Animation.GetCurrentFrame(), 0, 0,
-				118,
-				59);
-
-			mpGraphics->GetRenderer()->DrawTexture(Animation2.GetCurrentFrame(), 0, 59,
-				118,
-				59);
+			mpGraphics->GetRenderer()->DrawTexture(pAnimation->GetCurrentFrame(), 0, 0,
+				118 * 4,
+				59 * 4);
+			mpGraphics->GetRenderer()->DrawTexture(pAnim2->GetCurrentFrame(), 0, 59*4,
+				118 * 4,
+				59 * 4);
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 			mpTimeStep->AddFrame();
 		}
+
+		delete pAnimation;
 	}
 
 	void cEngine::Exit()

@@ -15,6 +15,9 @@ namespace baizel
 			SDL_DestroyWindow(mpWindow);
 			mpWindow = nullptr;
 		}
+
+		delete mpRenderer;
+		mpRenderer = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------

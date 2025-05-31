@@ -10,7 +10,10 @@ namespace baizel
 
 	cRendererSDL::~cRendererSDL()
 	{
-		SDL_DestroyRenderer(mpRenderer);
+		if (mpRenderer != nullptr)
+		{
+			SDL_DestroyRenderer(mpRenderer);
+		}
 	}
 
 	// -----------------------------------------------------------------------
