@@ -86,4 +86,16 @@ namespace baizel
 	}
 
 	// -----------------------------------------------------------------------
+
+	iTexture& cTextureSDL::operator=(const iTexture& aTexture)
+	{
+		if (this == &aTexture)
+			return *this;
+
+		std::string sPath = aTexture.GetPath();
+		if (sPath == "") // no texture
+			return *this;
+
+		Load(sPath); // load texture from path
+	}
 }

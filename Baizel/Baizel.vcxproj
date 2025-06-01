@@ -204,7 +204,6 @@
     <ClCompile Include="core\sources\graphics\Color.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
-    <ClCompile Include="core\sources\graphics\Texture.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />

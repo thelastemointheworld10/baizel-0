@@ -19,8 +19,9 @@ namespace baizel
 		virtual void SetColor(const cColor& aColor) const = 0;
 		virtual void SetAlpha(uint8_t alA) const = 0;
 
-		const std::string& GetPath() const;
+		inline const std::string& GetPath() const { return msPath; }
 
+		virtual iTexture& operator=(const iTexture& aTexture) = 0;
 	protected:
 		std::string msPath = "";
 	};

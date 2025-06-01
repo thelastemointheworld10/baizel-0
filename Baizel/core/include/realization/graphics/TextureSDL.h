@@ -27,6 +27,8 @@ namespace baizel
 
 		SDL_Texture* GetTexture() const;
 
+		iTexture& operator=(const iTexture& aTexture) override;
+
 	private:
 		SDL_Texture* mpTexture = nullptr;
 		SDL_Renderer* mpRenderer = nullptr;

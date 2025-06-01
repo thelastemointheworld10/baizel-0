@@ -83,25 +83,11 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		cAnimation* pAnimation = new cAnimation(13, mpGraphics->GetLowLevel());
-		pAnimation->SetSpeed(64.0f);
-		pAnimation->AddFrame("textures/raw_test/01.png");
-		pAnimation->AddFrame("textures/raw_test/02.png");
-		pAnimation->AddFrame("textures/raw_test/03.png");
-		pAnimation->AddFrame("textures/raw_test/04.png");
-		pAnimation->AddFrame("textures/raw_test/05.png");
-		pAnimation->AddFrame("textures/raw_test/06.png");
-		pAnimation->AddFrame("textures/raw_test/07.png");
-		pAnimation->AddFrame("textures/raw_test/08.png");
-		pAnimation->AddFrame("textures/raw_test/09.png");
-		pAnimation->AddFrame("textures/raw_test/10.png");
-		pAnimation->AddFrame("textures/raw_test/11.png");
-		pAnimation->AddFrame("textures/raw_test/12.png");
-		pAnimation->AddFrame("textures/raw_test/13.png");
+		iTexture* pOriginalTexture = mpGraphics->GetLowLevel()->CreateTexture();
+		pOriginalTexture->Load("textures/raw_test/01.png");
 
-		cAnimation* pAnim2 = new cAnimation(13, mpGraphics->GetLowLevel());
-		*pAnim2 = *pAnimation;
-		pAnim2->SetSpeed(12.0f);
+		iTexture* pCopyTexture = mpGraphics->GetLowLevel()->CreateTexture();
+		*pCopyTexture = *pOriginalTexture;
 
 		mbRunning = true;
 		while (mbRunning)
@@ -111,13 +97,10 @@ namespace baizel
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
-			pAnimation->Update(mpTimeStep->GetTimeStep());
-			pAnim2->Update(mpTimeStep->GetTimeStep());
-
-			mpGraphics->GetRenderer()->DrawTexture(pAnimation->GetCurrentFrame(), 0, 0,
+			mpGraphics->GetRenderer()->DrawTexture(pCopyTexture, 0, 0,
 				118 * 4,
 				59 * 4);
-			mpGraphics->GetRenderer()->DrawTexture(pAnim2->GetCurrentFrame(), 0, 59*4,
+			mpGraphics->GetRenderer()->DrawTexture(pOriginalTexture, 0, 59*4,
 				118 * 4,
 				59 * 4);
 
@@ -125,7 +108,8 @@ namespace baizel
 			mpTimeStep->AddFrame();
 		}
 
-		delete pAnimation;
+		delete pOriginalTexture;
+		delete pCopyTexture;
 	}
 
 	void cEngine::Exit()
