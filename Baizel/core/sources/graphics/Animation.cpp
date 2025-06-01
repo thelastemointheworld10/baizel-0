@@ -18,21 +18,6 @@ namespace baizel
 		mfFrameTime = 0.0f;
 	}
 
-	cAnimation::cAnimation(const cAnimation& aAnimation)
-	{
-		mpLowLevelGraphics = aAnimation.mpLowLevelGraphics;
-		mvFrames.reserve(aAnimation.mvFrames.size());
-		mlCurrentFrame = aAnimation.mlCurrentFrame;
-		mfFrameRate = aAnimation.mfFrameRate;
-		mfFrameTime = aAnimation.mfFrameTime;
-
-		for (iTexture* pOldFrame : aAnimation.mvFrames)
-		{
-			if (pOldFrame != nullptr)
-				AddFrame(pOldFrame->GetPath());
-		}
-	}
-
 	cAnimation::~cAnimation()
 	{
 		for (iTexture* pFrame : mvFrames)
@@ -58,13 +43,10 @@ namespace baizel
 	void cAnimation::SetSpeed(float afFrames)
 	{
 		this->mfFrameRate = 1.0f / afFrames;
-		cLog::Log("New FrameRate for %p: %f", this, mfFrameRate);
 	}
 
 	void cAnimation::AddFrame(const std::string& asFramePath)
 	{
-		cLog::Log("Adding animation frame: %s", asFramePath.c_str());
-
 		if (mpLowLevelGraphics == nullptr)
 		{
 			cLog::Error("Failed to add frame! LowLevelGraphics is nullptr!");
@@ -110,44 +92,6 @@ namespace baizel
 			else
 				mlCurrentFrame = 0;
 		}
-	}
-
-	// -----------------------------------------------------------------------
-
-	//////////////////////////////////////////////////////////////////////////
-	// OPERATORS
-	//////////////////////////////////////////////////////////////////////////
-
-	// -----------------------------------------------------------------------
-
-	//////////////////////////////////////////
-	// Copy
-	//////////////////////////////////////////
-
-	cAnimation& cAnimation::operator=(const cAnimation& aAnimation)
-	{
-		if (this == &aAnimation)
-			return *this;
-
-		for (iTexture* pFrame : mvFrames)
-		{
-			delete pFrame;
-		}
-		mvFrames.clear();
-
-		mpLowLevelGraphics = aAnimation.mpLowLevelGraphics;
-		mvFrames.reserve(aAnimation.mvFrames.size());
-		mlCurrentFrame = aAnimation.mlCurrentFrame;
-		mfFrameRate = aAnimation.mfFrameRate;
-		mfFrameTime = aAnimation.mfFrameTime;
-
-		for (iTexture* pOldFrame : aAnimation.mvFrames)
-		{
-			if (pOldFrame != nullptr)
-				AddFrame(pOldFrame->GetPath());
-		}
-
-		return *this;
 	}
 
 	// -----------------------------------------------------------------------

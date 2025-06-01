@@ -14,7 +14,7 @@ namespace baizel
 
 	int cSystemSDL::GetTimeInMilliSec() const
 	{
-		return SDL_GetTicks64();
+		return static_cast<int>(SDL_GetTicks64());
 	}
 
 	float cSystemSDL::GetTimeInSec() const
@@ -28,12 +28,12 @@ namespace baizel
 
 	void cSystemSDL::SleepForMilliSec(int alTime) const
 	{
-		SDL_Delay(alTime);
+		SDL_Delay(static_cast<Uint32>(alTime));
 	}
 
 	void cSystemSDL::SleepForSec(int alTime) const
 	{
-		SDL_Delay(alTime * 1000);
+		SDL_Delay(static_cast<Uint32>(alTime * 1000));
 	}
 
 	// -----------------------------------------------------------------------

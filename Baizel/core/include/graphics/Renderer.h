@@ -6,6 +6,13 @@
 
 namespace baizel
 {
+	enum eRendererFlip
+	{
+		eRendererFlip_None,
+		eRendererFlip_Horizontal,
+		eRendererFlip_Vertical
+	};
+
 	class iRenderer
 	{
 	public:
@@ -19,7 +26,9 @@ namespace baizel
 
 		virtual void DrawRect(float afX, float afY, float afW, float afH) const = 0;
 		virtual void DrawFilledRect(float afX, float afY, float afW, float afH) const = 0;
-		virtual void DrawTexture(iTexture* apTexture, float afX, float afY, float afWidth, float afHeight) const = 0;
+		virtual void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
+			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
+			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;
 	};
 }
 

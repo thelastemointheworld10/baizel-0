@@ -5,9 +5,9 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 	// CONSTRUCTORS
 	//////////////////////////////////////////////////////////////////////////
-	
+
 	// -----------------------------------------------------------------------
-	
+
 	cEngine::cEngine(iEngineSetup* apEngineSetup)
 	{
 		mpEngineSetup = apEngineSetup;
@@ -53,7 +53,7 @@ namespace baizel
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
 	}
-	
+
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////////////////////////////////////
@@ -83,33 +83,17 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		iTexture* pOriginalTexture = mpGraphics->GetLowLevel()->CreateTexture();
-		pOriginalTexture->Load("textures/raw_test/01.png");
-
-		iTexture* pCopyTexture = mpGraphics->GetLowLevel()->CreateTexture();
-		*pCopyTexture = *pOriginalTexture;
-
 		mbRunning = true;
 		while (mbRunning)
 		{
 			mpInput->Update();
+			mpTimeStep->AddFrame();
 
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
-			mpGraphics->GetRenderer()->DrawTexture(pCopyTexture, 0, 0,
-				118 * 4,
-				59 * 4);
-			mpGraphics->GetRenderer()->DrawTexture(pOriginalTexture, 0, 59*4,
-				118 * 4,
-				59 * 4);
-
 			mpGraphics->GetRenderer()->SwapBuffers();
-			mpTimeStep->AddFrame();
 		}
-
-		delete pOriginalTexture;
-		delete pCopyTexture;
 	}
 
 	void cEngine::Exit()

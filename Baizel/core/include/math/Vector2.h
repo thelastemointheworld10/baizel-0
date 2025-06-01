@@ -127,40 +127,24 @@ namespace baizel
 		// Real Arithmetic
 		//////////////////////////////////////////
 
-		inline cVector2<T>& operator+(const T& aValue) const
+		inline cVector2<T> operator*(const T& aValue) const
 		{
-			cVector2<T> Vector2;
-			Vector2.x += aValue;
-			Vector2.y += aValue;
-
-			return Vector2;
+			return cVector2<T>(x * aValue, y * aValue);
 		}
 
-		inline cVector2<T>& operator-(const T& aValue) const
+		inline cVector2<T> operator/(const T& aValue) const
 		{
-			cVector2<T> Vector2;
-			Vector2.x -= aValue;
-			Vector2.y -= aValue;
-
-			return Vector2;
+			return cVector2<T>(x / aValue, y / aValue);
 		}
 
-		inline cVector2<T>& operator*(const T& aValue) const
+		inline cVector2<T> operator+(const T& aValue) const
 		{
-			cVector2<T> Vector2;
-			Vector2.x *= aValue;
-			Vector2.y *= aValue;
-
-			return Vector2;
+			return cVector2<T>(x + aValue, y + aValue);
 		}
 
-		inline cVector2<T>& operator/(const T& aValue) const
+		inline cVector2<T> operator-(const T& aValue) const
 		{
-			cVector2<T> Vector2;
-			Vector2.x /= aValue;
-			Vector2.y /= aValue;
-
-			return Vector2;
+			return cVector2<T>(x - aValue, y - aValue);
 		}
 
 		// -----------------------------------------------------------------------

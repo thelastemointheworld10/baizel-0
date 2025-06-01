@@ -1,8 +1,6 @@
 #ifndef BAIZEL_SYSTEM_H
 #define BAIZEL_SYSTEM_H
 
-#include <cstdint>
-
 namespace baizel
 {
     class iSystem

@@ -16,7 +16,6 @@ namespace baizel
 	{
 	public:
 		cAnimation(int alFrames, iLowLevelGraphics* apLowLevelGraphics);
-		cAnimation(const cAnimation& aAnimation);
 		~cAnimation();
 
 		void SetSpeed(float afSpeed);
@@ -24,9 +23,6 @@ namespace baizel
 		iTexture* GetCurrentFrame() const;
 
 		void Update(float afTimeStep);
-
-	public:
-		cAnimation& operator=(const cAnimation& aAnimation);
 
 	private:
 		tFrameVector mvFrames;

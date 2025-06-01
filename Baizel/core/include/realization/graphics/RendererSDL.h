@@ -27,7 +27,9 @@ namespace baizel
 
 		void DrawRect(float afX, float afY, float afW, float afH) const override;
 		void DrawFilledRect(float afX, float afY, float afW, float afH) const override;
-		void DrawTexture(iTexture* apTexture, float afX, float afY, float afWidth, float afHeight) const override;
+		void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
+			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
+			eRendererFlip aTextureFlip = eRendererFlip_None) const override;
 
 	private:
 		SDL_Renderer* mpRenderer = nullptr;

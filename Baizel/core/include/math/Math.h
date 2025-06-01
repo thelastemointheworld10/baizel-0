@@ -3,14 +3,17 @@
 
 #include <random>
 #include <ctime>
+#include <math/MathTypes.h>
 
 namespace baizel
 {
     class cMath final
     {
     public:
-        static int GetRandInt(int alMin, int alMax);
-        static float GetRandFloat(float afMin, float afMax);
+        static int RandInt(int alMin, int alMax);
+        static float RandFloat(float afMin, float afMax);
+
+        static tVector2f AngleToVector(float afAngle);
 
         template <typename T>
         static T Clamp(T aValue, const T& aMin, const T& aMax)
