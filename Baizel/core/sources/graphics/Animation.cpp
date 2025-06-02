@@ -60,7 +60,7 @@ namespace baizel
 			return;
 		}
 
-		pFrame->Load(asFramePath);
+		pFrame->LoadFile(asFramePath);
 
 		mvFrames.push_back(pFrame);
 	}

@@ -9,6 +9,7 @@ namespace baizel
 {
     class iRenderer;
     class iTexture;
+    class iFont;
 
     class iLowLevelGraphics
     {
@@ -23,6 +24,7 @@ namespace baizel
         void SetVirtualSize(tVector2f avVirtualSize);
 
         virtual iTexture* CreateTexture() const = 0;
+        virtual iFont* CreateFont() = 0;
 
         virtual void SetCursorVisible(bool abVisible) const = 0;
 

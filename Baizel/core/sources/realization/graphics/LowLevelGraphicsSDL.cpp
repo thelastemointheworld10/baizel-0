@@ -95,5 +95,10 @@ namespace baizel
 		return new cTextureSDL(mpRenderer);
 	}
 
+	iFont* cLowLevelGraphicsSDL::CreateFont()
+	{
+		return new cFontSDL(this, mpRenderer);
+	}
+
 	// -----------------------------------------------------------------------
 }

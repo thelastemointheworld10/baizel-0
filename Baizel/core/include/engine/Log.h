@@ -29,7 +29,7 @@ namespace baizel
 			va_list pArgs;
 
 			va_start(pArgs, asFormat);
-			PrintFormated("", asFormat, pArgs);
+			std::cerr << GetFormatedString(asFormat, pArgs) << std::endl;
 			va_end(pArgs);
 		}
 
@@ -41,7 +41,7 @@ namespace baizel
 			va_list pArgs;
 
 			va_start(pArgs, asFormat);
-			PrintFormated("[WARNING] ", asFormat, pArgs);
+			std::cerr << "[WARNING] " << GetFormatedString(asFormat, pArgs) << std::endl;
 			va_end(pArgs);
 		}
 
@@ -53,7 +53,7 @@ namespace baizel
 			va_list pArgs;
 
 			va_start(pArgs, asFormat);
-			PrintFormated("[ERROR] ", asFormat, pArgs);
+			std::cerr << "[ERROR] " << GetFormatedString(asFormat, pArgs) << std::endl;
 			va_end(pArgs);
 		}
 
@@ -65,24 +65,15 @@ namespace baizel
 			va_list pArgs;
 
 			va_start(pArgs, asFormat);
-			PrintFormated("[FATAL] ", asFormat, pArgs);
+			std::cerr << "[FATAL] " << GetFormatedString(asFormat, pArgs) << std::endl;
 			va_end(pArgs);
 		}
 
-		// -----------------------------------------------------------------------
-
-	private:
-		//////////////////////////////////////////////////////////////////////////
-		// PRIVATE METHODS
-		//////////////////////////////////////////////////////////////////////////
-
-		// -----------------------------------------------------------------------
-
 		//////////////////////////////////////////
-		// Core Functionality
+		// Accessors
 		//////////////////////////////////////////
 
-		inline static void PrintFormated(std::string asPrefix, const char* asFormat, va_list apArgs)
+		inline static std::string GetFormatedString(const char* asFormat, va_list apArgs)
 		{
 			va_list pArgsCopy;
 
@@ -93,7 +84,7 @@ namespace baizel
 			std::vector<char> vBuffer(lSize);
 			vsnprintf(vBuffer.data(), lSize, asFormat, apArgs);
 
-			std::cerr << asPrefix << vBuffer.data() << std::endl;
+			return std::string(vBuffer.begin(), vBuffer.end());
 		}
 
 		// -----------------------------------------------------------------------

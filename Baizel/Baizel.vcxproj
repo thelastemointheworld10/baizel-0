@@ -100,7 +100,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -122,7 +122,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -140,7 +140,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -162,7 +162,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -173,6 +173,7 @@
     <ClInclude Include="core\include\graphics\Animation.h" />
     <ClInclude Include="core\include\graphics\AnimationTypes.h" />
     <ClInclude Include="core\include\graphics\Color.h" />
+    <ClInclude Include="core\include\graphics\Font.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
@@ -187,6 +188,7 @@
     <ClInclude Include="core\include\math\MathTypes.h" />
     <ClInclude Include="core\include\math\Vector2.h" />
     <ClInclude Include="core\include\realization\engine\EngineSetupSDL.h" />
+    <ClInclude Include="core\include\realization\graphics\FontSDL.h" />
     <ClInclude Include="core\include\realization\input\KeyboardSDL.h" />
     <ClInclude Include="core\include\realization\graphics\LowLevelGraphicsSDL.h" />
     <ClInclude Include="core\include\realization\input\LowLevelInputSDL.h" />
@@ -202,6 +204,7 @@
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
     <ClCompile Include="core\sources\graphics\Color.cpp" />
+    <ClCompile Include="core\sources\graphics\Font.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
@@ -209,6 +212,7 @@
     <ClCompile Include="core\sources\input\Mouse.cpp" />
     <ClCompile Include="core\sources\math\Math.cpp" />
     <ClCompile Include="core\sources\realization\engine\EngineSetupSDL.cpp" />
+    <ClCompile Include="core\sources\realization\graphics\FontSDL.cpp" />
     <ClCompile Include="core\sources\realization\input\KeyboardSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\LowLevelGraphicsSDL.cpp" />
     <ClCompile Include="core\sources\realization\input\LowLevelInputSDL.cpp" />

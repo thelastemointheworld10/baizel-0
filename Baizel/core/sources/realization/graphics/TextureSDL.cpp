@@ -15,8 +15,7 @@ namespace baizel
 
 	cTextureSDL::~cTextureSDL()
 	{
-		SDL_DestroyTexture(mpTexture);
-		mpTexture = nullptr;
+		ReleaseResources();
 	}
 	
 	// -----------------------------------------------------------------------
@@ -31,30 +30,40 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cTextureSDL::Load(const std::string& asPath)
+	void cTextureSDL::LoadFile(const std::string& asPath)
 	{
-		if (mpTexture != nullptr)
-		{
-			SDL_DestroyTexture(mpTexture);
-			mpTexture = nullptr;
-		}
+		ReleaseResources();
 
-		SDL_Surface* pLoadedSurface = IMG_Load(asPath.c_str());
-		if (pLoadedSurface == nullptr)
+		mpSurface = IMG_Load(asPath.c_str());
+		if (mpSurface == nullptr)
 		{
 			cLog::Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
 			return;
 		}
 
-		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, pLoadedSurface);
-		if (mpTexture == nullptr)
-			cLog::Error("Failed to create texture from surface '%s': %s", asPath.c_str(), SDL_GetError());
-		else
-			SDL_SetTextureBlendMode(mpTexture, SDL_BLENDMODE_BLEND);
+		if (CreateTextureFromSurface())
+			msPath = asPath;
+	}
 
-		msPath = asPath;
+	void cTextureSDL::LoadFont(iFont* aFont)
+	{
+		ReleaseResources();
 
-		SDL_FreeSurface(pLoadedSurface);
+		cFontSDL* pFontSDL = dynamic_cast<cFontSDL*>(aFont);
+		if (pFontSDL == nullptr) return;
+
+		SDL_Color White = { 255, 255, 255, 255 };
+		mpSurface = TTF_RenderText_Blended(pFontSDL->GetFont(),
+			pFontSDL->GetText().c_str(),
+			White);
+		//cLog::Log(pFontSDL->GetText().c_str());
+		if (mpSurface == nullptr)
+		{
+			cLog::Error("Failed to create font surface: %s", TTF_GetError());
+			return;
+		}
+
+		CreateTextureFromSurface();
 	}
 
 	//////////////////////////////////////////
@@ -87,6 +96,64 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	//////////////////////////////////////////////////////////////////////////
+	// PRIVATE METHODS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+	
+	//////////////////////////////////////////
+	// Resource Management
+	//////////////////////////////////////////
+
+	bool cTextureSDL::CreateTextureFromSurface()
+	{
+		if (mpSurface == nullptr || mpRenderer == nullptr)
+			return false;
+
+		if (mpTexture != nullptr)
+		{
+			SDL_DestroyTexture(mpTexture);
+			mpTexture = nullptr;
+		};
+
+		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, mpSurface);
+		if (mpTexture == nullptr)
+		{
+			cLog::Error("Failed to create texture from surface: %s", SDL_GetError());
+			return false;
+		}
+		SDL_SetTextureBlendMode(mpTexture, SDL_BLENDMODE_BLEND);
+
+		return true;
+	}
+
+	void cTextureSDL::ReleaseResources()
+	{
+		if (mpTexture != nullptr)
+		{
+			SDL_DestroyTexture(mpTexture);
+			mpTexture = nullptr;
+		}
+		if (mpSurface != nullptr)
+		{
+			SDL_FreeSurface(mpSurface);
+			mpSurface = nullptr;
+		}
+	}
+	
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////////////////////////////////////
+	// OPERATORS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////
+	// Copy
+	//////////////////////////////////////////
+
 	iTexture& cTextureSDL::operator=(const iTexture& aTexture)
 	{
 		if (this == &aTexture)
@@ -96,6 +163,8 @@ namespace baizel
 		if (sPath == "") // no texture
 			return *this;
 
-		Load(sPath); // load texture from path
+		LoadFile(sPath); // load texture from path
 	}
+
+	// -----------------------------------------------------------------------
 }

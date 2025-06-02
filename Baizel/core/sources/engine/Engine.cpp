@@ -70,7 +70,7 @@ namespace baizel
 	{
 		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
 		{
-			cLog::Fatal("Failed to initialize graphics!");
+			cLog::Fatal("Failed to initialize low level graphics!");
 			return false;
 		}
 
@@ -83,6 +83,13 @@ namespace baizel
 
 	void cEngine::Run()
 	{
+		float fSize = 64.0f;
+
+		iFont* pFont = mpGraphics->GetLowLevel()->CreateFont();
+		pFont->Load("fonts/test.ttf");
+
+		tVector2f vPos(0.0f);
+
 		mbRunning = true;
 		while (mbRunning)
 		{
@@ -92,8 +99,30 @@ namespace baizel
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
+			float fSpeed = 100.0f * mpTimeStep->GetTimeStep();
+
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
+				vPos.y -= fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
+				vPos.x -= fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
+				vPos.y += fSpeed;
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
+				vPos.x += fSpeed;
+
+			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelDown))
+				fSize -= 1000.0f;
+			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
+				fSize += 1000.0f;
+
+			pFont->SetText("Hello, RAW!");
+			pFont->SetSize(fSize);
+			pFont->Draw(vPos, cColor(100, 255, 50));
+
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
+
+		delete pFont;
 	}
 
 	void cEngine::Exit()

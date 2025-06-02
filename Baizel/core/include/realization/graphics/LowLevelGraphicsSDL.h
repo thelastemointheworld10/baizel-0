@@ -9,6 +9,7 @@
 #include <graphics/LowLevelGraphics.h>
 #include <realization/graphics/TextureSDL.h>
 #include <realization/graphics/RendererSDL.h>
+#include <realization/graphics/FontSDL.h>
 
 namespace baizel
 {
@@ -22,6 +23,7 @@ namespace baizel
         SDL_Window* GetWindow() const;
 
         iTexture* CreateTexture() const override;
+        iFont* CreateFont() override;
 
         void SetCursorVisible(bool abVisible) const override;
 

@@ -13,6 +13,7 @@
 #include <input/Input.h>
 #include <engine/TimeStep.h>
 #include <graphics/Animation.h>
+#include <graphics/Font.h>
 
 namespace baizel
 {

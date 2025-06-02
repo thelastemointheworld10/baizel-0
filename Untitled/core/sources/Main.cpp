@@ -2,7 +2,8 @@
 
 using namespace baizel;
 
-int main(int argc, char* args[])
+#undef main
+int main()
 {
     cBase Base;
 
