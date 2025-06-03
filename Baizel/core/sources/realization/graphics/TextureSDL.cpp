@@ -45,18 +45,17 @@ namespace baizel
 			msPath = asPath;
 	}
 
-	void cTextureSDL::LoadFont(iFont* aFont)
+	void cTextureSDL::CreateFromFont(iFont* aFont, const cColor& aColor)
 	{
 		ReleaseResources();
 
 		cFontSDL* pFontSDL = dynamic_cast<cFontSDL*>(aFont);
 		if (pFontSDL == nullptr) return;
 
-		SDL_Color White = { 255, 255, 255, 255 };
 		mpSurface = TTF_RenderText_Blended(pFontSDL->GetFont(),
 			pFontSDL->GetText().c_str(),
-			White);
-		//cLog::Log(pFontSDL->GetText().c_str());
+			{ aColor.r, aColor.g, aColor.b });
+		
 		if (mpSurface == nullptr)
 		{
 			cLog::Error("Failed to create font surface: %s", TTF_GetError());

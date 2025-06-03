@@ -111,9 +111,9 @@ namespace baizel
 				vPos.x += fSpeed;
 
 			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelDown))
-				fSize -= 1000.0f;
+				fSize -= 12.0f;
 			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
-				fSize += 1000.0f;
+				fSize += 12.0f;
 
 			pFont->SetText("Hello, RAW!");
 			pFont->SetSize(fSize);

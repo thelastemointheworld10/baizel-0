@@ -46,6 +46,8 @@ namespace baizel
 		va_start(pArgs, asFormat);
 		msText = cLog::GetFormatedString(asFormat, pArgs);
 		va_end(pArgs);
+
+		msLastText = msText;
 	}
 
 	// -----------------------------------------------------------------------

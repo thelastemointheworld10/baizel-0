@@ -31,6 +31,8 @@ namespace baizel
 		std::string msPath;
 
 		std::string msText = " ";
+		std::string msLastText = " ";
+
 		int mlSize = 12;
 	};
 }

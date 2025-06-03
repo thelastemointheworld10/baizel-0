@@ -20,7 +20,7 @@ namespace baizel
 		~cTextureSDL() override;
 
 		void LoadFile(const std::string& asPath) override;
-		void LoadFont(iFont* aFont) override;
+		void CreateFromFont(iFont* aFont, const cColor& aColor) override;
 
 		inline void SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const override;
 		inline void SetColor(const cColor& aColor) const override;

@@ -38,9 +38,6 @@ namespace baizel
 			return;
 		}
 
-		if (mpTexture == nullptr)
-			mpTexture = mpLowLevelGraphics->CreateTexture();
-
 		msPath = asPath;
 	}
 
@@ -50,11 +47,20 @@ namespace baizel
 
 	void cFontSDL::Draw(const tVector2f& avPosition, const cColor& aColor)
 	{
-		if (mpFont == nullptr || msText.empty() || mpTexture == nullptr)
+		if (mpFont == nullptr || msText.empty())
 			return;
 
-		mpTexture->LoadFont(this);
-		mpTexture->SetColor(aColor);
+		if (mpTexture == nullptr)
+			mpTexture = mpLowLevelGraphics->CreateTexture();
+		
+		// Creating a new texture only if the text has been updated
+		if (msText != msLastText)
+		{
+			mpTexture->CreateFromFont(this, aColor);
+			msLastText = msText;
+			//cLog::Log("Font texture updated");
+		}
+
 		mpRenderer->DrawTexture(mpTexture, avPosition, GetTextSize());
 	}
 
@@ -87,6 +93,9 @@ namespace baizel
 		mlSize = alSize;
 		TTF_CloseFont(mpFont);
 		mpFont = TTF_OpenFont(msPath.c_str(), mlSize);
+
+		// I'm resetting the last text so that the texture is updated.
+		msLastText = "";
 	}
 
 	TTF_Font* cFontSDL::GetFont() const
