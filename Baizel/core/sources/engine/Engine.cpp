@@ -88,7 +88,11 @@ namespace baizel
 		iFont* pFont = mpGraphics->GetLowLevel()->CreateFont();
 		pFont->Load("fonts/test.ttf");
 
-		tVector2f vPos(0.0f);
+		tVector2f vPos(400, 0);
+		tVector2f vPos1(400, 150);
+		tVector2f vPos2(400, 300);
+
+		pFont->SetSize(fSize);
 
 		mbRunning = true;
 		while (mbRunning)
@@ -115,9 +119,15 @@ namespace baizel
 			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
 				fSize += 12.0f;
 
-			pFont->SetText("Hello, RAW!");
-			pFont->SetSize(fSize);
-			pFont->Draw(vPos, cColor(100, 255, 50));
+			pFont->SetText("center-alingn");
+			pFont->Draw(vPos, cColor(100, 255, 50), eTextAlign_Center);
+
+			pFont->SetText("left-alingn");
+			pFont->Draw(vPos1, cColor(100, 255, 50), eTextAlign_Left);
+
+			pFont->SetText("right-alingn");
+			pFont->Draw(vPos2 , cColor(100, 255, 50), eTextAlign_Right);
+
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
@@ -127,11 +137,11 @@ namespace baizel
 
 	void cEngine::Exit()
 	{
+		mbRunning = false;
+
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Exiting engine");
 		cLog::Log("----------------------------------------------------");
-
-		mbRunning = false;
 	}
 
 	// -----------------------------------------------------------------------

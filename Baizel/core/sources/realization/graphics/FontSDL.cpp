@@ -45,7 +45,7 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	void cFontSDL::Draw(const tVector2f& avPosition, const cColor& aColor)
+	void cFontSDL::Draw(tVector2f avPosition, const cColor& aColor, eTextAlign aTextAlign)
 	{
 		if (mpFont == nullptr || msText.empty())
 			return;
@@ -61,7 +61,22 @@ namespace baizel
 			//cLog::Log("Font texture updated");
 		}
 
-		mpRenderer->DrawTexture(mpTexture, avPosition, GetTextSize());
+		tVector2f vTextSize = GetTextSize();
+
+		switch (aTextAlign)
+		{
+		case eTextAlign_Center:
+			avPosition.x -= vTextSize.x / 2;
+			break;
+		case eTextAlign_Right:
+			// We leave it as it is
+			break;
+		case eTextAlign_Left:
+			avPosition.x -= vTextSize.x;
+			break;
+		}
+
+		mpRenderer->DrawTexture(mpTexture, avPosition, vTextSize);
 	}
 
 	//////////////////////////////////////////
@@ -81,6 +96,7 @@ namespace baizel
 
 		float fTextW = static_cast<float>(vTextSize.x);
 		float fTextH = static_cast<float>(vTextSize.y);
+		//cLog::Log("Text Size: %f, %f", fTextW, fTextH);
 
 		return tVector2f(fTextW, fTextH);
 	}

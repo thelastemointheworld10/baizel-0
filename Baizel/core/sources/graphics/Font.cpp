@@ -42,12 +42,12 @@ namespace baizel
 		if (asFormat == nullptr)
 			return;
 
+		msLastText = msText;
+
 		va_list pArgs;
 		va_start(pArgs, asFormat);
 		msText = cLog::GetFormatedString(asFormat, pArgs);
 		va_end(pArgs);
-
-		msLastText = msText;
 	}
 
 	// -----------------------------------------------------------------------

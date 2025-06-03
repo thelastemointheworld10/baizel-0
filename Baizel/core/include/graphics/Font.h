@@ -8,6 +8,13 @@
 
 namespace baizel
 {
+	enum eTextAlign
+	{
+		eTextAlign_Left,
+		eTextAlign_Right,
+		eTextAlign_Center
+	};
+
 	class iFont
 	{
 	public:
@@ -15,7 +22,7 @@ namespace baizel
 		~iFont();
 
 		virtual void Load(const std::string& asPath) = 0;
-		virtual void Draw(const tVector2f& avPosition, const cColor& aColor) = 0;
+		virtual void Draw(tVector2f avPosition, const cColor& aColor, eTextAlign aTextAlign) = 0;
 
 		virtual void SetSize(int alSize) = 0;
 		virtual tVector2f GetTextSize() const = 0;
