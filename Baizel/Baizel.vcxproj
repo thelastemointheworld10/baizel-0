@@ -90,10 +90,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,10 +111,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,10 +132,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,10 +153,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,6 +171,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="core\include\audio\AudioBuffer.h" />
+    <ClInclude Include="core\include\audio\AudioSource.h" />
+    <ClInclude Include="core\include\audio\AudioSystem.h" />
+    <ClInclude Include="core\include\audio\stb_vorbis.h" />
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\TimeStep.h" />
     <ClInclude Include="core\include\engine\Log.h" />
@@ -187,6 +195,11 @@
     <ClInclude Include="core\include\math\Math.h" />
     <ClInclude Include="core\include\math\MathTypes.h" />
     <ClInclude Include="core\include\math\Vector2.h" />
+    <ClInclude Include="core\include\math\Vector3.h" />
+    <ClInclude Include="core\include\realization\audio\AudioBufferAL.h" />
+    <ClInclude Include="core\include\realization\audio\AudioSourceAL.h" />
+    <ClInclude Include="core\include\realization\audio\AudioSystemAL.h" />
+    <ClInclude Include="core\include\realization\audio\ErrorHandlerAL.h" />
     <ClInclude Include="core\include\realization\engine\EngineSetupSDL.h" />
     <ClInclude Include="core\include\realization\graphics\FontSDL.h" />
     <ClInclude Include="core\include\realization\input\KeyboardSDL.h" />
@@ -201,6 +214,11 @@
     <ClInclude Include="core\include\system\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\sources\audio\AudioBuffer.cpp" />
+    <ClCompile Include="core\sources\audio\AudioSource.cpp" />
+    <ClCompile Include="core\include\audio\stb_vorbis.c" />
+    <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
+    <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp" />
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
     <ClCompile Include="core\sources\graphics\Color.cpp" />
@@ -211,6 +229,9 @@
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
     <ClCompile Include="core\sources\math\Math.cpp" />
+    <ClCompile Include="core\sources\realization\audio\AudioBufferAL.cpp" />
+    <ClCompile Include="core\sources\realization\audio\AudioSourceAL.cpp" />
+    <ClCompile Include="core\sources\realization\audio\ErrorHandlerAL.cpp" />
     <ClCompile Include="core\sources\realization\engine\EngineSetupSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\FontSDL.cpp" />
     <ClCompile Include="core\sources\realization\input\KeyboardSDL.cpp" />
@@ -222,6 +243,9 @@
     <ClCompile Include="core\sources\engine\Engine.cpp" />
     <ClCompile Include="core\sources\realization\system\SystemSDL.cpp" />
     <ClCompile Include="core\sources\system\Timer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="core\TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,7 @@
 #include <engine/TimeStep.h>
 #include <graphics/Animation.h>
 #include <graphics/Font.h>
+#include <audio/AudioSystem.h>
 
 namespace baizel
 {
@@ -22,7 +23,7 @@ namespace baizel
     class cEngine final
     {
     public:
-        cEngine(iEngineSetup* apEngineSetup);
+        cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem);
         ~cEngine();
 
         bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen);
@@ -33,6 +34,7 @@ namespace baizel
         bool mbRunning;
 
         iEngineSetup* mpEngineSetup = nullptr;
+        iAudioSystem* mpAudioSystem = nullptr;
         cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
         iSystem* mpSystem = nullptr;

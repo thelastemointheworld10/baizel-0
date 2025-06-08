@@ -25,8 +25,8 @@ namespace baizel
 		void Clear() const override;
 		void SwapBuffers() const override;
 
-		void DrawRect(float afX, float afY, float afW, float afH) const override;
-		void DrawFilledRect(float afX, float afY, float afW, float afH) const override;
+		void DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const override;
+		void DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const override;
 		void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
 			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const override;

@@ -68,11 +68,11 @@ namespace baizel
 		case eTextAlign_Center:
 			avPosition.x -= vTextSize.x / 2;
 			break;
-		case eTextAlign_Right:
-			// We leave it as it is
-			break;
 		case eTextAlign_Left:
 			avPosition.x -= vTextSize.x;
+			break;
+		case eTextAlign_Right:
+			// We leave it as it is
 			break;
 		}
 
@@ -89,10 +89,7 @@ namespace baizel
 			return tVector2f(0.0f);
 
 		tVector2l vTextSize;
-		tVector2f vVirtualSize;
-
 		TTF_SizeText(mpFont, msText.c_str(), &vTextSize.x, &vTextSize.y);
-		vVirtualSize = mpLowLevelGraphics->GetVirtualSize();
 
 		float fTextW = static_cast<float>(vTextSize.x);
 		float fTextH = static_cast<float>(vTextSize.y);

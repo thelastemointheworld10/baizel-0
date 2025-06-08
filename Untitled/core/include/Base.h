@@ -4,6 +4,7 @@
 #include <string>
 
 #include <realization/engine/EngineSetupSDL.h>
+#include <realization/audio/AudioSystemAL.h>
 
 namespace baizel
 {

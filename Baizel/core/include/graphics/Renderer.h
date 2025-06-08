@@ -24,8 +24,8 @@ namespace baizel
 		virtual void Clear() const = 0;
 		virtual void SwapBuffers() const = 0;
 
-		virtual void DrawRect(float afX, float afY, float afW, float afH) const = 0;
-		virtual void DrawFilledRect(float afX, float afY, float afW, float afH) const = 0;
+		virtual void DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const = 0;
+		virtual void DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const = 0;
 		virtual void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
 			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;

@@ -70,25 +70,27 @@ namespace baizel
 		SDL_RenderPresent(mpRenderer);
 	}
 
-	void cRendererSDL::DrawRect(float afX, float afY, float afW, float afH) const
+	void cRendererSDL::DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const
 	{
 		SDL_FRect Rect;
-		Rect.x = afX;
-		Rect.y = afY;
-		Rect.w = afW;
-		Rect.h = afH;
+		Rect.x = avPosition.x;
+		Rect.y = avPosition.y;
+		Rect.w = avSize.x;
+		Rect.h = avSize.y;
 
+		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
 		SDL_RenderDrawRectF(mpRenderer, &Rect);
 	}
 
-	void cRendererSDL::DrawFilledRect(float afX, float afY, float afW, float afH) const
+	void cRendererSDL::DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const
 	{
 		SDL_FRect Rect;
-		Rect.x = afX;
-		Rect.y = afY;
-		Rect.w = afW;
-		Rect.h = afH;
+		Rect.x = avPosition.x;
+		Rect.y = avPosition.y;
+		Rect.w = avSize.x;
+		Rect.h = avSize.y;
 
+		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
 		SDL_RenderFillRectF(mpRenderer, &Rect);
 	}
 

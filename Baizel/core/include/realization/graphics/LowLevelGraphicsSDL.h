@@ -11,6 +11,8 @@
 #include <realization/graphics/RendererSDL.h>
 #include <realization/graphics/FontSDL.h>
 
+#undef CreateFont
+
 namespace baizel
 {
     class cLowLevelGraphicsSDL : public iLowLevelGraphics

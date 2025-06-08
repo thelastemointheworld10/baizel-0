@@ -14,16 +14,20 @@ namespace baizel
 		// -----------------------------------------------------------------------
 
 		cVector2() : x(T{}), y(T{})
-		{}
+		{
+		}
 
 		cVector2(T aValue) : x(aValue), y(aValue)
-		{}
+		{
+		}
 
 		cVector2(T aX, T aY) : x(aX), y(aY)
-		{}
+		{
+		}
 
 		cVector2(const cVector2<T>& avVector) : x(avVector.x), y(avVector.y)
-		{}
+		{
+		}
 
 		// -----------------------------------------------------------------------
 

@@ -14,7 +14,7 @@ namespace baizel
         mvWindowSize = tVector2l(1280, 720);
         mbFullscreen = false;
 
-        mpEngine = new cEngine(new cEngineSetupSDL());
+        mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL());
     }
 
     cBase::~cBase()

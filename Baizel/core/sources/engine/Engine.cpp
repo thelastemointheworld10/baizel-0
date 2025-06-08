@@ -8,9 +8,10 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cEngine::cEngine(iEngineSetup* apEngineSetup)
+	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem)
 	{
 		mpEngineSetup = apEngineSetup;
+		mpAudioSystem = apAudioSystem;
 
 		cLog::Log("- Creating engine stuff");
 
@@ -49,6 +50,10 @@ namespace baizel
 		delete mpTimeStep;
 		mpTimeStep = nullptr;
 
+		cLog::Log("   Audio system");
+		delete mpAudioSystem;
+		mpAudioSystem = nullptr;
+
 		cLog::Log("   Game setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
@@ -74,6 +79,9 @@ namespace baizel
 			return false;
 		}
 
+		mpAudioSystem->CreateDevice();
+		mpAudioSystem->CreateContext();
+
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Engine initialized");
 		cLog::Log("----------------------------------------------------");
@@ -83,16 +91,11 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		float fSize = 64.0f;
+		iAudioBuffer* pBuffer = mpAudioSystem->CreateBuffer();
+		iAudioSource* pSource = mpAudioSystem->CreateSource();
 
-		iFont* pFont = mpGraphics->GetLowLevel()->CreateFont();
-		pFont->Load("fonts/test.ttf");
-
-		tVector2f vPos(400, 0);
-		tVector2f vPos1(400, 150);
-		tVector2f vPos2(400, 300);
-
-		pFont->SetSize(fSize);
+		pBuffer->LoadAudio("music/raw_test/gang_bang.ogg");
+		pSource->SetBuffer(pBuffer->Get());
 
 		mbRunning = true;
 		while (mbRunning)
@@ -103,41 +106,21 @@ namespace baizel
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
-			float fSpeed = 100.0f * mpTimeStep->GetTimeStep();
-
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-				vPos.y -= fSpeed;
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
-				vPos.x -= fSpeed;
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
-				vPos.y += fSpeed;
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
-				vPos.x += fSpeed;
-
-			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelDown))
-				fSize -= 12.0f;
-			if (mpInput->GetMouse()->GetButtonPressed(eMouseButton_WheelUp))
-				fSize += 12.0f;
-
-			pFont->SetText("center-alingn");
-			pFont->Draw(vPos, cColor(100, 255, 50), eTextAlign_Center);
-
-			pFont->SetText("left-alingn");
-			pFont->Draw(vPos1, cColor(100, 255, 50), eTextAlign_Left);
-
-			pFont->SetText("right-alingn");
-			pFont->Draw(vPos2 , cColor(100, 255, 50), eTextAlign_Right);
-
+			if (mpInput->GetKeyboard()->GetLastKey() == eKey_Space)
+				pSource->Play();
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 
-		delete pFont;
+		delete pBuffer;
+		delete pSource;
 	}
 
 	void cEngine::Exit()
 	{
 		mbRunning = false;
+
+		mpAudioSystem->Exit();
 
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Exiting engine");

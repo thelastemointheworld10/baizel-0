@@ -16,7 +16,7 @@ namespace baizel
         static tVector2f AngleToVector(float afAngle);
 
         template <typename T>
-        static T Clamp(T aValue, const T& aMin, const T& aMax)
+        inline static T Clamp(T aValue, T aMin, T aMax)
         {
             if (aValue < aMin) aValue = aMin;
             else if (aValue > aMax) aValue = aMax;
