@@ -25,6 +25,10 @@ namespace baizel
 		{
 		}
 
+		cVector3(T aX, T aY, T aZ) : x(aX), y(aY), z(aZ)
+		{
+		}
+
 		cVector3(const cVector3<T>& avVector) : x(avVector.x), y(avVector.y), z(avVector.z)
 		{
 		}

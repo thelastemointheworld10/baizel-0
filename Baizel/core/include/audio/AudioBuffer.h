@@ -15,7 +15,7 @@ namespace baizel
     public:
         bool LoadAudio(const std::string& asPath);
 
-        uint32_t Get() const;
+        uint32_t GetID() const;
 
     protected:
         virtual void SetData() = 0;

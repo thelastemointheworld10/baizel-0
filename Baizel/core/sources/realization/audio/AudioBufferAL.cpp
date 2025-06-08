@@ -41,11 +41,9 @@ namespace baizel
         switch (alChannels)
         {
         case 1:
-            cLog::Log("Audio format: MONO16");
             mlFormat = AL_FORMAT_MONO16;
             break;
         case 2:
-            cLog::Log("Audio format: STEREO16");
             mlFormat = AL_FORMAT_STEREO16;
             break;
         default:

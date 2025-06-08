@@ -12,38 +12,6 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-    void iAudioSource::SetPosition(const tVector3f& avPosition)
-    {
-        mvPosition = avPosition;
-    }
-
-    void iAudioSource::SetVelocity(const tVector3f& avVelocity)
-    {
-        mvVelocity = avVelocity;
-    }
-
-    void iAudioSource::SetPitch(float afPitch)
-    {
-        mfPitch = afPitch;
-        mfPitch = cMath::Clamp<float>(mfPitch, 0.0f, 1.0f);
-    }
-
-    void iAudioSource::SetGain(float afGain)
-    {
-        mfGain = afGain;
-        mfGain = cMath::Clamp<float>(mfGain, 0.0f, 1.0f);
-    }
-
-    void iAudioSource::SetLoop(bool abLoop)
-    {
-        mbLoop = abLoop;
-    }
-
-    void iAudioSource::SetBuffer(uint32_t alAudioBuffer)
-    {
-        mlAudioBuffer = alAudioBuffer;
-    }
-
     const tVector3f& iAudioSource::GetPosition() const
     {
         return mvPosition;
@@ -69,9 +37,9 @@ namespace baizel
         return mbLoop;
     }
 
-    uint32_t iAudioSource::GetBuffer() const
+    uint32_t iAudioSource::GetBufferID() const
     {
-        return mlAudioBuffer;
+        return mlAudioBufferID;
     }
 
 	// -----------------------------------------------------------------------

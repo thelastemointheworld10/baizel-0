@@ -2,26 +2,24 @@
 #define BAIZEL_AUDIOSYSTEMAL_H
 
 #include <audio/AudioSystem.h>
-#include <realization/audio/ErrorHandlerAL.h>
 
 #include <realization/audio/AudioBufferAL.h>
 #include <realization/audio/AudioSourceAL.h>
+#include <realization/audio/AudioListenerAL.h>
 
 namespace baizel
 {
-    class cAudioSystemAL : public iAudioSystem
+    class cAudioSystemAL final : public iAudioSystem
     {
     public:
         ~cAudioSystemAL();
 
         void CreateDevice() override;
         void CreateContext() override;
+        void CreateListener() override;
 
         iAudioBuffer* CreateBuffer() const override;
         iAudioSource* CreateSource() const override;
-
-        void SetListenerPosition(const tVector3f& avPosition) override;
-        void SetListenerVelocity(const tVector3f& avVelocity) override;
 
         void SetAudioDevices() override;
 

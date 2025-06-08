@@ -11,24 +11,21 @@ namespace baizel
     class iAudioSource
     {
     public:
-        void SetPosition(const tVector3f& avPosition);
-        void SetVelocity(const tVector3f& avVelocity);
-        void SetPitch(float afPitch);
-        void SetGain(float afGain);
-        void SetLoop(bool abLoop);
-        void SetBuffer(uint32_t alAudioBuffer);
+        virtual void SetPosition(const tVector3f& avPosition) = 0;
+        virtual void SetVelocity(const tVector3f& avVelocity) = 0;
+        virtual void SetPitch(float afPitch) = 0;
+        virtual void SetGain(float afGain) = 0;
+        virtual void SetLoop(bool abLoop) = 0;
+        virtual void SetBufferID(uint32_t alAudioBufferID) = 0;
 
         const tVector3f& GetPosition() const;
         const tVector3f& GetVelocity() const;
         float GetPitch() const;
         float GetGain() const;
         bool GetLoop() const;
-        uint32_t GetBuffer() const;
+        uint32_t GetBufferID() const;
 
         virtual void Play() const = 0;
-
-    protected:
-        virtual void UpdateValues() const = 0;
 
     protected:
         uint32_t mlSourceID = 0;
@@ -40,7 +37,7 @@ namespace baizel
         float mfGain = 1.0f;
         bool mbLoop = false;
 
-        uint32_t mlAudioBuffer = 0;
+        uint32_t mlAudioBufferID = 0;
     };
 }
 

@@ -138,6 +138,12 @@
     <ClInclude Include="core\include\audio\stb_vorbis.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\audio\AudioListener.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\realization\audio\AudioListenerAL.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp">
@@ -225,6 +231,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\audio\AudioSystem.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\audio\AudioListener.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\realization\audio\AudioListenerAL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

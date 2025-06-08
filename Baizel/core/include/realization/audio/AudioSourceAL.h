@@ -12,10 +12,14 @@ namespace baizel
     public:
         cAudioSourceAL();
 
-        void Play() const override;
+        void SetPosition(const tVector3f& avPosition) override;
+        void SetVelocity(const tVector3f& avVelocity) override;
+        void SetPitch(float afPitch) override;
+        void SetGain(float afGain) override;
+        void SetLoop(bool abLoop) override;
+        void SetBufferID(uint32_t alAudioBuffer) override;
 
-    protected:
-        void UpdateValues() const override;
+        void Play() const override;
     };
 }
 

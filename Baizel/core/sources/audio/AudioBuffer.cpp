@@ -10,6 +10,8 @@ namespace baizel
 
 	bool iAudioBuffer::LoadAudio(const std::string& asPath)
 	{
+		cLog::Log("Loading audio data: '%s'", asPath.c_str());
+
 		Reset(); // old data
 
 		int lError;
@@ -46,7 +48,6 @@ namespace baizel
 		SetData(); // alBufferData
 
 		stb_vorbis_close(mpVorbis);
-		cLog::Log("Audio data loaded: '%s'", asPath.c_str());
 
 		return true;
 	}
@@ -69,7 +70,7 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	uint32_t iAudioBuffer::Get() const
+	uint32_t iAudioBuffer::GetID() const
 	{
 		return mlBufferID;
 	}

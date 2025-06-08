@@ -13,8 +13,8 @@ namespace baizel
         delete mpDevice;
         mpDevice = nullptr;
 
-        delete mpDevice;
-        mpDevice = nullptr;
+        delete mpContext;
+        mpContext = nullptr;
     }
 
     // -----------------------------------------------------------------------
@@ -59,6 +59,11 @@ namespace baizel
         cLog::Log("Audio context created");
     }
 
+    void cAudioSystemAL::CreateListener()
+    {
+        mpAudioListener = new cAudioListenerAL();
+    }
+
     iAudioBuffer* cAudioSystemAL::CreateBuffer() const
     {
         return new cAudioBufferAL();
@@ -72,16 +77,6 @@ namespace baizel
     //////////////////////////////////////////
     // Accessors
     //////////////////////////////////////////
-
-    void cAudioSystemAL::SetListenerPosition(const tVector3f& avPosition)
-    {
-        alCall(alListener3f, AL_POSITION, avPosition.x, avPosition.y, avPosition.z);
-    }
-
-    void cAudioSystemAL::SetListenerVelocity(const tVector3f& avVelocity)
-    {
-        alCall(alListener3f, AL_VELOCITY, avVelocity.x, avVelocity.y, avVelocity.z);
-    }
 
     void cAudioSystemAL::SetAudioDevices()
     {

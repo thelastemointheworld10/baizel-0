@@ -31,12 +31,12 @@ namespace baizel
 	{
 		cLog::Log("- Exiting SDL");
 
-		cLog::Log("  SDL_image");
+		cLog::Log("\tSDL_image");
 		IMG_Quit();
-		cLog::Log("  SDL_ttf");
-		TTF_Quit();
-		cLog::Log("  SDL");
+		cLog::Log("\tSDL");
 		SDL_Quit();
+		cLog::Log("\tSDL_ttf");
+		TTF_Quit();
 	}
 
 	// -----------------------------------------------------------------------

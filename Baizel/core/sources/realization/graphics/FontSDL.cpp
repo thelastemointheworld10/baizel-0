@@ -31,6 +31,8 @@ namespace baizel
 
 	void cFontSDL::Load(const std::string& asPath)
 	{
+		cLog::Log("Loading font: '%s'", asPath.c_str());
+
 		mpFont = TTF_OpenFont(asPath.c_str(), mlSize);
 		if (mpFont == nullptr)
 		{

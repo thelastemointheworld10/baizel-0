@@ -15,16 +15,16 @@ namespace baizel
 
 		cLog::Log("- Creating engine stuff");
 
-		cLog::Log("   Graphics");
+		cLog::Log("\tGraphics");
 		mpGraphics = mpEngineSetup->CreateGraphics();
 
-		cLog::Log("   Input");
+		cLog::Log("\tInput");
 		mpInput = mpEngineSetup->CreateInput(this, mpGraphics->GetLowLevel());
 
-		cLog::Log("   System");
+		cLog::Log("\tSystem");
 		mpSystem = mpEngineSetup->CreateSystem();
 
-		cLog::Log("   Time step");
+		cLog::Log("\tTime step");
 		mpTimeStep = new cTimeStep(mpSystem);
 
 		cLog::Log("----------------------------------------------------");
@@ -34,27 +34,27 @@ namespace baizel
 	{
 		cLog::Log("- Deleting engine stuff");
 
-		cLog::Log("   Graphics");
+		cLog::Log("\tGraphics");
 		delete mpGraphics;
 		mpGraphics = nullptr;
 
-		cLog::Log("   Input");
+		cLog::Log("\tInput");
 		delete mpInput;
 		mpInput = nullptr;
 
-		cLog::Log("   System");
+		cLog::Log("\tSystem");
 		delete mpSystem;
 		mpSystem = nullptr;
 
-		cLog::Log("   Time step");
+		cLog::Log("\tTime step");
 		delete mpTimeStep;
 		mpTimeStep = nullptr;
 
-		cLog::Log("   Audio system");
+		cLog::Log("\tAudio system");
 		delete mpAudioSystem;
 		mpAudioSystem = nullptr;
 
-		cLog::Log("   Game setup");
+		cLog::Log("\tGame setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
 	}
@@ -81,6 +81,9 @@ namespace baizel
 
 		mpAudioSystem->CreateDevice();
 		mpAudioSystem->CreateContext();
+		mpAudioSystem->CreateListener();
+
+		mpAudioSystem->GetListener()->SetMasterGain(1.0f);
 
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Engine initialized");
@@ -95,7 +98,10 @@ namespace baizel
 		iAudioSource* pSource = mpAudioSystem->CreateSource();
 
 		pBuffer->LoadAudio("music/raw_test/gang_bang.ogg");
-		pSource->SetBuffer(pBuffer->Get());
+		pSource->SetBufferID(pBuffer->GetID());
+
+		pSource->SetGain(1.0f);
+		pSource->SetLoop(false);
 
 		mbRunning = true;
 		while (mbRunning)

@@ -34,6 +34,8 @@ namespace baizel
 	{
 		ReleaseResources();
 
+		cLog::Log("Loading texture: '%s'", asPath.c_str());
+
 		mpSurface = IMG_Load(asPath.c_str());
 		if (mpSurface == nullptr)
 		{

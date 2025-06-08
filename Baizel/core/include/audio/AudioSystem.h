@@ -9,6 +9,7 @@
 
 #include <audio/AudioBuffer.h>
 #include <audio/AudioSource.h>
+#include <audio/AudioListener.h>
 
 namespace baizel
 {
@@ -19,22 +20,25 @@ namespace baizel
     {
     public:
         iAudioSystem();
+        ~iAudioSystem();
 
         virtual void CreateDevice() = 0;
         virtual void CreateContext() = 0;
+        virtual void CreateListener() = 0;
 
         virtual iAudioBuffer* CreateBuffer() const = 0;
         virtual iAudioSource* CreateSource() const = 0;
 
-        virtual void SetListenerPosition(const tVector3f& avPosition) = 0;
-        virtual void SetListenerVelocity(const tVector3f& avVelocity) = 0;
-
         virtual void SetAudioDevices() = 0;
+
+        iAudioListener* GetListener() const;
 
         virtual void Exit() = 0;
 
     protected:
         tAudioDevicesVec mvAudioDevices;
+
+        iAudioListener* mpAudioListener = nullptr;
     };
 }
 
