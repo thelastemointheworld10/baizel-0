@@ -28,18 +28,23 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	void cRendererSDL::Init(iLowLevelGraphics* apGraphics)
+	bool cRendererSDL::Init(iLowLevelGraphics* apGraphics)
 	{
 		cLowLevelGraphicsSDL* pLowLevelGraphicsSDL = dynamic_cast<cLowLevelGraphicsSDL*>(apGraphics);
 
 		mpRenderer = SDL_CreateRenderer(pLowLevelGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
 		if (mpRenderer == nullptr)
+		{
 			cLog::Fatal("Failed to create renderer: %s", SDL_GetError());
+			return false;
+		}
 
 		tVector2f vVirtualSize = pLowLevelGraphicsSDL->GetVirtualSize();
 
 		SDL_RenderSetLogicalSize(mpRenderer, vVirtualSize.x, vVirtualSize.y);
 		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
+
+		return true;
 	}
 
 	//////////////////////////////////////////

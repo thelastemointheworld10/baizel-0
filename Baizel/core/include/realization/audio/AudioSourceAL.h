@@ -20,6 +20,8 @@ namespace baizel
         void SetBufferID(uint32_t alAudioBuffer) override;
 
         void Play() const override;
+        void Stop() const override;
+        void Pause() const override;
     };
 }
 

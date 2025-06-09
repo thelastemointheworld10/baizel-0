@@ -12,6 +12,7 @@
 #include <graphics/Graphics.h>
 #include <input/Input.h>
 #include <engine/TimeStep.h>
+#include <system/Timer.h>
 #include <graphics/Animation.h>
 #include <graphics/Font.h>
 #include <audio/AudioSystem.h>

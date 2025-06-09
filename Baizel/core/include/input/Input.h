@@ -58,8 +58,8 @@ namespace baizel
         }
 
     private:
-        iLowLevelInput* mpLowLevelInput;
-        tInputDevicesArray mpInputDevices;
+        iLowLevelInput* mpLowLevelInput = nullptr;
+        tInputDevicesArray mpInputDevices = {};
     };
 }
 

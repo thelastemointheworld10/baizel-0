@@ -79,6 +79,8 @@ namespace baizel
 			return false;
 		}
 
+		cLog::Log("----------------------------------------------------");
+			
 		mpAudioSystem->CreateDevice();
 		mpAudioSystem->CreateContext();
 		mpAudioSystem->CreateListener();
@@ -94,11 +96,28 @@ namespace baizel
 
 	void cEngine::Run()
 	{
-		iAudioBuffer* pBuffer = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer1 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer2 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer3 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer4 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer5 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer6 = mpAudioSystem->CreateBuffer();
+		iAudioBuffer* pBuffer7 = mpAudioSystem->CreateBuffer();
 		iAudioSource* pSource = mpAudioSystem->CreateSource();
 
-		pBuffer->LoadAudio("music/raw_test/gang_bang.ogg");
-		pSource->SetBufferID(pBuffer->GetID());
+		cTimer Timer(mpSystem);
+		Timer.Start();
+
+		pBuffer1->LoadAudio("music/raw_test/1.ogg");
+		pBuffer2->LoadAudio("music/raw_test/2.ogg");
+		pBuffer3->LoadAudio("music/raw_test/3.ogg");
+		pBuffer4->LoadAudio("music/raw_test/4.ogg");
+		pBuffer5->LoadAudio("music/raw_test/5.ogg");
+		pBuffer6->LoadAudio("music/raw_test/6.ogg");
+		pBuffer7->LoadAudio("music/raw_test/7.ogg");
+		pSource->SetBufferID(pBuffer2->GetID());
+
+		cLog::Log("time to load 7 audio files(sec): %f", Timer.GetTimeInSec());
 
 		pSource->SetGain(1.0f);
 		pSource->SetLoop(false);
@@ -118,7 +137,13 @@ namespace baizel
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 
-		delete pBuffer;
+		delete pBuffer1;
+		delete pBuffer2;
+		delete pBuffer3;
+		delete pBuffer4;
+		delete pBuffer5;
+		delete pBuffer6;
+		delete pBuffer7;
 		delete pSource;
 	}
 

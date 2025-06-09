@@ -72,5 +72,15 @@ namespace baizel
         alCall(alSourcePlay, mlSourceID);
     }
 
+    void cAudioSourceAL::Stop() const
+    {
+        alCall(alSourceStop, mlSourceID);
+    }
+
+    void cAudioSourceAL::Pause() const
+    {
+        alCall(alSourcePause, mlSourceID);
+    }
+
     // -----------------------------------------------------------------------
 }

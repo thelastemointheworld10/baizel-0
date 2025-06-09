@@ -33,7 +33,6 @@ namespace baizel
     {
         SetAudioDevices();
         const char* sDefaultDevice = mvAudioDevices[0].c_str();
-        cLog::Log("Default device: %s", sDefaultDevice);
 
         mpDevice = alcOpenDevice(sDefaultDevice);
         if (mpDevice == nullptr)
@@ -82,6 +81,12 @@ namespace baizel
     {
         const ALCchar* sAllDevices = alcCall(alcGetString, mpDevice, nullptr, ALC_ALL_DEVICES_SPECIFIER);
         const char* sDevice = sAllDevices;
+
+        if (sDevice == nullptr)
+        {
+            cLog::Fatal("There are no audio devices!");
+            return;
+        }
 
         do
         {

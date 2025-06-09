@@ -26,6 +26,8 @@ namespace baizel
         uint32_t GetBufferID() const;
 
         virtual void Play() const = 0;
+        virtual void Stop() const = 0;
+        virtual void Pause() const = 0;
 
     protected:
         uint32_t mlSourceID = 0;

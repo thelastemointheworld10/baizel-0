@@ -17,7 +17,7 @@ namespace baizel
 	public:
 		~cRendererSDL() override;
 
-		void Init(iLowLevelGraphics* apGraphics) override;
+		bool Init(iLowLevelGraphics* apGraphics) override;
 
 		SDL_Renderer* GetRenderer() const;
 

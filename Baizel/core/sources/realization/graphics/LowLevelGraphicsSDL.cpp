@@ -63,7 +63,11 @@ namespace baizel
 			return false;
 		}
 
-		mpRenderer->Init(this);
+		if (mpRenderer->Init(this) == false)
+		{
+			cLog::Fatal("Failed to init renderer!");
+			return false;
+		}
 
 		return true;
 	}
