@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\audio\AudioBuffer.h" />
+    <ClInclude Include="core\include\audio\AudioDevice.h" />
     <ClInclude Include="core\include\audio\AudioListener.h" />
     <ClInclude Include="core\include\audio\AudioSource.h" />
     <ClInclude Include="core\include\audio\AudioSystem.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="core\include\math\Vector2.h" />
     <ClInclude Include="core\include\math\Vector3.h" />
     <ClInclude Include="core\include\realization\audio\AudioBufferAL.h" />
+    <ClInclude Include="core\include\realization\audio\AudioDeviceAL.h" />
     <ClInclude Include="core\include\realization\audio\AudioListenerAL.h" />
     <ClInclude Include="core\include\realization\audio\AudioSourceAL.h" />
     <ClInclude Include="core\include\realization\audio\AudioSystemAL.h" />
@@ -217,10 +219,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\audio\AudioBuffer.cpp" />
+    <ClCompile Include="core\sources\audio\AudioDevice.cpp" />
     <ClCompile Include="core\sources\audio\AudioListener.cpp" />
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\include\audio\stb_vorbis.c" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
+    <ClCompile Include="core\sources\realization\audio\AudioDeviceAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioListenerAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp" />
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />

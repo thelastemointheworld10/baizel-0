@@ -10,16 +10,13 @@
 #include <audio/AudioBuffer.h>
 #include <audio/AudioSource.h>
 #include <audio/AudioListener.h>
+#include <audio/AudioDevice.h>
 
 namespace baizel
 {
-    using tAudioDevicesVec = std::vector<std::string>;
-    const int gkMaxAudioDevices = 3;
-
     class iAudioSystem
     {
     public:
-        iAudioSystem();
         ~iAudioSystem();
 
         virtual void CreateDevice() = 0;
@@ -29,16 +26,13 @@ namespace baizel
         virtual iAudioBuffer* CreateBuffer() const = 0;
         virtual iAudioSource* CreateSource() const = 0;
 
-        virtual void SetAudioDevices() = 0;
-
         iAudioListener* GetListener() const;
 
         virtual void Exit() = 0;
 
     protected:
-        tAudioDevicesVec mvAudioDevices;
-
         iAudioListener* mpAudioListener = nullptr;
+        iAudioDevice* mpAudioDevice = nullptr;
     };
 }
 

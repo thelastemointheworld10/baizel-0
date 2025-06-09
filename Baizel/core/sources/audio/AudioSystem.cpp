@@ -7,16 +7,14 @@ namespace baizel
 	//////////////////////////////////////////////////////////////////////////
 
 	// -----------------------------------------------------------------------
-	
-	iAudioSystem::iAudioSystem()
-	{
-		mvAudioDevices.reserve(gkMaxAudioDevices);
-	}
 
 	iAudioSystem::~iAudioSystem()
 	{
 		delete mpAudioListener;
 		mpAudioListener = nullptr;
+
+		delete mpAudioDevice;
+		mpAudioDevice = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------

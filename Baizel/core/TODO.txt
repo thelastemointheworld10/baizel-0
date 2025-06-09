@@ -1,1 +1,1 @@
-создать audiodevice
+audio streaming

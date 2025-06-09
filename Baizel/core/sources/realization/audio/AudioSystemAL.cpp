@@ -10,10 +10,6 @@ namespace baizel
 
     cAudioSystemAL::~cAudioSystemAL()
     {
-        delete mpDevice;
-        mpDevice = nullptr;
-
-        delete mpContext;
         mpContext = nullptr;
     }
 
@@ -31,29 +27,24 @@ namespace baizel
 
     void cAudioSystemAL::CreateDevice()
     {
-        SetAudioDevices();
-        const char* sDefaultDevice = mvAudioDevices[0].c_str();
-
-        mpDevice = alcOpenDevice(sDefaultDevice);
-        if (mpDevice == nullptr)
-        {
-            cLog::Fatal("Failed to open default audio device");
-            return;
-        }
+        mpAudioDevice = new cAudioDeviceAL();
+        mpAudioDevice->SetDevice(mpAudioDevice->GetDefaultDevice());
 
         cLog::Log("Audio device created");
     }
 
     void cAudioSystemAL::CreateContext()
     {
-        mpContext = alcCall(alcCreateContext, mpDevice, mpDevice, nullptr);
+        ALCdevice* pDevice = dynamic_cast<cAudioDeviceAL*>(mpAudioDevice)->GetALCDevice();
+
+        mpContext = alcCall(alcCreateContext, pDevice, pDevice, nullptr);
         if (mpContext == nullptr)
         {
             cLog::Fatal("Failed to create audio context");
             return;
         }
 
-        alcCall(alcMakeContextCurrent, mpDevice, mpContext);
+        alcCall(alcMakeContextCurrent, pDevice, mpContext);
 
         cLog::Log("Audio context created");
     }
@@ -74,38 +65,13 @@ namespace baizel
     }
 
     //////////////////////////////////////////
-    // Accessors
-    //////////////////////////////////////////
-
-    void cAudioSystemAL::SetAudioDevices()
-    {
-        const ALCchar* sAllDevices = alcCall(alcGetString, mpDevice, nullptr, ALC_ALL_DEVICES_SPECIFIER);
-        const char* sDevice = sAllDevices;
-
-        if (sDevice == nullptr)
-        {
-            cLog::Fatal("There are no audio devices!");
-            return;
-        }
-
-        do
-        {
-            cLog::Log("Adding audio device: %s", sDevice);
-
-            mvAudioDevices.push_back(sDevice);
-            sDevice += mvAudioDevices.back().length() + 1;
-        } while (*sDevice != '\0' && mvAudioDevices.size() <= gkMaxAudioDevices);
-    }
-
-    //////////////////////////////////////////
     // Runtime Control
     //////////////////////////////////////////
 
     void cAudioSystemAL::Exit()
     {
-        alcCall(alcMakeContextCurrent, mpDevice, nullptr);
-        alcCall(alcDestroyContext, mpDevice, mpContext);
-        alcCall(alcCloseDevice, mpDevice, mpDevice);
+        alcMakeContextCurrent(nullptr);
+        alcDestroyContext(mpContext);
     }
 
     // -----------------------------------------------------------------------

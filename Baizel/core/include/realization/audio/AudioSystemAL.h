@@ -6,6 +6,7 @@
 #include <realization/audio/AudioBufferAL.h>
 #include <realization/audio/AudioSourceAL.h>
 #include <realization/audio/AudioListenerAL.h>
+#include <realization/audio/AudioDeviceAL.h>
 
 namespace baizel
 {
@@ -21,12 +22,9 @@ namespace baizel
         iAudioBuffer* CreateBuffer() const override;
         iAudioSource* CreateSource() const override;
 
-        void SetAudioDevices() override;
-
         void Exit() override;
 
     private:
-        ALCdevice* mpDevice = nullptr;
         ALCcontext* mpContext = nullptr;
     };
 }
