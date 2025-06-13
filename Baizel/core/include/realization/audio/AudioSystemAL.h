@@ -19,6 +19,8 @@ namespace baizel
         void CreateContext() override;
         void CreateListener() override;
 
+        void SetDistanceModel(eDistanceModel aDistanceModel) const override;
+
         iAudioBuffer* CreateBuffer() const override;
         iAudioSource* CreateSource() const override;
 

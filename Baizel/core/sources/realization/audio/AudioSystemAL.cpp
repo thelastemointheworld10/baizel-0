@@ -54,6 +54,40 @@ namespace baizel
         mpAudioListener = new cAudioListenerAL();
     }
 
+    void cAudioSystemAL::SetDistanceModel(eDistanceModel aDistanceModel) const
+    {
+        ALenum lDistanceModel;
+        switch (aDistanceModel)
+        {
+        case eDistanceModel_None:
+            lDistanceModel = AL_NONE;
+            break;
+        case eDistanceModel_InverseDistance:
+            lDistanceModel = AL_INVERSE_DISTANCE;
+            break;
+        case eDistanceModel_InverseDistanceClamped:
+            lDistanceModel = AL_INVERSE_DISTANCE_CLAMPED;
+            break;
+        case eDistanceModel_LinearDistance:
+            lDistanceModel = AL_LINEAR_DISTANCE;
+            break;
+        case eDistanceModel_LinearDistanceClamped:
+            lDistanceModel = AL_LINEAR_DISTANCE_CLAMPED;
+            break;
+        case eDistanceModel_ExponentDistance:
+            lDistanceModel = AL_EXPONENT_DISTANCE;
+            break;
+        case eDistanceModel_ExponentDistanceClamped:
+            lDistanceModel = AL_EXPONENT_DISTANCE_CLAMPED;
+            break;
+        default:
+            lDistanceModel = AL_NONE;
+            break;
+        }
+
+        alCall(alDistanceModel, lDistanceModel);
+    }
+
     iAudioBuffer* cAudioSystemAL::CreateBuffer() const
     {
         return new cAudioBufferAL();

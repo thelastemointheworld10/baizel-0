@@ -37,9 +37,29 @@ namespace baizel
         return mbLoop;
     }
 
-    uint32_t iAudioSource::GetBufferID() const
+    bool iAudioSource::GetRelative() const
     {
-        return mlAudioBufferID;
+        return mbRelative;
+    }
+
+    float iAudioSource::GetMinDistance() const
+    {
+        return mfMinDistance;
+    }
+
+    float iAudioSource::GetMaxDistance() const
+    {
+        return mfMaxDistance;
+    }
+
+    float iAudioSource::GetRolloffFactor() const
+    {
+        return mfRolloffFactor;
+    }
+
+    iAudioBuffer* iAudioSource::GetBuffer() const
+    {
+        return mpAudioBuffer;
     }
 
 	// -----------------------------------------------------------------------

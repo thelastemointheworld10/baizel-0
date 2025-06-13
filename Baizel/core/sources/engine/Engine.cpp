@@ -85,7 +85,7 @@ namespace baizel
 		mpAudioSystem->CreateContext();
 		mpAudioSystem->CreateListener();
 
-		mpAudioSystem->GetListener()->SetMasterGain(1.0f);
+		mpAudioSystem->SetDistanceModel(eDistanceModel_InverseDistanceClamped);
 
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Engine initialized");
@@ -96,14 +96,38 @@ namespace baizel
 
 	void cEngine::Run()
 	{
+		mpAudioSystem->GetListener()->SetPosition(tVector2f(0, 0));
+
+		iTexture* pBG = mpGraphics->GetLowLevel()->CreateTexture();
+		pBG->LoadFile("textures/bg/winxp.jpg");
+
+		cAnimation Animation(6, mpGraphics->GetLowLevel());
+		Animation.SetSpeed(30.0f);
+		Animation.AddFrame("textures/effects/effect_noise00.jpg");
+		Animation.AddFrame("textures/effects/effect_noise01.jpg");
+		Animation.AddFrame("textures/effects/effect_noise02.jpg");
+		Animation.AddFrame("textures/effects/effect_noise03.jpg");
+		Animation.AddFrame("textures/effects/effect_noise04.jpg");
+		Animation.AddFrame("textures/effects/effect_noise05.jpg");
+
 		iAudioBuffer* pBuffer = mpAudioSystem->CreateBuffer();
 		iAudioSource* pSource = mpAudioSystem->CreateSource();
 
 		pBuffer->LoadAudio("music/raw_test/1.ogg");
-		pSource->SetBufferID(pBuffer->GetID());
+		pSource->SetBuffer(pBuffer);
+
+		tVector2f vSoundPos(400, 300);
 
 		pSource->SetGain(1.0f);
-		pSource->SetLoop(false);
+		pSource->SetLoop(true);
+		pSource->SetRelative(false);
+		pSource->SetPosition(vSoundPos);
+
+		pSource->Play();
+
+		tVector2f vPos = tVector2f(mpAudioSystem->GetListener()->GetPosition().ToVec2());
+		tVector2f vSize = tVector2f(100, 100);
+		float fSpeed = 200.0f;
 
 		mbRunning = true;
 		while (mbRunning)
@@ -114,25 +138,47 @@ namespace baizel
 			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
 			mpGraphics->GetRenderer()->Clear();
 
-			if (mpInput->GetKeyboard()->GetLastKey() == eKey_Space)
-				pSource->Play();
+			mpGraphics->GetRenderer()->DrawTexture(pBG,
+				tVector2f(),
+				mpGraphics->GetLowLevel()->GetVirtualSize());
+			
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
+				vPos.y -= fSpeed * mpTimeStep->GetTimeStep();
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
+				vPos.x -= fSpeed * mpTimeStep->GetTimeStep();
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
+				vPos.y += fSpeed * mpTimeStep->GetTimeStep();
+			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
+				vPos.x += fSpeed * mpTimeStep->GetTimeStep();
+
+			mpGraphics->GetRenderer()->DrawFilledRect(vPos, vSize, cColor(255, 0, 0));
+			mpGraphics->GetRenderer()->DrawFilledRect(vSoundPos, vSize, cColor(0, 0, 255));
+
+			mpAudioSystem->GetListener()->SetPosition(vPos);
+
+			Animation.GetCurrentFrame()->SetAlpha(10);
+			mpGraphics->GetRenderer()->DrawTexture(Animation.GetCurrentFrame(),
+				tVector2f(),
+				mpGraphics->GetLowLevel()->GetVirtualSize());
+			Animation.Update(mpTimeStep->GetTimeStep());
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 
 		delete pBuffer;
 		delete pSource;
+		delete pBG;
 	}
 
 	void cEngine::Exit()
 	{
 		mbRunning = false;
 
-		mpAudioSystem->Exit();
-
 		cLog::Log("----------------------------------------------------");
 		cLog::Log("Exiting engine");
 		cLog::Log("----------------------------------------------------");
+
+		mpAudioSystem->Exit();
 	}
 
 	// -----------------------------------------------------------------------

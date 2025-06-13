@@ -48,8 +48,7 @@ namespace baizel
 
         do
         {
-            cLog::Log("Adding audio device: %s", sDevice);
-
+            //cLog::Log("Found audio device: %s", sDevice);
             mvAudioDevices.push_back(sDevice);
             sDevice += mvAudioDevices.back().length() + 1;
         } while (*sDevice != '\0' && mvAudioDevices.size() <= gkMaxAudioDevices);
@@ -64,6 +63,7 @@ namespace baizel
         if (mpAudioDevice != nullptr)
             alcCloseDevice(mpAudioDevice);
 
+        cLog::Log("Opening audio device: %s", asName.c_str());
         mpAudioDevice = alcOpenDevice(asName.c_str());
         if (mpAudioDevice == nullptr)
         {

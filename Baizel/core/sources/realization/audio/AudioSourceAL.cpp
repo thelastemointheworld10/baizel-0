@@ -11,6 +11,19 @@ namespace baizel
     cAudioSourceAL::cAudioSourceAL()
     {
         alCall(alGenSources, 1, &mlSourceID);
+
+        SetPosition(mvPosition);
+        SetVelocity(mvVelocity);
+
+        SetPitch(mfPitch);
+        SetGain(mfGain);
+        SetLoop(mbLoop);
+
+        SetRelative(mbRelative);
+
+        SetMinDistance(mfMinDistance);
+        SetMaxDistance(mfMaxDistance);
+        SetRolloffFactor(mfRolloffFactor);
     }
 
     // -----------------------------------------------------------------------
@@ -31,9 +44,21 @@ namespace baizel
         alCall(alSource3f, mlSourceID, AL_POSITION, mvPosition.x, mvPosition.y, mvPosition.z);
     }
 
+    void cAudioSourceAL::SetPosition(const tVector2f& avPosition)
+    {
+        mvPosition = tVector3f(avPosition.x, avPosition.y, 0.0f);
+        alCall(alSource3f, mlSourceID, AL_POSITION, mvPosition.x, mvPosition.y, mvPosition.z);
+    }
+
     void cAudioSourceAL::SetVelocity(const tVector3f& avVelocity)
     {
         mvVelocity = avVelocity;
+        alCall(alSource3f, mlSourceID, AL_VELOCITY, mvVelocity.x, mvVelocity.y, mvVelocity.z);
+    }
+
+    void cAudioSourceAL::SetVelocity(const tVector2f& avVelocity)
+    {
+        mvVelocity = tVector3f(avVelocity.x, avVelocity.y, 0.0f);
         alCall(alSource3f, mlSourceID, AL_VELOCITY, mvVelocity.x, mvVelocity.y, mvVelocity.z);
     }
 
@@ -57,10 +82,34 @@ namespace baizel
         alCall(alSourcei, mlSourceID, AL_LOOPING, mbLoop ? AL_TRUE : AL_FALSE);
     }
 
-    void cAudioSourceAL::SetBufferID(uint32_t alAudioBuffer)
+    void cAudioSourceAL::SetRelative(bool abRelative)
     {
-        mlAudioBufferID = alAudioBuffer;
-        alCall(alSourcei, mlSourceID, AL_BUFFER, mlAudioBufferID);
+        mbRelative = abRelative;
+        alCall(alSourcei, mlSourceID, AL_SOURCE_RELATIVE, mbRelative ? AL_TRUE : AL_FALSE);
+    }
+
+    void cAudioSourceAL::SetMinDistance(float afDistance)
+    {
+        mfMinDistance = afDistance;
+        alCall(alSourcef, mlSourceID, AL_REFERENCE_DISTANCE, mfMinDistance);
+    }
+
+    void cAudioSourceAL::SetMaxDistance(float afDistance)
+    {
+        mfMaxDistance = afDistance;
+        alCall(alSourcef, mlSourceID, AL_MAX_DISTANCE, mfMaxDistance);
+    }
+
+    void cAudioSourceAL::SetRolloffFactor(float afRolloff)
+    {
+        mfRolloffFactor = afRolloff;
+        alCall(alSourcef, mlSourceID, AL_ROLLOFF_FACTOR, mfRolloffFactor);
+    }
+
+    void cAudioSourceAL::SetBuffer(iAudioBuffer* apAudioBuffer)
+    {
+        mpAudioBuffer = apAudioBuffer;
+        alCall(alSourcei, mlSourceID, AL_BUFFER, mpAudioBuffer->GetID());
     }
 
     //////////////////////////////////////////

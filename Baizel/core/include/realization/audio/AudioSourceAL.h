@@ -13,11 +13,21 @@ namespace baizel
         cAudioSourceAL();
 
         void SetPosition(const tVector3f& avPosition) override;
+        void SetPosition(const tVector2f& avPosition) override;
         void SetVelocity(const tVector3f& avVelocity) override;
+        void SetVelocity(const tVector2f& avVelocity) override;
+
         void SetPitch(float afPitch) override;
         void SetGain(float afGain) override;
         void SetLoop(bool abLoop) override;
-        void SetBufferID(uint32_t alAudioBuffer) override;
+
+        void SetRelative(bool abRelative) override;
+
+        void SetMinDistance(float afDistance) override;
+        void SetMaxDistance(float afDistance) override;
+        void SetRolloffFactor(float afRolloff) override;
+
+        void SetBuffer(iAudioBuffer* apAudioBuffer) override;
 
         void Play() const override;
         void Stop() const override;

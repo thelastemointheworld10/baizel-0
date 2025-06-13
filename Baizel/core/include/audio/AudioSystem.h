@@ -14,6 +14,17 @@
 
 namespace baizel
 {
+    enum eDistanceModel
+    {
+        eDistanceModel_None,
+        eDistanceModel_InverseDistance,
+        eDistanceModel_InverseDistanceClamped,
+        eDistanceModel_LinearDistance,
+        eDistanceModel_LinearDistanceClamped,
+        eDistanceModel_ExponentDistance,
+        eDistanceModel_ExponentDistanceClamped
+    };
+
     class iAudioSystem
     {
     public:
@@ -22,6 +33,8 @@ namespace baizel
         virtual void CreateDevice() = 0;
         virtual void CreateContext() = 0;
         virtual void CreateListener() = 0;
+
+        virtual void SetDistanceModel(eDistanceModel aDistanceModel) const = 0;
 
         virtual iAudioBuffer* CreateBuffer() const = 0;
         virtual iAudioSource* CreateSource() const = 0;

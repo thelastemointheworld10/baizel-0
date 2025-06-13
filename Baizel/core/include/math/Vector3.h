@@ -4,6 +4,9 @@
 namespace baizel
 {
 	template <typename T>
+	class cVector2; // for ToVec2
+
+	template <typename T>
 	class cVector3 final
 	{
 	public:
@@ -159,6 +162,23 @@ namespace baizel
 		inline cVector3<T> operator-(const T& aValue) const
 		{
 			return cVector3<T>(x - aValue, y - aValue, z - aValue);
+		}
+
+		// -----------------------------------------------------------------------
+
+		//////////////////////////////////////////////////////////////////////////
+		// PUBLIC METHODS
+		//////////////////////////////////////////////////////////////////////////
+
+		// -----------------------------------------------------------------------
+
+		//////////////////////////////////////////
+		// Core Functionality
+		//////////////////////////////////////////
+
+		inline cVector2<T> ToVec2() const
+		{
+			return cVector2<T>(x, y);
 		}
 
 		// -----------------------------------------------------------------------
