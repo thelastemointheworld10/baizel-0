@@ -42,7 +42,7 @@ namespace baizel
 
 	void cAnimation::SetSpeed(float afFrames)
 	{
-		this->mfFrameRate = 1.0f / afFrames;
+		mfFrameRate = 1.0f / afFrames;
 	}
 
 	void cAnimation::AddFrame(const std::string& asFramePath)
@@ -53,16 +53,16 @@ namespace baizel
 			return;
 		}
 
-		iTexture* pFrame = mpLowLevelGraphics->CreateTexture();
-		if (pFrame == nullptr)
+		//cLog::Log("adding animation frame: %s", asFramePath.c_str());
+
+		iTexture* pNewFrame = FindSameFrame(asFramePath);
+		if (pNewFrame == nullptr) // same frame does not exists
 		{
-			cLog::Error("Failed to add frame! new frame is nullptr!");
-			return;
+			pNewFrame = mpLowLevelGraphics->CreateTexture();
+			pNewFrame->LoadFile(asFramePath);
 		}
 
-		pFrame->LoadFile(asFramePath);
-
-		mvFrames.push_back(pFrame);
+		mvFrames.push_back(pNewFrame);
 	}
 
 	iTexture* cAnimation::GetCurrentFrame() const
@@ -92,6 +92,31 @@ namespace baizel
 			else
 				mlCurrentFrame = 0;
 		}
+	}
+
+	// -----------------------------------------------------------------------
+	
+	//////////////////////////////////////////////////////////////////////////
+	// PRIVATE METHODS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
+	iTexture* cAnimation::FindSameFrame(const std::string& asPath) const
+	{
+		for (iTexture* pFrame : mvFrames)
+		{
+			if (pFrame->GetPath() == asPath)
+			{
+				return pFrame;
+			}
+		}
+
+		return nullptr;
 	}
 
 	// -----------------------------------------------------------------------

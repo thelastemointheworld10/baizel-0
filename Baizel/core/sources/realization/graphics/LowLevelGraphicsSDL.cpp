@@ -32,23 +32,13 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	bool cLowLevelGraphicsSDL::Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
+	bool cLowLevelGraphicsSDL::Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen)
 	{
 		unsigned int lFlags = SDL_WINDOW_SHOWN;
 		if (abFullscreen) lFlags |= SDL_WINDOW_FULLSCREEN;
 
-		if (avWindowSize.x <= 0)
-		{
-			cLog::Warning("Window Size X is 0! Setting 640 by default");
-			avWindowSize.x = 640;
-		}
-		if (avWindowSize.y <= 0)
-		{
-			cLog::Warning("Window Size Y is 0! Setting 480 by default");
-			avWindowSize.y = 480;
-		}
-
 		mvScreenSize = avWindowSize;
+		mvVirtualSize = avVirtualSize;
 
 		cLog::Log("Setting video mode: %d x %d with virtual size %.1f x %.1f",
 			mvScreenSize.x, mvScreenSize.y, mvVirtualSize.x, mvVirtualSize.y);

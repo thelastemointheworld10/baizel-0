@@ -11,17 +11,19 @@ namespace baizel
     class iTexture;
     class iFont;
 
+    const tVector2l gkMinScreenSize = tVector2l(640, 480);
+    const tVector2f gkMinVirtualSize = tVector2f(1, 1);
+
     class iLowLevelGraphics
     {
     public:
         virtual ~iLowLevelGraphics() = default;
         
-        virtual bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen) = 0;
+        virtual bool Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen) = 0;
 
         void SetRenderer(iRenderer* apRenderer);
         tVector2f GetScreenSizeFloat() const;
         tVector2f GetVirtualSize() const;
-        void SetVirtualSize(tVector2f avVirtualSize);
 
         virtual iTexture* CreateTexture() const = 0;
         virtual iFont* CreateFont() = 0;
@@ -31,8 +33,8 @@ namespace baizel
     protected:
         iRenderer* mpRenderer = nullptr;
 
-		tVector2l mvScreenSize;
-		tVector2f mvVirtualSize;
+		tVector2l mvScreenSize = tVector2l(800, 600);
+		tVector2f mvVirtualSize = tVector2f(800, 600);
     };
 }
 

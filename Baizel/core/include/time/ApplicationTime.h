@@ -1,9 +1,9 @@
-#ifndef BAIZEL_SYSTEM_H
-#define BAIZEL_SYSTEM_H
+#ifndef BAIZEL_APPLICATIONTIME_H
+#define BAIZEL_APPLICATIONTIME_H
 
 namespace baizel
 {
-    class iSystem
+    class iApplicationTime
     {
     public:
         virtual int GetTimeInMilliSec() const = 0;
@@ -14,5 +14,5 @@ namespace baizel
     };
 }
 
-#endif // BAIZEL_SYSTEM_H
+#endif // BAIZEL_APPLICATIONTIME_H
 

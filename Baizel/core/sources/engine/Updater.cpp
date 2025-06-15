@@ -1,4 +1,4 @@
-#include <engine/TimeStep.h>
+#include <engine/Updater.h>
 
 namespace baizel
 {
@@ -8,18 +8,18 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cTimeStep::cTimeStep(iApplicationTime* apApplicationTime)
+	cUpdater::cUpdater()
 	{
-		mfTimeStep = 0.016f;
+		mvUpdateable.reserve(gkDefaultEntitiesCount);
+	}
 
-		mpApplicationTime = apApplicationTime;
-
-		mfCurrentFrameTime = 0.0f;
-		mfLastFrameTime = mpApplicationTime->GetTimeInSec();
+	cUpdater::~cUpdater()
+	{
+		mvUpdateable.clear();
 	}
 
 	// -----------------------------------------------------------------------
-
+	
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
 	//////////////////////////////////////////////////////////////////////////
@@ -27,23 +27,48 @@ namespace baizel
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////
-	// Runtime Control
+	// Resource Management
 	//////////////////////////////////////////
 
-	void cTimeStep::AddFrame()
+	void cUpdater::AddUpdateable(iUpdateable* apUpdateable)
 	{
-		mfCurrentFrameTime = mpApplicationTime->GetTimeInSec();
-		mfTimeStep = mfCurrentFrameTime - mfLastFrameTime;
-		mfLastFrameTime = mfCurrentFrameTime;
+		mvUpdateable.push_back(apUpdateable);
 	}
 
 	//////////////////////////////////////////
-	// Accessors
+	// Runtime Control
 	//////////////////////////////////////////
 
-	float cTimeStep::GetTimeStep() const
+	void cUpdater::OnStart()
 	{
-		return mfTimeStep;
+		for (iUpdateable* pUpdateable : mvUpdateable)
+		{
+			pUpdateable->OnStart();
+		}
+	}
+
+	void cUpdater::OnDraw()
+	{
+		for (iUpdateable* pUpdateable : mvUpdateable)
+		{
+			pUpdateable->OnDraw();
+		}
+	}
+
+	void cUpdater::OnUpdate(float afTimeStep)
+	{
+		for (iUpdateable* pUpdateable : mvUpdateable)
+		{
+			pUpdateable->OnUpdate(afTimeStep);
+		}
+	}
+
+	void cUpdater::OnExit()
+	{
+		for (iUpdateable* pUpdateable : mvUpdateable)
+		{
+			pUpdateable->OnExit();
+		}
 	}
 
 	// -----------------------------------------------------------------------

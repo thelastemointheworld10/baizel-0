@@ -12,10 +12,11 @@
 #include <graphics/Graphics.h>
 #include <input/Input.h>
 #include <engine/TimeStep.h>
-#include <system/Timer.h>
+#include <time/Timer.h>
 #include <graphics/Animation.h>
 #include <graphics/Font.h>
 #include <audio/AudioSystem.h>
+#include <engine/Updater.h>
 
 namespace baizel
 {
@@ -27,9 +28,17 @@ namespace baizel
         cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem);
         ~cEngine();
 
-        bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen);
+        bool Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen);
         void Run();
         void Exit();
+
+        iAudioSystem* GetAudioSystem();
+        cGraphics* GetGraphics();
+        cInput* GetInput();
+        iApplicationTime* GetApplicationTime();
+        cUpdater* GetUpdater();
+
+        void SetClearColor(const cColor& aColor);
         
     private:
         bool mbRunning;
@@ -38,9 +47,11 @@ namespace baizel
         iAudioSystem* mpAudioSystem = nullptr;
         cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
-        iSystem* mpSystem = nullptr;
-
+        iApplicationTime* mpApplicationTime = nullptr;
+        cUpdater* mpUpdater = nullptr;
         cTimeStep* mpTimeStep = nullptr;
+
+        cColor mClearColor;
     };
 }
 

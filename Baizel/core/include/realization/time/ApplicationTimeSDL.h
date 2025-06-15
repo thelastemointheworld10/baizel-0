@@ -1,13 +1,13 @@
-#ifndef BAIZEL_SYSTEMSDL_H
-#define BAIZEL_SYSTEMSDL_H
+#ifndef BAIZEL_APPLICATIONTIMESDL_H
+#define BAIZEL_APPLICATIONTIMESDL_H
 
 #include <SDL2/SDL.h>
 
-#include <system/System.h>
+#include <time/ApplicationTime.h>
 
 namespace baizel
 {
-    class cSystemSDL final : public iSystem
+    class cApplicationTimeSDL final : public iApplicationTime
     {
     public:
         int GetTimeInMilliSec() const override;
@@ -18,4 +18,4 @@ namespace baizel
     };
 }
 
-#endif // BAIZEL_SYSTEMSDL_H
+#endif // BAIZEL_APPLICATIONTIMESDL_H

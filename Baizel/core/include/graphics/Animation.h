@@ -1,6 +1,7 @@
 #ifndef BAIZEL_ANIMATION_H
 #define BAIZEL_ANIMATION_H
 
+#include <string>
 #include <queue>
 
 #include <math/Math.h>
@@ -8,7 +9,6 @@
 
 #include <graphics/LowLevelGraphics.h>
 #include <graphics/AnimationTypes.h>
-#include <system/Timer.h>
 
 namespace baizel
 {
@@ -25,6 +25,10 @@ namespace baizel
 		void Update(float afTimeStep);
 
 	private:
+		iTexture* FindSameFrame(const std::string& asPath) const;
+
+	private:
+
 		tFrameVector mvFrames;
 		int mlCurrentFrame;
 

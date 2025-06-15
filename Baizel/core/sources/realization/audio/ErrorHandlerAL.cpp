@@ -20,7 +20,7 @@ namespace baizel
         ALenum lError = alGetError();
         if (lError != AL_NO_ERROR)
         {
-            cLog::Error("OpenAl Soft (%s : %d)", asFilename, alLine);
+            cLog::Error("OpenAL Soft (%s : %d)", asFilename, alLine);
             switch (lError)
             {
             case AL_INVALID_NAME:
@@ -60,7 +60,7 @@ namespace baizel
         ALCenum lError = alcGetError(apDevice);
         if (lError != ALC_NO_ERROR)
         {
-            cLog::Error("OpenAl Soft (%s : %d)", asFilename, alLine);
+            cLog::Error("OpenAL Soft (%s : %d)", asFilename, alLine);
             switch (lError)
             {
             case ALC_INVALID_VALUE:

@@ -23,8 +23,6 @@ namespace baizel
 			SDL_IMAGE_MAJOR_VERSION, SDL_IMAGE_MINOR_VERSION, SDL_IMAGE_PATCHLEVEL);
 		cLog::Log("SDL_TTF Version: %d.%d.%d",
 			SDL_TTF_MAJOR_VERSION, SDL_TTF_MINOR_VERSION, SDL_TTF_PATCHLEVEL);
-
-		cLog::Log("----------------------------------------------------");
 	}
 
 	cEngineSetupSDL::~cEngineSetupSDL()
@@ -33,10 +31,10 @@ namespace baizel
 
 		cLog::Log("\tSDL_image");
 		IMG_Quit();
-		cLog::Log("\tSDL");
-		SDL_Quit();
 		cLog::Log("\tSDL_ttf");
 		TTF_Quit();
+		cLog::Log("\tSDL");
+		SDL_Quit();
 	}
 
 	// -----------------------------------------------------------------------
@@ -73,9 +71,9 @@ namespace baizel
 		return pInput;
 	}
 
-	iSystem* cEngineSetupSDL::CreateSystem() const
+	iApplicationTime* cEngineSetupSDL::CreateApplicationTime() const
 	{
-		return new cSystemSDL();
+		return new cApplicationTimeSDL();
 	}
 
 	// -----------------------------------------------------------------------

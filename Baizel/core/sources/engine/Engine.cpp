@@ -10,10 +10,10 @@ namespace baizel
 
 	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem)
 	{
-		mpEngineSetup = apEngineSetup;
-		mpAudioSystem = apAudioSystem;
-
 		cLog::Log("- Creating engine stuff");
+
+		cLog::Log("\tEngine setup");
+		mpEngineSetup = apEngineSetup;
 
 		cLog::Log("\tGraphics");
 		mpGraphics = mpEngineSetup->CreateGraphics();
@@ -22,12 +22,16 @@ namespace baizel
 		mpInput = mpEngineSetup->CreateInput(this, mpGraphics->GetLowLevel());
 
 		cLog::Log("\tSystem");
-		mpSystem = mpEngineSetup->CreateSystem();
+		mpApplicationTime = mpEngineSetup->CreateApplicationTime();
 
 		cLog::Log("\tTime step");
-		mpTimeStep = new cTimeStep(mpSystem);
+		mpTimeStep = new cTimeStep(mpApplicationTime);
 
-		cLog::Log("----------------------------------------------------");
+		cLog::Log("\tAudio system");
+		mpAudioSystem = apAudioSystem;
+
+		cLog::Log("\tUpdater");
+		mpUpdater = new cUpdater();
 	}
 
 	cEngine::~cEngine()
@@ -43,8 +47,8 @@ namespace baizel
 		mpInput = nullptr;
 
 		cLog::Log("\tSystem");
-		delete mpSystem;
-		mpSystem = nullptr;
+		delete mpApplicationTime;
+		mpApplicationTime = nullptr;
 
 		cLog::Log("\tTime step");
 		delete mpTimeStep;
@@ -54,7 +58,11 @@ namespace baizel
 		delete mpAudioSystem;
 		mpAudioSystem = nullptr;
 
-		cLog::Log("\tGame setup");
+		cLog::Log("\tUpdater");
+		delete mpUpdater;
+		mpUpdater = nullptr;
+
+		cLog::Log("\tEngine setup");
 		delete mpEngineSetup;
 		mpEngineSetup = nullptr;
 	}
@@ -71,15 +79,17 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	bool cEngine::Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen)
+	bool cEngine::Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen)
 	{
-		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, abFullscreen) == false)
+		cLog::Log("* ----------------------------------------------------");
+		cLog::Log("* Initializing engine");
+		cLog::Log("* ----------------------------------------------------");
+
+		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, avVirtualSize, abFullscreen) == false)
 		{
 			cLog::Fatal("Failed to initialize low level graphics!");
 			return false;
 		}
-
-		cLog::Log("----------------------------------------------------");
 			
 		mpAudioSystem->CreateDevice();
 		mpAudioSystem->CreateContext();
@@ -87,47 +97,16 @@ namespace baizel
 
 		mpAudioSystem->SetDistanceModel(eDistanceModel_InverseDistanceClamped);
 
-		cLog::Log("----------------------------------------------------");
-		cLog::Log("Engine initialized");
-		cLog::Log("----------------------------------------------------");
-
 		return true;
 	}
 
 	void cEngine::Run()
 	{
-		mpAudioSystem->GetListener()->SetPosition(tVector2f(0, 0));
+		cLog::Log("* ----------------------------------------------------");
+		cLog::Log("* Running engine");
+		cLog::Log("* ----------------------------------------------------");
 
-		iTexture* pBG = mpGraphics->GetLowLevel()->CreateTexture();
-		pBG->LoadFile("textures/bg/winxp.jpg");
-
-		cAnimation Animation(6, mpGraphics->GetLowLevel());
-		Animation.SetSpeed(30.0f);
-		Animation.AddFrame("textures/effects/effect_noise00.jpg");
-		Animation.AddFrame("textures/effects/effect_noise01.jpg");
-		Animation.AddFrame("textures/effects/effect_noise02.jpg");
-		Animation.AddFrame("textures/effects/effect_noise03.jpg");
-		Animation.AddFrame("textures/effects/effect_noise04.jpg");
-		Animation.AddFrame("textures/effects/effect_noise05.jpg");
-
-		iAudioBuffer* pBuffer = mpAudioSystem->CreateBuffer();
-		iAudioSource* pSource = mpAudioSystem->CreateSource();
-
-		pBuffer->LoadAudio("music/raw_test/1.ogg");
-		pSource->SetBuffer(pBuffer);
-
-		tVector2f vSoundPos(400, 300);
-
-		pSource->SetGain(1.0f);
-		pSource->SetLoop(true);
-		pSource->SetRelative(false);
-		pSource->SetPosition(vSoundPos);
-
-		pSource->Play();
-
-		tVector2f vPos = tVector2f(mpAudioSystem->GetListener()->GetPosition().ToVec2());
-		tVector2f vSize = tVector2f(100, 100);
-		float fSpeed = 200.0f;
+		mpUpdater->OnStart();
 
 		mbRunning = true;
 		while (mbRunning)
@@ -135,50 +114,61 @@ namespace baizel
 			mpInput->Update();
 			mpTimeStep->AddFrame();
 
-			mpGraphics->GetRenderer()->SetDrawColor(0, 0, 0);
+			mpGraphics->GetRenderer()->SetDrawColor(mClearColor);
 			mpGraphics->GetRenderer()->Clear();
 
-			mpGraphics->GetRenderer()->DrawTexture(pBG,
-				tVector2f(),
-				mpGraphics->GetLowLevel()->GetVirtualSize());
-			
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-				vPos.y -= fSpeed * mpTimeStep->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
-				vPos.x -= fSpeed * mpTimeStep->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
-				vPos.y += fSpeed * mpTimeStep->GetTimeStep();
-			if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
-				vPos.x += fSpeed * mpTimeStep->GetTimeStep();
-
-			mpGraphics->GetRenderer()->DrawFilledRect(vPos, vSize, cColor(255, 0, 0));
-			mpGraphics->GetRenderer()->DrawFilledRect(vSoundPos, vSize, cColor(0, 0, 255));
-
-			mpAudioSystem->GetListener()->SetPosition(vPos);
-
-			Animation.GetCurrentFrame()->SetAlpha(10);
-			mpGraphics->GetRenderer()->DrawTexture(Animation.GetCurrentFrame(),
-				tVector2f(),
-				mpGraphics->GetLowLevel()->GetVirtualSize());
-			Animation.Update(mpTimeStep->GetTimeStep());
+			mpUpdater->OnUpdate(mpTimeStep->GetTimeStep());
+			mpUpdater->OnDraw();
 
 			mpGraphics->GetRenderer()->SwapBuffers();
 		}
 
-		delete pBuffer;
-		delete pSource;
-		delete pBG;
+		mpUpdater->OnExit();
 	}
 
 	void cEngine::Exit()
 	{
 		mbRunning = false;
 
-		cLog::Log("----------------------------------------------------");
-		cLog::Log("Exiting engine");
-		cLog::Log("----------------------------------------------------");
+		cLog::Log("* ----------------------------------------------------");
+		cLog::Log("* Exiting engine");
+		cLog::Log("* ----------------------------------------------------");
 
 		mpAudioSystem->Exit();
+	}
+
+	//////////////////////////////////////////
+	// Accessors
+	//////////////////////////////////////////
+
+	iAudioSystem* cEngine::GetAudioSystem()
+	{
+		return mpAudioSystem;
+	}
+
+	cGraphics* cEngine::GetGraphics()
+	{
+		return mpGraphics;
+	}
+
+	cInput* cEngine::GetInput()
+	{
+		return mpInput;
+	}
+
+	iApplicationTime* cEngine::GetApplicationTime()
+	{
+		return mpApplicationTime;
+	}
+
+	cUpdater* cEngine::GetUpdater()
+	{
+		return mpUpdater;
+	}
+
+	void cEngine::SetClearColor(const cColor& aColor)
+	{
+		mClearColor = aColor;
 	}
 
 	// -----------------------------------------------------------------------

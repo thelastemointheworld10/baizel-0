@@ -84,16 +84,16 @@
     <ClInclude Include="core\include\engine\Log.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\Timer.h">
+    <ClInclude Include="core\include\time\Timer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\realization\system\SystemSDL.h">
+    <ClInclude Include="core\include\realization\time\ApplicationTimeSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\engine\TimeStep.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\System.h">
+    <ClInclude Include="core\include\time\ApplicationTime.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\graphics\Animation.h">
@@ -135,9 +135,6 @@
     <ClInclude Include="core\include\realization\audio\AudioSystemAL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\audio\stb_vorbis.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\audio\AudioListener.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -148,6 +145,15 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\realization\audio\AudioDeviceAL.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\engine\Updateable.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\audio\stb_vorbis.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\engine\Updater.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,7 +203,7 @@
     <ClCompile Include="core\sources\system\Timer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\realization\system\SystemSDL.cpp">
+    <ClCompile Include="core\sources\realization\time\ApplicationTimeSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\engine\TimeStep.cpp">
@@ -233,9 +239,6 @@
     <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\include\audio\stb_vorbis.c">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="core\sources\audio\AudioSystem.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -249,6 +252,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\realization\audio\AudioDeviceAL.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\include\audio\stb_vorbis.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\engine\Updater.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

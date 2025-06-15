@@ -5,7 +5,7 @@
 
 #include <graphics/Graphics.h>
 #include <input/Input.h>
-#include <system/System.h>
+#include <time/ApplicationTime.h>
 
 namespace baizel
 {
@@ -18,7 +18,7 @@ namespace baizel
 
         virtual cGraphics* CreateGraphics() const = 0;
         virtual cInput* CreateInput(cEngine* apEngine, iLowLevelGraphics* apGraphics) const = 0;
-        virtual iSystem* CreateSystem() const = 0;
+        virtual iApplicationTime* CreateApplicationTime() const = 0;
     };
 }
 

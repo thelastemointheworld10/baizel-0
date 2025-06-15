@@ -60,9 +60,9 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	void cRendererSDL::SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA) const
+	void cRendererSDL::SetDrawColor(const cColor& aColor) const
 	{
-		SDL_SetRenderDrawColor(mpRenderer, alR, alG, alB, alA);
+		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
 	}
 
 	void cRendererSDL::Clear() const
@@ -83,7 +83,7 @@ namespace baizel
 		Rect.w = avSize.x;
 		Rect.h = avSize.y;
 
-		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
+		SetDrawColor(aColor);
 		SDL_RenderDrawRectF(mpRenderer, &Rect);
 	}
 
@@ -95,7 +95,7 @@ namespace baizel
 		Rect.w = avSize.x;
 		Rect.h = avSize.y;
 
-		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
+		SetDrawColor(aColor);
 		SDL_RenderFillRectF(mpRenderer, &Rect);
 	}
 

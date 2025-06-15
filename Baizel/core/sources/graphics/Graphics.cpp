@@ -14,7 +14,6 @@ namespace baizel
 		mpRenderer = apRenderer;
 
 		mpLowLevelGraphics->SetRenderer(mpRenderer);
-		mpLowLevelGraphics->SetVirtualSize(tVector2f(800.0f, 600.0f));
 	}
 
 	cGraphics::~cGraphics()

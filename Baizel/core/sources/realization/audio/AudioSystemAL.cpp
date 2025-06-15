@@ -104,6 +104,8 @@ namespace baizel
 
     void cAudioSystemAL::Exit()
     {
+        cLog::Log("Exiting audio system");
+
         alcMakeContextCurrent(nullptr);
         alcDestroyContext(mpContext);
     }

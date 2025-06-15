@@ -180,6 +180,8 @@
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\TimeStep.h" />
     <ClInclude Include="core\include\engine\Log.h" />
+    <ClInclude Include="core\include\engine\Updateable.h" />
+    <ClInclude Include="core\include\engine\Updater.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
     <ClInclude Include="core\include\graphics\AnimationTypes.h" />
     <ClInclude Include="core\include\graphics\Color.h" />
@@ -213,17 +215,18 @@
     <ClInclude Include="core\include\realization\graphics\RendererSDL.h" />
     <ClInclude Include="core\include\realization\graphics\TextureSDL.h" />
     <ClInclude Include="core\include\engine\Engine.h" />
-    <ClInclude Include="core\include\realization\system\SystemSDL.h" />
-    <ClInclude Include="core\include\system\System.h" />
-    <ClInclude Include="core\include\system\Timer.h" />
+    <ClInclude Include="core\include\realization\time\ApplicationTimeSDL.h" />
+    <ClInclude Include="core\include\time\ApplicationTime.h" />
+    <ClInclude Include="core\include\time\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="core\include\audio\stb_vorbis.c" />
     <ClCompile Include="core\sources\audio\AudioBuffer.cpp" />
     <ClCompile Include="core\sources\audio\AudioDevice.cpp" />
     <ClCompile Include="core\sources\audio\AudioListener.cpp" />
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
-    <ClCompile Include="core\include\audio\stb_vorbis.c" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
+    <ClCompile Include="core\sources\engine\Updater.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioDeviceAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioListenerAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp" />
@@ -249,7 +252,7 @@
     <ClCompile Include="core\sources\realization\graphics\RendererSDL.cpp" />
     <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp" />
     <ClCompile Include="core\sources\engine\Engine.cpp" />
-    <ClCompile Include="core\sources\realization\system\SystemSDL.cpp" />
+    <ClCompile Include="core\sources\realization\time\ApplicationTimeSDL.cpp" />
     <ClCompile Include="core\sources\system\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>

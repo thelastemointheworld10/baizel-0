@@ -27,10 +27,5 @@ namespace baizel
 		return mvVirtualSize;
 	}
 
-	void iLowLevelGraphics::SetVirtualSize(tVector2f avVirtualSize)
-	{
-		mvVirtualSize = avVirtualSize;
-	}
-
 	// -----------------------------------------------------------------------
 }

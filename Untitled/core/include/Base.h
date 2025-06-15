@@ -2,9 +2,14 @@
 #define BASE_H
 
 #include <string>
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 #include <realization/engine/EngineSetupSDL.h>
 #include <realization/audio/AudioSystemAL.h>
+
+#include <Player.h>
 
 namespace baizel
 {
@@ -19,11 +24,14 @@ namespace baizel
         void Exit();
 
     private:
+        std::string msWindowTitle = "";
+        tVector2l mvScreenSize = tVector2l(800, 600);
+        tVector2f mvVirtualSize = tVector2f(800, 600);
+        bool mbFullscreen = false;
+
         cEngine* mpEngine = nullptr;
 
-        std::string msWindowTitle;
-        tVector2l mvWindowSize;
-        bool mbFullscreen;
+        cPlayer* mpPlayer = nullptr;
     };
 }
 

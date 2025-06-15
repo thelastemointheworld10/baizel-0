@@ -11,8 +11,6 @@
 #include <realization/graphics/RendererSDL.h>
 #include <realization/graphics/FontSDL.h>
 
-#undef CreateFont
-
 namespace baizel
 {
     class cLowLevelGraphicsSDL : public iLowLevelGraphics
@@ -20,7 +18,7 @@ namespace baizel
     public:
         ~cLowLevelGraphicsSDL() override;
 
-        bool Init(std::string asWindowTitle, tVector2l avWindowSize, bool abFullscreen) override;
+        bool Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen) override;
 
         SDL_Window* GetWindow() const;
 

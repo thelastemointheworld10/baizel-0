@@ -2,7 +2,7 @@
 #define BAIZEL_TIMESTEP_H
 
 #include <engine/Log.h>
-#include <system/Timer.h>
+#include <time/Timer.h>
 #include <math/Math.h>
 
 namespace baizel
@@ -10,7 +10,7 @@ namespace baizel
     class cTimeStep final
     {
     public:
-        cTimeStep(iSystem* apSystem);
+        cTimeStep(iApplicationTime* apApplicationTime);
 
         void AddFrame();
 
@@ -22,7 +22,7 @@ namespace baizel
 
         float mfTimeStep;
 
-        iSystem* mpSystem;
+        iApplicationTime* mpApplicationTime;
     };
 }
 

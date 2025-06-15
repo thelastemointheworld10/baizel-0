@@ -172,10 +172,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\Base.h" />
+    <ClInclude Include="core\include\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\Base.cpp" />
     <ClCompile Include="core\sources\Main.cpp" />
+    <ClCompile Include="core\sources\Player.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

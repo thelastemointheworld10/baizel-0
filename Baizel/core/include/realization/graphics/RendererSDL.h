@@ -21,7 +21,7 @@ namespace baizel
 
 		SDL_Renderer* GetRenderer() const;
 
-		void SetDrawColor(uint8_t alR, uint8_t alG, uint8_t alB, uint8_t alA = 255) const override;
+		void SetDrawColor(const cColor& aColor) const override;
 		void Clear() const override;
 		void SwapBuffers() const override;
 
