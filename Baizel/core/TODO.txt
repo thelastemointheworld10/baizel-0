@@ -1,1 +1,1 @@
-audio streaming, iUpdateable for creating entities
+audio streaming

@@ -44,6 +44,11 @@ namespace baizel
 		return mvKeyArray[aKey];
 	}
 
+    void cKeyboardSDL::SetKeyRepeat(bool abRepeat)
+    {
+        mbKeyRepeat = abRepeat;
+    }
+
 	//////////////////////////////////////////
 	// Runtime Control
 	//////////////////////////////////////////
@@ -61,8 +66,11 @@ namespace baizel
 
             if (Event.type == SDL_KEYDOWN)
             {
-                mvKeyArray[Key] = true;
-                mvPressedKeys.push_back(Key);
+                if (mbKeyRepeat || Event.key.repeat == 0)
+                {
+                    mvKeyArray[Key] = true;
+                    mvPressedKeys.push_back(Key);
+                }
 
                 continue;
             }

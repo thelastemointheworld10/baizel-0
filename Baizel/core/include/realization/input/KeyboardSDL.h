@@ -15,6 +15,7 @@ namespace baizel
 
 		bool GetAnyKeyPressed() const override;
 		bool GetKeyPressed(eKey aKey) const override;
+		void SetKeyRepeat(bool abRepeat) override;
 
 		void Update() override;
 

@@ -52,7 +52,7 @@ namespace baizel
 	void cLowLevelInputSDL::ClearEvents()
 	{
 		mvEvents.clear();
-		mvEvents.reserve(gkMaximumEvents);
+		mvEvents.reserve(gkMaxEvents);
 	}
 	
 	// -----------------------------------------------------------------------

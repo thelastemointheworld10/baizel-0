@@ -13,10 +13,12 @@ namespace baizel
 
 		virtual bool GetAnyKeyPressed() const = 0;
 		virtual bool GetKeyPressed(eKey aKey) const = 0;
+		virtual void SetKeyRepeat(bool abRepeat) = 0;
 		eKey GetLastKey() const;
 
 	protected:
 		tKeyboardKeyVector mvPressedKeys;
+		bool mbKeyRepeat = false;
 	};
 }
 

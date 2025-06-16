@@ -2,12 +2,13 @@
 #define BAIZEL_INPUTTYPES_H
 
 #include <vector>
+#include <array>
 
 #include <input/InputDevice.h>
 
 namespace baizel
 {
-	const unsigned int gkMaximumEvents = 15;
+	const unsigned int gkMaxEvents = 15;
 
 	enum eInputDeviceType
 	{
@@ -18,7 +19,7 @@ namespace baizel
 		eInputDeviceType_Count
 	};
 
-    using tInputDevicesArray = iInputDevice* [eInputDeviceType_Count];
+    using tInputDevicesArray = std::array<iInputDevice*, eInputDeviceType_Count>;
 
     enum eKey
     {

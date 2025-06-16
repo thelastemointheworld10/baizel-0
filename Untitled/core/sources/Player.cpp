@@ -49,6 +49,8 @@ void cPlayer::Init()
 	mvPosition = tVector2f(400, 300);
 	mvSize = tVector2f(150, 150);
 	mvCenter = mvSize / 2.0f;
+
+	mpInput->GetKeyboard()->SetKeyRepeat(false);
 }
 
 void cPlayer::OnStart()
@@ -114,6 +116,9 @@ void cPlayer::OnUpdate(float afTimeStep)
 		mpWalkAnimation->Update(afTimeStep);
 		mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
 	}
+
+	if (mpInput->GetKeyboard()->GetLastKey() == eKey_F)
+		cLog::Log("last key is f");
 }
 
 void cPlayer::OnDraw()
