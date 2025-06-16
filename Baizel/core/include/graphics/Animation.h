@@ -22,6 +22,7 @@ namespace baizel
 		void AddFrame(const std::string& asFramePath);
 		iTexture* GetCurrentFrame() const;
 		iTexture* GetFrameByIndex(size_t alIndex) const;
+		void ResetFrameTime();
 
 		void Update(float afTimeStep);
 
@@ -29,7 +30,6 @@ namespace baizel
 		iTexture* FindSameFrame(const std::string& asPath) const;
 
 	private:
-
 		tFrameVector mvFrames;
 		int mlCurrentFrame;
 

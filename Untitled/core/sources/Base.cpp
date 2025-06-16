@@ -11,7 +11,7 @@ namespace baizel
     cBase::cBase()
     {
         msWindowTitle = "Untitled";
-        mvScreenSize = tVector2l(800, 600);
+        mvScreenSize = tVector2l(640, 480);
         mvVirtualSize = tVector2f(800, 600);
         mbFullscreen = false;
 
@@ -64,6 +64,7 @@ namespace baizel
         mpPlayer->Init();
         mpEngine->GetUpdater()->AddUpdateable(mpPlayer);
 
+        mpEngine->GetInput()->GetKeyboard()->SetKeyRepeat(false);
         mpEngine->SetClearColor(cColor(150, 150, 150));
 
         return true;

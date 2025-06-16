@@ -23,6 +23,7 @@ private:
 	bool Rotate(float afTimeStep);
 	void UpdateAnimation(float afTimeStep);
 	void PlayStepSound();
+	void ResetPlayer();
 
 private:
 
@@ -34,9 +35,9 @@ private:
 	float mfMoveSpeed = 150.0f;
 	float mfRotateSpeed = 100.0f;
 	float mfAngle = 0.0f;
+	bool mbWasMoving = false;
 
 	float mfStepSoundRate = 0.6f;
-	bool mbMoving = false;
 
 	cAnimation* mpWalkAnimation = nullptr;
 	iTexture* mpPlayerTexture = nullptr;

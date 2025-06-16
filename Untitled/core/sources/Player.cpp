@@ -49,8 +49,6 @@ void cPlayer::Init()
 	mvPosition = tVector2f(400, 300);
 	mvSize = tVector2f(150, 150);
 	mvCenter = mvSize / 2.0f;
-
-	mpInput->GetKeyboard()->SetKeyRepeat(false);
 }
 
 void cPlayer::OnStart()
@@ -78,10 +76,15 @@ void cPlayer::OnUpdate(float afTimeStep)
 		PlayStepSound();
 
 		mvDirection = cMath::AngleToVector(mfAngle);
+		mbWasMoving = true;
+
+		return;
 	}
-	else
+
+	if (mbWasMoving == true)
 	{
-		mpPlayerTexture = mpWalkAnimation->GetFrameByIndex(0);
+		ResetPlayer();
+		mbWasMoving = false;
 	}
 }
 
@@ -156,6 +159,12 @@ void cPlayer::PlayStepSound()
 		mpAudioSource->Play();
 		mpStepTimer->Start();
 	}
+}
+
+void cPlayer::ResetPlayer()
+{
+	mpWalkAnimation->ResetFrameTime();
+	mpPlayerTexture = mpWalkAnimation->GetFrameByIndex(0);
 }
 
 // -----------------------------------------------------------------------

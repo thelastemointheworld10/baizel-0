@@ -87,6 +87,11 @@ namespace baizel
 		return mvFrames[alIndex];
 	}
 
+	void cAnimation::ResetFrameTime()
+	{
+		mfFrameTime = 0.0f;
+	}
+
 	//////////////////////////////////////////
 	// Runtime Control
 	//////////////////////////////////////////
