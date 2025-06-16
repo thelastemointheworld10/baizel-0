@@ -21,6 +21,7 @@ namespace baizel
 		void SetSpeed(float afSpeed);
 		void AddFrame(const std::string& asFramePath);
 		iTexture* GetCurrentFrame() const;
+		iTexture* GetFrameByIndex(size_t alIndex) const;
 
 		void Update(float afTimeStep);
 

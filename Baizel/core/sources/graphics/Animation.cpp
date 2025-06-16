@@ -69,11 +69,22 @@ namespace baizel
 	{
 		if (mvFrames.empty() || mlCurrentFrame >= mvFrames.size())
 		{
-			cLog::Warning("There isnt any frames, or current frame is goes beyond the boundaries of the vector");
+			cLog::Error("There is no any animation frames, or current frame is goes beyond the boundaries of the vector");
 			return nullptr;
 		}
 
 		return mvFrames[mlCurrentFrame];
+	}
+
+	iTexture* cAnimation::GetFrameByIndex(size_t alIndex) const
+	{
+		if (mvFrames.size() == 0 || alIndex >= mvFrames.size())
+		{
+			cLog::Error("There is no any animation frames, or current frame is goes beyond the boundaries of the vector");
+			return nullptr;
+		}
+
+		return mvFrames[alIndex];
 	}
 
 	//////////////////////////////////////////

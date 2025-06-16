@@ -116,9 +116,10 @@ void cPlayer::OnUpdate(float afTimeStep)
 		mpWalkAnimation->Update(afTimeStep);
 		mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
 	}
-
-	if (mpInput->GetKeyboard()->GetLastKey() == eKey_F)
-		cLog::Log("last key is f");
+	else
+	{
+		mpPlayerTexture = mpWalkAnimation->GetFrameByIndex(0);
+	}
 }
 
 void cPlayer::OnDraw()
