@@ -19,6 +19,13 @@ public:
 	void OnExit() override;
 
 private:
+	bool Move(float afTimeStep);
+	bool Rotate(float afTimeStep);
+	void UpdateAnimation(float afTimeStep);
+	void PlayStepSound();
+
+private:
+
 	tVector2f mvSize = tVector2f(100);
 	tVector2f mvCenter = tVector2f(50);
 	tVector2f mvPosition = tVector2f();

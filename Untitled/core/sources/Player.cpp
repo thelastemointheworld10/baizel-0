@@ -69,52 +69,15 @@ void cPlayer::OnStart()
 
 void cPlayer::OnUpdate(float afTimeStep)
 {
-	bool bDidMove = false;
-	bool bDidRotation = false;
+	bool bDidMove = Move(afTimeStep);
+	bool bDidRotate = Rotate(afTimeStep);
 
-	//////////////////////
-	// Rotating
-	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
+	if (bDidMove || bDidRotate)
 	{
-		bDidRotation = true;
-		mfAngle -= mfRotateSpeed * afTimeStep;
-	}
-	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
-	{
-		bDidRotation = true;
-		mfAngle += mfRotateSpeed * afTimeStep;
-	}
-	mvDirection = cMath::AngleToVector(mfAngle);
+		UpdateAnimation(afTimeStep);
+		PlayStepSound();
 
-	//////////////////////
-	// Moving
-	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
-	{
-		bDidMove = true;
-		mvPosition += mvDirection * mfMoveSpeed * afTimeStep;
-	}
-	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
-	{
-		bDidMove = true;
-		mvPosition += mvDirection * -mfMoveSpeed * afTimeStep;
-	}
-
-	mbMoving = bDidMove || bDidRotation;
-
-	if (mbMoving == true)
-	{
-		//////////////////////
-		// Steps
-		if (mpStepTimer->GetTimeInSec() >= mfStepSoundRate)
-		{
-			mpAudioSource->Play();
-			mpStepTimer->Start();
-		}
-
-		//////////////////////
-		// Animation
-		mpWalkAnimation->Update(afTimeStep);
-		mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
+		mvDirection = cMath::AngleToVector(mfAngle);
 	}
 	else
 	{
@@ -129,7 +92,70 @@ void cPlayer::OnDraw()
 
 void cPlayer::OnExit()
 {
-	
+	mpStepTimer->Stop();
+}
+
+// -----------------------------------------------------------------------
+
+//////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+//////////////////////////////////////////////////////////////////////////
+
+// -----------------------------------------------------------------------
+
+//////////////////////////////////////////
+// Core Functionality
+//////////////////////////////////////////
+
+bool cPlayer::Move(float afTimeStep)
+{
+	bool bDidMove = false;
+
+	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_W))
+	{
+		bDidMove = true;
+		mvPosition += mvDirection * mfMoveSpeed * afTimeStep;
+	}
+	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_S))
+	{
+		bDidMove = true;
+		mvPosition += mvDirection * -mfMoveSpeed * afTimeStep;
+	}
+
+	return bDidMove;
+}
+
+bool cPlayer::Rotate(float afTimeStep)
+{
+	bool bDidRotation = false;
+
+	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_A))
+	{
+		bDidRotation = true;
+		mfAngle -= mfRotateSpeed * afTimeStep;
+	}
+	if (mpInput->GetKeyboard()->GetKeyPressed(eKey_D))
+	{
+		bDidRotation = true;
+		mfAngle += mfRotateSpeed * afTimeStep;
+	}
+
+	return bDidRotation;
+}
+
+void cPlayer::UpdateAnimation(float afTimeStep)
+{
+	mpWalkAnimation->Update(afTimeStep);
+	mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
+}
+
+void cPlayer::PlayStepSound()
+{
+	if (mpStepTimer->GetTimeInSec() >= mfStepSoundRate)
+	{
+		mpAudioSource->Play();
+		mpStepTimer->Start();
+	}
 }
 
 // -----------------------------------------------------------------------
