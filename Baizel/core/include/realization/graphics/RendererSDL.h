@@ -21,14 +21,14 @@ namespace baizel
 
 		SDL_Renderer* GetRenderer() const;
 
-		void SetDrawColor(const cColor& aColor) const override;
+		void ClearColor(cColor aColor) const override;
 		void Clear() const override;
 		void SwapBuffers() const override;
 
-		void DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const override;
-		void DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const override;
-		void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
-			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
+		void DrawRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const override;
+		void DrawFilledRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const override;
+		void DrawTexture(iTexture* apTexture, tVector2f avPosition, tVector2f avSize,
+			float afAngle = 0.0f, tVector2f avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const override;
 
 	private:

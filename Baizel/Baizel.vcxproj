@@ -183,7 +183,6 @@
     <ClInclude Include="core\include\engine\Updateable.h" />
     <ClInclude Include="core\include\engine\Updater.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
-    <ClInclude Include="core\include\graphics\AnimationTypes.h" />
     <ClInclude Include="core\include\graphics\Color.h" />
     <ClInclude Include="core\include\graphics\Font.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
@@ -227,6 +226,8 @@
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
     <ClCompile Include="core\sources\engine\Updater.cpp" />
+    <ClCompile Include="core\sources\graphics\Renderer.cpp" />
+    <ClCompile Include="core\sources\graphics\Texture.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioDeviceAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioListenerAL.cpp" />
     <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp" />

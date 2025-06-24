@@ -27,220 +27,46 @@ namespace baizel
 		// Copy
 		//////////////////////////////////////////
 
-		inline cColor& operator=(const cColor& aColor)
-		{
-			r = aColor.r;
-			g = aColor.g;
-			b = aColor.b;
-			a = aColor.a;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator=(uint8_t alRGBA)
-		{
-			r = alRGBA;
-			g = alRGBA;
-			b = alRGBA;
-			a = alRGBA;
-			CheckValidValues(*this);
-
-			return *this;
-		}
+		cColor& operator=(cColor aColor);
+		cColor& operator=(uint8_t alRGBA);
 
 		//////////////////////////////////////////
 		// Color Arithmetic
 		//////////////////////////////////////////
 
-		inline bool operator==(const cColor& aColor)
-		{
-			return (r == aColor.r) &&
-				(g == aColor.g) &&
-				(b == aColor.b) &&
-				(a == aColor.a);
-		}
+		bool operator==(cColor aColor) const;
+		bool operator!=(cColor aColor) const;
 
-		inline bool operator!=(const cColor& aColor)
-		{
-			return (*this == aColor) == false;
-		}
+		cColor operator+(cColor aColor) const;
+		cColor operator-(cColor aColor) const;
+		cColor operator*(cColor aColor) const;
+		cColor operator/(cColor aColor) const;
 
-		inline cColor operator+(const cColor& aColor)
-		{
-			cColor Color(r + aColor.r, g + aColor.g, b + aColor.b, a + aColor.a);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator-(const cColor& aColor)
-		{
-			cColor Color(r - aColor.r, g - aColor.g, b - aColor.b, a - aColor.a);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator*(const cColor& aColor)
-		{
-			cColor Color(r * aColor.r, g * aColor.g, b * aColor.b, a * aColor.a);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator/(const cColor& aColor)
-		{
-			cColor Color(r / aColor.r, g / aColor.g, b / aColor.b, a / aColor.a);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor& operator+=(const cColor& aColor)
-		{
-			r += aColor.r;
-			g += aColor.g;
-			b += aColor.b;
-			a += aColor.a;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator-=(const cColor& aColor)
-		{
-			r -= aColor.r;
-			g -= aColor.g;
-			b -= aColor.b;
-			a -= aColor.a;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator*=(const cColor& aColor)
-		{
-			r *= aColor.r;
-			g *= aColor.g;
-			b *= aColor.b;
-			a *= aColor.a;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator/=(const cColor& aColor)
-		{
-			r /= aColor.r;
-			g /= aColor.g;
-			b /= aColor.b;
-			a /= aColor.a;
-			CheckValidValues(*this);
-
-			return *this;
-		}
+		cColor& operator+=(cColor aColor);
+		cColor& operator-=(cColor aColor);
+		cColor& operator*=(cColor aColor);
+		cColor& operator/=(cColor aColor);
 
 		//////////////////////////////////////////
 		// Real Arithmetic
 		//////////////////////////////////////////
 
-		inline bool operator==(uint8_t alRGBA)
-		{
-			return (r == alRGBA) &&
-				(g == alRGBA) &&
-				(b == alRGBA) &&
-				(a == alRGBA);
-		}
+		bool operator==(uint8_t alRGBA) const;
+		bool operator!=(uint8_t alRGBA) const;
 
-		inline bool operator!=(uint8_t alRGBA)
-		{
-			return (*this == alRGBA) == false;
-		}
+		cColor operator+(uint8_t alRGBA) const;
+		cColor operator-(uint8_t alRGBA) const;
+		cColor operator*(uint8_t alRGBA) const;
+		cColor operator/(uint8_t alRGBA) const;
 
-		inline cColor operator+(uint8_t alRGBA)
-		{
-			cColor Color(r + alRGBA, g + alRGBA, b + alRGBA, a + alRGBA);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator-(uint8_t alRGBA)
-		{
-			cColor Color(r - alRGBA, g - alRGBA, b - alRGBA, a - alRGBA);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator*(uint8_t alRGBA)
-		{
-			cColor Color(r * alRGBA, g * alRGBA, b * alRGBA, a * alRGBA);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor operator/(uint8_t alRGBA)
-		{
-			cColor Color(r / alRGBA, g / alRGBA, b / alRGBA, a / alRGBA);
-			CheckValidValues(Color);
-
-			return Color;
-		}
-
-		inline cColor& operator+=(uint8_t alRGBA)
-		{
-			r += alRGBA;
-			g += alRGBA;
-			b += alRGBA;
-			a += alRGBA;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator-=(uint8_t alRGBA)
-		{
-			r -= alRGBA;
-			g -= alRGBA;
-			b -= alRGBA;
-			a -= alRGBA;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator*=(uint8_t alRGBA)
-		{
-			r *= alRGBA;
-			g *= alRGBA;
-			b *= alRGBA;
-			a *= alRGBA;
-			CheckValidValues(*this);
-
-			return *this;
-		}
-
-		inline cColor& operator/=(uint8_t alRGBA)
-		{
-			r /= alRGBA;
-			g /= alRGBA;
-			b /= alRGBA;
-			a /= alRGBA;
-			CheckValidValues(*this);
-
-			return *this;
-		}
+		cColor& operator+=(uint8_t alRGBA);
+		cColor& operator-=(uint8_t alRGBA);
+		cColor& operator*=(uint8_t alRGBA);
+		cColor& operator/=(uint8_t alRGBA);
 
 		// -----------------------------------------------------------------------
 
 		uint8_t r, g, b, a;
-
-	private:
-		inline void CheckValidValues(cColor& aColor);
 	};
 }
 

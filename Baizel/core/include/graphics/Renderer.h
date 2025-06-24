@@ -3,6 +3,7 @@
 
 #include <graphics/LowLevelGraphics.h>
 #include <graphics/Texture.h>
+#include <graphics/Color.h>
 
 namespace baizel
 {
@@ -13,6 +14,8 @@ namespace baizel
 		eRendererFlip_Vertical
 	};
 
+	const cColor gkInvalidColor = cColor(199, 195, 187, 150);
+
 	class iRenderer
 	{
 	public:
@@ -20,15 +23,21 @@ namespace baizel
 
 		virtual bool Init(iLowLevelGraphics* apGraphics) = 0;
 
-		virtual void SetDrawColor(const cColor& aColor) const = 0;
+		void SetClearColor(cColor aColor);
+		cColor GetClearColor() const;
+
+		virtual void ClearColor(cColor aColor) const = 0;
 		virtual void Clear() const = 0;
 		virtual void SwapBuffers() const = 0;
 
-		virtual void DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const = 0;
-		virtual void DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const = 0;
-		virtual void DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
-			float afAngle = 0.0f, const tVector2f& avCenter = tVector2f(),
+		virtual void DrawRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const = 0;
+		virtual void DrawFilledRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const = 0;
+		virtual void DrawTexture(iTexture* apTexture, tVector2f avPosition, tVector2f avSize,
+			float afAngle = 0.0f, tVector2f avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;
+
+	protected:
+		cColor mClearColor = cColor(0, 0, 0, 255); // black
 	};
 }
 

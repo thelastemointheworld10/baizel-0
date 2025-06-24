@@ -13,9 +13,9 @@ namespace baizel
         cAudioSourceAL();
 
         void SetPosition(const tVector3f& avPosition) override;
-        void SetPosition(const tVector2f& avPosition) override;
+        void SetPosition(tVector2f avPosition) override;
         void SetVelocity(const tVector3f& avVelocity) override;
-        void SetVelocity(const tVector2f& avVelocity) override;
+        void SetVelocity(tVector2f avVelocity) override;
 
         void SetPitch(float afPitch) override;
         void SetGain(float afGain) override;

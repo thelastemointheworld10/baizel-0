@@ -43,11 +43,17 @@ namespace baizel
 			return;
 		}
 
-		if (CreateTextureFromSurface())
-			msPath = asPath;
+		if (CreateTextureFromSurface() == false)
+		{
+			cLog::Error("Failed to create texture from surface!");
+			return;
+		}
+
+		mvSize = tVector2l(mpSurface->w, mpSurface->h);
+		msPath = asPath;
 	}
 
-	void cTextureSDL::CreateFromFont(iFont* aFont, const cColor& aColor)
+	void cTextureSDL::CreateFromFont(iFont* aFont, cColor aColor)
 	{
 		ReleaseResources();
 
@@ -76,7 +82,7 @@ namespace baizel
 		SDL_SetTextureColorMod(mpTexture, alR, alG, alB);
 	}
 
-	inline void cTextureSDL::SetColor(const cColor& aColor) const
+	inline void cTextureSDL::SetColor(cColor aColor) const
 	{
 		SDL_SetTextureColorMod(mpTexture, aColor.r, aColor.g, aColor.b);
 	}
@@ -109,14 +115,23 @@ namespace baizel
 
 	bool cTextureSDL::CreateTextureFromSurface()
 	{
-		if (mpSurface == nullptr || mpRenderer == nullptr)
+		if (mpRenderer == nullptr)
+		{
+			cLog::Error("Renderer is nullptr");
 			return false;
+		}
+
+		if (mpSurface == nullptr)
+		{
+			cLog::Error("Surface is nullptr");
+			return false;
+		}
 
 		if (mpTexture != nullptr)
 		{
 			SDL_DestroyTexture(mpTexture);
 			mpTexture = nullptr;
-		};
+		}
 
 		mpTexture = SDL_CreateTextureFromSurface(mpRenderer, mpSurface);
 		if (mpTexture == nullptr)

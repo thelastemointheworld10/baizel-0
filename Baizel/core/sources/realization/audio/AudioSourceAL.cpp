@@ -44,7 +44,7 @@ namespace baizel
         alCall(alSource3f, mlSourceID, AL_POSITION, mvPosition.x, mvPosition.y, mvPosition.z);
     }
 
-    void cAudioSourceAL::SetPosition(const tVector2f& avPosition)
+    void cAudioSourceAL::SetPosition(tVector2f avPosition)
     {
         mvPosition = tVector3f(avPosition.x, avPosition.y, 0.0f);
         alCall(alSource3f, mlSourceID, AL_POSITION, mvPosition.x, mvPosition.y, mvPosition.z);
@@ -56,7 +56,7 @@ namespace baizel
         alCall(alSource3f, mlSourceID, AL_VELOCITY, mvVelocity.x, mvVelocity.y, mvVelocity.z);
     }
 
-    void cAudioSourceAL::SetVelocity(const tVector2f& avVelocity)
+    void cAudioSourceAL::SetVelocity(tVector2f avVelocity)
     {
         mvVelocity = tVector3f(avVelocity.x, avVelocity.y, 0.0f);
         alCall(alSource3f, mlSourceID, AL_VELOCITY, mvVelocity.x, mvVelocity.y, mvVelocity.z);

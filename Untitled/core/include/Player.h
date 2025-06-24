@@ -21,12 +21,11 @@ public:
 private:
 	bool Move(float afTimeStep);
 	bool Rotate(float afTimeStep);
-	void UpdateAnimation(float afTimeStep);
+	void UpdateIdleAnimation(float afTimeStep);
+	void UpdateWalkAnimation(float afTimeStep);
 	void PlayStepSound();
-	void ResetPlayer();
 
 private:
-
 	tVector2f mvSize = tVector2f(100);
 	tVector2f mvCenter = tVector2f(50);
 	tVector2f mvPosition = tVector2f();
@@ -35,11 +34,12 @@ private:
 	float mfMoveSpeed = 150.0f;
 	float mfRotateSpeed = 100.0f;
 	float mfAngle = 0.0f;
-	bool mbWasMoving = false;
 
-	float mfStepSoundRate = 0.6f;
+	float mfStepSoundRate = 0.9f;
 
+	cAnimation* mpIdleAnimation = nullptr;
 	cAnimation* mpWalkAnimation = nullptr;
+
 	iTexture* mpPlayerTexture = nullptr;
 
 	iAudioSource* mpAudioSource = nullptr;

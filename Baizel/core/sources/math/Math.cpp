@@ -2,7 +2,7 @@
 
 namespace baizel
 {
-	std::mt19937 cMath::mRandomGenerator{ std::random_device{}() };
+	std::mt19937 cMath::sRandomGenerator{ std::random_device{}() };
 
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
@@ -17,13 +17,13 @@ namespace baizel
 	int cMath::RandInt(int alMin, int alMax)
 	{
 		std::uniform_int_distribution<int> lRandNumber(alMin, alMax);
-		return lRandNumber(mRandomGenerator);
+		return lRandNumber(sRandomGenerator);
 	}
 
 	float cMath::RandFloat(float afMin, float afMax)
 	{
 		std::uniform_real_distribution<float> fRandNumber(afMin, afMax);
-		return fRandNumber(mRandomGenerator);
+		return fRandNumber(sRandomGenerator);
 	}
 
 	tVector2f cMath::AngleToVector(float afAngle)

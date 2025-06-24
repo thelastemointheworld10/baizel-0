@@ -12,7 +12,7 @@ namespace baizel
 	{
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
 			cLog::Fatal("Failed to initialize SDL: %s", SDL_GetError());
-		if (IMG_Init(IMG_INIT_PNG) < 0)
+		if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) < 0)
 			cLog::Fatal("Failed to initialize SDL_image: %s", IMG_GetError());
 		if (TTF_Init() < 0)
 			cLog::Fatal("Failed to initialize SDL_ttf: %f", TTF_GetError());

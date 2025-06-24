@@ -8,22 +8,27 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cAnimation::cAnimation(int alFrames, iLowLevelGraphics* apLowLevelGraphics)
+	cAnimation::cAnimation(iLowLevelGraphics* apLowLevelGraphics)
 	{
 		mpLowLevelGraphics = apLowLevelGraphics;
 
 		mlCurrentFrame = 0;
-		mvFrames.reserve(alFrames);
-		mfFrameRate = 1.0f / alFrames;
+		mvFrames.reserve(gkDefaultFrames);
+		mfFrameRate = 1.0f / gkDefaultFrames;
 		mfFrameTime = 0.0f;
 	}
 
 	cAnimation::~cAnimation()
 	{
+		if (mvFrames.size() == 0)
+			return;
+
 		for (iTexture* pFrame : mvFrames)
 		{
-			if (pFrame != nullptr)
+			if (pFrame != nullptr && pFrame->GetPath().empty())
+			{
 				delete pFrame;
+			}
 		}
 		mvFrames.clear();
 	}
@@ -55,14 +60,50 @@ namespace baizel
 
 		//cLog::Log("adding animation frame: %s", asFramePath.c_str());
 
-		iTexture* pNewFrame = FindSameFrame(asFramePath);
-		if (pNewFrame == nullptr) // same frame does not exists
+		if (iTexture* pExisting = FindSameFrame(asFramePath))
 		{
-			pNewFrame = mpLowLevelGraphics->CreateTexture();
-			pNewFrame->LoadFile(asFramePath);
+			mvFrames.push_back(pExisting);
+			return;
 		}
 
+		iTexture* pNewFrame = mpLowLevelGraphics->CreateTexture();
+		if (pNewFrame == nullptr) // same frame does not exists
+		{
+			cLog::Error("Failed to create texture for frame: %s", asFramePath.c_str());
+			return;
+		}
+
+		pNewFrame->LoadFile(asFramePath);
 		mvFrames.push_back(pNewFrame);
+	}
+
+	void cAnimation::AddFrame(iTexture* apTexture)
+	{
+		if (mpLowLevelGraphics == nullptr)
+		{
+			cLog::Error("Failed to add frame! LowLevelGraphics is nullptr!");
+			return;
+		}
+
+		//cLog::Log("adding animation frame: %s", apTexture->GetPath().c_str());
+		if (apTexture == nullptr)
+			cLog::Warning("New animation frame is nullptr");
+		else
+			mvFrames.push_back(apTexture);
+	}
+
+	void cAnimation::SetFrames(const tFrameVector& avFrames)
+	{
+		mvFrames.clear();
+
+		for (iTexture* pFrame : avFrames)
+		{
+			if (pFrame != nullptr)
+				mvFrames.push_back(pFrame);
+		}
+
+		mlCurrentFrame = 0;
+		mfFrameTime = 0.0f;
 	}
 
 	iTexture* cAnimation::GetCurrentFrame() const

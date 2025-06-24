@@ -44,7 +44,7 @@ namespace baizel
 		// Copy
 		//////////////////////////////////////////
 
-		inline cVector2<T>& operator=(const cVector2<T>& avVector)
+		inline cVector2<T>& operator=(cVector2<T> avVector)
 		{
 			x = avVector.x;
 			y = avVector.y;
@@ -64,41 +64,51 @@ namespace baizel
 		// Boolean
 		//////////////////////////////////////////
 
-		inline bool operator==(const cVector2<T>& avVector) const
+		inline bool operator==(cVector2<T> avVector) const
 		{
 			return (x == avVector.x) && (y == avVector.y);
 		}
 
-		inline bool operator!=(const cVector2<T>& avVector) const
+		inline bool operator!=(cVector2<T> avVector) const
 		{
 			return (*this == avVector) == false;
+		}
+
+		inline bool operator==(T aValue) const
+		{
+			return (x == aValue) && (y == aValue);
+		}
+
+		inline bool operator!=(T aValue) const
+		{
+			return (*this == aValue) == false;
 		}
 
 		//////////////////////////////////////////
 		// Vector Arithmetic
 		//////////////////////////////////////////
 
-		inline cVector2<T> operator+(const cVector2<T>& avVector) const
+		inline cVector2<T> operator+(cVector2<T> avVector) const
 		{
 			return cVector2<T>(x + avVector.x, y + avVector.y);
 		}
 
-		inline cVector2<T> operator-(const cVector2<T>& avVector) const
+		inline cVector2<T> operator-(cVector2<T> avVector) const
 		{
 			return cVector2<T>(x - avVector.x, y - avVector.y);
 		}
 
-		inline cVector2<T> operator*(const cVector2<T>& avVector) const
+		inline cVector2<T> operator*(cVector2<T> avVector) const
 		{
 			return cVector2<T>(x * avVector.x, y * avVector.y);
 		}
 
-		inline cVector2<T> operator/(const cVector2<T>& avVector) const
+		inline cVector2<T> operator/(cVector2<T> avVector) const
 		{
 			return cVector2<T>(x / avVector.x, y / avVector.y);
 		}
 
-		inline cVector2<T>& operator+=(const cVector2<T>& avVector)
+		inline cVector2<T>& operator+=(cVector2<T> avVector)
 		{
 			x += avVector.x;
 			y += avVector.y;
@@ -106,7 +116,7 @@ namespace baizel
 			return *this;
 		}
 
-		inline cVector2<T>& operator-=(const cVector2<T>& avVector)
+		inline cVector2<T>& operator-=(cVector2<T> avVector)
 		{
 			x -= avVector.x;
 			y -= avVector.y;
@@ -114,7 +124,7 @@ namespace baizel
 			return *this;
 		}
 
-		inline cVector2<T>& operator*=(const cVector2<T>& avVector)
+		inline cVector2<T>& operator*=(cVector2<T> avVector)
 		{
 			x *= avVector.x;
 			y *= avVector.y;
@@ -122,7 +132,7 @@ namespace baizel
 			return *this;
 		}
 
-		inline cVector2<T>& operator/=(const cVector2<T>& avVector)
+		inline cVector2<T>& operator/=(cVector2<T> avVector)
 		{
 			x /= avVector.x;
 			y /= avVector.y;

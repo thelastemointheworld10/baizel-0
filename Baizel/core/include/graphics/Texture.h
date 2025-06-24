@@ -15,17 +15,21 @@ namespace baizel
 		virtual ~iTexture() = default;
 
 		virtual void LoadFile(const std::string& asPath) = 0;
-		virtual void CreateFromFont(iFont* aFont, const cColor& aColor) = 0;
+		virtual void CreateFromFont(iFont* aFont, cColor aColor) = 0;
 
 		virtual void SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const = 0;
-		virtual void SetColor(const cColor& aColor) const = 0;
+		virtual void SetColor(cColor aColor) const = 0;
 		virtual void SetAlpha(uint8_t alA) const = 0;
 
-		inline const std::string& GetPath() const { return msPath; }
+		const std::string& GetPath() const;
+		tVector2l GetSize() const;
+		void SetSize(tVector2l avSize);
 
 		virtual iTexture& operator=(const iTexture& aTexture) = 0;
+
 	protected:
 		std::string msPath = "";
+		tVector2l mvSize = tVector2l();
 	};
 }
 

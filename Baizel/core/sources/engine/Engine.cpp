@@ -114,7 +114,7 @@ namespace baizel
 			mpInput->Update();
 			mpTimeStep->AddFrame();
 
-			mpGraphics->GetRenderer()->SetDrawColor(mClearColor);
+			mpGraphics->GetRenderer()->ClearColor(mpGraphics->GetRenderer()->GetClearColor());
 			mpGraphics->GetRenderer()->Clear();
 
 			mpUpdater->OnUpdate(mpTimeStep->GetTimeStep());
@@ -164,11 +164,6 @@ namespace baizel
 	cUpdater* cEngine::GetUpdater()
 	{
 		return mpUpdater;
-	}
-
-	void cEngine::SetClearColor(const cColor& aColor)
-	{
-		mClearColor = aColor;
 	}
 
 	// -----------------------------------------------------------------------

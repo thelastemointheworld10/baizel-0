@@ -10,9 +10,9 @@ namespace baizel
     {
     public:
         virtual void SetPosition(const tVector3f& avPosition) = 0;
-        virtual void SetPosition(const tVector2f& avPosition) = 0;
+        virtual void SetPosition(tVector2f avPosition) = 0;
         virtual void SetVelocity(const tVector3f& avVelocity) = 0;
-        virtual void SetVelocity(const tVector2f& avVelocity) = 0;
+        virtual void SetVelocity(tVector2f avVelocity) = 0;
         virtual void SetOrientation(const tVector3f& avUp, const tVector3f& avForward) = 0;
         virtual void SetMasterGain(float afGain) = 0;
 

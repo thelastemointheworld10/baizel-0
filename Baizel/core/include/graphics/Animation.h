@@ -2,26 +2,34 @@
 #define BAIZEL_ANIMATION_H
 
 #include <string>
-#include <queue>
+#include <vector>
 
 #include <math/Math.h>
 #include <engine/Log.h>
 
 #include <graphics/LowLevelGraphics.h>
-#include <graphics/AnimationTypes.h>
+#include <graphics/Texture.h>
 
 namespace baizel
 {
+	using tFrameVector = std::vector<iTexture*>;
+	const int gkDefaultFrames = 12;
+
 	class cAnimation final
 	{
 	public:
-		cAnimation(int alFrames, iLowLevelGraphics* apLowLevelGraphics);
+		cAnimation(iLowLevelGraphics* apLowLevelGraphics);
 		~cAnimation();
 
-		void SetSpeed(float afSpeed);
-		void AddFrame(const std::string& asFramePath);
+		void SetSpeed(float afFramesPerSec);
+		void SetFrames(const tFrameVector& avFrames);
+
+		void AddFrame(const std::string& asPath);
+		void AddFrame(iTexture* apTexture);
+
 		iTexture* GetCurrentFrame() const;
 		iTexture* GetFrameByIndex(size_t alIndex) const;
+
 		void ResetFrameTime();
 
 		void Update(float afTimeStep);

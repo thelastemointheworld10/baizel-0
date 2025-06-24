@@ -47,7 +47,7 @@ namespace baizel
 	// Runtime Control
 	//////////////////////////////////////////
 
-	void cFontSDL::Draw(tVector2f avPosition, const cColor& aColor, eTextAlign aTextAlign)
+	void cFontSDL::Draw(tVector2f avPosition, cColor aColor, eTextAlign aTextAlign)
 	{
 		if (mpFont == nullptr || msText.empty())
 			return;

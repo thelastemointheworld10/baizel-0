@@ -15,7 +15,7 @@ namespace baizel
 		~cFontSDL();
 
 		void Load(const std::string& asPath) override;
-		void Draw(tVector2f avPosition, const cColor& aColor, eTextAlign aTextAlign) override;
+		void Draw(tVector2f avPosition, cColor aColor, eTextAlign aTextAlign) override;
 		
 		tVector2f GetTextSize() const override;
 		void SetSize(int alSize) override;

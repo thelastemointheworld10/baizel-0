@@ -37,8 +37,6 @@ namespace baizel
         cInput* GetInput();
         iApplicationTime* GetApplicationTime();
         cUpdater* GetUpdater();
-
-        void SetClearColor(const cColor& aColor);
         
     private:
         bool mbRunning;
@@ -50,8 +48,6 @@ namespace baizel
         iApplicationTime* mpApplicationTime = nullptr;
         cUpdater* mpUpdater = nullptr;
         cTimeStep* mpTimeStep = nullptr;
-
-        cColor mClearColor;
     };
 }
 

@@ -60,7 +60,7 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	void cRendererSDL::SetDrawColor(const cColor& aColor) const
+	void cRendererSDL::ClearColor(cColor aColor) const
 	{
 		SDL_SetRenderDrawColor(mpRenderer, aColor.r, aColor.g, aColor.b, aColor.a);
 	}
@@ -75,7 +75,7 @@ namespace baizel
 		SDL_RenderPresent(mpRenderer);
 	}
 
-	void cRendererSDL::DrawRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const
+	void cRendererSDL::DrawRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const
 	{
 		SDL_FRect Rect;
 		Rect.x = avPosition.x;
@@ -83,11 +83,11 @@ namespace baizel
 		Rect.w = avSize.x;
 		Rect.h = avSize.y;
 
-		SetDrawColor(aColor);
+		ClearColor(aColor);
 		SDL_RenderDrawRectF(mpRenderer, &Rect);
 	}
 
-	void cRendererSDL::DrawFilledRect(const tVector2f& avPosition, const tVector2f& avSize, const cColor& aColor) const
+	void cRendererSDL::DrawFilledRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const
 	{
 		SDL_FRect Rect;
 		Rect.x = avPosition.x;
@@ -95,15 +95,26 @@ namespace baizel
 		Rect.w = avSize.x;
 		Rect.h = avSize.y;
 
-		SetDrawColor(aColor);
+		ClearColor(aColor);
 		SDL_RenderFillRectF(mpRenderer, &Rect);
 	}
 
-	void cRendererSDL::DrawTexture(iTexture* apTexture, const tVector2f& avPosition, const tVector2f& avSize,
-		float afAngle, const tVector2f& avCenter,
+	void cRendererSDL::DrawTexture(iTexture* apTexture, tVector2f avPosition, tVector2f avSize,
+		float afAngle, tVector2f avCenter,
 		eRendererFlip aTextureFlip) const
 	{
+		if (apTexture == nullptr)
+		{
+			DrawFilledRect(avPosition, avSize, gkInvalidColor);
+			return;
+		}
+
 		SDL_Texture* pSDLTexture = dynamic_cast<cTextureSDL*>(apTexture)->GetTexture();
+		if (pSDLTexture == nullptr)
+		{
+			DrawFilledRect(avPosition, avSize, gkInvalidColor);
+			return;
+		}
 
 		SDL_FRect Rect{ avPosition.x, avPosition.y, avSize.x, avSize.y };
 		SDL_FPoint Center{ avCenter.x, avCenter.y };

@@ -11,7 +11,7 @@ namespace baizel
     cBase::cBase()
     {
         msWindowTitle = "Untitled";
-        mvScreenSize = tVector2l(640, 480);
+        mvScreenSize = tVector2l(1600, 900);
         mvVirtualSize = tVector2f(800, 600);
         mbFullscreen = false;
 
@@ -50,11 +50,6 @@ namespace baizel
     
     bool cBase::Init()
     {
-        #ifdef _WIN32
-        SetConsoleOutputCP(CP_UTF8);
-        SetConsoleCP(CP_UTF8);
-        #endif
-
         if (mpEngine->Init(msWindowTitle, mvScreenSize, mvVirtualSize, mbFullscreen) == false)
         {
             cLog::Error("Failed to initialize engine!");
@@ -65,7 +60,7 @@ namespace baizel
         mpEngine->GetUpdater()->AddUpdateable(mpPlayer);
 
         mpEngine->GetInput()->GetKeyboard()->SetKeyRepeat(false);
-        mpEngine->SetClearColor(cColor(150, 150, 150));
+        mpEngine->GetGraphics()->GetRenderer()->SetClearColor(cColor(100, 100, 100));
 
         return true;
     }

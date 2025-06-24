@@ -11,8 +11,8 @@ cPlayer::cPlayer(iAudioSystem* apAudioSystem, cGraphics* apGraphics, cInput* apI
 	mpAudioSystem = apAudioSystem;
 	mpGraphics = apGraphics;
 	mpInput = apInput;
+
 	mpStepTimer = new cTimer(apApplicationTime);
-	mpWalkAnimation = new cAnimation(3, mpGraphics->GetLowLevel());
 }
 
 cPlayer::~cPlayer()
@@ -21,10 +21,16 @@ cPlayer::~cPlayer()
 	mpAudioSource = nullptr;
 
 	delete mpStepBuffer;
-	mpAudioSource = nullptr;
+	mpStepBuffer = nullptr;
 
 	delete mpStepTimer;
 	mpStepTimer = nullptr;
+
+	delete mpWalkAnimation;
+	mpWalkAnimation = nullptr;
+
+	delete mpIdleAnimation;
+	mpIdleAnimation = nullptr;
 }
 
 // -----------------------------------------------------------------------
@@ -41,23 +47,45 @@ cPlayer::~cPlayer()
 
 void cPlayer::Init()
 {
-	mpPlayerTexture = mpGraphics->GetLowLevel()->CreateTexture();
-
 	mpAudioSource = mpAudioSystem->CreateSource();
 	mpStepBuffer = mpAudioSystem->CreateBuffer();
 
 	mvPosition = tVector2f(400, 300);
 	mvSize = tVector2f(150, 150);
 	mvCenter = mvSize / 2.0f;
+
+	mpIdleAnimation = new cAnimation(mpGraphics->GetLowLevel());
+	mpWalkAnimation = new cAnimation(mpGraphics->GetLowLevel());
+
+	mpIdleAnimation->SetSpeed(3);
 }
 
 void cPlayer::OnStart()
 {
-	mpWalkAnimation->AddFrame("textures/player/player_walk_02.png");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_01.png");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_02.png");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_03.png");
-	mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
+	mpIdleAnimation->AddFrame("textures/player/player_idle_01.bmp");
+	mpIdleAnimation->AddFrame("textures/player/player_idle_02.bmp");
+	mpIdleAnimation->AddFrame("textures/player/player_idle_03.bmp");
+
+	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_05.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_10.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
+
+	mpPlayerTexture = mpIdleAnimation->GetCurrentFrame();
 
 	mpStepBuffer->LoadAudio("sounds/player/player_step_wood.ogg");
 	mpAudioSource->SetBuffer(mpStepBuffer);
@@ -72,19 +100,18 @@ void cPlayer::OnUpdate(float afTimeStep)
 
 	if (bDidMove || bDidRotate)
 	{
-		UpdateAnimation(afTimeStep);
+		UpdateWalkAnimation(afTimeStep);
 		PlayStepSound();
 
-		mvDirection = cMath::AngleToVector(mfAngle);
-		mbWasMoving = true;
+		mpAudioSystem->GetListener()->SetPosition(mvPosition);
+		mpAudioSource->SetPosition(mvPosition);
 
-		return;
+		mvDirection = cMath::AngleToVector(mfAngle);
 	}
 
-	if (mbWasMoving == true)
+	if (bDidMove == false && bDidRotate == false)
 	{
-		ResetPlayer();
-		mbWasMoving = false;
+		UpdateIdleAnimation(afTimeStep);
 	}
 }
 
@@ -146,7 +173,13 @@ bool cPlayer::Rotate(float afTimeStep)
 	return bDidRotation;
 }
 
-void cPlayer::UpdateAnimation(float afTimeStep)
+void cPlayer::UpdateIdleAnimation(float afTimeStep)
+{
+	mpIdleAnimation->Update(afTimeStep);
+	mpPlayerTexture = mpIdleAnimation->GetCurrentFrame();
+}
+
+void cPlayer::UpdateWalkAnimation(float afTimeStep)
 {
 	mpWalkAnimation->Update(afTimeStep);
 	mpPlayerTexture = mpWalkAnimation->GetCurrentFrame();
@@ -159,12 +192,6 @@ void cPlayer::PlayStepSound()
 		mpAudioSource->Play();
 		mpStepTimer->Start();
 	}
-}
-
-void cPlayer::ResetPlayer()
-{
-	mpWalkAnimation->ResetFrameTime();
-	mpPlayerTexture = mpWalkAnimation->GetFrameByIndex(0);
 }
 
 // -----------------------------------------------------------------------
