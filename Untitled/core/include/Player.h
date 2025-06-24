@@ -25,6 +25,8 @@ private:
 	void UpdateWalkAnimation(float afTimeStep);
 	void PlayStepSound();
 
+	void InitAnimationFrames() const;
+
 private:
 	tVector2f mvSize = tVector2f(100);
 	tVector2f mvCenter = tVector2f(50);

@@ -97,6 +97,38 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
+	void cMouseSDL::SetCursorVisible(bool abVisible) const
+	{
+		SDL_ShowCursor(abVisible);
+	}
+
+	void cMouseSDL::SetMouseMode(eMouseMode aMouseMode) const
+	{
+		switch (aMouseMode)
+		{
+		case eMouseMode_Free:
+			SDL_SetRelativeMouseMode(SDL_FALSE);
+			break;
+		case eMouseMode_Relative:
+			SDL_SetRelativeMouseMode(SDL_TRUE);
+			break;
+		}
+
+		cLog::Log("New mouse mode: %d", static_cast<int>(aMouseMode));
+	}
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////////////////////////////////////
+	// PRIVATE METHODS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
 	eMouseButton cMouseSDL::SDLToButton(int alButton) const
 	{
 		switch (alButton)

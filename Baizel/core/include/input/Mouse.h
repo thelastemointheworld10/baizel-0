@@ -9,6 +9,12 @@
 
 namespace baizel
 {
+	enum eMouseMode
+	{
+		eMouseMode_Free,
+		eMouseMode_Relative
+	};
+
 	class iMouse : public iInputDevice
 	{
 	public:
@@ -19,6 +25,9 @@ namespace baizel
 
 		tVector2f GetAbsolutePosition() const;
 		tVector2f GetRelativePosition() const;
+
+		virtual void SetCursorVisible(bool abVisible) const = 0;
+		virtual void SetMouseMode(eMouseMode aMouseMode) const = 0;
 
 	protected:
 		tMouseButtonVector mvPressedButtons;

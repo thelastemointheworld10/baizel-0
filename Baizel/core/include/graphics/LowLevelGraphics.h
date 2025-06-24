@@ -28,8 +28,6 @@ namespace baizel
         virtual iTexture* CreateTexture() const = 0;
         virtual iFont* CreateFont() = 0;
 
-        virtual void SetCursorVisible(bool abVisible) const = 0;
-
     protected:
         iRenderer* mpRenderer = nullptr;
 

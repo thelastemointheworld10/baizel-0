@@ -25,7 +25,7 @@ namespace baizel
 
 		for (iTexture* pFrame : mvFrames)
 		{
-			if (pFrame != nullptr && pFrame->GetPath().empty())
+			if (pFrame != nullptr && pFrame->GetPath().empty() == false)
 			{
 				delete pFrame;
 			}

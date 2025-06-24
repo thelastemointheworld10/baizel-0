@@ -55,11 +55,6 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	iLowLevelInput* cInput::GetLowLevel() const
-	{
-		return mpLowLevelInput;
-	}
-
 	iKeyboard* cInput::GetKeyboard()
 	{
 		return GetDevice<iKeyboard>(eInputDeviceType_Keyboard);

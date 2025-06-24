@@ -16,14 +16,17 @@ namespace baizel
 
 		bool GetButtonPressed(eMouseButton aKey) const override;
 
-		eMouseButton SDLToButton(int alKey) const;
-
 		void Update() override;
 
-	private:
-		std::vector<bool> mvButtonArray;
+		void SetCursorVisible(bool abVisible) const override;
+		void SetMouseMode(eMouseMode aMouseMode) const override;
 
+	private:
+		eMouseButton SDLToButton(int alKey) const;
+
+	private:
 		cLowLevelInputSDL* mpLowLevelInputSDL;
+		std::vector<bool> mvButtonArray;
 	};
 }
 

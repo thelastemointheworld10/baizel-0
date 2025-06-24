@@ -57,34 +57,13 @@ void cPlayer::Init()
 	mpIdleAnimation = new cAnimation(mpGraphics->GetLowLevel());
 	mpWalkAnimation = new cAnimation(mpGraphics->GetLowLevel());
 
-	mpIdleAnimation->SetSpeed(3);
+	mpIdleAnimation->SetSpeed(2);
+	mpWalkAnimation->SetSpeed(6);
 }
 
 void cPlayer::OnStart()
 {
-	mpIdleAnimation->AddFrame("textures/player/player_idle_01.bmp");
-	mpIdleAnimation->AddFrame("textures/player/player_idle_02.bmp");
-	mpIdleAnimation->AddFrame("textures/player/player_idle_03.bmp");
-
-	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_05.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_10.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
-	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
-
+	InitAnimationFrames();
 	mpPlayerTexture = mpIdleAnimation->GetCurrentFrame();
 
 	mpStepBuffer->LoadAudio("sounds/player/player_step_wood.ogg");
@@ -192,6 +171,37 @@ void cPlayer::PlayStepSound()
 		mpAudioSource->Play();
 		mpStepTimer->Start();
 	}
+}
+
+void cPlayer::InitAnimationFrames() const
+{
+	/////////////////////
+	// Idle
+	mpIdleAnimation->AddFrame("textures/player/player_idle_01.bmp");
+	mpIdleAnimation->AddFrame("textures/player/player_idle_02.bmp");
+	mpIdleAnimation->AddFrame("textures/player/player_idle_03.bmp");
+	mpIdleAnimation->AddFrame("textures/player/player_idle_02.bmp");
+
+	/////////////////////
+	// Walk
+	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_05.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_04.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_03.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_02.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_01.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_10.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_09.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_08.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_07.bmp");
+	mpWalkAnimation->AddFrame("textures/player/player_walk_06.bmp");
 }
 
 // -----------------------------------------------------------------------

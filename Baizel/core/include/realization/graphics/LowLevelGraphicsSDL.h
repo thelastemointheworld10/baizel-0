@@ -25,8 +25,6 @@ namespace baizel
         iTexture* CreateTexture() const override;
         iFont* CreateFont() override;
 
-        void SetCursorVisible(bool abVisible) const override;
-
     private:
         SDL_Window* mpWindow = nullptr;
         std::string msWindowTitle;
