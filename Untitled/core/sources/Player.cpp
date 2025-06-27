@@ -54,6 +54,9 @@ void cPlayer::Init()
 	mvSize = tVector2f(150, 150);
 	mvCenter = mvSize / 2.0f;
 
+	mPlayerRect.SetPosition(mvPosition);
+	mPlayerRect.SetSize(mvSize);
+
 	mpIdleAnimation = new cAnimation(mpGraphics->GetLowLevel());
 	mpWalkAnimation = new cAnimation(mpGraphics->GetLowLevel());
 
@@ -82,8 +85,11 @@ void cPlayer::OnUpdate(float afTimeStep)
 		UpdateWalkAnimation(afTimeStep);
 		PlayStepSound();
 
-		mpAudioSystem->GetListener()->SetPosition(mvPosition);
-		mpAudioSource->SetPosition(mvPosition);
+		mpAudioSystem->GetListener()->SetPosition(mvPosition + mvCenter);
+		mpAudioSource->SetPosition(mvPosition + mvCenter);
+
+		mPlayerRect.SetPosition(mvPosition);
+		mPlayerRect.SetSize(mvSize);
 
 		mvDirection = cMath::AngleToVector(mfAngle);
 	}
@@ -96,7 +102,7 @@ void cPlayer::OnUpdate(float afTimeStep)
 
 void cPlayer::OnDraw()
 {
-	mpGraphics->GetRenderer()->DrawTexture(mpPlayerTexture, mvPosition, mvSize, mfAngle, mvCenter);
+	mpGraphics->GetRenderer()->DrawTexture(mpPlayerTexture,mPlayerRect, mfAngle, mvCenter);
 }
 
 void cPlayer::OnExit()

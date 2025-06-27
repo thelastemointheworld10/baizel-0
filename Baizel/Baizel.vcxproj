@@ -101,7 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -115,7 +115,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,7 +124,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -143,7 +143,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -157,7 +157,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp14</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,7 +166,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_ttf.lib;SDL2_image.lib;OpenAL32.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -184,11 +184,18 @@
     <ClInclude Include="core\include\engine\Updater.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
     <ClInclude Include="core\include\graphics\Color.h" />
-    <ClInclude Include="core\include\graphics\Font.h" />
+    <ClInclude Include="core\include\graphics\FontAtlas.h" />
+    <ClInclude Include="core\include\graphics\Glyph.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
+    <ClInclude Include="core\include\graphics\Rect.h" />
+    <ClInclude Include="core\include\graphics\RectTypes.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
     <ClInclude Include="core\include\graphics\Texture.h" />
+    <ClInclude Include="core\include\impl\system\ApplicationTimeSDL.h" />
+    <ClInclude Include="core\include\impl\system\XMLElementTinyXML.h" />
+    <ClInclude Include="core\include\impl\system\XMLReaderTinyXML.h" />
+    <ClInclude Include="core\include\system\XMLReader.h" />
     <ClInclude Include="core\include\input\Input.h" />
     <ClInclude Include="core\include\input\InputDevice.h" />
     <ClInclude Include="core\include\input\InputTypes.h" />
@@ -199,24 +206,26 @@
     <ClInclude Include="core\include\math\MathTypes.h" />
     <ClInclude Include="core\include\math\Vector2.h" />
     <ClInclude Include="core\include\math\Vector3.h" />
-    <ClInclude Include="core\include\realization\audio\AudioBufferAL.h" />
-    <ClInclude Include="core\include\realization\audio\AudioDeviceAL.h" />
-    <ClInclude Include="core\include\realization\audio\AudioListenerAL.h" />
-    <ClInclude Include="core\include\realization\audio\AudioSourceAL.h" />
-    <ClInclude Include="core\include\realization\audio\AudioSystemAL.h" />
-    <ClInclude Include="core\include\realization\audio\ErrorHandlerAL.h" />
-    <ClInclude Include="core\include\realization\engine\EngineSetupSDL.h" />
-    <ClInclude Include="core\include\realization\graphics\FontSDL.h" />
-    <ClInclude Include="core\include\realization\input\KeyboardSDL.h" />
-    <ClInclude Include="core\include\realization\graphics\LowLevelGraphicsSDL.h" />
-    <ClInclude Include="core\include\realization\input\LowLevelInputSDL.h" />
-    <ClInclude Include="core\include\realization\input\MouseSDL.h" />
-    <ClInclude Include="core\include\realization\graphics\RendererSDL.h" />
-    <ClInclude Include="core\include\realization\graphics\TextureSDL.h" />
+    <ClInclude Include="core\include\impl\audio\AudioBufferAL.h" />
+    <ClInclude Include="core\include\impl\audio\AudioDeviceAL.h" />
+    <ClInclude Include="core\include\impl\audio\AudioListenerAL.h" />
+    <ClInclude Include="core\include\impl\audio\AudioSourceAL.h" />
+    <ClInclude Include="core\include\impl\audio\AudioSystemAL.h" />
+    <ClInclude Include="core\include\impl\audio\ErrorHandlerAL.h" />
+    <ClInclude Include="core\include\impl\engine\EngineSetupSDL.h" />
+    <ClInclude Include="core\include\impl\input\KeyboardSDL.h" />
+    <ClInclude Include="core\include\impl\graphics\LowLevelGraphicsSDL.h" />
+    <ClInclude Include="core\include\impl\input\LowLevelInputSDL.h" />
+    <ClInclude Include="core\include\impl\input\MouseSDL.h" />
+    <ClInclude Include="core\include\impl\graphics\RendererSDL.h" />
+    <ClInclude Include="core\include\impl\graphics\TextureSDL.h" />
     <ClInclude Include="core\include\engine\Engine.h" />
-    <ClInclude Include="core\include\realization\time\ApplicationTimeSDL.h" />
-    <ClInclude Include="core\include\time\ApplicationTime.h" />
-    <ClInclude Include="core\include\time\Timer.h" />
+    <ClInclude Include="core\include\impl\system\ErrorHandlerTinyXML.h" />
+    <ClInclude Include="core\include\impl\system\XMLDocumentTinyXML.h" />
+    <ClInclude Include="core\include\system\ApplicationTime.h" />
+    <ClInclude Include="core\include\system\Timer.h" />
+    <ClInclude Include="core\include\system\XMLDocument.h" />
+    <ClInclude Include="core\include\system\XMLElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\include\audio\stb_vorbis.c" />
@@ -226,34 +235,36 @@
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
     <ClCompile Include="core\sources\engine\Updater.cpp" />
+    <ClCompile Include="core\sources\graphics\Glyph.cpp" />
     <ClCompile Include="core\sources\graphics\Renderer.cpp" />
     <ClCompile Include="core\sources\graphics\Texture.cpp" />
-    <ClCompile Include="core\sources\realization\audio\AudioDeviceAL.cpp" />
-    <ClCompile Include="core\sources\realization\audio\AudioListenerAL.cpp" />
-    <ClCompile Include="core\sources\realization\audio\AudioSystemAL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioDeviceAL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioListenerAL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioSystemAL.cpp" />
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
     <ClCompile Include="core\sources\graphics\Color.cpp" />
-    <ClCompile Include="core\sources\graphics\Font.cpp" />
+    <ClCompile Include="core\sources\graphics\FontAtlas.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
+    <ClCompile Include="core\sources\impl\system\XMLDocumentTinyXML.cpp" />
+    <ClCompile Include="core\sources\impl\system\XMLElementTinyXML.cpp" />
+    <ClCompile Include="core\sources\impl\system\XMLReaderTinyXML.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
     <ClCompile Include="core\sources\math\Math.cpp" />
-    <ClCompile Include="core\sources\realization\audio\AudioBufferAL.cpp" />
-    <ClCompile Include="core\sources\realization\audio\AudioSourceAL.cpp" />
-    <ClCompile Include="core\sources\realization\audio\ErrorHandlerAL.cpp" />
-    <ClCompile Include="core\sources\realization\engine\EngineSetupSDL.cpp" />
-    <ClCompile Include="core\sources\realization\graphics\FontSDL.cpp" />
-    <ClCompile Include="core\sources\realization\input\KeyboardSDL.cpp" />
-    <ClCompile Include="core\sources\realization\graphics\LowLevelGraphicsSDL.cpp" />
-    <ClCompile Include="core\sources\realization\input\LowLevelInputSDL.cpp" />
-    <ClCompile Include="core\sources\realization\input\MouseSDL.cpp" />
-    <ClCompile Include="core\sources\realization\graphics\RendererSDL.cpp" />
-    <ClCompile Include="core\sources\realization\graphics\TextureSDL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioBufferAL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioSourceAL.cpp" />
+    <ClCompile Include="core\sources\impl\engine\EngineSetupSDL.cpp" />
+    <ClCompile Include="core\sources\impl\input\KeyboardSDL.cpp" />
+    <ClCompile Include="core\sources\impl\graphics\LowLevelGraphicsSDL.cpp" />
+    <ClCompile Include="core\sources\impl\input\LowLevelInputSDL.cpp" />
+    <ClCompile Include="core\sources\impl\input\MouseSDL.cpp" />
+    <ClCompile Include="core\sources\impl\graphics\RendererSDL.cpp" />
+    <ClCompile Include="core\sources\impl\graphics\TextureSDL.cpp" />
     <ClCompile Include="core\sources\engine\Engine.cpp" />
-    <ClCompile Include="core\sources\realization\time\ApplicationTimeSDL.cpp" />
+    <ClCompile Include="core\sources\impl\system\ApplicationTimeSDL.cpp" />
     <ClCompile Include="core\sources\system\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>

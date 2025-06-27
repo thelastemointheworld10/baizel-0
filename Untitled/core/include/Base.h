@@ -6,8 +6,9 @@
 #include <Windows.h>
 #endif
 
-#include <realization/engine/EngineSetupSDL.h>
-#include <realization/audio/AudioSystemAL.h>
+#include <impl/engine/EngineSetupSDL.h>
+#include <impl/audio/AudioSystemAL.h>
+#include <impl/system/XMLReaderTinyXML.h>
 
 #include <Player.h>
 

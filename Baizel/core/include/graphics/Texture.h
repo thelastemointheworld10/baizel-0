@@ -5,7 +5,6 @@
 
 #include <graphics/Color.h>
 #include <graphics/Renderer.h>
-#include <graphics/Font.h>
 
 namespace baizel
 {
@@ -15,7 +14,6 @@ namespace baizel
 		virtual ~iTexture() = default;
 
 		virtual void LoadFile(const std::string& asPath) = 0;
-		virtual void CreateFromFont(iFont* aFont, cColor aColor) = 0;
 
 		virtual void SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const = 0;
 		virtual void SetColor(cColor aColor) const = 0;

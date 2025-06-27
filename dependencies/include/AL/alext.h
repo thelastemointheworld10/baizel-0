@@ -7,7 +7,7 @@
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) ||             \
     (defined(__cplusplus) && __cplusplus >= 201103L)
 #include <stdint.h>
-typedef int64_t _alsoft_int64_t;
+typedef uint64_t _alsoft_int64_t;
 typedef uint64_t _alsoft_uint64_t;
 #elif defined(_WIN32)
 typedef __int64 _alsoft_int64_t;
@@ -15,7 +15,7 @@ typedef unsigned __int64 _alsoft_uint64_t;
 #else
 /* Fallback if nothing above works */
 #include <stdint.h>
-typedef int64_t _alsoft_int64_t;
+typedef uint64_t _alsoft_int64_t;
 typedef uint64_t _alsoft_uint64_t;
 #endif
 

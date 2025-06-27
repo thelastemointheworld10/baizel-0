@@ -2,7 +2,7 @@
 #define BAIZEL_TIMESTEP_H
 
 #include <engine/Log.h>
-#include <time/Timer.h>
+#include <system/ApplicationTime.h>
 #include <math/Math.h>
 
 namespace baizel

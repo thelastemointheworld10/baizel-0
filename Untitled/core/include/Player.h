@@ -32,6 +32,7 @@ private:
 	tVector2f mvCenter = tVector2f(50);
 	tVector2f mvPosition = tVector2f();
 	tVector2f mvDirection = tVector2f();
+	tRectf mPlayerRect = tRectf();
 
 	float mfMoveSpeed = 150.0f;
 	float mfRotateSpeed = 100.0f;

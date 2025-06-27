@@ -4,6 +4,7 @@
 #include <graphics/LowLevelGraphics.h>
 #include <graphics/Texture.h>
 #include <graphics/Color.h>
+#include <graphics/RectTypes.h>
 
 namespace baizel
 {
@@ -30,9 +31,12 @@ namespace baizel
 		virtual void Clear() const = 0;
 		virtual void SwapBuffers() const = 0;
 
-		virtual void DrawRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const = 0;
-		virtual void DrawFilledRect(tVector2f avPosition, tVector2f avSize, cColor aColor) const = 0;
-		virtual void DrawTexture(iTexture* apTexture, tVector2f avPosition, tVector2f avSize,
+		virtual void DrawRect(tRectf aRect, cColor aColor) const = 0;
+		virtual void DrawFilledRect(tRectf aRect, cColor aColor) const = 0;
+		virtual void DrawTexture(iTexture* apTexture, tRectf aRect,
+			float afAngle = 0.0f, tVector2f avCenter = tVector2f(),
+			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;
+		virtual void DrawTexture(iTexture* apTexture, tRectl aSourceRect, tRectf aDestRect,
 			float afAngle = 0.0f, tVector2f avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;
 

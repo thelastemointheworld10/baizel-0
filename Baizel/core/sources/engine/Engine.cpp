@@ -8,12 +8,18 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem)
+	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem, iXMLReader* apXMLReader)
 	{
 		cLog::Log("- Creating engine stuff");
 
 		cLog::Log("\tEngine setup");
 		mpEngineSetup = apEngineSetup;
+
+		cLog::Log("\tAudio system");
+		mpAudioSystem = apAudioSystem;
+
+		cLog::Log("\tXML Reader");
+		mpXMLReader = apXMLReader;
 
 		cLog::Log("\tGraphics");
 		mpGraphics = mpEngineSetup->CreateGraphics();
@@ -21,22 +27,31 @@ namespace baizel
 		cLog::Log("\tInput");
 		mpInput = mpEngineSetup->CreateInput(this, mpGraphics->GetLowLevel());
 
-		cLog::Log("\tSystem");
+		cLog::Log("\tApplication time");
 		mpApplicationTime = mpEngineSetup->CreateApplicationTime();
-
-		cLog::Log("\tTime step");
-		mpTimeStep = new cTimeStep(mpApplicationTime);
-
-		cLog::Log("\tAudio system");
-		mpAudioSystem = apAudioSystem;
 
 		cLog::Log("\tUpdater");
 		mpUpdater = new cUpdater();
+
+		cLog::Log("\tTime step");
+		mpTimeStep = new cTimeStep(mpApplicationTime);
 	}
 
 	cEngine::~cEngine()
 	{
 		cLog::Log("- Deleting engine stuff");
+
+		cLog::Log("\tEngine setup");
+		delete mpEngineSetup;
+		mpEngineSetup = nullptr;
+
+		cLog::Log("\tAudio system");
+		delete mpAudioSystem;
+		mpAudioSystem = nullptr;
+
+		cLog::Log("\tXML Reader");
+		delete mpXMLReader;
+		mpXMLReader = nullptr;
 
 		cLog::Log("\tGraphics");
 		delete mpGraphics;
@@ -46,25 +61,17 @@ namespace baizel
 		delete mpInput;
 		mpInput = nullptr;
 
-		cLog::Log("\tSystem");
+		cLog::Log("\tApplication time");
 		delete mpApplicationTime;
 		mpApplicationTime = nullptr;
-
-		cLog::Log("\tTime step");
-		delete mpTimeStep;
-		mpTimeStep = nullptr;
-
-		cLog::Log("\tAudio system");
-		delete mpAudioSystem;
-		mpAudioSystem = nullptr;
 
 		cLog::Log("\tUpdater");
 		delete mpUpdater;
 		mpUpdater = nullptr;
 
-		cLog::Log("\tEngine setup");
-		delete mpEngineSetup;
-		mpEngineSetup = nullptr;
+		cLog::Log("\tTime step");
+		delete mpTimeStep;
+		mpTimeStep = nullptr;
 	}
 
 	// -----------------------------------------------------------------------
@@ -141,27 +148,32 @@ namespace baizel
 	// Accessors
 	//////////////////////////////////////////
 
-	iAudioSystem* cEngine::GetAudioSystem()
+	iAudioSystem* cEngine::GetAudioSystem() const
 	{
 		return mpAudioSystem;
 	}
 
-	cGraphics* cEngine::GetGraphics()
+	iXMLReader* cEngine::GetXMLReader() const
+	{
+		return mpXMLReader;
+	}
+
+	cGraphics* cEngine::GetGraphics() const
 	{
 		return mpGraphics;
 	}
 
-	cInput* cEngine::GetInput()
+	cInput* cEngine::GetInput() const
 	{
 		return mpInput;
 	}
 
-	iApplicationTime* cEngine::GetApplicationTime()
+	iApplicationTime* cEngine::GetApplicationTime() const
 	{
 		return mpApplicationTime;
 	}
 
-	cUpdater* cEngine::GetUpdater()
+	cUpdater* cEngine::GetUpdater() const
 	{
 		return mpUpdater;
 	}

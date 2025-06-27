@@ -9,7 +9,7 @@ namespace baizel
 {
     class iRenderer;
     class iTexture;
-    class iFont;
+    class cFontAtlas;
 
     const tVector2l gkMinScreenSize = tVector2l(640, 480);
     const tVector2f gkMinVirtualSize = tVector2f(1, 1);
@@ -26,7 +26,6 @@ namespace baizel
         tVector2f GetVirtualSize() const;
 
         virtual iTexture* CreateTexture() const = 0;
-        virtual iFont* CreateFont() = 0;
 
     protected:
         iRenderer* mpRenderer = nullptr;

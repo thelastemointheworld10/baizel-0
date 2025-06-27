@@ -15,7 +15,7 @@ namespace baizel
         mvVirtualSize = tVector2f(800, 600);
         mbFullscreen = false;
 
-        mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL());
+        mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL(), new cXMLReaderTinyXML());
 
         mpPlayer = new cPlayer(mpEngine->GetAudioSystem(),
             mpEngine->GetGraphics(),
@@ -72,7 +72,23 @@ namespace baizel
     
     void cBase::Exit()
     {
-        // saving game progress && settings
+        iXMLDocument* pSaveData = mpEngine->GetXMLReader()->CreateDocument();
+        iXMLElement* pRoot = mpEngine->GetXMLReader()->CreateElement(pSaveData);
+        iXMLElement* pDate = mpEngine->GetXMLReader()->CreateElement(pSaveData);
+
+        pRoot->SetName("save_data");
+
+        pDate->SetName("date");
+        pDate->SetValue(mpEngine->GetApplicationTime()->GetTimeInSec());
+
+        pDate->SetAttribute("day", 27);
+        pDate->SetAttribute("month", 6);
+        pDate->SetAttribute("year", 2025);
+
+        pSaveData->InsertFirst(pRoot);
+        pRoot->InsertEnd(pDate);
+
+        pSaveData->SaveFile("saves/save_data.sav");
     }
     
     // -----------------------------------------------------------------------

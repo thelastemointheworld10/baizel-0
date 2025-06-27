@@ -12,11 +12,11 @@
 #include <graphics/Graphics.h>
 #include <input/Input.h>
 #include <engine/TimeStep.h>
-#include <time/Timer.h>
+#include <system/Timer.h>
 #include <graphics/Animation.h>
-#include <graphics/Font.h>
 #include <audio/AudioSystem.h>
 #include <engine/Updater.h>
+#include <system/XMLReader.h>
 
 namespace baizel
 {
@@ -25,24 +25,26 @@ namespace baizel
     class cEngine final
     {
     public:
-        cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem);
+        cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem, iXMLReader* apXMLReader);
         ~cEngine();
 
         bool Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen);
         void Run();
         void Exit();
 
-        iAudioSystem* GetAudioSystem();
-        cGraphics* GetGraphics();
-        cInput* GetInput();
-        iApplicationTime* GetApplicationTime();
-        cUpdater* GetUpdater();
+        iAudioSystem* GetAudioSystem() const;
+        iXMLReader* GetXMLReader() const;
+        cGraphics* GetGraphics() const;
+        cInput* GetInput() const;
+        iApplicationTime* GetApplicationTime() const;
+        cUpdater* GetUpdater() const;
         
     private:
         bool mbRunning;
 
         iEngineSetup* mpEngineSetup = nullptr;
         iAudioSystem* mpAudioSystem = nullptr;
+        iXMLReader* mpXMLReader = nullptr;
         cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
         iApplicationTime* mpApplicationTime = nullptr;
