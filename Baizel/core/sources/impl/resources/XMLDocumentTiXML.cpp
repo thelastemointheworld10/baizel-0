@@ -23,7 +23,7 @@ namespace baizel
 			mDocument.InsertEndChild(ConvertTinyXMLData((*it)->ToElement()));
 		}
 
-		XMLError lResult = mDocument.SaveFile(asPath.c_str(), false);
+		XMLError lResult = mDocument.SaveFile(asPath.c_str());
 		XMLCheckResult(lResult);
 	}
 
