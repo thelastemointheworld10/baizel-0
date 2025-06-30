@@ -35,7 +35,7 @@ namespace baizel
 
     void cAudioSystemAL::CreateContext()
     {
-        ALCdevice* pDevice = dynamic_cast<cAudioDeviceAL*>(mpAudioDevice)->GetALCDevice();
+        ALCdevice* pDevice = static_cast<cAudioDeviceAL*>(mpAudioDevice)->GetALCDevice();
 
         mpContext = alcCall(alcCreateContext, pDevice, pDevice, nullptr);
         if (mpContext == nullptr)

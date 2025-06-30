@@ -23,7 +23,7 @@ namespace baizel
 	private:
 		tRectl mRect = tRectl();
 		tVector2f mvOffset = tVector2f();
-		float mfAdvance = 0.0f;
+		int mlAdvance = 10;
 		int mlPage = 0;
 	};
 }

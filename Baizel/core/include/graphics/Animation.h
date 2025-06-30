@@ -5,14 +5,13 @@
 #include <vector>
 
 #include <math/Math.h>
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <graphics/LowLevelGraphics.h>
 #include <graphics/Texture.h>
 
 namespace baizel
 {
-	using tFrameVector = std::vector<iTexture*>;
 	const int gkDefaultFrames = 12;
 
 	class cAnimation final
@@ -22,7 +21,7 @@ namespace baizel
 		~cAnimation();
 
 		void SetSpeed(float afFramesPerSec);
-		void SetFrames(const tFrameVector& avFrames);
+		void SetFrames(const tTextureVec& avFrames);
 
 		void AddFrame(const std::string& asPath);
 		void AddFrame(iTexture* apTexture);
@@ -38,7 +37,7 @@ namespace baizel
 		iTexture* FindSameFrame(const std::string& asPath) const;
 
 	private:
-		tFrameVector mvFrames;
+		tTextureVec mvFrames;
 		int mlCurrentFrame;
 
 		float mfFrameRate;

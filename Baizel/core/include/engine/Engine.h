@@ -5,18 +5,17 @@
 
 #include <math/Math.h>
 #include <math/MathTypes.h>
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <engine/EngineSetup.h>
 #include <graphics/Renderer.h>
 #include <graphics/Graphics.h>
 #include <input/Input.h>
 #include <engine/TimeStep.h>
-#include <system/Timer.h>
+#include <core/Timer.h>
 #include <graphics/Animation.h>
 #include <audio/AudioSystem.h>
 #include <engine/Updater.h>
-#include <system/XMLReader.h>
 
 namespace baizel
 {
@@ -25,7 +24,7 @@ namespace baizel
     class cEngine final
     {
     public:
-        cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem, iXMLReader* apXMLReader);
+        cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem);
         ~cEngine();
 
         bool Init(const std::string& asWindowTitle, tVector2l avWindowSize, tVector2f avVirtualSize, bool abFullscreen);
@@ -33,7 +32,6 @@ namespace baizel
         void Exit();
 
         iAudioSystem* GetAudioSystem() const;
-        iXMLReader* GetXMLReader() const;
         cGraphics* GetGraphics() const;
         cInput* GetInput() const;
         iApplicationTime* GetApplicationTime() const;
@@ -44,7 +42,6 @@ namespace baizel
 
         iEngineSetup* mpEngineSetup = nullptr;
         iAudioSystem* mpAudioSystem = nullptr;
-        iXMLReader* mpXMLReader = nullptr;
         cGraphics* mpGraphics = nullptr;
         cInput* mpInput = nullptr;
         iApplicationTime* mpApplicationTime = nullptr;

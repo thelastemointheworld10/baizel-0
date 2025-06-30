@@ -29,15 +29,15 @@ namespace baizel
 
 	float cGlyph::GetAdvance() const
 	{
-		return mfAdvance;
+		return mlAdvance;
 	}
 
 	void cGlyph::SetAdvance(float afAdvance)
 	{
-		mfAdvance = afAdvance;
+		mlAdvance = afAdvance;
 
-		if (mfAdvance == 0.0f)
-			mfAdvance = 0.0f;
+		if (mlAdvance == 0.0f)
+			mlAdvance = 0.0f;
 	}
 
 	int cGlyph::GetPage() const

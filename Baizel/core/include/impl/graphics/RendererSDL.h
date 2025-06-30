@@ -5,7 +5,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <graphics/Renderer.h>
 #include <impl/graphics/LowLevelGraphicsSDL.h>

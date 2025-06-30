@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 namespace baizel
 {

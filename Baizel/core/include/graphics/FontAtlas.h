@@ -1,7 +1,7 @@
 #ifndef BAIZEL_FONT_H
 #define BAIZEL_FONT_H
 
-#include <unordered_map>
+#include <vector>
 
 #include <graphics/Glyph.h>
 
@@ -11,6 +11,7 @@
 namespace baizel
 {
 	const int gkDefaultGlyphs = 351; // latin + cyrillic characters
+	const int gkDefaultPages = 2;
 
 	class cFontAtlas final
 	{
@@ -18,13 +19,17 @@ namespace baizel
 		cFontAtlas(iLowLevelGraphics* apLowLevelGraphics);
 		~cFontAtlas();
 
-		void Load(const std::string& asPath);
+		void LoadFile(const std::string& asPath);
 
 		const std::string& GetPath() const;
 
 	private:
+		void ReadValues();
+		void ReadPages();
+
+	private:
 		iLowLevelGraphics* mpLowLevelGraphics = nullptr;
-		iTexture* mpTexture = nullptr;
+		tTextureVec mvPages = tTextureVec();
 
 		std::string msPath = " ";
 		std::vector<cGlyph> mvGlyphs;

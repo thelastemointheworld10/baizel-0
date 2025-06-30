@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 namespace baizel
 {

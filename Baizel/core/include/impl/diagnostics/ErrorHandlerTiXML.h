@@ -1,9 +1,9 @@
-#ifndef BAIZEL_ERRORHANDLERTINYXML_H
-#define BAIZEL_ERRORHANDLERTINYXML_H
+#ifndef BAIZEL_ERRORHANDLERTIXML_H
+#define BAIZEL_ERRORHANDLERTIXML_H
 
 #include <tinyxml/tinyxml2.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 using namespace tinyxml2;
 
@@ -21,8 +21,7 @@ namespace baizel
     {
         if (alResult != XML_SUCCESS)
         {
-            cLog::Error("TinyXML (%s : %d)", asFile, alLine);
-            cLog::Log("\t%s", tinyxml2::XMLDocument::ErrorIDToName(alResult));
+            cLog::Error("TinyXML2 in file %s line %d: %s", asFile, alLine, tinyxml2::XMLDocument::ErrorIDToName(alResult));
 
             return false;
         }
@@ -33,4 +32,4 @@ namespace baizel
 	// -----------------------------------------------------------------------
 }
 
-#endif // BAIZEL_ERRORHANDLERTINYXML_H
+#endif // BAIZEL_ERRORHANDLERTIXML_H

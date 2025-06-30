@@ -5,7 +5,7 @@
 
 #include <graphics/Graphics.h>
 #include <input/Input.h>
-#include <system/ApplicationTime.h>
+#include <core/ApplicationTime.h>
 
 namespace baizel
 {

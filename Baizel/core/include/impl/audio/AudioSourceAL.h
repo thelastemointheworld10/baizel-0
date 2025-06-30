@@ -1,7 +1,7 @@
 #ifndef BAIZEL_AUDIOSOURCEAL_H
 #define BAIZEL_AUDIOSOURCEAL_H
 
-#include <impl/audio/ErrorHandlerAL.h>
+#include <impl/diagnostics/ErrorHandlerAL.h>
 
 #include <audio/AudioSource.h>
 

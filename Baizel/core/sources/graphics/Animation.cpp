@@ -92,7 +92,7 @@ namespace baizel
 			mvFrames.push_back(apTexture);
 	}
 
-	void cAnimation::SetFrames(const tFrameVector& avFrames)
+	void cAnimation::SetFrames(const tTextureVec& avFrames)
 	{
 		mvFrames.clear();
 

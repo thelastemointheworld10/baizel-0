@@ -10,7 +10,7 @@ namespace baizel
 	
 	cTextureSDL::cTextureSDL(iRenderer* apRenderer)
 	{
-		mpRenderer = dynamic_cast<cRendererSDL*>(apRenderer)->GetRenderer();
+		mpRenderer = static_cast<cRendererSDL*>(apRenderer)->GetRenderer();
 	}
 
 	cTextureSDL::~cTextureSDL()

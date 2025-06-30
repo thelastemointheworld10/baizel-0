@@ -8,6 +8,8 @@
 
 namespace baizel
 {
+	using tTextureVec = std::vector<iTexture*>;
+
 	class iTexture
 	{
 	public:

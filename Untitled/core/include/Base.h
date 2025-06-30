@@ -2,38 +2,33 @@
 #define BASE_H
 
 #include <string>
-#ifdef _WIN32
-#include <Windows.h>
-#endif
 
 #include <impl/engine/EngineSetupSDL.h>
 #include <impl/audio/AudioSystemAL.h>
-#include <impl/system/XMLReaderTinyXML.h>
 
 #include <Player.h>
 
-namespace baizel
+using namespace baizel;
+
+class cBase final
 {
-    class cBase final
-    {
-    public:
-        cBase();
-        ~cBase();
-    
-        bool Init();
-        void Run();
-        void Exit();
+public:
+    cBase();
+    ~cBase();
 
-    private:
-        std::string msWindowTitle = "";
-        tVector2l mvScreenSize = tVector2l(800, 600);
-        tVector2f mvVirtualSize = tVector2f(800, 600);
-        bool mbFullscreen = false;
+    bool Init();
+    void Run();
+    void Exit();
 
-        cEngine* mpEngine = nullptr;
+private:
+    std::string msWindowTitle = "";
+    tVector2l mvScreenSize = tVector2l(800, 600);
+    tVector2f mvVirtualSize = tVector2f(800, 600);
+    bool mbFullscreen = false;
 
-        cPlayer* mpPlayer = nullptr;
-    };
-}
+    cEngine* mpEngine = nullptr;
+
+    cPlayer* mpPlayer = nullptr;
+};
 
 #endif // BASE_H

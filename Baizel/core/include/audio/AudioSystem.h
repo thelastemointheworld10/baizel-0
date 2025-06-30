@@ -5,7 +5,7 @@
 #include <string>
 
 #include <math/MathTypes.h>
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <audio/AudioBuffer.h>
 #include <audio/AudioSource.h>

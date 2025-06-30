@@ -3,9 +3,9 @@
 
 #include <cstdint>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
-#include <system/ApplicationTime.h>
+#include <core/ApplicationTime.h>
 
 namespace baizel
 {

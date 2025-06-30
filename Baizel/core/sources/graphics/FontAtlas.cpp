@@ -15,8 +15,10 @@ namespace baizel
 
 	cFontAtlas::~cFontAtlas()
 	{
-		delete mpTexture;
-		mpTexture = nullptr;
+		for (iTexture* pPage : mvPages)
+		{
+			delete pPage;
+		}
 	}
 
 	// -----------------------------------------------------------------------
@@ -31,7 +33,7 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cFontAtlas::Load(const std::string& asPath)
+	void cFontAtlas::LoadFile(const std::string& asPath)
 	{
 		
 	}
@@ -43,6 +45,31 @@ namespace baizel
 	const std::string& cFontAtlas::GetPath() const
 	{
 		return msPath;
+	}
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////////////////////////////////////
+	// PRIVATE METHODS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
+	void cFontAtlas::ReadValues()
+	{
+		tVector2l vPosition = tVector2l();
+		tVector2l vSize = tVector2l();
+		tVector2l vOffset = tVector2l();
+		int lAdvance = 10;
+	}
+
+	void cFontAtlas::ReadPages()
+	{
+		
 	}
 
 	// -----------------------------------------------------------------------

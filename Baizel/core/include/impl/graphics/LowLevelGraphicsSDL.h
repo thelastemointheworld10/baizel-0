@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <graphics/LowLevelGraphics.h>
 #include <impl/graphics/TextureSDL.h>

@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <graphics/Texture.h>
 #include <impl/graphics/RendererSDL.h>

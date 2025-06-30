@@ -179,7 +179,7 @@
     <ClInclude Include="core\include\audio\stb_vorbis.h" />
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\TimeStep.h" />
-    <ClInclude Include="core\include\engine\Log.h" />
+    <ClInclude Include="core\include\diagnostics\Log.h" />
     <ClInclude Include="core\include\engine\Updateable.h" />
     <ClInclude Include="core\include\engine\Updater.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
@@ -192,10 +192,8 @@
     <ClInclude Include="core\include\graphics\RectTypes.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
     <ClInclude Include="core\include\graphics\Texture.h" />
-    <ClInclude Include="core\include\impl\system\ApplicationTimeSDL.h" />
-    <ClInclude Include="core\include\impl\system\XMLElementTinyXML.h" />
-    <ClInclude Include="core\include\impl\system\XMLReaderTinyXML.h" />
-    <ClInclude Include="core\include\system\XMLReader.h" />
+    <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h" />
+    <ClInclude Include="core\include\impl\resources\XMLDocumentTiXML.h" />
     <ClInclude Include="core\include\input\Input.h" />
     <ClInclude Include="core\include\input\InputDevice.h" />
     <ClInclude Include="core\include\input\InputTypes.h" />
@@ -211,7 +209,7 @@
     <ClInclude Include="core\include\impl\audio\AudioListenerAL.h" />
     <ClInclude Include="core\include\impl\audio\AudioSourceAL.h" />
     <ClInclude Include="core\include\impl\audio\AudioSystemAL.h" />
-    <ClInclude Include="core\include\impl\audio\ErrorHandlerAL.h" />
+    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerAL.h" />
     <ClInclude Include="core\include\impl\engine\EngineSetupSDL.h" />
     <ClInclude Include="core\include\impl\input\KeyboardSDL.h" />
     <ClInclude Include="core\include\impl\graphics\LowLevelGraphicsSDL.h" />
@@ -220,12 +218,12 @@
     <ClInclude Include="core\include\impl\graphics\RendererSDL.h" />
     <ClInclude Include="core\include\impl\graphics\TextureSDL.h" />
     <ClInclude Include="core\include\engine\Engine.h" />
-    <ClInclude Include="core\include\impl\system\ErrorHandlerTinyXML.h" />
-    <ClInclude Include="core\include\impl\system\XMLDocumentTinyXML.h" />
-    <ClInclude Include="core\include\system\ApplicationTime.h" />
-    <ClInclude Include="core\include\system\Timer.h" />
-    <ClInclude Include="core\include\system\XMLDocument.h" />
-    <ClInclude Include="core\include\system\XMLElement.h" />
+    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerTiXML.h" />
+    <ClInclude Include="core\include\core\ApplicationTime.h" />
+    <ClInclude Include="core\include\core\Timer.h" />
+    <ClInclude Include="core\include\resources\XMLDocument.h" />
+    <ClInclude Include="core\include\resources\XMLElement.h" />
+    <ClInclude Include="core\include\resources\XMLNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\include\audio\stb_vorbis.c" />
@@ -247,9 +245,7 @@
     <ClCompile Include="core\sources\graphics\FontAtlas.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
-    <ClCompile Include="core\sources\impl\system\XMLDocumentTinyXML.cpp" />
-    <ClCompile Include="core\sources\impl\system\XMLElementTinyXML.cpp" />
-    <ClCompile Include="core\sources\impl\system\XMLReaderTinyXML.cpp" />
+    <ClCompile Include="core\sources\impl\resources\XMLDocumentTiXML.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />
@@ -264,8 +260,11 @@
     <ClCompile Include="core\sources\impl\graphics\RendererSDL.cpp" />
     <ClCompile Include="core\sources\impl\graphics\TextureSDL.cpp" />
     <ClCompile Include="core\sources\engine\Engine.cpp" />
-    <ClCompile Include="core\sources\impl\system\ApplicationTimeSDL.cpp" />
-    <ClCompile Include="core\sources\system\Timer.cpp" />
+    <ClCompile Include="core\sources\impl\core\ApplicationTimeSDL.cpp" />
+    <ClCompile Include="core\sources\core\Timer.cpp" />
+    <ClCompile Include="core\sources\resources\XMLDocument.cpp" />
+    <ClCompile Include="core\sources\resources\XMLElement.cpp" />
+    <ClCompile Include="core\sources\resources\XMLNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="core\TODO.txt" />

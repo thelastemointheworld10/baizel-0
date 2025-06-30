@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <input/LowLevelInput.h>
 #include <input/Keyboard.h>
@@ -42,7 +42,7 @@ namespace baizel
                 return nullptr;
             }
 
-            T* pResult = dynamic_cast<T*>(pParentDevice);
+            T* pResult = static_cast<T*>(pParentDevice);
             if (pResult == nullptr)
             {
                 cLog::Error("Failed to get input device! Type mismatch for device %d. Expected %s, got %s",

@@ -46,6 +46,7 @@ namespace baizel
 
     void cKeyboardSDL::SetKeyRepeat(bool abRepeat)
     {
+        cLog::Log("Key repeat: %s", abRepeat ? "true" : "false");
         mbKeyRepeat = abRepeat;
     }
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 #include <audio/stb_vorbis.h>
 

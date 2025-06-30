@@ -1,4 +1,4 @@
-#include <impl/system/ApplicationTimeSDL.h>
+#include <impl/core/ApplicationTimeSDL.h>
 
 namespace baizel
 {

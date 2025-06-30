@@ -30,7 +30,7 @@ namespace baizel
 
 	bool cRendererSDL::Init(iLowLevelGraphics* apGraphics)
 	{
-		cLowLevelGraphicsSDL* pLowLevelGraphicsSDL = dynamic_cast<cLowLevelGraphicsSDL*>(apGraphics);
+		cLowLevelGraphicsSDL* pLowLevelGraphicsSDL = static_cast<cLowLevelGraphicsSDL*>(apGraphics);
 
 		mpRenderer = SDL_CreateRenderer(pLowLevelGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
 		if (mpRenderer == nullptr)
@@ -115,7 +115,7 @@ namespace baizel
 			return;
 		}
 
-		SDL_Texture* pSDLTexture = dynamic_cast<cTextureSDL*>(apTexture)->GetTexture();
+		SDL_Texture* pSDLTexture = static_cast<cTextureSDL*>(apTexture)->GetTexture();
 		if (pSDLTexture == nullptr)
 		{
 			DrawFilledRect(aRect, gkInvalidColor);
@@ -141,7 +141,7 @@ namespace baizel
 			return;
 		}
 
-		SDL_Texture* pSDLTexture = dynamic_cast<cTextureSDL*>(apTexture)->GetTexture();
+		SDL_Texture* pSDLTexture = static_cast<cTextureSDL*>(apTexture)->GetTexture();
 		if (pSDLTexture == nullptr)
 		{
 			DrawFilledRect(aDestRect, gkInvalidColor);

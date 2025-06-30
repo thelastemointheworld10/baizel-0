@@ -4,7 +4,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
-#include <engine/Log.h>
+#include <diagnostics/Log.h>
 
 namespace baizel
 {
@@ -29,27 +29,29 @@ namespace baizel
 		ALenum lError = alGetError();
 		if (lError != AL_NO_ERROR)
 		{
-			cLog::Error("OpenAL Soft (%s : %d)", asFilename, alLine);
+			std::string sErrorCode;
+
 			switch (lError)
 			{
 			case AL_INVALID_NAME:
-				cLog::Log("\tBad name (ID) was passed to an OpenAL function");
+				sErrorCode = "tBad name(ID) was passed to an OpenAL function";
 				break;
 			case AL_INVALID_ENUM:
-				cLog::Log("\tInvalid enum value was passed to an OpenAL function");
+				sErrorCode = "Invalid enum value was passed to an OpenAL function";
 				break;
 			case AL_INVALID_VALUE:
-				cLog::Log("\tInvalid value was passed to an OpenAL function");
+				sErrorCode = "Invalid value was passed to an OpenAL function";
 				break;
 			case AL_INVALID_OPERATION:
-				cLog::Log("\tRequested operation is not valid");
+				sErrorCode = "Requested operation is not valid";
 				break;
 			case AL_OUT_OF_MEMORY:
-				cLog::Log("\tRequested operation resulted in OpenAL running out of memory");
+				sErrorCode = "Requested operation resulted in OpenAL running out of memory";
 				break;
 			default:
-				cLog::Log("\tUnknown AL error: %d", lError);
+				sErrorCode = "Unknown AL error";
 			}
+			cLog::Error("OpenAL Soft in file %s on line %d : %s", asFilename, alLine, sErrorCode);
 
 			return false;
 		}
@@ -92,27 +94,29 @@ namespace baizel
 		ALCenum lError = alcGetError(apDevice);
 		if (lError != ALC_NO_ERROR)
 		{
-			cLog::Error("OpenAL Soft (%s : %d)", asFilename, alLine);
+			std::string sErrorCode;
+
 			switch (lError)
 			{
 			case ALC_INVALID_VALUE:
-				cLog::Log("\tInvalid value was passed to an OpenAL function");
+				sErrorCode = "Invalid value was passed to an OpenAL function";
 				break;
 			case ALC_INVALID_DEVICE:
-				cLog::Log("\tBad device was passed to an OpenAL function");
+				sErrorCode = "Bad device was passed to an OpenAL function";
 				break;
 			case ALC_INVALID_CONTEXT:
-				cLog::Log("\tBad context was passed to an OpenAL function");
+				sErrorCode = "Bad context was passed to an OpenAL function";
 				break;
 			case ALC_INVALID_ENUM:
-				cLog::Log("\tUnknown enum value was passed to an OpenAL function");
+				sErrorCode = "Unknown enum value was passed to an OpenAL function";
 				break;
 			case ALC_OUT_OF_MEMORY:
-				cLog::Log("\tUnknown enum value was passed to an OpenAL function");
+				sErrorCode = "Unknown enum value was passed to an OpenAL function";
 				break;
 			default:
-				cLog::Log("\tUnknown ALC error: %d", lError);
+				sErrorCode = "Unknown ALC error";
 			}
+			cLog::Error("OpenAL Soft in file %s on line %d : %s", asFilename, alLine, sErrorCode);
 
 			return false;
 		}

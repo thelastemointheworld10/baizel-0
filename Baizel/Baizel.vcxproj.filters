@@ -60,16 +60,16 @@
     <ClInclude Include="core\include\math\Math.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\engine\Log.h">
+    <ClInclude Include="core\include\diagnostics\Log.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\Timer.h">
+    <ClInclude Include="core\include\core\Timer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\engine\TimeStep.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\ApplicationTime.h">
+    <ClInclude Include="core\include\core\ApplicationTime.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\graphics\Animation.h">
@@ -117,13 +117,10 @@
     <ClInclude Include="core\include\graphics\Glyph.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\impl\system\XMLDocumentTinyXML.h">
+    <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\impl\system\ApplicationTimeSDL.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="core\include\impl\system\ErrorHandlerTinyXML.h">
+    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerTiXML.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\impl\audio\AudioBufferAL.h">
@@ -141,7 +138,7 @@
     <ClInclude Include="core\include\impl\audio\AudioSystemAL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\impl\audio\ErrorHandlerAL.h">
+    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerAL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\impl\engine\EngineSetupSDL.h">
@@ -165,19 +162,16 @@
     <ClInclude Include="core\include\impl\graphics\TextureSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\impl\system\XMLElementTinyXML.h">
+    <ClInclude Include="core\include\resources\XMLNode.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\XMLDocument.h">
+    <ClInclude Include="core\include\resources\XMLElement.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\XMLElement.h">
+    <ClInclude Include="core\include\resources\XMLDocument.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\system\XMLReader.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="core\include\impl\system\XMLReaderTinyXML.h">
+    <ClInclude Include="core\include\impl\resources\XMLDocumentTiXML.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,7 +197,7 @@
     <ClCompile Include="core\sources\math\Math.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\system\Timer.cpp">
+    <ClCompile Include="core\sources\core\Timer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\engine\TimeStep.cpp">
@@ -248,7 +242,7 @@
     <ClCompile Include="core\sources\graphics\Glyph.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\impl\system\ApplicationTimeSDL.cpp">
+    <ClCompile Include="core\sources\impl\core\ApplicationTimeSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\impl\audio\AudioDeviceAL.cpp">
@@ -287,13 +281,16 @@
     <ClCompile Include="core\sources\impl\graphics\TextureSDL.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\impl\system\XMLDocumentTinyXML.cpp">
+    <ClCompile Include="core\sources\resources\XMLNode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\impl\system\XMLElementTinyXML.cpp">
+    <ClCompile Include="core\sources\resources\XMLElement.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\impl\system\XMLReaderTinyXML.cpp">
+    <ClCompile Include="core\sources\impl\resources\XMLDocumentTiXML.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\resources\XMLDocument.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

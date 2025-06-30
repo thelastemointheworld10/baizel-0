@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <system/ApplicationTime.h>
+#include <core/ApplicationTime.h>
 
 namespace baizel
 {

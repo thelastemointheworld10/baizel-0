@@ -2,7 +2,7 @@
 #define BAIZEL_AUDIOBUFFERAL_H
 
 #include <audio/AudioBuffer.h>
-#include <impl/audio/ErrorHandlerAL.h>
+#include <impl/diagnostics/ErrorHandlerAL.h>
 
 namespace baizel
 {
