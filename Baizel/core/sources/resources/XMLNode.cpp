@@ -14,6 +14,11 @@ namespace baizel
 		mpParent = apParent;
 	}
 
+	cXMLNode::~cXMLNode()
+	{
+		mlstChildren.clear();
+	}
+
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////////////////////////////////////
@@ -25,6 +30,11 @@ namespace baizel
 	//////////////////////////////////////////
 	// Accessors
 	//////////////////////////////////////////
+
+	void cXMLNode::SetParent(cXMLNode* apParent)
+	{
+		mpParent = apParent;
+	}
 
 	cXMLNode* cXMLNode::GetParent() const
 	{

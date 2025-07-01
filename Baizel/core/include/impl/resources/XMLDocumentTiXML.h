@@ -3,7 +3,6 @@
 
 #include <tinyxml/tinyxml2.h>
 
-#include <impl/diagnostics/ErrorHandlerTiXML.h>
 #include <resources/XMLDocument.h>
 #include <resources/XMLElement.h>
 
@@ -14,14 +13,20 @@ namespace baizel
     class cXMLDocumentTiXML final : public iXMLDocument
     {
     public:
-        void SaveFile(const std::string& asPath) override;
-        void LoadFile(const std::string& asPath) override;
+        bool SaveFile(const std::string& asPath) override;
+        bool LoadFile(const std::string& asPath) override;
 
     private:
-        XMLElement* ConvertTinyXMLData(cXMLElement* apSource);
+        XMLElement* CreateTiXMLElement(cXMLElement* apSource);
+        cXMLElement* CreateXMLElement(cXMLElement* apParent, const XMLElement* apSource);
 
-        void InsertAttributes(cXMLElement* apSource, XMLElement* apDest) const;
-        void InsertChildren(cXMLNode* apSource, XMLElement* apDest);
+        void InsertTinyXMLChildren();
+        void InsertXMLChildren();
+
+        void InsertAttributesTiXML(cXMLElement* apSource, XMLElement* apDest) const;
+        void InsertChildrenTiXML(cXMLNode* apSource, XMLNode* apDest);
+        void InsertAttributesXML(const XMLElement* apSource, cXMLElement* apDest);
+        void InsertChildrenXML(const XMLElement* apSource, cXMLElement* apDest);
 
     private:
         tinyxml2::XMLDocument mDocument;

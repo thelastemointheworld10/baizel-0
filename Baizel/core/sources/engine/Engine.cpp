@@ -8,7 +8,7 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem)
+	cEngine::cEngine(iEngineSetup* apEngineSetup, iAudioSystem* apAudioSystem, iXMLReader* apXMLReader)
 	{
 		cLog::Log("- Creating engine stuff");
 
@@ -17,6 +17,9 @@ namespace baizel
 
 		cLog::Log("\tAudio system");
 		mpAudioSystem = apAudioSystem;
+
+		cLog::Log("\tXML reader");
+		mpXMLReader = apXMLReader;
 
 		cLog::Log("\tGraphics");
 		mpGraphics = mpEngineSetup->CreateGraphics();
@@ -45,6 +48,10 @@ namespace baizel
 		cLog::Log("\tAudio system");
 		delete mpAudioSystem;
 		mpAudioSystem = nullptr;
+
+		cLog::Log("\tXML reader");
+		delete mpXMLReader;
+		mpXMLReader = nullptr;
 
 		cLog::Log("\tGraphics");
 		delete mpGraphics;
@@ -144,6 +151,11 @@ namespace baizel
 	iAudioSystem* cEngine::GetAudioSystem() const
 	{
 		return mpAudioSystem;
+	}
+
+	iXMLReader* cEngine::GetXMLReader() const
+	{
+		return mpXMLReader;
 	}
 
 	cGraphics* cEngine::GetGraphics() const

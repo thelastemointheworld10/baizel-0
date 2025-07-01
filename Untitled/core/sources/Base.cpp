@@ -11,11 +11,11 @@
 cBase::cBase()
 {
     msWindowTitle = "Untitled";
-    mvScreenSize = tVector2l(1600, 900);
+    mvScreenSize = tVector2l(640, 480);
     mvVirtualSize = tVector2f(800, 600);
     mbFullscreen = false;
 
-    mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL());
+    mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL(), new cXMLReaderTiXML());
 
     mpPlayer = new cPlayer(mpEngine->GetAudioSystem(),
         mpEngine->GetGraphics(),
@@ -72,32 +72,7 @@ void cBase::Run()
 
 void cBase::Exit()
 {
-    cXMLDocumentTiXML* pXMLDoc = new cXMLDocumentTiXML();
-    cXMLElement* pRoot = new cXMLElement("root", nullptr);
-    cXMLElement* pElem = new cXMLElement("time", nullptr);
-    cXMLElement* pElem1 = new cXMLElement("time1", nullptr);
-    cXMLElement* pElem2 = new cXMLElement("time2", nullptr);
-
-    pXMLDoc->AddChild(pRoot);
-
-    pElem->SetValueBool(true);
-    pElem1->SetValueString("hi");
-    pElem2->SetValueInt(444);
-    pElem->SetAttributeFloat("val", mpEngine->GetApplicationTime()->GetTimeInSec());
-    pElem1->SetAttributeFloat("val1", 12423.0f);
-    pElem2->SetAttributeInt("val2", 13);
-
-    pRoot->AddChild(pElem);
-    pRoot->AddChild(pElem1);
-    pRoot->AddChild(pElem2);
-
-    pXMLDoc->SaveFile("saves/second_test.sav");
-
-    delete pElem;
-    delete pElem1;
-    delete pElem2;
-    delete pRoot;
-    delete pXMLDoc;
+    
 }
 
 // -----------------------------------------------------------------------

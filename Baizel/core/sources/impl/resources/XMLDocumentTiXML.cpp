@@ -12,27 +12,37 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cXMLDocumentTiXML::SaveFile(const std::string& asPath)
+	bool cXMLDocumentTiXML::SaveFile(const std::string& asPath)
 	{
-		cLog::Log("Saving XML Document '%s'", asPath.c_str());
+		InsertTinyXMLChildren();
 
-		const tNodeList& lstChildren = GetChildren();
-		tNodeListIt it = lstChildren.begin();
-		for (; it != lstChildren.end(); ++it)
+		if (mDocument.SaveFile(asPath.c_str()) != XML_SUCCESS)
 		{
-			mDocument.InsertEndChild(ConvertTinyXMLData((*it)->ToElement()));
+			cLog::Error("Failed to save XML document! Name: %s Desc: %s",
+				mDocument.ErrorName() , mDocument.ErrorStr());
+
+			return false;
 		}
 
-		XMLError lResult = mDocument.SaveFile(asPath.c_str());
-		XMLCheckResult(lResult);
+		cLog::Log("XML document saved '%s'", asPath.c_str());
+
+		return true;
 	}
 
-	void cXMLDocumentTiXML::LoadFile(const std::string& asPath)
+	bool cXMLDocumentTiXML::LoadFile(const std::string& asPath)
 	{
-		cLog::Log("Loading XML Document '%s'", asPath.c_str());
+		if (mDocument.LoadFile(asPath.c_str()) != XML_SUCCESS)
+		{
+			cLog::Error("Failed to load XML document! Name: %s Desc: %s",
+				mDocument.ErrorName(), mDocument.ErrorStr());
+		
+			return false;
+		}
 
-		XMLError lResult = mDocument.LoadFile(asPath.c_str());
-		XMLCheckResult(lResult);
+		cLog::Log("XML document loaded '%s'", asPath.c_str());
+		InsertXMLChildren();
+
+		return true;
 	}
 
 	// -----------------------------------------------------------------------
@@ -47,18 +57,53 @@ namespace baizel
 	// Core Functionality
 	//////////////////////////////////////////
 
-	XMLElement* cXMLDocumentTiXML::ConvertTinyXMLData(cXMLElement* apSource)
+	void cXMLDocumentTiXML::InsertTinyXMLChildren()
+	{
+		const tNodeList& lstChildren = GetChildren();
+		tNodeListIt it = lstChildren.begin();
+		for (; it != lstChildren.end(); ++it)
+		{
+			mDocument.InsertEndChild(CreateTiXMLElement((*it)->ToElement()));
+		}
+	}
+
+	void cXMLDocumentTiXML::InsertXMLChildren()
+	{
+		const XMLElement* pChild = mDocument.FirstChildElement();
+
+		while (pChild != nullptr)
+		{
+			mlstChildren.push_back(CreateXMLElement(nullptr, pChild));
+			pChild = pChild->NextSiblingElement();
+		}
+	}
+
+	XMLElement* cXMLDocumentTiXML::CreateTiXMLElement(cXMLElement* apSource)
 	{
 		XMLElement* pDest = mDocument.NewElement(apSource->GetName().c_str());
 		pDest->SetText(apSource->GetValueString().c_str());
 		
-		InsertAttributes(apSource, pDest);
-		InsertChildren(apSource, pDest);
+		InsertAttributesTiXML(apSource, pDest);
+		InsertChildrenTiXML(apSource, pDest);
 
 		return pDest;
 	}
 
-	void cXMLDocumentTiXML::InsertAttributes(cXMLElement* apSource, XMLElement* apDest) const
+	cXMLElement* cXMLDocumentTiXML::CreateXMLElement(cXMLElement* apParent, const XMLElement* apSource)
+	{
+		cXMLElement* pDest = new cXMLElement(apSource->Name(), apParent);
+
+		InsertChildrenXML(apSource, pDest);
+		InsertAttributesXML(apSource, pDest);
+
+		const char* sText = apSource->GetText();
+		if (sText)
+			pDest->SetValueString(sText);
+
+		return pDest;
+	}
+
+	void cXMLDocumentTiXML::InsertAttributesTiXML(cXMLElement* apSource, XMLElement* apDest) const
 	{
 		const tAttributesMap& mapAttributes = apSource->GetAttributesMap();
 		tAttributesMapIt it = mapAttributes.begin();
@@ -68,7 +113,7 @@ namespace baizel
 		}
 	}
 
-	void cXMLDocumentTiXML::InsertChildren(cXMLNode* apSource, XMLElement* apDest)
+	void cXMLDocumentTiXML::InsertChildrenTiXML(cXMLNode* apSource, XMLNode* apDest)
 	{
 		const tNodeList& lstChildren = apSource->GetChildren();
 		tNodeListIt it = lstChildren.begin();
@@ -81,7 +126,27 @@ namespace baizel
 
 		for (; it != lstChildren.end(); ++it)
 		{
-			apDest->InsertEndChild(ConvertTinyXMLData((*it)->ToElement()));
+			apDest->InsertEndChild(CreateTiXMLElement((*it)->ToElement()));
+		}
+	}
+
+	void cXMLDocumentTiXML::InsertAttributesXML(const XMLElement* apSource, cXMLElement* apDest)
+	{
+		const XMLAttribute* pAttribute = apSource->FirstAttribute();
+		while (pAttribute != nullptr)
+		{
+			apDest->SetAttributeString(pAttribute->Name(), pAttribute->Value());
+			pAttribute = pAttribute->Next();
+		}
+	}
+
+	void cXMLDocumentTiXML::InsertChildrenXML(const XMLElement* apSource, cXMLElement* apDest)
+	{
+		const XMLElement* pChild = apSource->FirstChildElement();
+		while (pChild != nullptr)
+		{
+			apDest->AddChild(CreateXMLElement(apDest, pChild));
+			pChild = pChild->NextSiblingElement();
 		}
 	}
 

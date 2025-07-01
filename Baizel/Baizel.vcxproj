@@ -194,6 +194,7 @@
     <ClInclude Include="core\include\graphics\Texture.h" />
     <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h" />
     <ClInclude Include="core\include\impl\resources\XMLDocumentTiXML.h" />
+    <ClInclude Include="core\include\impl\resources\XMLReaderTiXML.h" />
     <ClInclude Include="core\include\input\Input.h" />
     <ClInclude Include="core\include\input\InputDevice.h" />
     <ClInclude Include="core\include\input\InputTypes.h" />
@@ -218,12 +219,12 @@
     <ClInclude Include="core\include\impl\graphics\RendererSDL.h" />
     <ClInclude Include="core\include\impl\graphics\TextureSDL.h" />
     <ClInclude Include="core\include\engine\Engine.h" />
-    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerTiXML.h" />
     <ClInclude Include="core\include\core\ApplicationTime.h" />
     <ClInclude Include="core\include\core\Timer.h" />
     <ClInclude Include="core\include\resources\XMLDocument.h" />
     <ClInclude Include="core\include\resources\XMLElement.h" />
     <ClInclude Include="core\include\resources\XMLNode.h" />
+    <ClInclude Include="core\include\resources\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\include\audio\stb_vorbis.c" />
@@ -246,6 +247,7 @@
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\impl\resources\XMLDocumentTiXML.cpp" />
+    <ClCompile Include="core\sources\impl\resources\XMLReaderTiXML.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />
     <ClCompile Include="core\sources\input\Keyboard.cpp" />
     <ClCompile Include="core\sources\input\Mouse.cpp" />

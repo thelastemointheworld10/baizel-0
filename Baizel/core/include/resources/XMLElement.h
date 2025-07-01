@@ -27,7 +27,10 @@ namespace baizel
 		double GetAttributeDouble(const std::string& asName, double afDefault = 0.0);
 		bool GetAttributeBool(const std::string& asName, bool abDefault = false);
 
+		void SetAttributesMap(const tAttributesMap& aAttributesMap);
 		const tAttributesMap& GetAttributesMap() const;
+
+		void SetName(const std::string& asName);
 		const std::string& GetName() const;
 
 	private:

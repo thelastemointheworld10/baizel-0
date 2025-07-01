@@ -11,8 +11,8 @@ namespace baizel
     public:
         iXMLDocument();
 
-        virtual void SaveFile(const std::string& asPath) = 0;
-        virtual void LoadFile(const std::string& asPath) = 0;
+        virtual bool SaveFile(const std::string& asPath) = 0;
+        virtual bool LoadFile(const std::string& asPath) = 0;
 
     protected:
         std::string msPath = "";

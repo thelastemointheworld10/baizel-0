@@ -100,9 +100,19 @@ namespace baizel
 			return abDefault;
 	}
 
+	void cXMLElement::SetAttributesMap(const tAttributesMap& aAttributesMap)
+	{
+		mmapAttributes = aAttributesMap;
+	}
+
 	const tAttributesMap& cXMLElement::GetAttributesMap() const
 	{
 		return mmapAttributes;
+	}
+
+	void cXMLElement::SetName(const std::string& asName)
+	{
+		msName = asName;
 	}
 
 	const std::string& cXMLElement::GetName() const

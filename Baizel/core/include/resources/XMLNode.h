@@ -16,7 +16,9 @@ namespace baizel
 	{
 	public:
 		cXMLNode(cXMLNode* apParent);
+		~cXMLNode();
 
+		void SetParent(cXMLNode* apParent);
 		cXMLNode* GetParent() const;
 
 		void AddChild(cXMLNode* apChild);

@@ -120,9 +120,6 @@
     <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\impl\diagnostics\ErrorHandlerTiXML.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\impl\audio\AudioBufferAL.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -172,6 +169,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\impl\resources\XMLDocumentTiXML.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\resources\XMLReader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\impl\resources\XMLReaderTiXML.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -225,9 +228,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\audio\AudioDevice.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="core\include\audio\stb_vorbis.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\engine\Updater.cpp">
@@ -291,6 +291,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\resources\XMLDocument.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\include\audio\stb_vorbis.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\impl\resources\XMLReaderTiXML.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
