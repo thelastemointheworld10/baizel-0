@@ -41,10 +41,6 @@ namespace baizel
 	{
 		cLog::Log("- Deleting engine stuff");
 
-		cLog::Log("\tEngine setup");
-		delete mpEngineSetup;
-		mpEngineSetup = nullptr;
-
 		cLog::Log("\tAudio system");
 		delete mpAudioSystem;
 		mpAudioSystem = nullptr;
@@ -72,6 +68,10 @@ namespace baizel
 		cLog::Log("\tTime step");
 		delete mpTimeStep;
 		mpTimeStep = nullptr;
+
+		cLog::Log("\tEngine setup");
+		delete mpEngineSetup;
+		mpEngineSetup = nullptr;
 	}
 
 	// -----------------------------------------------------------------------

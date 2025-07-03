@@ -13,7 +13,8 @@ namespace baizel
     class cAudioSystemAL final : public iAudioSystem
     {
     public:
-        ~cAudioSystemAL();
+        cAudioSystemAL(iAudioReader* apAudioReader);
+        ~cAudioSystemAL() override;
 
         void CreateDevice() override;
         void CreateContext() override;

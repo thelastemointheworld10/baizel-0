@@ -5,14 +5,16 @@
 #include <vector>
 
 #include <diagnostics/Log.h>
-
-#include <audio/stb_vorbis.h>
+#include <audio/AudioReader.h>
 
 namespace baizel
 {
     class iAudioBuffer
     {
     public:
+        iAudioBuffer(iAudioReader* apAudioReader);
+        ~iAudioBuffer();
+
         bool LoadAudio(const std::string& asPath);
 
         uint32_t GetID() const;
@@ -21,16 +23,12 @@ namespace baizel
         virtual void SetData() = 0;
         virtual void SetFormat(int alChannels) = 0;
 
-        void Reset();
-
     protected:
-        uint32_t mlBufferID = 0;
-        uint32_t mlFormat = 0;
-        int mlChannels = 0;
-        int mlSampleRate = 0;
-        std::vector<int16_t> mvPCMData;
+        iAudioReader* mpAudioReader = nullptr;
+        iOggFile* mpAudioFile = nullptr;
 
-        stb_vorbis* mpVorbis = nullptr;
+        uint32_t mlBufferID = 0;
+        unsigned int mlFormat = 0;
     };
 }
 

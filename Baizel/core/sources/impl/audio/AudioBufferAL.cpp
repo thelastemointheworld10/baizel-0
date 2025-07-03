@@ -8,7 +8,7 @@ namespace baizel
 
     // -----------------------------------------------------------------------
 
-    cAudioBufferAL::cAudioBufferAL()
+    cAudioBufferAL::cAudioBufferAL(iAudioReader* apAudioReader) : iAudioBuffer(apAudioReader)
     {
         alCall(alGenBuffers, 1, &mlBufferID);
     }
@@ -32,8 +32,8 @@ namespace baizel
 
     void cAudioBufferAL::SetData()
     {
-        alCall(alBufferData, mlBufferID, mlFormat, mvPCMData.data(), 
-             mvPCMData.size() * sizeof(uint16_t), mlSampleRate);
+        alCall(alBufferData, mlBufferID, mlFormat, mpAudioFile->GetPCM().data(),
+            mpAudioFile->GetPCM().size() * sizeof(short), mpAudioFile->GetRate());
     }
 
     void cAudioBufferAL::SetFormat(int alChannels)

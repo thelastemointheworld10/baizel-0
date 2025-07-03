@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -101,7 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -124,7 +124,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -134,7 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
@@ -143,7 +143,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -155,7 +155,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>core\include\; ..\dependencies\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -166,17 +166,18 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\include\audio\AudioBuffer.h" />
     <ClInclude Include="core\include\audio\AudioDevice.h" />
+    <ClInclude Include="core\include\audio\AudioReader.h" />
     <ClInclude Include="core\include\audio\AudioListener.h" />
     <ClInclude Include="core\include\audio\AudioSource.h" />
     <ClInclude Include="core\include\audio\AudioSystem.h" />
-    <ClInclude Include="core\include\audio\stb_vorbis.h" />
+    <ClInclude Include="core\include\audio\OggFile.h" />
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\TimeStep.h" />
     <ClInclude Include="core\include\diagnostics\Log.h" />
@@ -192,6 +193,8 @@
     <ClInclude Include="core\include\graphics\RectTypes.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
     <ClInclude Include="core\include\graphics\Texture.h" />
+    <ClInclude Include="core\include\impl\audio\AudioReaderLibVorbis.h" />
+    <ClInclude Include="core\include\impl\audio\OggFileLibVorbis.h" />
     <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h" />
     <ClInclude Include="core\include\impl\resources\XMLDocumentTiXML.h" />
     <ClInclude Include="core\include\impl\resources\XMLReaderTiXML.h" />
@@ -227,18 +230,19 @@
     <ClInclude Include="core\include\resources\XMLReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\include\audio\stb_vorbis.c" />
     <ClCompile Include="core\sources\audio\AudioBuffer.cpp" />
     <ClCompile Include="core\sources\audio\AudioDevice.cpp" />
     <ClCompile Include="core\sources\audio\AudioListener.cpp" />
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
+    <ClCompile Include="core\sources\audio\OggFile.cpp" />
     <ClCompile Include="core\sources\engine\Updater.cpp" />
     <ClCompile Include="core\sources\graphics\Glyph.cpp" />
     <ClCompile Include="core\sources\graphics\Renderer.cpp" />
     <ClCompile Include="core\sources\graphics\Texture.cpp" />
     <ClCompile Include="core\sources\impl\audio\AudioDeviceAL.cpp" />
     <ClCompile Include="core\sources\impl\audio\AudioListenerAL.cpp" />
+    <ClCompile Include="core\sources\impl\audio\AudioReaderLibVorbis.cpp" />
     <ClCompile Include="core\sources\impl\audio\AudioSystemAL.cpp" />
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
@@ -246,6 +250,8 @@
     <ClCompile Include="core\sources\graphics\FontAtlas.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
+    <ClCompile Include="core\sources\impl\audio\OggFileLibVorbis.cpp" />
+    <ClCompile Include="core\sources\impl\diagnostics\ErrorHandlerAL.cpp" />
     <ClCompile Include="core\sources\impl\resources\XMLDocumentTiXML.cpp" />
     <ClCompile Include="core\sources\impl\resources\XMLReaderTiXML.cpp" />
     <ClCompile Include="core\sources\input\Input.cpp" />

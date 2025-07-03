@@ -12,6 +12,8 @@
 #include <audio/AudioListener.h>
 #include <audio/AudioDevice.h>
 
+#include <audio/AudioReader.h>
+
 namespace baizel
 {
     enum eDistanceModel
@@ -28,7 +30,8 @@ namespace baizel
     class iAudioSystem
     {
     public:
-        ~iAudioSystem();
+        iAudioSystem(iAudioReader* apAudioReader);
+        virtual ~iAudioSystem();
 
         virtual void CreateDevice() = 0;
         virtual void CreateContext() = 0;
@@ -46,6 +49,7 @@ namespace baizel
     protected:
         iAudioListener* mpAudioListener = nullptr;
         iAudioDevice* mpAudioDevice = nullptr;
+        iAudioReader* mpAudioReader = nullptr;
     };
 }
 

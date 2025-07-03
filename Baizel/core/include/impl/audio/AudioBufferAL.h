@@ -9,7 +9,7 @@ namespace baizel
     class cAudioBufferAL final : public iAudioBuffer
     {
     public:
-        cAudioBufferAL();
+        cAudioBufferAL(iAudioReader* apAudioReader);
         ~cAudioBufferAL();
 
     protected:

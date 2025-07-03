@@ -102,9 +102,6 @@
     <ClInclude Include="core\include\engine\Updateable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\audio\stb_vorbis.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="core\include\engine\Updater.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -175,6 +172,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\impl\resources\XMLReaderTiXML.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\audio\OggFile.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\impl\audio\OggFileLibVorbis.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\audio\AudioReader.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="core\include\impl\audio\AudioReaderLibVorbis.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -293,10 +302,19 @@
     <ClCompile Include="core\sources\resources\XMLDocument.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\include\audio\stb_vorbis.c">
+    <ClCompile Include="core\sources\impl\resources\XMLReaderTiXML.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\impl\resources\XMLReaderTiXML.cpp">
+    <ClCompile Include="core\sources\audio\OggFile.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\impl\audio\OggFileLibVorbis.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\impl\diagnostics\ErrorHandlerAL.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\impl\audio\AudioReaderLibVorbis.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

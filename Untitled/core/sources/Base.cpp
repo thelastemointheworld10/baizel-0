@@ -1,7 +1,5 @@
 #include <Base.h>
 
-#include <impl/resources/XMLDocumentTiXML.h>
-
 //////////////////////////////////////////////////////////////////////////
 // CONSTRUCTORS
 //////////////////////////////////////////////////////////////////////////
@@ -15,7 +13,10 @@ cBase::cBase()
     mvVirtualSize = tVector2f(800, 600);
     mbFullscreen = false;
 
-    mpEngine = new cEngine(new cEngineSetupSDL(), new cAudioSystemAL(), new cXMLReaderTiXML());
+    mpEngine = new cEngine(
+        new cEngineSetupSDL(),
+        new cAudioSystemAL(new cAudioReaderLibVorbis()),
+        new cXMLReaderTiXML());
 
     mpPlayer = new cPlayer(mpEngine->GetAudioSystem(),
         mpEngine->GetGraphics(),

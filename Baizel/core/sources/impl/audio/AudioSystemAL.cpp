@@ -8,6 +8,10 @@ namespace baizel
 
     // -----------------------------------------------------------------------
 
+    cAudioSystemAL::cAudioSystemAL(iAudioReader* apAudioReader) : iAudioSystem(apAudioReader)
+    {
+    }
+
     cAudioSystemAL::~cAudioSystemAL()
     {
         mpContext = nullptr;
@@ -90,7 +94,7 @@ namespace baizel
 
     iAudioBuffer* cAudioSystemAL::CreateBuffer() const
     {
-        return new cAudioBufferAL();
+        return new cAudioBufferAL(mpAudioReader);
     }
 
     iAudioSource* cAudioSystemAL::CreateSource() const

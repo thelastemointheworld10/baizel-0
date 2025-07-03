@@ -8,6 +8,11 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
+	iAudioSystem::iAudioSystem(iAudioReader* apAudioReader)
+	{
+		mpAudioReader = apAudioReader;
+	}
+
 	iAudioSystem::~iAudioSystem()
 	{
 		delete mpAudioListener;
@@ -15,6 +20,9 @@ namespace baizel
 
 		delete mpAudioDevice;
 		mpAudioDevice = nullptr;
+
+		delete mpAudioReader;
+		mpAudioReader = nullptr;
 	}
 	
 	// -----------------------------------------------------------------------

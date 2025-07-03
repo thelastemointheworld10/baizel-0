@@ -100,7 +100,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;Baizel.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;Baizel.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
@@ -123,7 +123,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;Baizel.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;Baizel.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
@@ -142,7 +142,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;Baizel.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;Baizel.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
@@ -165,7 +165,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;Baizel.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;Baizel.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>

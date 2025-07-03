@@ -5,6 +5,7 @@
 
 #include <impl/engine/EngineSetupSDL.h>
 #include <impl/audio/AudioSystemAL.h>
+#include <impl/audio/AudioReaderLibVorbis.h>
 #include <impl/resources/XMLReaderTiXML.h>
 
 #include <Player.h>
