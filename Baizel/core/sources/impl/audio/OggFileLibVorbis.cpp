@@ -62,19 +62,19 @@ namespace baizel
     void cOggFileLibVorbis::ReadPCM(OggVorbis_File& aVorbis)
     {
         mvPCMData.clear();
-        std::vector<short> vTempBuffer(gkPCMLength);
+        tPCMVec vTemp(gkPCMLength);
 
         while (true)
         {
             int lSection = 0;
-            long lBytes = ov_read(&aVorbis, (char*)vTempBuffer.data(), gkPCMLength * sizeof(short), 0, 2, 1, &lSection);
+            long lBytes = ov_read(&aVorbis, (char*)vTemp.data(), gkPCMLength * sizeof(short), 0, 2, 1, &lSection);
 
             if (lBytes <= 0) break;
-            
-            size_t lSamplesRead = lBytes / sizeof(short);
-            mvPCMData.insert(mvPCMData.end(),
-                vTempBuffer.begin(),
-                vTempBuffer.begin() + lSamplesRead);
+
+            size_t lSamplesRead = lBytes / sizeof(short); // short = 2bytes.
+            // copy values from vTemp to mvPCMData
+            // ..., end, !here! 
+            mvPCMData.insert(mvPCMData.end(), mvPCMData.begin(), mvPCMData.begin() + lSamplesRead);
         }
     }
 
