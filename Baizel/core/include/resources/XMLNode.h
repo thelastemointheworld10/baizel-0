@@ -40,6 +40,7 @@ namespace baizel
 		const tNodeList& GetChildren() const;
 		cXMLNode* GetFirstChild() const;
 		cXMLNode* GetLastChild() const;
+		int GetChildCount() const;
 
 		cXMLElement* ToElement();
 

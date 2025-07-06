@@ -9,20 +9,23 @@ namespace baizel
 	class cGlyph final
 	{
 	public:
+		cGlyph();
+		cGlyph(tVector2l avPos, tVector2l avSize, tVector2l avOffset, int alAdvance, int alPage);
+
 		tRectl GetRect() const;
 
-		tVector2f GetOffset() const;
-		void SetOffset(tVector2f avOffset);
+		tVector2l GetOffset() const;
+		void SetOffset(tVector2l avOffset);
 
 		float GetAdvance() const;
-		void SetAdvance(float afAdvance);
+		void SetAdvance(int alAdvance);
 
 		int GetPage() const;
 		void SetPage(int alPage);
 
 	private:
 		tRectl mRect = tRectl();
-		tVector2f mvOffset = tVector2f();
+		tVector2l mvOffset = tVector2l();
 		int mlAdvance = 10;
 		int mlPage = 0;
 	};

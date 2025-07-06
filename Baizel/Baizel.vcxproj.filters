@@ -78,7 +78,7 @@
     <ClInclude Include="core\include\graphics\Color.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="core\include\graphics\FontAtlas.h">
+    <ClInclude Include="core\include\resources\FontAtlas.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="core\include\audio\AudioBuffer.h">
@@ -221,7 +221,7 @@
     <ClCompile Include="core\sources\graphics\Color.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="core\sources\graphics\FontAtlas.cpp">
+    <ClCompile Include="core\sources\resources\FontAtlas.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\audio\AudioBuffer.cpp">
@@ -315,6 +315,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\impl\audio\AudioReaderLibVorbis.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\diagnostics\Log.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

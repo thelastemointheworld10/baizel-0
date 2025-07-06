@@ -49,13 +49,13 @@ namespace baizel
 			lFlags);
 		if (mpWindow == nullptr)
 		{
-			cLog::Fatal("Failed to create window: %s", SDL_GetError());
+			cLog::Error("Failed to create window: %s", SDL_GetError());
 			return false;
 		}
 
 		if (mpRenderer->Init(this) == false)
 		{
-			cLog::Fatal("Failed to init renderer!");
+			cLog::Error("Failed to init renderer!");
 			return false;
 		}
 

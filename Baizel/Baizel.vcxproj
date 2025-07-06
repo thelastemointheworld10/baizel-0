@@ -185,14 +185,14 @@
     <ClInclude Include="core\include\engine\Updater.h" />
     <ClInclude Include="core\include\graphics\Animation.h" />
     <ClInclude Include="core\include\graphics\Color.h" />
-    <ClInclude Include="core\include\graphics\FontAtlas.h" />
+    <ClInclude Include="core\include\graphics\Texture.h" />
+    <ClInclude Include="core\include\resources\FontAtlas.h" />
     <ClInclude Include="core\include\graphics\Glyph.h" />
     <ClInclude Include="core\include\graphics\Graphics.h" />
     <ClInclude Include="core\include\graphics\LowLevelGraphics.h" />
     <ClInclude Include="core\include\graphics\Rect.h" />
     <ClInclude Include="core\include\graphics\RectTypes.h" />
     <ClInclude Include="core\include\graphics\Renderer.h" />
-    <ClInclude Include="core\include\graphics\Texture.h" />
     <ClInclude Include="core\include\impl\audio\AudioReaderLibVorbis.h" />
     <ClInclude Include="core\include\impl\audio\OggFileLibVorbis.h" />
     <ClInclude Include="core\include\impl\core\ApplicationTimeSDL.h" />
@@ -236,6 +236,7 @@
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
     <ClCompile Include="core\sources\audio\OggFile.cpp" />
+    <ClCompile Include="core\sources\diagnostics\Log.cpp" />
     <ClCompile Include="core\sources\engine\Updater.cpp" />
     <ClCompile Include="core\sources\graphics\Glyph.cpp" />
     <ClCompile Include="core\sources\graphics\Renderer.cpp" />
@@ -247,7 +248,7 @@
     <ClCompile Include="core\sources\engine\TimeStep.cpp" />
     <ClCompile Include="core\sources\graphics\Animation.cpp" />
     <ClCompile Include="core\sources\graphics\Color.cpp" />
-    <ClCompile Include="core\sources\graphics\FontAtlas.cpp" />
+    <ClCompile Include="core\sources\resources\FontAtlas.cpp" />
     <ClCompile Include="core\sources\graphics\Graphics.cpp" />
     <ClCompile Include="core\sources\graphics\LowLevelGraphics.cpp" />
     <ClCompile Include="core\sources\impl\audio\OggFileLibVorbis.cpp" />

@@ -11,9 +11,9 @@ namespace baizel
 	cEngineSetupSDL::cEngineSetupSDL()
 	{
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
-			cLog::Fatal("Failed to initialize SDL: %s", SDL_GetError());
+			cLog::Error("Failed to initialize SDL: %s", SDL_GetError());
 		if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) < 0)
-			cLog::Fatal("Failed to initialize SDL_image: %s", IMG_GetError());
+			cLog::Error("Failed to initialize SDL_image: %s", IMG_GetError());
 
 		cLog::Log("SDL Version: %d.%d.%d",
 			SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL);

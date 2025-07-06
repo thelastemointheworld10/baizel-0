@@ -3,6 +3,27 @@
 namespace baizel
 {
 	//////////////////////////////////////////////////////////////////////////
+	// CONSTRCTORS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	cGlyph::cGlyph()
+	{
+	}
+
+	cGlyph::cGlyph(tVector2l avPos, tVector2l avSize, tVector2l avOffset, int alAdvance, int alPage)
+	{
+		mRect.SetPosition(avPos);
+		mRect.SetSize(avSize);
+		mvOffset = avOffset;
+		mlAdvance = alAdvance;
+		mlPage = alPage;
+	}
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
 	//////////////////////////////////////////////////////////////////////////
 
@@ -17,12 +38,12 @@ namespace baizel
 		return mRect;
 	}
 
-	tVector2f cGlyph::GetOffset() const
+	tVector2l cGlyph::GetOffset() const
 	{
 		return mvOffset;
 	}
 
-	void cGlyph::SetOffset(tVector2f avOffset)
+	void cGlyph::SetOffset(tVector2l avOffset)
 	{
 		mvOffset = avOffset;
 	}
@@ -32,12 +53,12 @@ namespace baizel
 		return mlAdvance;
 	}
 
-	void cGlyph::SetAdvance(float afAdvance)
+	void cGlyph::SetAdvance(int alAdvance)
 	{
-		mlAdvance = afAdvance;
+		mlAdvance = alAdvance;
 
-		if (mlAdvance == 0.0f)
-			mlAdvance = 0.0f;
+		if (mlAdvance < 0)
+			mlAdvance = 0;
 	}
 
 	int cGlyph::GetPage() const

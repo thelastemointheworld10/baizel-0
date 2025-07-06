@@ -1,6 +1,7 @@
 #ifndef BAIZEL_TEXTURE_H
 #define BAIZEL_TEXTURE_H
 
+#include <vector>
 #include <string>
 
 #include <graphics/Color.h>
@@ -8,7 +9,10 @@
 
 namespace baizel
 {
+	class iTexture;
+
 	using tTextureVec = std::vector<iTexture*>;
+	using tTextureVecIt = tTextureVec::const_iterator;
 
 	class iTexture
 	{

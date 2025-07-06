@@ -33,7 +33,7 @@ namespace baizel
 	void cTimeStep::AddFrame()
 	{
 		mfCurrentFrameTime = mpApplicationTime->GetTimeInSec();
-		mfTimeStep = mfCurrentFrameTime - mfLastFrameTime;
+		mfTimeStep = mfCurrentFrameTime - mfLastFrameTime; // <-- глеб лох
 		mfLastFrameTime = mfCurrentFrameTime;
 	}
 

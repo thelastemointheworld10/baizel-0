@@ -5,16 +5,20 @@ using namespace baizel;
 #undef main
 int main()
 {
+    cLog::SetOutFile("log/baizel.log");
+
     cBase Base;
 
     if (Base.Init() == false)
     {
-        cLog::Fatal("Failed to initialize!");
+        cLog::Error("Failed to initialize!");
         return EXIT_FAILURE;
     }
 
     Base.Run();
     Base.Exit();
+
+    cLog::CloseFile();
 
     return EXIT_SUCCESS;
 }

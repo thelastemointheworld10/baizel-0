@@ -52,10 +52,10 @@ namespace baizel
 
 	const std::string& cXMLElement::GetAttributeString(const std::string& asName, const std::string& asDefault)
 	{
-		std::string sValue = GetAttribute(asName);
+		tAttributesMapIt it = mmapAttributes.find(asName);
 
-		if (sValue.empty() == false)
-			return sValue;
+		if (it != mmapAttributes.end())
+			return it->second;
 		else
 			return asDefault;
 	}
@@ -120,6 +120,25 @@ namespace baizel
 		return msName;
 	}
 
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
+	cXMLElement* cXMLElement::FindChildByName(const std::string& asName) const
+	{
+		tNodeListIt it = mlstChildren.begin();
+		for (; it != mlstChildren.end(); ++it)
+		{
+			if ((*it)->ToElement()->GetName() == asName) // found
+			{
+				return (*it)->ToElement();
+			}
+		}
+
+		cLog::Error("cXMLNode child with name %s does not exists", asName.c_str());
+		return nullptr;
+	}
+
 	// -----------------------------------------------------------------------
 
 	//////////////////////////////////////////////////////////////////////////
@@ -137,18 +156,10 @@ namespace baizel
 		mmapAttributes[asName] = asValue;
 	}
 
-	const std::string& cXMLElement::GetAttribute(const std::string& asName)
+	std::string cXMLElement::GetAttribute(const std::string& asName) const
 	{
-		tAttributesMapIt it = mmapAttributes.find(asName);
-		if (it != mmapAttributes.end()) // found
-		{
-			return it->second;
-		}
-		else // not found
-		{
-			static const std::string skEmptyString = "";
-			return skEmptyString;
-		}
+		auto it = mmapAttributes.find(asName);
+		return (it != mmapAttributes.end()) ? it->second : std::string();
 	}
 
 	// -----------------------------------------------------------------------

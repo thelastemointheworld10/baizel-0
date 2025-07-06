@@ -73,7 +73,6 @@ namespace baizel
 
             size_t lSamplesRead = lBytes / sizeof(short); // short = 2bytes.
             // copy values from vTemp to mvPCMData
-            // ..., end, !here! 
             mvPCMData.insert(mvPCMData.end(), mvPCMData.begin(), mvPCMData.begin() + lSamplesRead);
         }
     }

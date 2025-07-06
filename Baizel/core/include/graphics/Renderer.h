@@ -1,10 +1,13 @@
 #ifndef BAIZEL_RENDERER_H
 #define BAIZEL_RENDERER_H
 
+#include <math/MathTypes.h>
+
 #include <graphics/LowLevelGraphics.h>
 #include <graphics/Texture.h>
 #include <graphics/Color.h>
 #include <graphics/RectTypes.h>
+#include <resources/FontAtlas.h>
 
 namespace baizel
 {
@@ -39,6 +42,8 @@ namespace baizel
 		virtual void DrawTexture(iTexture* apTexture, tRectl aSourceRect, tRectf aDestRect,
 			float afAngle = 0.0f, tVector2f avCenter = tVector2f(),
 			eRendererFlip aTextureFlip = eRendererFlip_None) const = 0;
+
+		void DrawText(const std::string& asText, cFontAtlas* apFontAtlas, int alSize, tVector2f avPosition, cColor aColor) const;
 
 	protected:
 		cColor mClearColor = cColor(0, 0, 0, 255); // black

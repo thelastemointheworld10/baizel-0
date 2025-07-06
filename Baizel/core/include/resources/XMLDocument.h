@@ -2,11 +2,11 @@
 #define BAIZEL_XMLDOCUMENT_H
 
 #include <diagnostics/Log.h>
-#include <resources/XMLNode.h>
+#include <resources/XMLElement.h>
 
 namespace baizel
 {
-    class iXMLDocument : public cXMLNode
+    class iXMLDocument : public cXMLElement
     {
     public:
         iXMLDocument();

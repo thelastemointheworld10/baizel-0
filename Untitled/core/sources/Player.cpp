@@ -6,11 +6,12 @@
 
 // -----------------------------------------------------------------------
 
-cPlayer::cPlayer(iAudioSystem* apAudioSystem, cGraphics* apGraphics, cInput* apInput, iApplicationTime* apApplicationTime)
+cPlayer::cPlayer(iAudioSystem* apAudioSystem, cGraphics* apGraphics, cInput* apInput, iApplicationTime* apApplicationTime, iXMLReader* apXMLReader)
 {
 	mpAudioSystem = apAudioSystem;
 	mpGraphics = apGraphics;
 	mpInput = apInput;
+	mpXMLReader = apXMLReader;
 
 	mpStepTimer = new cTimer(apApplicationTime);
 }
@@ -31,6 +32,9 @@ cPlayer::~cPlayer()
 
 	delete mpIdleAnimation;
 	mpIdleAnimation = nullptr;
+
+	delete mpFA;
+	mpFA = nullptr;
 }
 
 // -----------------------------------------------------------------------
@@ -62,6 +66,9 @@ void cPlayer::Init()
 
 	mpIdleAnimation->SetSpeed(2);
 	mpWalkAnimation->SetSpeed(6);
+
+	mpFA = new cFontAtlas(mpGraphics->GetLowLevel(), mpXMLReader);
+	mpFA->LoadFile("fonts/arialnew.fnt");
 }
 
 void cPlayer::OnStart()
@@ -103,6 +110,8 @@ void cPlayer::OnUpdate(float afTimeStep)
 void cPlayer::OnDraw()
 {
 	mpGraphics->GetRenderer()->DrawTexture(mpPlayerTexture,mPlayerRect, mfAngle, mvCenter);
+
+	mpGraphics->GetRenderer()->DrawText(u8"61cmapk@mail.ru кто напишет тот лох raw", mpFA, 166, mvPosition, cColor(255, 255, 255));
 }
 
 void cPlayer::OnExit()

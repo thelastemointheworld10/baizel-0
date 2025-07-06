@@ -8,7 +8,7 @@ using namespace baizel;
 class cPlayer final : public iUpdateable
 {
 public:
-	cPlayer(iAudioSystem* apAudioSystem, cGraphics* apGraphics, cInput* apInput, iApplicationTime* apApplicationTime);
+	cPlayer(iAudioSystem* apAudioSystem, cGraphics* apGraphics, cInput* apInput, iApplicationTime* apApplicationTime, iXMLReader* apXMLReader);
 	~cPlayer() override;
 
 	void Init();
@@ -52,6 +52,9 @@ private:
 	iAudioSystem* mpAudioSystem = nullptr;
 	cGraphics* mpGraphics = nullptr;
 	cInput* mpInput = nullptr;
+	iXMLReader* mpXMLReader = nullptr;
+
+	cFontAtlas* mpFA = nullptr;
 };
 
 #endif // PLAYER_H

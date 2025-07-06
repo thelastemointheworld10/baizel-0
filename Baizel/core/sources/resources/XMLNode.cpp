@@ -126,6 +126,15 @@ namespace baizel
 		return mlstChildren.back();
 	}
 
+	int cXMLNode::GetChildCount() const
+	{
+		return mlstChildren.size();
+	}
+
+	//////////////////////////////////////////
+	// Core Functionality
+	//////////////////////////////////////////
+
 	cXMLElement* cXMLNode::ToElement()
 	{
 		return static_cast<cXMLElement*>(this);

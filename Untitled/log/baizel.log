@@ -1,0 +1,50 @@
+Log file log/baizel.log opened
+SDL Version: 2.32.4
+SDL_image Version: 2.8.8
+- Creating engine stuff
+	Engine setup
+	Audio system
+	XML reader
+	Graphics
+	Input
+Creating input device of type 0 as class baizel::iInputDevice * __ptr64
+Creating input device of type 1 as class baizel::iInputDevice * __ptr64
+	Application time
+	Updater
+	Time step
+* ----------------------------------------------------
+* Initializing engine
+* ----------------------------------------------------
+Setting video mode: 1280 x 720 with virtual size 800.0 x 600.0
+Opening audio device: OpenAL Soft on Динамики (MCHOSE S9 PRO)
+Audio device created
+Audio context created
+Key repeat: false
+New clear color: 100 100 100
+XML document loaded 'fonts/arialnew.fnt'
+Trying to load page file: 'fonts/arialnew_0.png'
+Loading texture: 'fonts/arialnew_0.png'
+Trying to load page file: 'fonts/arialnew_1.png'
+Loading texture: 'fonts/arialnew_1.png'
+* ----------------------------------------------------
+* Running engine
+* ----------------------------------------------------
+Loading texture: 'textures/player/player_idle_01.bmp'
+Loading texture: 'textures/player/player_idle_02.bmp'
+Loading texture: 'textures/player/player_idle_03.bmp'
+Loading texture: 'textures/player/player_walk_01.bmp'
+Loading texture: 'textures/player/player_walk_02.bmp'
+Loading texture: 'textures/player/player_walk_03.bmp'
+Loading texture: 'textures/player/player_walk_04.bmp'
+Loading texture: 'textures/player/player_walk_05.bmp'
+Loading texture: 'textures/player/player_walk_06.bmp'
+Loading texture: 'textures/player/player_walk_07.bmp'
+Loading texture: 'textures/player/player_walk_08.bmp'
+Loading texture: 'textures/player/player_walk_09.bmp'
+Loading texture: 'textures/player/player_walk_10.bmp'
+Ogg file 'sounds/player/player_step_wood.ogg' has been loaded
+Ogg info: version: 0 channels: 1, bitrate_upper: 0, bitrate_nominal: 96000, bitrate_lower: 0, bitrate_window: 0, rate: 44100
+* ----------------------------------------------------
+* Exiting engine
+* ----------------------------------------------------
+Exiting audio system

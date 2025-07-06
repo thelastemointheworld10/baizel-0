@@ -8,7 +8,7 @@ namespace baizel
 
 	// -----------------------------------------------------------------------
 
-	iXMLDocument::iXMLDocument() : cXMLNode(nullptr)
+	iXMLDocument::iXMLDocument() : cXMLElement("", nullptr)
 	{
 	}
 

@@ -3,6 +3,7 @@
 
 #include <map>
 
+#include <diagnostics/Log.h>
 #include <resources/XMLNode.h>
 
 namespace baizel
@@ -10,7 +11,7 @@ namespace baizel
 	using tAttributesMap = std::map<std::string, std::string>;
 	using tAttributesMapIt = tAttributesMap::const_iterator;
 
-	class cXMLElement final : public cXMLNode
+	class cXMLElement : public cXMLNode
 	{
 	public:
 		cXMLElement(const std::string& asName, cXMLNode* apParent);
@@ -33,9 +34,11 @@ namespace baizel
 		void SetName(const std::string& asName);
 		const std::string& GetName() const;
 
+		cXMLElement* FindChildByName(const std::string& asName) const;
+
 	private:
 		void SetAttribute(const std::string& asName, const std::string& asValue);
-		const std::string& GetAttribute(const std::string& asName);
+		std::string GetAttribute(const std::string& asName) const;
 
 	private:
 		tAttributesMap mmapAttributes = tAttributesMap();

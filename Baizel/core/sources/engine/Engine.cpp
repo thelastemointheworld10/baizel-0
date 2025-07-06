@@ -94,7 +94,7 @@ namespace baizel
 
 		if (mpGraphics->GetLowLevel()->Init(asWindowTitle, avWindowSize, avVirtualSize, abFullscreen) == false)
 		{
-			cLog::Fatal("Failed to initialize low level graphics!");
+			cLog::Error("Failed to initialize low level graphics!");
 			return false;
 		}
 			

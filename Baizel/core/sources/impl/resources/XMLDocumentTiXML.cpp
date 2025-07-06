@@ -109,6 +109,9 @@ namespace baizel
 		tAttributesMapIt it = mapAttributes.begin();
 		for (; it != mapAttributes.end(); ++it)
 		{
+			cLog::Log("Found attribute: %s = '%s'",
+				it->first,
+				it->second);
 			apDest->SetAttribute(it->first.c_str(), it->second.c_str());
 		}
 	}
@@ -132,11 +135,15 @@ namespace baizel
 
 	void cXMLDocumentTiXML::InsertAttributesXML(const XMLElement* apSource, cXMLElement* apDest)
 	{
-		const XMLAttribute* pAttribute = apSource->FirstAttribute();
-		while (pAttribute != nullptr)
+		const XMLAttribute* pAttr = apSource->FirstAttribute();
+		while (pAttr != nullptr)
 		{
-			apDest->SetAttributeString(pAttribute->Name(), pAttribute->Value());
-			pAttribute = pAttribute->Next();
+			//cLog::Log("XML Attribute found: %s='%s'",
+			//	pAttr->Name(),
+			//	pAttr->Value());
+
+			apDest->SetAttributeString(pAttr->Name(), pAttr->Value());
+			pAttr = pAttr->Next();
 		}
 	}
 

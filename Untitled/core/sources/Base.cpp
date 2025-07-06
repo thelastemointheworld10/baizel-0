@@ -9,7 +9,7 @@
 cBase::cBase()
 {
     msWindowTitle = "Untitled";
-    mvScreenSize = tVector2l(640, 480);
+    mvScreenSize = tVector2l(1280, 720);
     mvVirtualSize = tVector2f(800, 600);
     mbFullscreen = false;
 
@@ -21,7 +21,8 @@ cBase::cBase()
     mpPlayer = new cPlayer(mpEngine->GetAudioSystem(),
         mpEngine->GetGraphics(),
         mpEngine->GetInput(),
-        mpEngine->GetApplicationTime());
+        mpEngine->GetApplicationTime(),
+        mpEngine->GetXMLReader());
 }
 
 cBase::~cBase()

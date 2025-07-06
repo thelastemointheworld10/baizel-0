@@ -44,7 +44,7 @@ namespace baizel
         mpContext = alcCall(alcCreateContext, pDevice, pDevice, nullptr);
         if (mpContext == nullptr)
         {
-            cLog::Fatal("Failed to create audio context");
+            cLog::Error("Failed to create audio context");
             return;
         }
 

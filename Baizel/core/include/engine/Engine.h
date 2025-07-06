@@ -17,6 +17,7 @@
 #include <audio/AudioSystem.h>
 #include <engine/Updater.h>
 #include <resources/XMLReader.h>
+#include <resources/FontAtlas.h>
 
 namespace baizel
 {

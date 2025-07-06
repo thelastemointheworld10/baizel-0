@@ -24,6 +24,12 @@ namespace baizel
 			mvPosition = avPosition;
 			mvSize = avSize;
 		}
+
+		cRect(T aX, T aY, T aW, T aH)
+		{
+			mvPosition = cVector2<T>(aX, aY);
+			mvSize = cVector2<T>(aW, aH);
+		}
 		
 		// -----------------------------------------------------------------------
 

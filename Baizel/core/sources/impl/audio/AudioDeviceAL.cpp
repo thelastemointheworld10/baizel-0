@@ -67,7 +67,7 @@ namespace baizel
         mpAudioDevice = alcOpenDevice(asName.c_str());
         if (mpAudioDevice == nullptr)
         {
-            cLog::Fatal("Failed to open audio device '%s'!", asName.c_str());
+            cLog::Error("Failed to open audio device '%s'!", asName.c_str());
         }
     }
 

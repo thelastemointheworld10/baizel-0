@@ -35,7 +35,7 @@ namespace baizel
 		mpRenderer = SDL_CreateRenderer(pLowLevelGraphicsSDL->GetWindow(), -1, SDL_RENDERER_ACCELERATED);
 		if (mpRenderer == nullptr)
 		{
-			cLog::Fatal("Failed to create renderer: %s", SDL_GetError());
+			cLog::Error("Failed to create renderer: %s", SDL_GetError());
 			return false;
 		}
 
