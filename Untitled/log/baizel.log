@@ -15,17 +15,17 @@ Creating input device of type 1 as class baizel::iInputDevice * __ptr64
 * ----------------------------------------------------
 * Initializing engine
 * ----------------------------------------------------
-Setting video mode: 1280 x 720 with virtual size 800.0 x 600.0
+Video mode: 1280 x 720 with virtual size 800.0 x 600.0
 Opening audio device: OpenAL Soft on Динамики (MCHOSE S9 PRO)
 Audio device created
 Audio context created
 Key repeat: false
 New clear color: 100 100 100
 XML document loaded 'fonts/arialnew.fnt'
-Trying to load page file: 'fonts/arialnew_0.png'
 Loading texture: 'fonts/arialnew_0.png'
-Trying to load page file: 'fonts/arialnew_1.png'
+Font atlas page loaded: fonts/arialnew_0.png
 Loading texture: 'fonts/arialnew_1.png'
+Font atlas page loaded: fonts/arialnew_1.png
 * ----------------------------------------------------
 * Running engine
 * ----------------------------------------------------

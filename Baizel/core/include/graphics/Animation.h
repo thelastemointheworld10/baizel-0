@@ -29,7 +29,7 @@ namespace baizel
 		iTexture* GetCurrentFrame() const;
 		iTexture* GetFrameByIndex(size_t alIndex) const;
 
-		void ResetFrameTime();
+		void Reset();
 
 		void Update(float afTimeStep);
 

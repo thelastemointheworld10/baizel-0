@@ -103,6 +103,7 @@ void cPlayer::OnUpdate(float afTimeStep)
 
 	if (bDidMove == false && bDidRotate == false)
 	{
+		mpWalkAnimation->Reset();
 		UpdateIdleAnimation(afTimeStep);
 	}
 }
@@ -111,7 +112,7 @@ void cPlayer::OnDraw()
 {
 	mpGraphics->GetRenderer()->DrawTexture(mpPlayerTexture,mPlayerRect, mfAngle, mvCenter);
 
-	mpGraphics->GetRenderer()->DrawText(u8"61cmapk@mail.ru кто напишет тот лох raw", mpFA, 166, mvPosition, cColor(255, 255, 255));
+	mpGraphics->GetRenderer()->DrawText("привет", mpFA, 166, mvPosition, cColor(255, 255, 255));
 }
 
 void cPlayer::OnExit()

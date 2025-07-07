@@ -101,7 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;wxbase32u.lib;wxmsw32u_core.lib;wxmsw32u_adv.lib;wxzlib.lib;wxpng.lib;wxjpeg.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -124,7 +124,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;wxbase32u.lib;wxmsw32u_core.lib;wxmsw32u_adv.lib;wxzlib.lib;wxpng.lib;wxjpeg.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x86\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -143,7 +143,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;wxbase32u.lib;wxmsw32u_core.lib;wxmsw32u_adv.lib;wxzlib.lib;wxpng.lib;wxjpeg.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -166,7 +166,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;OpenAL32.lib;tinyxml2.lib;vorbis.lib;vorbisenc.lib;vorbisfile.lib;wxbase32u.lib;wxmsw32u_core.lib;wxmsw32u_adv.lib;wxzlib.lib;wxpng.lib;wxjpeg.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\dependencies\lib\x64\</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -178,6 +178,7 @@
     <ClInclude Include="core\include\audio\AudioSource.h" />
     <ClInclude Include="core\include\audio\AudioSystem.h" />
     <ClInclude Include="core\include\audio\OggFile.h" />
+    <ClInclude Include="core\include\core\Utf8Convetrer.h" />
     <ClInclude Include="core\include\engine\EngineSetup.h" />
     <ClInclude Include="core\include\engine\TimeStep.h" />
     <ClInclude Include="core\include\diagnostics\Log.h" />
@@ -236,6 +237,7 @@
     <ClCompile Include="core\sources\audio\AudioSource.cpp" />
     <ClCompile Include="core\sources\audio\AudioSystem.cpp" />
     <ClCompile Include="core\sources\audio\OggFile.cpp" />
+    <ClCompile Include="core\sources\core\Utf8Coverter.cpp" />
     <ClCompile Include="core\sources\diagnostics\Log.cpp" />
     <ClCompile Include="core\sources\engine\Updater.cpp" />
     <ClCompile Include="core\sources\graphics\Glyph.cpp" />

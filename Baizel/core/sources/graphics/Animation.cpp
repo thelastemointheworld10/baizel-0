@@ -94,6 +94,9 @@ namespace baizel
 
 	void cAnimation::SetFrames(const tTextureVec& avFrames)
 	{
+		if (mvFrames.size() == 0)
+			return;
+
 		mvFrames.clear();
 
 		for (iTexture* pFrame : avFrames)
@@ -102,8 +105,7 @@ namespace baizel
 				mvFrames.push_back(pFrame);
 		}
 
-		mlCurrentFrame = 0;
-		mfFrameTime = 0.0f;
+		Reset();
 	}
 
 	iTexture* cAnimation::GetCurrentFrame() const
@@ -128,8 +130,9 @@ namespace baizel
 		return mvFrames[alIndex];
 	}
 
-	void cAnimation::ResetFrameTime()
+	void cAnimation::Reset()
 	{
+		mlCurrentFrame = 0;
 		mfFrameTime = 0.0f;
 	}
 

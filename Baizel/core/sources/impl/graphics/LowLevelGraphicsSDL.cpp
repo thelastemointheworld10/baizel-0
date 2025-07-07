@@ -40,7 +40,7 @@ namespace baizel
 		mvScreenSize = avWindowSize;
 		mvVirtualSize = avVirtualSize;
 
-		cLog::Log("Setting video mode: %d x %d with virtual size %.1f x %.1f",
+		cLog::Log("Video mode: %d x %d with virtual size %.1f x %.1f",
 			mvScreenSize.x, mvScreenSize.y, mvVirtualSize.x, mvVirtualSize.y);
 
 		mpWindow = SDL_CreateWindow(asWindowTitle.c_str(),

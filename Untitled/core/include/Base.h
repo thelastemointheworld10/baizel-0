@@ -2,6 +2,9 @@
 #define BASE_H
 
 #include <string>
+#ifdef _WIN32
+#include <windows.h>
+#endif // _WIN32
 
 #include <impl/engine/EngineSetupSDL.h>
 #include <impl/audio/AudioSystemAL.h>

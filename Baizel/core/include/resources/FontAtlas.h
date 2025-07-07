@@ -2,6 +2,7 @@
 #define BAIZEL_FONTATLAS_H
 
 #include <map>
+#include <cstdint>
 
 #include <graphics/Texture.h>
 #include <graphics/Glyph.h>
@@ -15,7 +16,7 @@ namespace baizel
 	const int gkDefaultGlyphs = 351; // latin + cyrillic characters
 	const int gkDefaultPages = 2;
 
-	using tGlyphMap = std::map<int, cGlyph>;
+	using tGlyphMap = std::map<std::uint8_t, cGlyph>;
 	using tGlyphMapIt = tGlyphMap::const_iterator;
 
 	class cFontAtlas final
@@ -28,8 +29,12 @@ namespace baizel
 
 		const std::string& GetPath() const;
 		iTexture* GetPage(int alIndex) const;
-		const cGlyph& GetGlyph(int alIndex) const;
+		const cGlyph& GetGlyph(std::uint8_t alIndex) const;
 		int GetSize() const;
+
+	private:
+		void LoadPages(cXMLElement* apRoot);
+		void LoadChars(cXMLElement* apRoot);
 
 	private:
 		iLowLevelGraphics* mpLowLevelGraphics = nullptr;

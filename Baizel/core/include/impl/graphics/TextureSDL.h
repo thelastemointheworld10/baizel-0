@@ -19,7 +19,7 @@ namespace baizel
 		cTextureSDL(iRenderer* apRenderer);
 		~cTextureSDL() override;
 
-		void LoadFile(const std::string& asPath) override;
+		bool LoadFile(const std::string& asPath) override;
 
 		inline void SetColor(uint8_t alR, uint8_t alG, uint8_t alB) const override;
 		inline void SetColor(cColor aColor) const override;

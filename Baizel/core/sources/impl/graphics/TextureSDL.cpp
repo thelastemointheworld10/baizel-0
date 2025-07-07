@@ -30,7 +30,7 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cTextureSDL::LoadFile(const std::string& asPath)
+	bool cTextureSDL::LoadFile(const std::string& asPath)
 	{
 		ReleaseResources();
 
@@ -40,17 +40,19 @@ namespace baizel
 		if (mpSurface == nullptr)
 		{
 			cLog::Error("Failed to load texture '%s': %s", asPath.c_str(), IMG_GetError());
-			return;
+			return false;
 		}
 
 		if (CreateTextureFromSurface() == false)
 		{
 			cLog::Error("Failed to create texture from surface!");
-			return;
+			return false;
 		}
 
 		mvSize = tVector2l(mpSurface->w, mpSurface->h);
 		msPath = asPath;
+
+		return true;
 	}
 
 	//////////////////////////////////////////

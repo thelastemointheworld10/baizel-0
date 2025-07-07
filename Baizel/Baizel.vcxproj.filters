@@ -186,6 +186,9 @@
     <ClInclude Include="core\include\impl\audio\AudioReaderLibVorbis.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="core\include\core\Utf8Convetrer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\sources\input\Keyboard.cpp">
@@ -318,6 +321,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="core\sources\diagnostics\Log.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="core\sources\core\Utf8Coverter.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

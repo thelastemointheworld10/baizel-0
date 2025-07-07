@@ -8,6 +8,7 @@
 #include <graphics/Color.h>
 #include <graphics/RectTypes.h>
 #include <resources/FontAtlas.h>
+#include <core/Utf8Convetrer.h>
 
 namespace baizel
 {
