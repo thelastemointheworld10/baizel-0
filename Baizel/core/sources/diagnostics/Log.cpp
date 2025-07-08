@@ -2,7 +2,7 @@
 
 namespace baizel
 {
-	std::ofstream cLog::sOut;
+	std::ofstream cLog::sOut{};
 
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
@@ -14,17 +14,12 @@ namespace baizel
 	// Resource Management
 	//////////////////////////////////////////
 
-	void cLog::SetOutFile(const std::string& asPath)
+	void cLog::SetOutFile(const std::string& asPath, char alSeparator)
 	{
-		sOut.open(asPath, std::ios::out | std::ios::trunc);
-		if (sOut.is_open())
-		{
-			Log("Log file %s opened", asPath);
-		}
-		else
-		{
-			Error("Failed to open log file %s", asPath);
-		}
+		if (CreateDirectories(asPath, alSeparator))
+			OpenFile(asPath);
+
+		Log("Log file created: %s", asPath);
 	}
 
 	void cLog::CloseFile()
@@ -105,6 +100,42 @@ namespace baizel
 		vsnprintf(vBuffer.data(), lSize, asFormat.c_str(), apArgs);
 
 		return std::string(vBuffer.begin(), vBuffer.end() - 1);
+	}
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////////////////////////////////////
+	// PRIVATE METHODS
+	//////////////////////////////////////////////////////////////////////////
+
+	// -----------------------------------------------------------------------
+
+	//////////////////////////////////////////
+	// Resource Management
+	//////////////////////////////////////////
+
+	bool cLog::CreateDirectories(const std::string& asPath, char alSeparator)
+	{
+		std::filesystem::path Dir = asPath.substr(0, asPath.find_last_of(alSeparator));
+		if (std::filesystem::exists(Dir) == false)
+		{
+			Warning("Log path '%s' does not exists! Trying to create it", asPath);
+
+			if (std::filesystem::create_directories(Dir) == false)
+			{
+				Error("Failed to create log directories: %s", Dir.string());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	void cLog::OpenFile(const std::string& asPath)
+	{
+		sOut.open(asPath);
+		if (sOut.is_open() == false)
+			Error("Failed to open log file %s", asPath);
 	}
 
 	// -----------------------------------------------------------------------

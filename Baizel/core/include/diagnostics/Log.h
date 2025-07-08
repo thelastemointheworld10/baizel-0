@@ -6,13 +6,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <filesystem>
 
 namespace baizel
 {
 	class cLog final
 	{
 	public:
-		static void SetOutFile(const std::string& asPath);
+		static void SetOutFile(const std::string& asPath, char alSeparator = '/');
 		static void CloseFile();
 
 		static void Log(const std::string& asFormat, ...);
@@ -20,6 +21,10 @@ namespace baizel
 		static void Error(const std::string& asFormat, ...);
 
 		static std::string GetFormatedString(const std::string& asFormat, va_list apArgs);
+
+	private:
+		static bool CreateDirectories(const std::string& asPath, char alSeparator = '/');
+		static void OpenFile(const std::string& asPath);
 
 	private:
 		static std::ofstream sOut;

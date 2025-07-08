@@ -171,11 +171,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="core\include\Base.h" />
+    <ClInclude Include="core\include\Game.h" />
     <ClInclude Include="core\include\Player.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\sources\Base.cpp" />
+    <ClCompile Include="core\sources\Game.cpp" />
     <ClCompile Include="core\sources\Main.cpp" />
     <ClCompile Include="core\sources\Player.cpp" />
   </ItemGroup>

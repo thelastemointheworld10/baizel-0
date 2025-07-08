@@ -1,24 +1,19 @@
-#include <Base.h>
+#include <Game.h>
 
 using namespace baizel;
 
 #undef main
-int main()
+int main(int argc, char** argv)
 {
-    cLog::SetOutFile("log/baizel.log");
+	cGame Game;
+	if (Game.Init() == false)
+	{
+		cLog::Error("Failed to initialize game!");
+		return EXIT_FAILURE;
+	}
 
-    cBase Base;
+	Game.Run();
+	Game.Exit();
 
-    if (Base.Init() == false)
-    {
-        cLog::Error("Failed to initialize!");
-        return EXIT_FAILURE;
-    }
-
-    Base.Run();
-    Base.Exit();
-
-    cLog::CloseFile();
-
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }

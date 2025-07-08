@@ -1,4 +1,4 @@
-Log file log/baizel.log opened
+Log file created: log/baizel.log
 SDL Version: 2.32.4
 SDL_image Version: 2.8.8
 - Creating engine stuff
@@ -48,3 +48,18 @@ Ogg info: version: 0 channels: 1, bitrate_upper: 0, bitrate_nominal: 96000, bitr
 * Exiting engine
 * ----------------------------------------------------
 Exiting audio system
+- Deleting base stuff
+	Player
+	Engine
+- Deleting engine stuff
+	Audio system
+	XML reader
+	Graphics
+	Input
+	Application time
+	Updater
+	Time step
+	Engine setup
+- Exiting SDL
+	SDL_image
+	SDL
