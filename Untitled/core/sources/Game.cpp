@@ -62,9 +62,14 @@ bool cGame::Init()
 
     mpEngine->GetInput()->GetKeyboard()->SetKeyRepeat(false);
     mpEngine->GetGraphics()->GetRenderer()->SetClearColor(cColor(100, 100, 100));
+    mpEngine->GetAudioSystem()->GetListener()->SetMasterGain(1.0f);
 
-    mpPlayer->Init();
-    mpEngine->GetUpdater()->AddUpdateable(mpPlayer);
+    iAudioBuffer* pBuffer = mpEngine->GetAudioSystem()->CreateBuffer();
+    pBuffer->LoadAudio("music/raw_test/01.ogg");
+    iAudioSource* pSource = mpEngine->GetAudioSystem()->CreateSource();
+    pSource->SetBuffer(pBuffer);
+    pSource->SetLoop(true);
+    pSource->Play();
 
     return true;
 }

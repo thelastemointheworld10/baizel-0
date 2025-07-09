@@ -15,7 +15,6 @@ namespace baizel
     {
     public:
         iOggFile();
-        virtual ~iOggFile() = default;
 
         virtual bool LoadFile(const std::string& asPath) = 0;
 

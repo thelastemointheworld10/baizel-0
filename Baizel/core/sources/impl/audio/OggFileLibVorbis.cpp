@@ -3,20 +3,6 @@
 namespace baizel
 {
     //////////////////////////////////////////////////////////////////////////
-    // CONSTRUCTORS
-    //////////////////////////////////////////////////////////////////////////
-
-    // -----------------------------------------------------------------------
-
-    cOggFileLibVorbis::~cOggFileLibVorbis()
-    {
-        //delete mpInfo;
-        //mpInfo = nullptr;
-    }
-
-    // -----------------------------------------------------------------------
-
-    //////////////////////////////////////////////////////////////////////////
     // PUBLIC METHODS
     //////////////////////////////////////////////////////////////////////////
 
@@ -43,6 +29,7 @@ namespace baizel
         ReadPCM(Vorbis);
 
         ov_clear(&Vorbis);
+        delete pInfo;
 
         return true;
     }
@@ -73,7 +60,7 @@ namespace baizel
 
             size_t lSamplesRead = lBytes / sizeof(short); // short = 2bytes.
             // copy values from vTemp to mvPCMData
-            mvPCMData.insert(mvPCMData.end(), mvPCMData.begin(), mvPCMData.begin() + lSamplesRead);
+            mvPCMData.insert(mvPCMData.end(), vTemp.begin(), vTemp.begin() + lSamplesRead);
         }
     }
 

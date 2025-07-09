@@ -10,8 +10,6 @@ namespace baizel
     class cOggFileLibVorbis final : public iOggFile
     {
     public:
-        ~cOggFileLibVorbis() override;
-
         bool LoadFile(const std::string& asPath) override;
 
     private:
