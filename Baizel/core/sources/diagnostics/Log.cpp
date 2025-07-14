@@ -3,6 +3,7 @@
 namespace baizel
 {
 	std::ofstream cLog::sOut{};
+	std::string cLog::ssLastLog{};
 
 	//////////////////////////////////////////////////////////////////////////
 	// PUBLIC METHODS
@@ -37,13 +38,10 @@ namespace baizel
 			return;
 
 		va_list pArgs;
-
 		va_start(pArgs, asFormat.c_str());
 
-		std::string sMessage = GetFormatedString(asFormat.c_str(), pArgs);
-		std::cerr << sMessage << std::endl;
-		if (sOut.is_open())
-			sOut << sMessage << std::endl;
+		ssLastLog = GetFormatedString(asFormat.c_str(), pArgs);
+		std::cerr << ssLastLog << std::endl;
 
 		va_end(pArgs);
 	}
@@ -54,13 +52,10 @@ namespace baizel
 			return;
 
 		va_list pArgs;
-
 		va_start(pArgs, asFormat.c_str());
 
-		std::string sMessage = "[WARNING] " + GetFormatedString(asFormat.c_str(), pArgs);
-		std::cerr << sMessage << std::endl;
-		if (sOut.is_open())
-			sOut << sMessage << std::endl;
+		ssLastLog = "[WARNING] " + GetFormatedString(asFormat.c_str(), pArgs);
+		std::cerr << ssLastLog << std::endl;
 
 		va_end(pArgs);
 	}
@@ -71,15 +66,30 @@ namespace baizel
 			return;
 
 		va_list pArgs;
-
 		va_start(pArgs, asFormat.c_str());
 
-		std::string sMessage = "[ERROR] " + GetFormatedString(asFormat.c_str(), pArgs);
-		std::cerr << sMessage << std::endl;
-		if (sOut.is_open())
-			sOut << sMessage << std::endl;
+		ssLastLog = "[ERROR] " + GetFormatedString(asFormat.c_str(), pArgs);
+		std::cerr << ssLastLog << std::endl;
 
 		va_end(pArgs);
+	}
+
+	void cLog::LogToFile(const std::string& asFormat, ...)
+	{
+		Log(asFormat);
+		sOut << ssLastLog << std::endl;
+	}
+
+	void cLog::WarningToFile(const std::string& asFormat, ...)
+	{
+		Warning(asFormat);
+		sOut << ssLastLog << std::endl;
+	}
+
+	void cLog::ErrorToFile(const std::string& asFormat, ...)
+	{
+		Error(asFormat);
+		sOut << ssLastLog << std::endl;
 	}
 
 	//////////////////////////////////////////
@@ -100,6 +110,11 @@ namespace baizel
 		vsnprintf(vBuffer.data(), lSize, asFormat.c_str(), apArgs);
 
 		return std::string(vBuffer.begin(), vBuffer.end() - 1);
+	}
+
+	const std::string& cLog::GetLastLog()
+	{
+		return ssLastLog;
 	}
 
 	// -----------------------------------------------------------------------

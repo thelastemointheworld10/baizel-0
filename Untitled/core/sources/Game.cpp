@@ -71,6 +71,8 @@ bool cGame::Init()
     pSource->SetLoop(true);
     pSource->Play();
 
+    cLog::LogToFile("last log: %s", cLog::GetLastLog().c_str());
+
     return true;
 }
 

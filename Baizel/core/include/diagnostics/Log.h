@@ -19,8 +19,12 @@ namespace baizel
 		static void Log(const std::string& asFormat, ...);
 		static void Warning(const std::string& asFormat, ...);
 		static void Error(const std::string& asFormat, ...);
+		static void LogToFile(const std::string& asFormat, ...);
+		static void WarningToFile(const std::string& asFormat, ...);
+		static void ErrorToFile(const std::string& asFormat, ...);
 
 		static std::string GetFormatedString(const std::string& asFormat, va_list apArgs);
+		static const std::string& GetLastLog();
 
 	private:
 		static bool CreateDirectories(const std::string& asPath, char alSeparator = '/');
@@ -28,6 +32,7 @@ namespace baizel
 
 	private:
 		static std::ofstream sOut;
+		static std::string ssLastLog;
 	};
 }
 
